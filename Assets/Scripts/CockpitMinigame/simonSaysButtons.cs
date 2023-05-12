@@ -65,6 +65,21 @@ public class simonSaysButtons : MonoBehaviour
                 case 1:
                 simonButton1.onClick.Invoke();
                 break;
+                case 2:
+                simonButton2.onClick.Invoke();
+                break;
+                case 3:
+                simonButton3.onClick.Invoke();
+                break;
+                case 4:
+                simonButton4.onClick.Invoke();
+                break;
+                case 5:
+                simonButton5.onClick.Invoke();
+                break;
+                case 6:
+                simonButton6.onClick.Invoke();
+                break;
             }
         }
     }

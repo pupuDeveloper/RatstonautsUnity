@@ -30,4 +30,6 @@ EditorBuildSettings:
     path: Assets/Scenes/CockpitMinigame.unity
     guid: 6b73575778569da47b661e8e8023e07a
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 6d44387b5d488014fb7e6c96f74a8c6a, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: ed8de0baec74d28489576d3871358dbd, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 3e1e1f9fba75b0849acd66797c1f25d0, type: 2}

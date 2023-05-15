@@ -17,7 +17,7 @@ public class simonSaysButtons : MonoBehaviour
     private Button simonButton4;
     private Button simonButton5;
     private Button simonButton6;
-    private Image blocker;
+    private GameObject[] choiceBtns;
     private bool turn;
     private bool crRunning;
     private string compMoves = "";
@@ -31,14 +31,13 @@ public class simonSaysButtons : MonoBehaviour
         simonButton4 = GameObject.Find("Button4").GetComponent<Button>();
         simonButton5 = GameObject.Find("Button5").GetComponent<Button>();
         simonButton6 = GameObject.Find("Button6").GetComponent<Button>();
-        blocker = GameObject.Find("clickBlocker").GetComponent<Image>();
-        simonButton1.enabled = false;
+        GameObject[] choiceBtns = {GameObject.FindGameObjectsWithTag("simonGameButton")};
+        /*simonButton1.enabled = false;
         simonButton2.enabled = false;
         simonButton3.enabled = false;
         simonButton4.enabled = false;
         simonButton5.enabled = false;
-        simonButton6.enabled = false;
-        blocker.enabled = false;
+        simonButton6.enabled = false;*/
         turn = false;
         crRunning = false;
     }
@@ -67,15 +66,18 @@ public class simonSaysButtons : MonoBehaviour
     //this method is the randomised moves the computer does in the simon game
     IEnumerator simonCoroutine()
     {
-        blocker.enabled = true;
         crRunning = true;
         Debug.Log("got in");
-        simonButton1.enabled = true;
+        /*simonButton1.enabled = true;
         simonButton2.enabled = true;
         simonButton3.enabled = true;
         simonButton4.enabled = true;
         simonButton5.enabled = true;
-        simonButton6.enabled = true;
+        simonButton6.enabled = true;*/
+        foreach(GameObject btn in choiceBtns)
+        {
+            btn.interactable = false;
+        }
         for (int i = 0; i <= 5; i++)
         {
             int randButton = Random.Range(1, 6);
@@ -109,16 +111,19 @@ public class simonSaysButtons : MonoBehaviour
                 break;
             }
         }
-        simonButton1.enabled = false;
+        foreach(GameObject btn in choiceBtns)
+        {
+            btn.interactable = true;
+        }
+        /*simonButton1.enabled = false;
         simonButton2.enabled = false;
         simonButton3.enabled = false;
         simonButton4.enabled = false;
         simonButton5.enabled = false;
-        simonButton6.enabled = false;
+        simonButton6.enabled = false;*/
         Debug.Log(playerMoves);
         Debug.Log(compMoves);
         crRunning = false;
-        blocker.enabled = false;
     }
 
     private bool compareMoves(string playerMoves, string compMoves)

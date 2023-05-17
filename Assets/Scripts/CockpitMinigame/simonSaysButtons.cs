@@ -31,15 +31,12 @@ public class simonSaysButtons : MonoBehaviour
         simonButton4 = GameObject.Find("Button4").GetComponent<Button>();
         simonButton5 = GameObject.Find("Button5").GetComponent<Button>();
         simonButton6 = GameObject.Find("Button6").GetComponent<Button>();
-        //choiceBtns = {GameObject.FindGameObjectsWithTag("simonGameButton");};
-        /*simonButton1.enabled = false;
-        simonButton2.enabled = false;
-        simonButton3.enabled = false;
-        simonButton4.enabled = false;
-        simonButton5.enabled = false;
-        simonButton6.enabled = false;*/
         turn = false;
         crRunning = false;
+        foreach(Button btn in choiceBtns)
+        {
+            btn.interactable = false;
+        }
     }
 
     //TODO 
@@ -62,15 +59,15 @@ public class simonSaysButtons : MonoBehaviour
     //this method is the randomised moves the computer does in the simon game
     IEnumerator simonCoroutine()
     {
-        yield return new WaitForSeconds(1);
-        crRunning = true;
         foreach(Button btn in choiceBtns)
         {
             btn.interactable = false;
         }
+        yield return new WaitForSeconds(1);
+        crRunning = true;
         for (int i = 0; i <= 5; i++)
         {
-            int randButton = Random.Range(1, 6);
+            int randButton = Random.Range(1, 7);
             compMoves = string.Concat(compMoves, randButton);
             yield return new WaitForSeconds(1);
             switch (randButton)
@@ -101,13 +98,13 @@ public class simonSaysButtons : MonoBehaviour
                 break;
             }
         }
+        Debug.Log(playerMoves);
+        Debug.Log(compMoves);
+        crRunning = false;
         foreach(Button btn in choiceBtns)
         {
             btn.interactable = true;
         }
-        Debug.Log(playerMoves);
-        Debug.Log(compMoves);
-        crRunning = false;
     }
 
     private void success()

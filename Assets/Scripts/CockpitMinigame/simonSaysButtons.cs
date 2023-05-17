@@ -17,7 +17,7 @@ public class simonSaysButtons : MonoBehaviour
     private Button simonButton4;
     private Button simonButton5;
     private Button simonButton6;
-    private GameObject[] choiceBtns;
+    public Button[] choiceBtns;
     private bool turn;
     private bool crRunning;
     private string compMoves = "";
@@ -31,7 +31,7 @@ public class simonSaysButtons : MonoBehaviour
         simonButton4 = GameObject.Find("Button4").GetComponent<Button>();
         simonButton5 = GameObject.Find("Button5").GetComponent<Button>();
         simonButton6 = GameObject.Find("Button6").GetComponent<Button>();
-        GameObject[] choiceBtns = {GameObject.FindGameObjectsWithTag("simonGameButton")};
+        //choiceBtns = {GameObject.FindGameObjectsWithTag("simonGameButton");};
         /*simonButton1.enabled = false;
         simonButton2.enabled = false;
         simonButton3.enabled = false;
@@ -57,24 +57,14 @@ public class simonSaysButtons : MonoBehaviour
             StartCoroutine(simonCoroutine());
             turn = true;
         }
-        else
-        {
-
-        }
     }
 
     //this method is the randomised moves the computer does in the simon game
     IEnumerator simonCoroutine()
     {
+        yield return new WaitForSeconds(1);
         crRunning = true;
-        Debug.Log("got in");
-        /*simonButton1.enabled = true;
-        simonButton2.enabled = true;
-        simonButton3.enabled = true;
-        simonButton4.enabled = true;
-        simonButton5.enabled = true;
-        simonButton6.enabled = true;*/
-        foreach(GameObject btn in choiceBtns)
+        foreach(Button btn in choiceBtns)
         {
             btn.interactable = false;
         }
@@ -111,19 +101,23 @@ public class simonSaysButtons : MonoBehaviour
                 break;
             }
         }
-        foreach(GameObject btn in choiceBtns)
+        foreach(Button btn in choiceBtns)
         {
             btn.interactable = true;
         }
-        /*simonButton1.enabled = false;
-        simonButton2.enabled = false;
-        simonButton3.enabled = false;
-        simonButton4.enabled = false;
-        simonButton5.enabled = false;
-        simonButton6.enabled = false;*/
         Debug.Log(playerMoves);
         Debug.Log(compMoves);
         crRunning = false;
+    }
+
+    private void success()
+    {
+        //replace debug with actual popup
+        Debug.Log("Good job! you calibrated the autopilot");
+        foreach(Button btn in choiceBtns)
+        {
+            btn.interactable = false;
+        }
     }
 
     private bool compareMoves(string playerMoves, string compMoves)
@@ -133,7 +127,7 @@ public class simonSaysButtons : MonoBehaviour
             char[] p = playerMoves.ToCharArray();
             char[] c = compMoves.ToCharArray();
             int length = playerMoves.Length;
-            if (p[length - 1] == c[length] - 1)
+            if (p[length - 1] == c[length - 1])
             {
                 return true;
             }
@@ -149,7 +143,18 @@ public class simonSaysButtons : MonoBehaviour
         if (crRunning == false)
         {
             playerMoves = string.Concat(playerMoves, 1);
-            compareMoves(playerMoves, compMoves);
+            if (compareMoves(playerMoves, compMoves) == false)
+            {
+                Debug.Log("Try Again!");
+                compMoves = "";
+                playerMoves = "";
+                turn = false;
+            }
+            if (compareMoves(playerMoves, compMoves) && playerMoves.Length == 6)
+            {
+                success();
+            }
+
         }
     }
     public void playSoundEffect2()
@@ -158,16 +163,37 @@ public class simonSaysButtons : MonoBehaviour
         if (crRunning == false)
         {
             playerMoves = string.Concat(playerMoves, 2);
-            compareMoves(playerMoves, compMoves);
+            if (compareMoves(playerMoves, compMoves) == false)
+            {
+                Debug.Log("Try Again!");
+                compMoves = "";
+                playerMoves = "";
+                turn = false;
+            }
+            if (compareMoves(playerMoves, compMoves) && playerMoves.Length == 6)
+            {
+                success();
+            }
         }
     }
+
     public void playSoundEffect3()
     {
         soundPlayer3.Play();
         if (crRunning == false)
         {
             playerMoves = string.Concat(playerMoves, 3);
-            compareMoves(playerMoves, compMoves);
+            if (compareMoves(playerMoves, compMoves) == false)
+            {
+                Debug.Log("Try Again!");
+                compMoves = "";
+                playerMoves = "";
+                turn = false;
+            }
+            if (compareMoves(playerMoves, compMoves) && playerMoves.Length == 6)
+            {
+                success();
+            }
         }
     }
     public void playSoundEffect4()
@@ -176,7 +202,17 @@ public class simonSaysButtons : MonoBehaviour
         if (crRunning == false)
         {
             playerMoves = string.Concat(playerMoves, 4);
-            compareMoves(playerMoves, compMoves);
+            if (compareMoves(playerMoves, compMoves) == false)
+            {
+                Debug.Log("Try Again!");
+                compMoves = "";
+                playerMoves = "";
+                turn = false;
+            }
+            if (compareMoves(playerMoves, compMoves) && playerMoves.Length == 6)
+            {
+                success();
+            }
         }
     }
     public void playSoundEffect5()
@@ -185,7 +221,17 @@ public class simonSaysButtons : MonoBehaviour
         if (crRunning == false)
         {
             playerMoves = string.Concat(playerMoves, 5);
-            compareMoves(playerMoves, compMoves);
+            if (compareMoves(playerMoves, compMoves) == false)
+            {
+                Debug.Log("Try Again!");
+                compMoves = "";
+                playerMoves = "";
+                turn = false;
+            }
+            if (compareMoves(playerMoves, compMoves) && playerMoves.Length == 6)
+            {
+                success();
+            }
         }
     }
     public void playSoundEffect6()
@@ -194,7 +240,17 @@ public class simonSaysButtons : MonoBehaviour
         if (crRunning == false)
         {
             playerMoves = string.Concat(playerMoves, 6);
-            compareMoves(playerMoves, compMoves);
+            if (compareMoves(playerMoves, compMoves) == false)
+            {
+                Debug.Log("Try Again!");
+                compMoves = "";
+                playerMoves = "";
+                turn = false;
+            }
+            if (compareMoves(playerMoves, compMoves) && playerMoves.Length == 6)
+            {
+                success();
+            }
         }
     }
 }

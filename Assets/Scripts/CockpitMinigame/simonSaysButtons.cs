@@ -59,12 +59,12 @@ public class simonSaysButtons : MonoBehaviour
     //this method is the randomised moves the computer does in the simon game
     IEnumerator simonCoroutine()
     {
+        crRunning = true;
         foreach(Button btn in choiceBtns)
         {
             btn.interactable = false;
         }
         yield return new WaitForSeconds(1);
-        crRunning = true;
         for (int i = 0; i <= 5; i++)
         {
             int randButton = Random.Range(1, 7);
@@ -98,13 +98,12 @@ public class simonSaysButtons : MonoBehaviour
                 break;
             }
         }
-        Debug.Log(playerMoves);
         Debug.Log(compMoves);
-        crRunning = false;
         foreach(Button btn in choiceBtns)
         {
             btn.interactable = true;
         }
+        crRunning = false;
     }
 
     private void success()
@@ -151,7 +150,6 @@ public class simonSaysButtons : MonoBehaviour
             {
                 success();
             }
-
         }
     }
     public void playSoundEffect2()

@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CockpitMinigame.unity
     guid: 6b73575778569da47b661e8e8023e07a
+  - enabled: 1
+    path: Assets/Scenes/CannonsMinigame.unity
+    guid: 9778330738796714c92d4587bbf9a8f1
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 6d44387b5d488014fb7e6c96f74a8c6a, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: ed8de0baec74d28489576d3871358dbd, type: 2}

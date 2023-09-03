@@ -7,6 +7,15 @@ public class backbutton : MonoBehaviour
 {
     public void back()
     {
-        SceneManager.LoadScene("CockPit");
+        Scene scene = SceneManager.GetActiveScene();
+        switch(scene.name)
+        {
+            case "CockpitMinigame":
+            SceneManager.LoadScene("CockPit");
+            break;
+            case "CannonsMinigame":
+            SceneManager.LoadScene("Cannons");
+            break;
+        }
     }
 }

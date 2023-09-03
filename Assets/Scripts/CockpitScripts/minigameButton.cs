@@ -9,6 +9,15 @@ public class minigameButton : MonoBehaviour
 
     public void toMinigame()
     {
-        SceneManager.LoadScene("CockpitMinigame");
+        Scene scene = SceneManager.GetActiveScene();
+        switch(scene.name)
+        {
+            case "CockPit":
+            SceneManager.LoadScene("CockpitMinigame");
+            break;
+            case "Cannons":
+            SceneManager.LoadScene("CannonsMinigame");
+            break;
+        }
     }
 }

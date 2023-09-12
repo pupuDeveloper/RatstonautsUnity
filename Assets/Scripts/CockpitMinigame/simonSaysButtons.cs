@@ -114,6 +114,7 @@ public class simonSaysButtons : MonoBehaviour
         {
             btn.interactable = false;
         }
+        GameManager.Instance.tasksActive++;
     }
 
     private bool compareMoves(string playerMoves, string compMoves)

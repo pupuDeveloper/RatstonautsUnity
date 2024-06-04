@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 public class GameStateManager : MonoBehaviour
 {
     public State currentState; //state that is playing
+    public State targetState;
     public State nextState;
     public cockpitState _cockpitState;
     public foodgeneratorState _foodgeneratorState;
@@ -16,13 +17,7 @@ public class GameStateManager : MonoBehaviour
     }
     private void RunStateMachine()
     {
-
-        if (nextState != null)
-        {
-            SwitchToNextState(nextState);
-        }
-        nextState = currentState?.RunCurrentState(); //if variable is not null run current state
-
+        nextState = currentState?.RunCurrentState();
         // above line is this 
         /*
         State nextState = null;
@@ -31,6 +26,10 @@ public class GameStateManager : MonoBehaviour
             nextState = currentState.RunCurrentState();
         }
         */
+        if (nextState != null)
+        {
+            SwitchToNextState(nextState);
+        }
     }
     private void SwitchToNextState(State nextState)
     {
@@ -41,24 +40,23 @@ public class GameStateManager : MonoBehaviour
         switch (stateName)
         {
             case "cockPit":
-            nextState = _cockpitState;
+            targetState = _cockpitState;
             break;
             case "oxygenGarden":
-            nextState = _oxygengardenState;
+            targetState = _oxygengardenState;
             break;
             case "turrets":
-            nextState = _turretsState;
+            targetState = _turretsState;
             break;
             case "foodGenerator":
-            nextState =  _foodgeneratorState;
+            targetState =  _foodgeneratorState;
             break;
             case "sleepingQuarters":
-            nextState = _sleepingquartersState;
+            targetState = _sleepingquartersState;
             break;
             default:
-            Debug.LogError("state not found!");
+            targetState = null;
             break;
         }
-        Debug.Log("got here");
     }
 }

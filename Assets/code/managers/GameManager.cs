@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
+    private gameStats _gameStats;
     private GameStateManager gameStateManager; //gameplay state machine
     private static GameManager _instance;
     public static GameManager Instance
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         // Destroy dublicate instances
-        if (_instance != null)
+        if (_instance == null)
         {
             _instance = this;
         }
@@ -35,5 +35,14 @@ public class GameManager : MonoBehaviour
         //
 
         gameStateManager = GameObject.Find("Canvas").GetComponent<GameStateManager>(); //fix this so it doesnt break in main menu
+    }
+    private void Start()
+    {
+        //check scene first
+        _gameStats = GameObject.Find("Canvas").GetComponent<gameStats>();
+    }
+    private void Update()
+    {
+        _gameStats.updateSpeedUI();
     }
 }

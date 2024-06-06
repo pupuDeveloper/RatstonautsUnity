@@ -46,7 +46,7 @@ public class cockpitState : State
         toMiniGameButton.gameObject.SetActive(false);
         stateIsReady = false;
     }
-    private void setupState()
+    public void setupState()
     {
         gameStateManager.targetState = this;
         cockPitBackground.SetActive(true);

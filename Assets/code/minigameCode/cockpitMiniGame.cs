@@ -9,7 +9,7 @@ public class cockpitMiniGame : MonoBehaviour
     private int minigameCD; //in seconds
     private int minigameLevel;
     private int baseSpeedBoost;
-    private int boostMultiplier;
+    private float boostMultiplier;
     private static bool isBoostOn;
     //buttons n other UI stuff
     [SerializeField] private Button button1;
@@ -29,24 +29,20 @@ public class cockpitMiniGame : MonoBehaviour
     private void Start()
     {
         //read is boost on etc from file
+        isBoostOn = false;
+        playerTurn = false;
+        coroutineOn = false;
+        clickBlocker.SetActive(true);
+
+        //just testing
+        baseSpeedBoost = 5;
     }
 
-    private void Update()
-    {
-        if (!isBoostOn)
-        {
-            runMiniGame();
-        }
-        else
-        {
-            //if boost is on and minigame not available
-        }
-    }
-
-    private void runMiniGame()
+    public void runMiniGame()
     {
         if (!playerTurn && !coroutineOn)
         {
+            clickBlocker.SetActive(true);
             playerAttempt = "";
             correctOrder = "";
             StartCoroutine("minigame");
@@ -55,6 +51,7 @@ public class cockpitMiniGame : MonoBehaviour
         if (playerTurn)
         {
             clickBlocker.SetActive(false);
+            Debug.Log("your turn!");
             if (playerAttempt != "")
             {
                 int i = 0;
@@ -64,6 +61,7 @@ public class cockpitMiniGame : MonoBehaviour
                     {
                         playerTurn = false;
                         clickBlocker.SetActive(true);
+                        Debug.Log("failed! Restarting");
                         break;
                     }
                     else
@@ -71,7 +69,7 @@ public class cockpitMiniGame : MonoBehaviour
                         i++;
                     }
                 }
-                if (i == 5)
+                if (i == 6)
                 {
                     Debug.Log("minigame successfull!");
                     isBoostOn = true;
@@ -79,7 +77,7 @@ public class cockpitMiniGame : MonoBehaviour
             }
         }
     }
-    public void minigameButtonPress()
+    public void minigameButtonPress() // methdod in the buttons, if not players turns, just plays sound.
     {
         if (playerTurn)
         {
@@ -110,45 +108,58 @@ public class cockpitMiniGame : MonoBehaviour
         }
     }
 
-    private IEnumerator minigame()
+    private IEnumerator minigame() //the AI playing random buttons to create the pattern
     {
         coroutineOn = true;
         for (int i = 0; i < 6; i++)
         {
             int nextButton = Random.Range(0, 5);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
             switch (nextButton)
             {
                 case 0:
                 //play button 1
                 correctOrder += "1";
+                Debug.Log("1 pressed");
                 break;
                 case 1:
                 //play button 2
                 correctOrder += "2";
+                Debug.Log("2 pressed");
                 break;
                 case 2:
                 //play button 3
                 correctOrder += "3";
+                Debug.Log("3 pressed");
                 break;
                 case 3:
                 //play button 4
                 correctOrder += "4";
+                Debug.Log("4 pressed");
                 break;
                 case 4:
                 //play button 5
                 correctOrder += "5";
+                Debug.Log("5 pressed");
                 break;
                 case 5:
                 //play button 6
                 correctOrder += "6";
+                Debug.Log("6 pressed");
                 break;
             }
         }
+        Debug.Log(correctOrder);
         playerTurn = true;
         coroutineOn = false;
     }
-
+    public void resetMinigamescript() //called at the end of state change
+    {
+        clickBlocker.SetActive(false);
+        coroutineOn = false;
+        correctOrder = "";
+        playerAttempt = "";
+    }
     public bool checkBoost()
     {
         return isBoostOn;

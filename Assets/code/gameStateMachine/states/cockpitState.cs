@@ -15,6 +15,8 @@ public class cockpitState : State
     [SerializeField] private Button toMiniGameButton;
     [SerializeField] private GameObject cockPitBackground;
     [SerializeField] private GameObject cockPitMiniGameBG;
+    [SerializeField] private cockpitMiniGame _cockpitMinigame;
+    private bool boost;
 
     public override State RunCurrentState()
     {
@@ -22,12 +24,28 @@ public class cockpitState : State
         {
             setupState();
         }
+        CustomUpdate();
         if (gameStateManager.targetState != this)
         {
             resetState();
+            _cockpitMinigame.resetMinigamescript();
             return gameStateManager.targetState;
         }
         return this;
+    }
+
+    private void CustomUpdate()
+    {
+        boost = _cockpitMinigame.checkBoost();
+        if (!boost && cockPitMiniGameBG.gameObject.activeSelf)
+        {
+            _cockpitMinigame.runMiniGame();
+        }
+        else if (_cockpitMinigame.checkBoost())
+        {
+            Debug.Log("not running minigame1");
+            //if boost is on and minigame not available
+        }
     }
     private void Start()
     {

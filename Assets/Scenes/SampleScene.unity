@@ -326,6 +326,7 @@ RectTransform:
   m_Children:
   - {fileID: 978039823}
   - {fileID: 976476497}
+  - {fileID: 1320579438}
   m_Father: {fileID: 1820221219}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -515,7 +516,7 @@ GameObject:
   - component: {fileID: 135026622}
   - component: {fileID: 135026621}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: button2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -583,7 +584,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 135026622}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1191357283}
+        m_TargetAssemblyTypeName: cockpitMiniGame, Assembly-CSharp
+        m_MethodName: minigameButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &135026622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1488,7 +1501,7 @@ GameObject:
   - component: {fileID: 583371774}
   - component: {fileID: 583371773}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: button3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1556,7 +1569,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 583371774}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1191357283}
+        m_TargetAssemblyTypeName: cockpitMiniGame, Assembly-CSharp
+        m_MethodName: minigameButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &583371774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2335,7 +2360,7 @@ GameObject:
   - component: {fileID: 1003756339}
   - component: {fileID: 1003756338}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: button4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2403,7 +2428,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1003756339}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1191357283}
+        m_TargetAssemblyTypeName: cockpitMiniGame, Assembly-CSharp
+        m_MethodName: minigameButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1003756339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2711,6 +2748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1191357281}
   - component: {fileID: 1191357282}
+  - component: {fileID: 1191357283}
   m_Layer: 0
   m_Name: cockPit
   m_TagString: Untagged
@@ -2749,6 +2787,26 @@ MonoBehaviour:
   toMiniGameButton: {fileID: 297087596}
   cockPitBackground: {fileID: 553148994}
   cockPitMiniGameBG: {fileID: 73378422}
+  _cockpitMinigame: {fileID: 1191357283}
+--- !u!114 &1191357283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191357280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75d49403bf435e4aad57991dc412068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button1: {fileID: 2113044224}
+  button2: {fileID: 135026621}
+  button3: {fileID: 583371773}
+  button4: {fileID: 1003756338}
+  button5: {fileID: 1976572777}
+  button6: {fileID: 1543386037}
+  clickBlocker: {fileID: 1320579437}
 --- !u!1 &1215312833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2883,6 +2941,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215312833}
   m_CullTransparentMesh: 1
+--- !u!1 &1320579437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1320579438}
+  - component: {fileID: 1320579440}
+  - component: {fileID: 1320579439}
+  m_Layer: 5
+  m_Name: clickBlocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1320579438
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320579437}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 73378425}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0069752, y: -418.478}
+  m_SizeDelta: {x: 1080, y: 627.575}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1320579439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320579437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1320579440
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320579437}
+  m_CullTransparentMesh: 1
 --- !u!1 &1479490844
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,7 +3074,7 @@ GameObject:
   - component: {fileID: 1543386038}
   - component: {fileID: 1543386037}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: button6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3009,7 +3142,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1543386038}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1191357283}
+        m_TargetAssemblyTypeName: cockpitMiniGame, Assembly-CSharp
+        m_MethodName: minigameButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1543386038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3502,7 +3647,7 @@ GameObject:
   - component: {fileID: 1976572778}
   - component: {fileID: 1976572777}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: button5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3570,7 +3715,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1976572778}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1191357283}
+        m_TargetAssemblyTypeName: cockpitMiniGame, Assembly-CSharp
+        m_MethodName: minigameButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1976572778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3884,7 +4041,7 @@ GameObject:
   - component: {fileID: 2113044225}
   - component: {fileID: 2113044224}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3952,7 +4109,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2113044225}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1191357283}
+        m_TargetAssemblyTypeName: cockpitMiniGame, Assembly-CSharp
+        m_MethodName: minigameButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2113044225
 MonoBehaviour:
   m_ObjectHideFlags: 0

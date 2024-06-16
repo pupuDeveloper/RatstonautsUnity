@@ -7,6 +7,8 @@ public class gameStats : MonoBehaviour
 {
     public int spaceShipSpeed { get; private set; } //spaceships speed km/per second
     public int distanceTraveled { get; private set;} // total distance traveled
+    private bool speedBoost; //when all available minigames are done add boostMultiplier to shipspeed
+    private int boostMultiplier;
     public TMP_Text shipSpeedText;
     public TMP_Text traveledText;
     public bool calcRunning;

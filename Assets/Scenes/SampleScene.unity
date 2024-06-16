@@ -3903,9 +3903,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13bdc86ecd4726e43922120d17a08215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cockpitMinigame: {fileID: 1191357283}
   shipSpeedText: {fileID: 894777843}
   traveledText: {fileID: 1606191988}
   calcRunning: 0
+  testingBool: 0
 --- !u!1 &2014436953
 GameObject:
   m_ObjectHideFlags: 0
@@ -4041,7 +4043,7 @@ GameObject:
   - component: {fileID: 2113044225}
   - component: {fileID: 2113044224}
   m_Layer: 5
-  m_Name: Button1
+  m_Name: button1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

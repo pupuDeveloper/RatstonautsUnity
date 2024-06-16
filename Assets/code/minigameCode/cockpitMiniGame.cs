@@ -35,7 +35,8 @@ public class cockpitMiniGame : MonoBehaviour
         clickBlocker.SetActive(true);
 
         //just testing
-        baseSpeedBoost = 5;
+        baseSpeedBoost = 20;
+        boostMultiplier = 1;
     }
 
     public void runMiniGame()
@@ -163,5 +164,10 @@ public class cockpitMiniGame : MonoBehaviour
     public bool checkBoost()
     {
         return isBoostOn;
+    }
+    public int cockpitBoost()
+    {
+        int result = (int) (baseSpeedBoost * boostMultiplier);
+        return result;
     }
 }

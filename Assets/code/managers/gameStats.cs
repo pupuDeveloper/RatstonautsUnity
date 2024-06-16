@@ -7,11 +7,15 @@ public class gameStats : MonoBehaviour
 {
     public int spaceShipSpeed { get; private set; } //spaceships speed km/per second
     public int distanceTraveled { get; private set;} // total distance traveled
+    [SerializeField] private cockpitMiniGame _cockpitMinigame;
+    private bool booooooooost;
     private bool speedBoost; //when all available minigames are done add boostMultiplier to shipspeed
     private int boostMultiplier;
     public TMP_Text shipSpeedText;
     public TMP_Text traveledText;
     public bool calcRunning;
+
+    public bool testingBool; //testing;
 
 
     private void Update()
@@ -24,17 +28,26 @@ public class gameStats : MonoBehaviour
     private void Start()
     {
         calcRunning = false;
+        testingBool = true;
     }
 
     private int getShipSpeed()
     {
+        booooooooost = _cockpitMinigame.checkBoost();
         //TODO:get minigame levels to determine speed if none of them are on
         //TODO:get each minigames speedboost
 
         //this is a placeholder
         //if no games are played and all levels are 1:
-
-        spaceShipSpeed = 10;
+    
+        if (testingBool)
+        {
+            spaceShipSpeed = 10;
+        }
+        if (booooooooost)
+        {
+            spaceShipSpeed += _cockpitMinigame.cockpitBoost();
+        }
         return spaceShipSpeed;
 
         //TODO:save and load all these values from file

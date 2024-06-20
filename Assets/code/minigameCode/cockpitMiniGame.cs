@@ -119,32 +119,32 @@ public class cockpitMiniGame : MonoBehaviour
             switch (nextButton)
             {
                 case 0:
-                //play button 1
+                button1.onClick.Invoke();
                 correctOrder += "1";
                 Debug.Log("1 pressed");
                 break;
                 case 1:
-                //play button 2
+                button2.onClick.Invoke();
                 correctOrder += "2";
                 Debug.Log("2 pressed");
                 break;
                 case 2:
-                //play button 3
+                button3.onClick.Invoke();
                 correctOrder += "3";
                 Debug.Log("3 pressed");
                 break;
                 case 3:
-                //play button 4
+                button4.onClick.Invoke();
                 correctOrder += "4";
                 Debug.Log("4 pressed");
                 break;
                 case 4:
-                //play button 5
+                button5.onClick.Invoke();
                 correctOrder += "5";
                 Debug.Log("5 pressed");
                 break;
                 case 5:
-                //play button 6
+                button6.onClick.Invoke();
                 correctOrder += "6";
                 Debug.Log("6 pressed");
                 break;

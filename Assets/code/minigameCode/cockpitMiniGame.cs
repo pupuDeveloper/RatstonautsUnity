@@ -85,21 +85,27 @@ public class cockpitMiniGame : MonoBehaviour
             switch (EventSystem.current.currentSelectedGameObject.name)
             {
                 case "button1":
+                AudioManager.instance.Play("minigameB1");
                 playerAttempt += "1";
                 break;
                 case "button2":
+                AudioManager.instance.Play("minigameB2");
                 playerAttempt += "2";
                 break;
                 case "button3":
+                AudioManager.instance.Play("minigameB3");
                 playerAttempt += "3";
                 break;
                 case "button4":
+                AudioManager.instance.Play("minigameB4");
                 playerAttempt += "4";
                 break;
                 case "button5":
+                AudioManager.instance.Play("minigameB5");
                 playerAttempt += "5";
                 break;
                 case "button6":
+                AudioManager.instance.Play("minigameB6");
                 playerAttempt += "6";
                 break;
                 default:
@@ -120,31 +126,37 @@ public class cockpitMiniGame : MonoBehaviour
             {
                 case 0:
                 button1.onClick.Invoke();
+                AudioManager.instance.Play("minigameB1");
                 correctOrder += "1";
                 Debug.Log("1 pressed");
                 break;
                 case 1:
                 button2.onClick.Invoke();
+                AudioManager.instance.Play("minigameB2");
                 correctOrder += "2";
                 Debug.Log("2 pressed");
                 break;
                 case 2:
                 button3.onClick.Invoke();
+                AudioManager.instance.Play("minigameB3");
                 correctOrder += "3";
                 Debug.Log("3 pressed");
                 break;
                 case 3:
                 button4.onClick.Invoke();
+                AudioManager.instance.Play("minigameB4");
                 correctOrder += "4";
                 Debug.Log("4 pressed");
                 break;
                 case 4:
                 button5.onClick.Invoke();
+                AudioManager.instance.Play("minigameB5");
                 correctOrder += "5";
                 Debug.Log("5 pressed");
                 break;
                 case 5:
                 button6.onClick.Invoke();
+                AudioManager.instance.Play("minigameB6");
                 correctOrder += "6";
                 Debug.Log("6 pressed");
                 break;

@@ -34,12 +34,12 @@ public class GameManager : MonoBehaviour
 
         //
 
-        gameStateManager = GameObject.Find("Canvas").GetComponent<GameStateManager>(); //fix this so it doesnt break in main menu
+        gameStateManager = GameObject.Find("rooms(gameplay)").GetComponent<GameStateManager>(); //fix this so it doesnt break in main menu
     }
     private void Start()
     {
         //check scene first
-        _gameStats = GameObject.Find("Canvas").GetComponent<gameStats>();
+        _gameStats = GameObject.Find("rooms(gameplay)").GetComponent<gameStats>();
     }
     private void Update()
     {

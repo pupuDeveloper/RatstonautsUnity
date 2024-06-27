@@ -115,7 +115,7 @@ public class cockpitMiniGame : MonoBehaviour
         }
     }
 
-    private IEnumerator minigame() //the AI playing random buttons to create the pattern
+    public IEnumerator minigame() //the AI playing random buttons to create the pattern
     {
         coroutineOn = true;
         for (int i = 0; i < 6; i++)

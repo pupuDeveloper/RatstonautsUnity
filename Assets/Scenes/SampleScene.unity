@@ -1010,7 +1010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &297087595
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2397,6 +2397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 648701418}
   - component: {fileID: 648701419}
+  - component: {fileID: 648701420}
   m_Layer: 0
   m_Name: oxygenGarden
   m_TagString: Untagged
@@ -2435,6 +2436,25 @@ MonoBehaviour:
   toGardenButton: {fileID: 272182167}
   oxygenGardenBG1: {fileID: 160994418}
   oxygenGardenBG2: {fileID: 1661902916}
+--- !u!114 &648701420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648701417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 966fb22ac2a7b834ba426997b66fd06c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantSpots:
+  - {fileID: 1107601752}
+  - {fileID: 2105703716}
+  - {fileID: 752752796}
+  - {fileID: 12270466}
+  - {fileID: 1504494263}
+  - {fileID: 1835502943}
 --- !u!1 &674485780
 GameObject:
   m_ObjectHideFlags: 0

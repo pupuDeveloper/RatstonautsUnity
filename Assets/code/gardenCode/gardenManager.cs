@@ -1,14 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
 public class gardenManager : MonoBehaviour
 {
     [SerializeField] Transform[] plantSpots;
     private Plant blank;
     private List<Plant> allPlants = new List<Plant>();
-    public List<Plant> unlockedPlants {get; private set;}
-    [Range (0, 3)] private int unlockedSlots; 
+    public List<Plant> unlockedPlants { get; private set; }
+    [SerializeField] private GameObject[] plantsUI;
+    [Range(0, 3)] private int unlockedSlots;
 
 
 
@@ -40,7 +42,23 @@ public class gardenManager : MonoBehaviour
         if (!allPlants.Contains(Daffodil)) allPlants.Add(Daffodil);
 
         if (!unlockedPlants.Contains(Dandelion)) unlockedPlants.Add(Dandelion);
-    }
 
-    
+        foreach (Plant p in allPlants)
+        {
+            foreach (GameObject g in plantsUI)
+            {
+                string name = p.name.ToLower();
+                name = name.Trim();
+                string name2 = g.name.ToLower();
+                name2 = name2.Trim();
+                if (name == name2)
+                {
+                    if (p.isUnlocked == false)
+                    g.transform.GetChild(1).gameObject.SetActive(true);
+                    else
+                    g.transform.GetChild(1).gameObject.SetActive(false);
+                }
+            }
+        }
+    }
 }

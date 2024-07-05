@@ -6,4 +6,10 @@ public class Plant
 {
     public string name {get; private set;}
     public string effectDescription {get; private set;}
+
+    public Plant(string name, string effectDescription)
+    {
+        this.name = name;
+        this.effectDescription = effectDescription;
+    }
 }

@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private gameStats _gameStats;
     private GameStateManager gameStateManager; //gameplay state machine
     private static GameManager _instance;
+    
     public static GameManager Instance
     {
         get
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
+    
+    
     private void Awake()
     {
         // Destroy dublicate instances

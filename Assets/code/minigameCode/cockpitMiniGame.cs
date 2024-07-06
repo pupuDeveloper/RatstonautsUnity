@@ -168,6 +168,7 @@ public class cockpitMiniGame : MonoBehaviour
     }
     public void resetMinigamescript() //called at the end of state change
     {
+        StopCoroutine("minigame");
         clickBlocker.SetActive(false);
         coroutineOn = false;
         correctOrder = "";

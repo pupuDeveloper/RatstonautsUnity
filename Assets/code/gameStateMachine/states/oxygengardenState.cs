@@ -13,6 +13,7 @@ public class oxygengardenState : State
     [SerializeField] private GameObject oxygenGardenBG2;
     private bool isMinigameUnlocked;
     private bool minigameLevel;
+    [SerializeField] private gardenManager _gardenManager;
 
 
 
@@ -55,6 +56,8 @@ public class oxygengardenState : State
         toGardenButton.gameObject.SetActive(false);
         oxygenGardenBG1.SetActive(false);
         oxygenGardenBG2.SetActive(false);
+        _gardenManager.scrollableList.SetActive(false);
+        _gardenManager.closePlantListButton.SetActive(false);
         stateIsReady = false;
     }
 

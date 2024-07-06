@@ -27,8 +27,8 @@ public class cockpitState : State
         CustomUpdate();
         if (gameStateManager.targetState != this)
         {
-            resetState();
             _cockpitMinigame.resetMinigamescript();
+            resetState();
             return gameStateManager.targetState;
         }
         return this;

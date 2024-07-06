@@ -2,15 +2,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class gardenManager : MonoBehaviour
 {
-    [SerializeField] Transform[] plantSpots;
+    [SerializeField] private Transform[] plantSpots;
+    private List<Plant> plantsInSpots = new List<Plant>();
     private Plant blank;
     private List<Plant> allPlants = new List<Plant>();
     public List<Plant> unlockedPlants { get; private set; }
     [SerializeField] private GameObject[] plantsUI;
     [Range(0, 3)] private int unlockedSlots;
+    public GameObject scrollableList;
+    public GameObject closePlantListButton;
 
 
 
@@ -41,7 +45,18 @@ public class gardenManager : MonoBehaviour
         Plant Daffodil = new Plant("Daffodil", "Disable one room of spaceship, other rooms gain x% efficiency and xp boost", false);
         if (!allPlants.Contains(Daffodil)) allPlants.Add(Daffodil);
 
+
+        //lvl 1 unlocks
         if (!unlockedPlants.Contains(Dandelion)) unlockedPlants.Add(Dandelion);
+        unlockedSlots = 1;
+        //
+
+        //blank plant
+        blank = new Plant("Blank", "Blank plant", false);
+
+        //current plants in spots TODO: read this from file later
+        plantsInSpots.AddRange(Enumerable.Repeat(blank, 3));
+        
 
         foreach (Plant p in allPlants)
         {
@@ -60,5 +75,14 @@ public class gardenManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void addPlant(string plantName)
+    {
+
+    }
+    public void removePlant(string plantName)
+    {
+
     }
 }

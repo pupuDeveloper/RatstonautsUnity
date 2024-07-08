@@ -77,11 +77,26 @@ public class gardenManager : MonoBehaviour
                 }
             }
         }
-    }
 
+        switch (unlockedSlots)
+        {
+            case 1:
+            plantSpots[0].GetChild(2).gameObject.SetActive(false);
+            break;
+            case 2:
+            plantSpots[0].GetChild(2).gameObject.SetActive(false);
+            plantSpots[1].GetChild(2).gameObject.SetActive(false);
+            break;
+            case 3:
+            plantSpots[0].GetChild(2).gameObject.SetActive(false);
+            plantSpots[1].GetChild(2).gameObject.SetActive(false);
+            plantSpots[2].GetChild(2).gameObject.SetActive(false);
+            break;
+        }
+    }
     public void addPlant(Plant plant)
     {
-        for (int i = 0; i < plantsInSpots.Count; i++)
+        for (int i = 0; i < unlockedSlots; i++)
         {
             if (plantsInSpots[i] == blank)
             {
@@ -98,7 +113,7 @@ public class gardenManager : MonoBehaviour
     }
     public void removePlant(Plant plant)
     {
-        for (int i = 0; i < plantsInSpots.Count; i++)
+        for (int i = 0; i < unlockedSlots; i++)
         {
             if (plantsInSpots[i] == plant)
             {

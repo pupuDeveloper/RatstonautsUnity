@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using UnityEngine.EventSystems;
+using TMPro;
 
 public class gardenManager : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class gardenManager : MonoBehaviour
     [Range(0, 3)] private int unlockedSlots;
     public GameObject scrollableList;
     public GameObject closePlantListButton;
-
+    [SerializeField] private GameObject[] removeButtons;
 
 
     private void Start()
@@ -56,7 +58,7 @@ public class gardenManager : MonoBehaviour
 
         //current plants in spots TODO: read this from file later
         plantsInSpots.AddRange(Enumerable.Repeat(blank, 3));
-        
+
 
         foreach (Plant p in allPlants)
         {
@@ -69,20 +71,85 @@ public class gardenManager : MonoBehaviour
                 if (name == name2)
                 {
                     if (p.isUnlocked == false)
-                    g.transform.GetChild(1).gameObject.SetActive(true);
+                        g.transform.GetChild(1).gameObject.SetActive(true);
                     else
-                    g.transform.GetChild(1).gameObject.SetActive(false);
+                        g.transform.GetChild(1).gameObject.SetActive(false);
                 }
             }
         }
     }
 
-    public void addPlant(string plantName)
+    public void addPlant(Plant plant)
     {
-
+        for (int i = 0; i < plantsInSpots.Count; i++)
+        {
+            if (plantsInSpots[i] == blank)
+            {
+                plantsInSpots[i] = plant;
+                removeButtons[i].SetActive(true);
+                plantSpots[i].GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = plant.name;
+                break;
+            }
+            if (i == 2)
+            {
+                Debug.LogWarning("All spots are taken! Remove a plant before adding a new one");
+            }
+        }
     }
-    public void removePlant(string plantName)
+    public void removePlant(Plant plant)
     {
+        for (int i = 0; i < plantsInSpots.Count; i++)
+        {
+            if (plantsInSpots[i] == plant)
+            {
+                plantsInSpots[i] = blank;
+                removeButtons[i].SetActive(false);
+                plantSpots[i].GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = "";
+                break;
+            }
+            if (i == 3)
+            {
+                Debug.LogWarning("Plant not found in spots! THIS IS AN ERROR!");
+            }
+        }
+    }
+    public void removeButton()
+    {
+        Plant plantToBeRemoved = blank;
+        switch(EventSystem.current.currentSelectedGameObject.transform.parent.name)
+        {
+            case "spot1":
+            plantToBeRemoved = plantsInSpots[0];
+            break;
+            case "spot2":
+            plantToBeRemoved = plantsInSpots[1];
+            break;
+            case "spot3":
+            plantToBeRemoved = plantsInSpots[2];
+            break;
+            default:
+            Debug.LogWarning("plant was not found. THIS IS AN ERROR");
+            break;
+        }
+        removePlant(plantToBeRemoved);
+    }
+    public void addButton()
+    {
+        Plant plantToBeAdded = blank;
+        
+        foreach (Plant p in allPlants)
+        {
+            string plantName = p.name.ToLower();
+            plantName = plantName.Trim();
+            string selectedPlantName = EventSystem.current.currentSelectedGameObject.transform.parent.name.ToLower();
+            selectedPlantName = selectedPlantName.Trim();
 
+            if (selectedPlantName == plantName)
+            {
+                plantToBeAdded = p;
+                addPlant(plantToBeAdded);
+                break;
+            }
+        }
     }
 }

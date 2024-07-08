@@ -11,7 +11,7 @@ public class gardenManager : MonoBehaviour
     [SerializeField] private Transform[] plantSpots;
     private List<Plant> plantsInSpots = new List<Plant>();
     private Plant blank;
-    private List<Plant> allPlants = new List<Plant>();
+    public List<Plant> allPlants = new List<Plant>();
     public List<Plant> unlockedPlants { get; private set; }
     [SerializeField] private GameObject[] plantsUI;
     [Range(0, 3)] private int unlockedSlots;

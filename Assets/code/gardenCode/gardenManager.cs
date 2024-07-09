@@ -9,7 +9,7 @@ using TMPro;
 public class gardenManager : MonoBehaviour
 {
     [SerializeField] private Transform[] plantSpots;
-    private List<Plant> plantsInSpots = new List<Plant>();
+    public List<Plant> plantsInSpots = new List<Plant>();
     private Plant blank;
     public List<Plant> allPlants = new List<Plant>();
     public List<Plant> unlockedPlants { get; private set; }
@@ -98,6 +98,11 @@ public class gardenManager : MonoBehaviour
     {
         for (int i = 0; i < unlockedSlots; i++)
         {
+            if (plantsInSpots[i] == plant)
+            {
+                Debug.LogWarning("plant already in one of the slots!");
+                return;
+            }
             if (plantsInSpots[i] == blank)
             {
                 plantsInSpots[i] = plant;

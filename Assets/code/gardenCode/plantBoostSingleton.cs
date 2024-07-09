@@ -5,6 +5,8 @@ using UnityEngine;
 public class plantBoostSingleton : MonoBehaviour
 {
     public static plantBoostSingleton instance;
+    [SerializeField] gardenManager _gardenManager;
+    
 
     private void Awake()
     {
@@ -21,7 +23,12 @@ public class plantBoostSingleton : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void DandelionEffect()
+    public List getActivePlants()
+    {
+        return _gardenManager.plantsInSpots;
+    }
+
+    public void DandelionEffect() //rn can't rly think any other way to make all effects except each in its own function.
     {
         
     }

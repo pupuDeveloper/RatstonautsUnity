@@ -6,7 +6,7 @@ public class plantBoostSingleton : MonoBehaviour
 {
     public static plantBoostSingleton instance;
     [SerializeField] gardenManager _gardenManager;
-    
+    public bool boostShipSpeed;
 
     private void Awake()
     {
@@ -23,13 +23,31 @@ public class plantBoostSingleton : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public List getActivePlants()
+    public void getEffect()
     {
-        return _gardenManager.plantsInSpots;
+        foreach (Plant p in _gardenManager.plantsInSpots)
+        {
+            switch (p.name)
+            {
+                case "Dandelion":
+                boostShipSpeed = true;
+                break;
+            }
+        }
     }
 
-    public void DandelionEffect() //rn can't rly think any other way to make all effects except each in its own function.
+    public float plantEffectsOnShipSpeed() //rn can't rly think any other way to make all effects except each in its own function.
     {
-        
+        float multiplier = 1f;
+        foreach (Plant p in _gardenManager.plantsInSpots)
+        {
+            switch (p.name)
+            {
+                case "Dandelion":
+                multiplier += 0.05f;
+                break;
+            }
+        }
+        return multiplier;
     }
 }

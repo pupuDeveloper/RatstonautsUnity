@@ -14,6 +14,7 @@ public class oxygengardenState : State
     private bool isMinigameUnlocked;
     private bool minigameLevel;
     [SerializeField] private gardenManager _gardenManager;
+    public bool plantsWatered;
 
 
 
@@ -43,6 +44,7 @@ public class oxygengardenState : State
     private void Start()
     {
         resetState();
+        plantsWatered = true;
     }
 
     public void toGarden()

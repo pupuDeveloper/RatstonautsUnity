@@ -8,6 +8,7 @@ public class cockpitState : State
 {
     [SerializeField] private GameStateManager gameStateManager;
     private bool stateIsReady;
+    public bool boost;
 
     //visual stuff like background etc to of the minigame
 
@@ -16,7 +17,6 @@ public class cockpitState : State
     [SerializeField] private GameObject cockPitBackground;
     [SerializeField] private GameObject cockPitMiniGameBG;
     [SerializeField] private cockpitMiniGame _cockpitMinigame;
-    private bool boost;
 
     public override State RunCurrentState()
     {

@@ -385,10 +385,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cockpitMinigame: {fileID: 1191357283}
+  _cockPitState: {fileID: 1191357282}
+  _oxygenGardenState: {fileID: 648701419}
   shipSpeedText: {fileID: 894777843}
   traveledText: {fileID: 1606191988}
   calcRunning: 0
-  testingBool: 0
+  plantEffects: {fileID: 2084009409}
 --- !u!114 &109847829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5053,6 +5055,7 @@ MonoBehaviour:
   oxygenGardenBG1: {fileID: 160994418}
   oxygenGardenBG2: {fileID: 1661902916}
   _gardenManager: {fileID: 648701420}
+  plantsWatered: 0
 --- !u!114 &648701420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8962,6 +8965,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e5431e3197f154f9f73f124ed9bf68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isShipStopped: 0
+  _cockPitState: {fileID: 1191357282}
+  _foodGenState: {fileID: 1479490846}
+  _oxygenGardenState: {fileID: 648701419}
+  _sleepingQuartersState: {fileID: 2056481617}
+  _turretsState: {fileID: 1105820789}
 --- !u!4 &1164436877
 Transform:
   m_ObjectHideFlags: 0
@@ -9233,6 +9242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStateManager: {fileID: 109847829}
+  boost: 0
   toMiniGameButton: {fileID: 297087596}
   cockPitBackground: {fileID: 553148994}
   cockPitMiniGameBG: {fileID: 73378422}
@@ -17057,6 +17067,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2073503279}
   m_CullTransparentMesh: 1
+--- !u!1 &2084009408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2084009410}
+  - component: {fileID: 2084009409}
+  m_Layer: 0
+  m_Name: plantBoosts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2084009409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084009408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0f8c00cedd228479ba5ec6fda84580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gardenManager: {fileID: 648701420}
+  boostShipSpeed: 0
+--- !u!4 &2084009410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084009408}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 257.60678, y: 440.85605, z: -35.098755}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2105703715
 GameObject:
   m_ObjectHideFlags: 0
@@ -17540,6 +17596,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1164436877}
   - {fileID: 205968933}
+  - {fileID: 2084009410}
   - {fileID: 519420032}
   - {fileID: 1164290261}
   - {fileID: 674485781}

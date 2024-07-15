@@ -7,6 +7,12 @@ public class GameManager : MonoBehaviour
     private gameStats _gameStats;
     private GameStateManager gameStateManager; //gameplay state machine
     private static GameManager _instance;
+    public bool isShipStopped;
+    [SerializeField] private cockpitState _cockPitState;
+    [SerializeField] private foodgeneratorState _foodGenState;
+    [SerializeField] private oxygengardenState _oxygenGardenState;
+    [SerializeField] private sleepingquartersState _sleepingQuartersState;
+    [SerializeField] private turretsState _turretsState;
     
     public static GameManager Instance
     {
@@ -38,6 +44,7 @@ public class GameManager : MonoBehaviour
         //
 
         gameStateManager = GameObject.Find("rooms(gameplay)").GetComponent<GameStateManager>(); //fix this so it doesnt break in main menu
+        isShipStopped = true;
     }
     private void Start()
     {
@@ -47,5 +54,13 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         _gameStats.updateSpeedUI();
+        if (_cockPitState.boost == false && _oxygenGardenState.plantsWatered == false) //this checks if spaceship is stopped, i.e none of the minigames are played and their cooldowns are ran out
+        {
+            isShipStopped = true;
+        }
+        else
+        {
+            isShipStopped = false;
+        }
     }
 }

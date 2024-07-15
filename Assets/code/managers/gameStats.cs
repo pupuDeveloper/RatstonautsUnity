@@ -31,7 +31,6 @@ public class gameStats : MonoBehaviour
     {
         calcRunning = false;
         spaceShipSpeed = 0;
-        updatedSpeed = 0;
     }
 
     private float getShipSpeed()

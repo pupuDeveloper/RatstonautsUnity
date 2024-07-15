@@ -7,7 +7,6 @@ using System;
 public class gameStats : MonoBehaviour
 {
     public float spaceShipSpeed { get; private set; } //spaceships speed km/per second
-    private float updatedSpeed;
     public float distanceTraveled { get; private set;} // total distance traveled
     [SerializeField] private cockpitMiniGame _cockpitMinigame;
     [SerializeField] private cockpitState _cockPitState;

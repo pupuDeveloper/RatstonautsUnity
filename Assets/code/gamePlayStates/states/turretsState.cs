@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class turretsState : State
 {
     [SerializeField] private GameStateManager gameStateManager;
+    private bool stateIsReady;
+    public bool cooldownOn; //read from file
 
     [Header("UI stuff like backgrounds")]
     [SerializeField] private Button toMiniGameButton;
     [SerializeField] private GameObject turretBG;
     [SerializeField] private GameObject turretsMiniGameBG;
-    [SerializeField] private turretsMinigame _turretsMinigame;
+    [SerializeField] private turretsMiniGame _turretsMinigame;
     public override State RunCurrentState()
     {
         if (gameStateManager.targetState != this)
@@ -22,8 +25,31 @@ public class turretsState : State
         Debug.Log("in turrets");
         return this;
     }
+    private void Start()
+    {
+        cooldownOn = false;
+    }
+
     private void resetState()
     {
-        
+        turretBG.SetActive(false);
+        turretsMiniGameBG.SetActive(false);
+        toMiniGameButton.gameObject.SetActive(false);
+        stateIsReady = false;
+    }
+    public void SetupState()
+    {
+        gameStateManager.targetState = this;
+        turretBG.SetActive(true);
+        turretsMiniGameBG.SetActive(false);
+        toMiniGameButton.gameObject.SetActive(true);
+        stateIsReady = true;
+    }
+    
+    public void toMiniGame()
+    {
+        toMiniGameButton.gameObject.SetActive(false);
+        turretBG.SetActive(false);
+        turretsMiniGameBG.SetActive(true);
     }
 }

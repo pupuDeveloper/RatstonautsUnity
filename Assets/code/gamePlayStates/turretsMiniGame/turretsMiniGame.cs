@@ -5,23 +5,10 @@ using UnityEngine;
 
 public class turretsMiniGame : MonoBehaviour
 {
-    public GameObject asteroid1;
-    public GameObject asteroid2;
-    public GameObject asteroid3;
-    public GameObject asteroid4;
-    public GameObject asteroid5;
-    public GameObject asteroid6;
-    public GameObject asteroid7;
-    public GameObject asteroid8;
-    public GameObject asteroid9;
-    public GameObject asteroid10;
-    public GameObject asteroid11;
-    public GameObject asteroid12;
-
 
     public int minAsteroidAmount;
     public int maxAsteroidAmount;
-    private GameObject[] asteroids;
+    public GameObject[] asteroids;
     public float maxY;
     public float minY;
     public float maxX;
@@ -38,8 +25,6 @@ public class turretsMiniGame : MonoBehaviour
 
     private void Start()
     {
-        asteroids[0] = asteroid1;
-        asteroids[1] = asteroid2;
         asteroidsSpawned = false;
     }
     public void minigame()
@@ -48,8 +33,8 @@ public class turretsMiniGame : MonoBehaviour
         for (int i = 0; i < asteroidAmount; i++)
         {
             int whichAsteroid = Random.Range(0, asteroids.Length);
-            xPos = Random.Range(minX, maxX);
-            yPos = Random.Range(minY, maxY);
+            xPos = Random.Range(minX + 0.5f, maxX - 0.5f);
+            yPos = Random.Range(minY + 0.5f, maxY - 0.5f);
             asteroidPos = new Vector3(xPos, yPos, zPos);
             Instantiate(asteroids[whichAsteroid], asteroidPos, Quaternion.Euler(0, 0, Random.Range(0, 360)));
         }

@@ -17,6 +17,10 @@ public class turretsState : State
     [SerializeField] private turretsMiniGame _turretsMinigame;
     public override State RunCurrentState()
     {
+        if (!stateIsReady)
+        {
+            SetupState();
+        }
         if (gameStateManager.targetState != this)
         {
             resetState();
@@ -51,5 +55,6 @@ public class turretsState : State
         toMiniGameButton.gameObject.SetActive(false);
         turretBG.SetActive(false);
         turretsMiniGameBG.SetActive(true);
+        _turretsMinigame.checkForAsteroids();
     }
 }

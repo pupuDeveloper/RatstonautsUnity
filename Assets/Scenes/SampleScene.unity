@@ -8983,7 +8983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStateManager: {fileID: 109847829}
   cooldownOn: 0
-  toMiniGameButton: {fileID: 24078562}
+  toMiniGameButton: {fileID: 1282420795}
   turretBG: {fileID: 1499452052}
   turretsMiniGameBG: {fileID: 192765042}
   _turretsMinigame: {fileID: 1105820790}
@@ -10763,7 +10763,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1282420794
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10827,7 +10827,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1282420796}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1105820789}
+        m_TargetAssemblyTypeName: turretsState, Assembly-CSharp
+        m_MethodName: toMiniGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1282420796
 MonoBehaviour:
   m_ObjectHideFlags: 0

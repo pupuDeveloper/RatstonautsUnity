@@ -41,20 +41,23 @@ public class turretsMiniGame : MonoBehaviour
         asteroidsSpawned = true;
     }
 
-    void Update()
+    public void checkForAsteroids()
     {
         if (_turretsState.cooldownOn == false && asteroidsSpawned == false)
         {
             minigame();
         }
-
-        if (asteroidAmount == 0)
-        {
-            _turretsState.cooldownOn = true;
-        }
     }
 
-
+    void Update()
+    {
+        if (asteroidAmount == 0 && asteroidsSpawned)
+        {
+            _turretsState.cooldownOn = true;
+            gameWon();
+            asteroidsSpawned = false;
+        }
+    }
 
     private void gameWon()
     {

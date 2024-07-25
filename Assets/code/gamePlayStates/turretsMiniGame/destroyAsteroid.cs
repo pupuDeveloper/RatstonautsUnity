@@ -6,41 +6,51 @@ public class destroyAsteroid : MonoBehaviour
 {
     // add sound effects, asteroid destroying effects etcetc
     private turretsMiniGame _turretsMinigame;
+    private float rotationSpeed;
     public float speed;
+    private float minSpeed = 0.001f;
+    public float targetSpeed;
     private Vector3 direction;
-    private bool coroutineRunning;
+    private bool SlowcoroutineRunning;
+    private bool SpeedcoroutineRunning;
 
 
     private void Start()
     {
         _turretsMinigame = GameObject.Find("rooms(gameplay)").gameObject.transform.GetChild(2).gameObject.GetComponent<turretsMiniGame>();
         newDirectionAndSpeed();
-        coroutineRunning = false;
+        speed = targetSpeed;
+        SlowcoroutineRunning = false;
+        SpeedcoroutineRunning = false;
+
+        rotationSpeed = Random.Range(-20f, 20f);
     }
 
     private void Update()
     {
+        transform.Rotate(0, 0,rotationSpeed * Time.deltaTime);
         if (isTooClose(1f))
         {
-            if (coroutineRunning == false)
+            if (SlowcoroutineRunning == false && speed > minSpeed)
             {
-                Debug.Log("heyy");
                 StartCoroutine("slowDown");
             }
         }
+        else
+        {
+            if (speed < targetSpeed && SpeedcoroutineRunning == false)
+            {
+                StartCoroutine("speedUp");
+            }
+        }
 
-        if (isTooClose(0f) == false)
+        if (isTooClose(0.1f) == false)
         {
             move();
         }
         else
         {
             Debug.Log("Called");
-            newDirectionAndSpeed();
-        }
-
-        if (speed < 0f)
-        {
             newDirectionAndSpeed();
         }
     }
@@ -85,15 +95,23 @@ public class destroyAsteroid : MonoBehaviour
     }
     private IEnumerator slowDown()
     {
-        coroutineRunning = true;
+        SlowcoroutineRunning = true;
         yield return new WaitForSeconds(0.05f);
         speed -= 0.0001f;
-        coroutineRunning = false;
+        SlowcoroutineRunning = false;
+    }
+    private IEnumerator speedUp()
+    {
+        SpeedcoroutineRunning = true;
+        yield return new WaitForSeconds(0.05f);
+        speed += 0.0001f;
+        SpeedcoroutineRunning = false;
     }
     private void newDirectionAndSpeed()
     {
+        Debug.Log("direction changed");
         direction.x = Random.Range(-1f, 1f);
         direction.y = Random.Range(-1f, 1f);
-        speed = Random.Range(0.001f, 0.005f);
+        targetSpeed = Random.Range(0.001f, 0.005f);
     }
 }

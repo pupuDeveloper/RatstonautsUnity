@@ -6,8 +6,15 @@ using System;
 public class sleepingquartersState : State
 {
     [SerializeField] private GameStateManager gameStateManager;
+    [SerializeField] private GameObject background;
+    private bool stateIsReady;
     public override State RunCurrentState()
     {
+        if (!stateIsReady)
+        {
+            setupState();
+        }
+
         if (gameStateManager.targetState != this)
         {
             resetState();
@@ -16,8 +23,20 @@ public class sleepingquartersState : State
         Debug.Log("in sleeping quarters");
         return this;
     }
+
+    private void Start()
+    {
+        resetState();
+    }
     private void resetState()
     {
-        
+        background.SetActive(false);
+        stateIsReady = false;
+    }
+    private void setupState()
+    {
+        gameStateManager.targetState = this;
+        background.SetActive(true);
+        stateIsReady = true;
     }
 }

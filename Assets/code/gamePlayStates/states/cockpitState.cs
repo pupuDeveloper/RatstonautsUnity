@@ -59,7 +59,7 @@ public class cockpitState : State
     }
     private void resetState()
     {
-        StopCoroutine(_cockpitMinigame.minigame());
+        _cockpitMinigame.resetMinigamescript();
         cockPitBackground.SetActive(false);
         cockPitMiniGameBG.SetActive(false);
         toMiniGameButton.gameObject.SetActive(false);
@@ -67,6 +67,7 @@ public class cockpitState : State
     }
     public void setupState()
     {
+        _cockpitMinigame.resetMinigamescript();
         gameStateManager.targetState = this;
         cockPitBackground.SetActive(true);
         cockPitMiniGameBG.SetActive(false);

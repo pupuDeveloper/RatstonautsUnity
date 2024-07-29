@@ -3451,7 +3451,7 @@ GameObject:
   - component: {fileID: 362456903}
   - component: {fileID: 362456902}
   m_Layer: 6
-  m_Name: Asteroid_Cheese
+  m_Name: AsteroidCheese
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18952,17 +18952,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c53461106446443ad64e918ff11fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFoodDisplay: {fileID: 0}
+  selectedFoodDisplay: {fileID: 1424517030}
   foodsUI:
   - {fileID: 362456900}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 645799525}
+  - {fileID: 173371602}
+  - {fileID: 1175979735}
+  - {fileID: 1305098657}
+  - {fileID: 1118082814}
+  - {fileID: 1477765974}
+  - {fileID: 279376317}
+  - {fileID: 215180767}
   scrollableList: {fileID: 1466673850}
   closeFoodListButton: {fileID: 0}
 --- !u!1 &1482617861

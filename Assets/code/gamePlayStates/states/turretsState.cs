@@ -36,6 +36,7 @@ public class turretsState : State
 
     private void resetState()
     {
+        _turretsMinigame.resetMiniGame();
         turretBG.SetActive(false);
         turretsMiniGameBG.SetActive(false);
         toMiniGameButton.gameObject.SetActive(false);
@@ -43,6 +44,7 @@ public class turretsState : State
     }
     public void SetupState()
     {
+        _turretsMinigame.resetMiniGame();
         gameStateManager.targetState = this;
         turretBG.SetActive(true);
         turretsMiniGameBG.SetActive(false);

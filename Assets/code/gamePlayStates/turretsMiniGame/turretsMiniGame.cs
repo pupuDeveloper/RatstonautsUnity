@@ -9,6 +9,7 @@ public class turretsMiniGame : MonoBehaviour
     public int minAsteroidAmount;
     public int maxAsteroidAmount;
     public GameObject[] asteroids;
+    private List<GameObject> asteroidClones = new List<GameObject>();
     public float maxY;
     public float minY;
     public float maxX;
@@ -20,8 +21,6 @@ public class turretsMiniGame : MonoBehaviour
     public int asteroidAmount;
     public turretsState _turretsState;
     private bool asteroidsSpawned;
-
-
 
     private void Start()
     {
@@ -36,7 +35,7 @@ public class turretsMiniGame : MonoBehaviour
             xPos = Random.Range(minX + 0.5f, maxX - 0.5f);
             yPos = Random.Range(minY + 0.5f, maxY - 0.5f);
             asteroidPos = new Vector3(xPos, yPos, zPos);
-            Instantiate(asteroids[whichAsteroid], asteroidPos, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+            asteroidClones.Add(Instantiate(asteroids[whichAsteroid], asteroidPos, Quaternion.Euler(0, 0, Random.Range(0, 360))));
         }
         asteroidsSpawned = true;
     }
@@ -56,6 +55,15 @@ public class turretsMiniGame : MonoBehaviour
             _turretsState.cooldownOn = true;
             gameWon();
             asteroidsSpawned = false;
+        }
+    }
+
+    public void resetMiniGame()
+    {
+        asteroidsSpawned = false;
+        foreach (GameObject g in asteroidClones)
+        {
+            Destroy(g);
         }
     }
 

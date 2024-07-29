@@ -53,15 +53,15 @@ public class foodgeneratorState : State
     private void resetState()
     {
         BG1.SetActive(false);
-        BG2.SetActive(true);
+        BG2.SetActive(false);
         toMiniGameButton.gameObject.SetActive(false);
         stateIsReady = false;
     }
     public void setupState()
     {
         gameStateManager.targetState = this;
-        BG1.SetActive(false);
-        BG2.SetActive(true);
+        BG1.SetActive(true);
+        BG2.SetActive(false);
         toMiniGameButton.gameObject.SetActive(true);
         stateIsReady = true;
     }

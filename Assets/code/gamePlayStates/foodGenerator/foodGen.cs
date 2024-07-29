@@ -1,18 +1,88 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using TMPro;
 
 public class foodGen : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Transform selectedFoodDisplay;
+    [SerializeField] private food foodInSpot;
+    private food blank;
+    public List<food> allFoods = new List<food>();
+    public List<food> unlockedFoods { get; private set; }
+    [SerializeField] private GameObject[] foodsUI;
+    public GameObject scrollableList;
+    public GameObject closeFoodListButton;
+
+
+    private void Start()
     {
-        
+        unlockedFoods = new List<food>();
+
+        food asteroidCheese = new food("Asteroid Cheese", "Not as good as the real thing, but it works. Tiny 1% xp boost to all effects.", true, false);
+        if (!allFoods.Contains(asteroidCheese)) allFoods.Add(asteroidCheese);
+
+        //blank food
+
+        blank = new food("Blank", "Blank plant", false, false);
+        foodInSpot = blank;
+
+
+        foreach (food f in allFoods)
+        {
+            foreach (GameObject g in foodsUI)
+            {
+                string name = f.name.ToLower();
+                name = name.Trim();
+                string name2 = g.name.ToLower();
+                name2 = name2.Trim();
+                if (name == name2)
+                {
+                    if (f.isUnlocked == false)
+                        g.transform.GetChild(3).gameObject.SetActive(true);
+                    else
+                        g.transform.GetChild(3).gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void addButton()
     {
-        
+        food foodTobeAdded = blank;
+
+        foreach (food f in allFoods)
+        {
+            string foodName = f.name.ToLower();
+            foodName = foodName.Trim();
+            string selectedFoodName = EventSystem.current.currentSelectedGameObject.transform.parent.name.ToLower();
+            selectedFoodName = selectedFoodName.Trim();
+
+            if (selectedFoodName == foodName)
+            {
+                foodTobeAdded = f;
+                addFood(foodTobeAdded);
+                break;
+            }
+        }
+    }
+
+    public void addFood(food addedFood)
+    {
+        if (foodInSpot == addedFood)
+        {
+            foodInSpot = blank;
+            Debug.Log("Food removed");
+            return;
+        }
+
+        if (foodInSpot == blank || foodInSpot != addedFood)
+        {
+            foodInSpot = addedFood;
+            selectedFoodDisplay.GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = addedFood.name;
+        }
     }
 }

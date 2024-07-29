@@ -33,7 +33,7 @@ public class gardenManager : MonoBehaviour
         Plant Clover = new Plant("Clover", "Boost food generator by 5%", false, false);
         if (!allPlants.Contains(Clover)) allPlants.Add(Clover);
 
-        Plant Violet = new Plant("Violet", "Boost turets by 5%", false, false);
+        Plant Violet = new Plant("Violet", "Boost turrets by 5%", false, false);
         if (!allPlants.Contains(Violet)) allPlants.Add(Violet);
 
         Plant SeaMayweed = new Plant("Sea Mayweed", "Boost well slept buff by 5%", false, false);
@@ -51,7 +51,7 @@ public class gardenManager : MonoBehaviour
         Plant GoldenRod = new Plant("Goldenrod", "Increase XP received after succesfull minigame by 10%", false, false);
         if (!allPlants.Contains(GoldenRod)) allPlants.Add(GoldenRod);
 
-        Plant Harebell = new Plant("Harebell", "Boost rats happiness boost from eating by x%", false, false);
+        Plant Harebell = new Plant("Harebell", "think of a new effect", false, false);
         if (!allPlants.Contains(Harebell)) allPlants.Add(Harebell);
 
         Plant Daffodil = new Plant("Daffodil", "Disable one room of spaceship, other rooms gain x% efficiency and xp boost", false, false);
@@ -81,9 +81,9 @@ public class gardenManager : MonoBehaviour
                 if (name == name2)
                 {
                     if (p.isUnlocked == false)
-                        g.transform.GetChild(1).gameObject.SetActive(true);
+                        g.transform.GetChild(3).gameObject.SetActive(true);
                     else
-                        g.transform.GetChild(1).gameObject.SetActive(false);
+                        g.transform.GetChild(3).gameObject.SetActive(false);
                 }
             }
         }

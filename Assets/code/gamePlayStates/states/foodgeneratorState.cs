@@ -23,6 +23,7 @@ public class foodgeneratorState : State
     [SerializeField] private GameObject BG1;
     [SerializeField] private GameObject BG2;
     [SerializeField] private GameObject toMiniGameButton;
+    [SerializeField] private foodGen _foodGenScript;
     public override State RunCurrentState()
     {
         if (!stateIsReady)
@@ -55,6 +56,8 @@ public class foodgeneratorState : State
         BG1.SetActive(false);
         BG2.SetActive(false);
         toMiniGameButton.gameObject.SetActive(false);
+        _foodGenScript.scrollableList.SetActive(false);
+        _foodGenScript.closeFoodListButton.SetActive(false);
         stateIsReady = false;
     }
     public void setupState()

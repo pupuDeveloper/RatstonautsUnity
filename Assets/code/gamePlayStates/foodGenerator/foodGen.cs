@@ -26,7 +26,8 @@ public class foodGen : MonoBehaviour
 
         //blank food
 
-        blank = new food("Blank", "Blank plant", false, false);
+        blank = new food("Blank", "Blank food", false, false);
+        if (!allFoods.Contains(blank)) allFoods.Add(blank);
         foodInSpot = blank;
 
 
@@ -45,10 +46,13 @@ public class foodGen : MonoBehaviour
                     else
                         g.transform.GetChild(3).gameObject.SetActive(false);
                 }
+                else
+                {
+                    Debug.LogWarning("food name did not match gameobject!");
+                }
             }
         }
     }
-
 
     public void addButton()
     {

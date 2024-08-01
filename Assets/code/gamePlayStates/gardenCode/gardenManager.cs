@@ -85,6 +85,10 @@ public class gardenManager : MonoBehaviour
                     else
                         g.transform.GetChild(3).gameObject.SetActive(false);
                 }
+                else
+                {
+                    Debug.LogWarning("Plant name did not match gameobject!");
+                }
             }
         }
 

@@ -76,17 +76,19 @@ public class foodGen : MonoBehaviour
 
     public void addFood(food addedFood)
     {
+        Debug.Log("called");
         if (foodInSpot == addedFood)
         {
             foodInSpot = blank;
             Debug.Log("Food removed");
+            selectedFoodDisplay.GetChild(0).transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = "";
             return;
         }
 
         if (foodInSpot == blank || foodInSpot != addedFood)
         {
             foodInSpot = addedFood;
-            selectedFoodDisplay.GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = addedFood.name;
+            selectedFoodDisplay.GetChild(0).transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = addedFood.name;
         }
     }
 }

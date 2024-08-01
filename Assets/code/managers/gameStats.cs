@@ -8,6 +8,7 @@ public class gameStats : MonoBehaviour
 {
     public float spaceShipSpeed { get; private set; } //spaceships speed km/per second
     public float distanceTraveled { get; private set;} // total distance traveled
+    [SerializeField] private shipManager _shipManager;
     [SerializeField] private cockpitMiniGame _cockpitMinigame;
     [SerializeField] private cockpitState _cockPitState;
     [SerializeField] private oxygengardenState _oxygenGardenState;
@@ -22,6 +23,7 @@ public class gameStats : MonoBehaviour
 
     private void Update()
     {
+        updateSpeedUI();
         if (!calcRunning)
         {
             StartCoroutine("distanceCalculator");
@@ -41,7 +43,7 @@ public class gameStats : MonoBehaviour
 
         //this is a placeholder
         //if no games are played and all levels are 1:
-        if (GameManager.Instance.isShipStopped == false)
+        if (_shipManager.isShipStopped == false)
         {
             if (_cockPitState.boost)
             {
@@ -64,9 +66,10 @@ public class gameStats : MonoBehaviour
 
     public void updateSpeedUI()
     {
-        float shipSpeed = MathF.Round(getShipSpeed(), 2);
+        string shipSpeed = Math.Round(getShipSpeed(), 2, MidpointRounding.AwayFromZero).ToString("0.00");
         shipSpeedText.SetText(shipSpeed + " km/s");
-        traveledText.SetText(distanceTraveled + " km traveled");
+        string distance = Math.Round(distanceTraveled, 2, MidpointRounding.AwayFromZero).ToString("0.00");
+        traveledText.SetText(distance + " km traveled");
     }
     private IEnumerator distanceCalculator()
     {

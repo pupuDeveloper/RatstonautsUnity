@@ -54,6 +54,19 @@ public class GameManager : MonoBehaviour
         _states.Add(new InGameState());
         _states.Add(new OptionsState());
 
+#if UNITY_EDITOR
+    string activeSceneName = SceneManager.GetActiveScene().name.ToLower();
+    foreach (GameStateBase state in _states)
+    {
+        if (state.SceneName.ToLower() == activeSceneName)
+        {
+            initialState = state;
+            break;
+        }
+    }
+#endif
+
+
         CurrentState = initialState;
         CurrentState.Activate();
     }
@@ -83,7 +96,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameStateBase state in _states)
         {
-            if (state.type == type)
+            if (state.Type == type)
             {
                 return state;
             }

@@ -33,8 +33,8 @@ public abstract class GameStateBase
         if (forceLoad || currentScene.name.ToLower() != SceneName.ToLower())
         {
             LoadSceneMode loadMode = isAdditive ? LoadSceneMode.Additive : LoadSceneMode.Single; //if isAdditive is true, then loadMode is set to additive, else then to Single
+            SceneManager.LoadScene(SceneName, loadMode);
         }
-        SceneManager.LoadScene(SceneName, loadMode);
     }
 
     public virtual void Deactivate()

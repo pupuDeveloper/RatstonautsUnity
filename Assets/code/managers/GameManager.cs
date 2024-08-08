@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     private List<GameStateBase> _states = new List<GameStateBase>();
     public GameStateBase CurrentState { get; private set;}
+    private GameStateBase PreviousState {get; set;}
     private void Awake()
     {
         // Destroy dublicate instances
@@ -87,9 +88,15 @@ public class GameManager : MonoBehaviour
         }
 
         CurrentState.Deactivate();
+        PreviousState = CurrentState;
         CurrentState = targetState;
         CurrentState.Activate();
         return true;
+    }
+
+    public bool GoBack()
+    {
+        return Go(PreviousState.Type);
     }
 
     private GameStateBase GetState(StateType type)

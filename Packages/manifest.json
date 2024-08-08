@@ -5,6 +5,7 @@
     "com.unity.adaptiveperformance.samsung.android": "5.0.0",
     "com.unity.device-simulator.devices": "1.0.0",
     "com.unity.feature.mobile": "1.0.0",
+    "com.unity.ide.vscode": "1.2.5",
     "com.unity.inputsystem": "1.7.0",
     "com.unity.textmeshpro": "3.0.9",
     "com.unity.ugui": "1.0.0",

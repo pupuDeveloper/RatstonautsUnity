@@ -116,7 +116,7 @@ public class BinarySaver
 
     public void WriteTime(DateTime time)
     {
-        _writer.Write(time.year)
+        _writer.Write(time.year);
         _writer.Write(time.month);
         _writer.Write(time.day);
         _writer.Write(time.hour);

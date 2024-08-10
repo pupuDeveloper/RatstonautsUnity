@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     //sleepingQuarters data
 
-    [SerializeField] private int quartersLevel //unlock cosmetics/customization for sleeping quarters
+    [SerializeField] private int quartersLevel; //unlock cosmetics/customization for sleeping quarters
 
     #endregion
 
@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
         writer.WriteFloat(spaceShipSpeed);
         writer.WriteFloat(totalDistanceTraveled);
 
-        writer.WriteBool.(cockpitBoostOn);
+        writer.WriteBool(cockpitBoostOn);
         writer.WriteInt(cockPitLevel);
         writer.WriteTime(timeSinceCockPitCDStarted);
         writer.WriteTime(triggerCockPitMG);

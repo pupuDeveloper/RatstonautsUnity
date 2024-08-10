@@ -23,11 +23,13 @@ public class GameManager : MonoBehaviour
     #endregion statics
     
 
-
-
     private List<GameStateBase> _states = new List<GameStateBase>();
     public GameStateBase CurrentState { get; private set;}
     private GameStateBase PreviousState {get; set;}
+
+    public SaveSystem saveSystem { get; private set;}
+
+
     private void Awake()
     {
         // Destroy dublicate instances
@@ -45,6 +47,12 @@ public class GameManager : MonoBehaviour
         //
 
         InitializeStates();
+        InitializeSaveSystem();
+    }
+
+    private void InitializeSaveSystem()
+    {
+        saveSystem = new SaveSystem();
     }
 
     private void InitializeStates()

@@ -8,19 +8,23 @@ public class GameManager : MonoBehaviour
 {
 
     #region SavedData
-    [SerializeField] private float spaceShipSpeed; //km/sec
+    [SerializeField] private float spaceShipSpeed; // km/sec
     [SerializeField] private float totalDistanceTraveled;
 
     // cockpit data
     [SerializeField] private bool boostOn;
-    [SerializeField] private int cockPitLevel;
-    [SerializeField] private DateTime timeSinceCDStarted;
-    [SerializeField] private DateTime triggerCockPitMG;
+    [SerializeField] private int cockPitLevel; // correlates boost amount
+    [SerializeField] private DateTime timeSinceCDStarted; //since last minigame was played
+    [SerializeField] private DateTime triggerCockPitMG; // when to trigger next minigame
 
     // oxygen garden data
 
+    [SerializeField] private int gardenLevel; //this correlates to unlocked plants
+    [SerializeField] private List<Plant> plantsInSpots; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
 
-    [SerializeField] private bool 
+
+
+
 
     #endregion
 

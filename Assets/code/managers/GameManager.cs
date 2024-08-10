@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float totalDistanceTraveled;
 
     // cockpit data
-    [SerializeField] private bool boostOn;
+    [SerializeField] private bool cockpitBoostOn;
     [SerializeField] private int cockPitLevel; // correlates boost amount
-    [SerializeField] private DateTime timeSinceCDStarted; //since last minigame was played
+    [SerializeField] private DateTime timeSinceCockPitCDStarted; //since last minigame was played
     [SerializeField] private DateTime triggerCockPitMG; // when to trigger next minigame
 
     // oxygen garden data
@@ -22,8 +22,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int gardenLevel; //this correlates to unlocked plants
     [SerializeField] private List<Plant> plantsInSpots; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
 
+    //turrets data
 
+    [SerializeField] private bool turretsBoostOn;
+    [SerializeField] private int turretsLevel;
+    [SerializeField] private DateTime timeSinceTurretsCDStarted;
+    [SerializeField] private DateTime triggerTurretsMG;
 
+    // FoodGenerator Data
+
+    [SerializeField] private int foodGenLevel; //unlocked foods
+    [SerializeField] private food selectedFood; // food thats been COOKED
+    [SerializeField] private DateTime timeSinceFoodGenCDStarted;
+    [SerializeField] private DateTime triggerFoodGenMG;
+
+    //sleepingQuarters data
+
+    [SerializeField] private int quartersLevel //unlock cosmetics/customization for sleeping quarters
 
 
     #endregion

@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 public class cockpitMiniGame : MonoBehaviour
 {
     private int minigameCD; //in seconds
-    private int minigameLevel;
     private int baseSpeedBoost;
     private float boostMultiplier;
     private static bool isBoostOn;

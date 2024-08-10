@@ -1,4 +1,5 @@
 using System.IO;
+using System;
 
 public class BinarySaver
 {
@@ -83,6 +84,16 @@ public class BinarySaver
     {
         return _reader.ReadString();
     }
+    public int ReadTime()
+    {
+        int year = _reader.ReadInt32();
+        int month = _reader.ReadInt32();
+        int day = _reader.ReadInt32();
+        int hour = _reader.ReadInt32();
+        int minute = _reader.ReadInt32();
+        int second = _reader.ReadInt32();
+        return DateTime (year, month, day, hour, minute, second);
+    }
     #endregion
 
     #region Writing
@@ -101,6 +112,16 @@ public class BinarySaver
     public void WriteString(string value)
     {
         _writer.Write(value);
+    }
+
+    public void WriteTime(DateTime time)
+    {
+        _writer.Write(time.year)
+        _writer.Write(time.month);
+        _writer.Write(time.day);
+        _writer.Write(time.hour);
+        _writer.Write(time.minute);
+        _writer.Write(time.second);
     }
     #endregion
 

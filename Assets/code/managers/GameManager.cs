@@ -2,9 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameManager : MonoBehaviour
 {
+
+    #region SavedData
+    [SerializeField] private float spaceShipSpeed; //km/sec
+    [SerializeField] private float totalDistanceTraveled;
+
+    // cockpit data
+    [SerializeField] private bool boostOn;
+    [SerializeField] private int cockPitLevel;
+    [SerializeField] private DateTime timeSinceCDStarted;
+    [SerializeField] private DateTime triggerCockPitMG;
+
+    // oxygen garden data
+
+
+    [SerializeField] private bool 
+
+    #endregion
 
     #region statics
     private static GameManager _instance;

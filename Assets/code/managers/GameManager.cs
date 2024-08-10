@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int quartersLevel //unlock cosmetics/customization for sleeping quarters
 
-
     #endregion
 
     #region statics
@@ -154,5 +153,19 @@ public class GameManager : MonoBehaviour
             }
         }
         return null; //null is used here as error value
+    }
+
+    public void Save(BinarySaver writer)
+    {
+        writer.WriteFloat(spaceShipSpeed);
+        writer.WriteFloat(totalDistanceTraveled);
+
+        writer.WriteBool.(cockpitBoostOn);
+        writer.WriteInt(cockPitLevel);
+        writer.WriteTime(timeSinceCockPitCDStarted);
+        writer.WriteTime(triggerCockPitMG);
+
+        writer.WriteInt(gardenLevel);
+        //TODO: ADD INTEGER TO EVERY PLANT AND FOOD AS AN ID THAT CAN BE SAVED!!!!!!!!!!!!!
     }
 }

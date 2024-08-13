@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface ISaveable
 {
-    void Save();
-    void Load();
+    void Save(BinarySaver writer);
+    void Load(BinarySaver reader);
 }

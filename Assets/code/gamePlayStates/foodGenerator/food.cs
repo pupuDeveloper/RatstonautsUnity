@@ -10,7 +10,7 @@ public class food
     public bool isUnlocked {get; private set;}
     public bool isActivated {get; private set;}
 
-    public food(string name,int foodId string effectDescription, bool isUnlocked, bool isActivated)
+    public food(string name,int foodId, string effectDescription, bool isUnlocked, bool isActivated)
     {
         this.name = name;
         this.foodId = foodId;

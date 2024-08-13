@@ -1,5 +1,6 @@
 using System.IO;
 using System;
+using UnityEngine;
 
 public class BinarySaver
 {
@@ -78,7 +79,7 @@ public class BinarySaver
     }
     public bool ReadBool()
     {
-        return _reader.ReadBool();
+        return _reader.ReadBoolean();
     }
     public string ReadString()
     {
@@ -92,7 +93,7 @@ public class BinarySaver
         int hour = _reader.ReadInt32();
         int minute = _reader.ReadInt32();
         int second = _reader.ReadInt32();
-        return DateTime (year, month, day, hour, minute, second);
+        return DateTime(year, month, day, hour, minute, second);
     }
     #endregion
 
@@ -124,6 +125,4 @@ public class BinarySaver
         _writer.Write(time.second);
     }
     #endregion
-
-
 }

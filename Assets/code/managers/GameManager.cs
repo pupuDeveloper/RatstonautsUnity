@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     // oxygen garden data
 
     [SerializeField] private int gardenLevel; //this correlates to unlocked plants
-    [SerializeField] private Plant.plantId[] plantsInSpots; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
+    [SerializeField] private int[] plantsInSpots; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
 
     //turrets data
 
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     // FoodGenerator Data
 
     [SerializeField] private int foodGenLevel; //unlocked foods
-    [SerializeField] private food.foodId selectedFood; // food thats been COOKED
+    [SerializeField] private int selectedFood; // food thats been COOKED
     [SerializeField] private DateTime timeSinceFoodGenCDStarted;
     [SerializeField] private DateTime triggerFoodGenMG;
 
@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
         writer.WriteTime(triggerCockPitMG);
         //oxygen garden data
         writer.WriteInt(gardenLevel);
-        foreach (Plant.plantId id in plantsInSpots)
+        foreach (int id in plantsInSpots)
         {
             writer.WriteInt(id);
         }

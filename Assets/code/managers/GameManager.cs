@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     // oxygen garden data
 
     [SerializeField] private int gardenLevel; //this correlates to unlocked plants
-    [SerializeField] private List<Plant> plantsInSpots; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
+    [SerializeField] private Plant.plantId[] plantsInSpots; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
 
     //turrets data
 
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     // FoodGenerator Data
 
     [SerializeField] private int foodGenLevel; //unlocked foods
-    [SerializeField] private food selectedFood; // food thats been COOKED
+    [SerializeField] private food.foodId selectedFood; // food thats been COOKED
     [SerializeField] private DateTime timeSinceFoodGenCDStarted;
     [SerializeField] private DateTime triggerFoodGenMG;
 
@@ -157,15 +157,56 @@ public class GameManager : MonoBehaviour
 
     public void Save(BinarySaver writer)
     {
+        //ship data
         writer.WriteFloat(spaceShipSpeed);
         writer.WriteFloat(totalDistanceTraveled);
-
+        //cockpit data
         writer.WriteBool(cockpitBoostOn);
         writer.WriteInt(cockPitLevel);
         writer.WriteTime(timeSinceCockPitCDStarted);
         writer.WriteTime(triggerCockPitMG);
-
+        //oxygen garden data
         writer.WriteInt(gardenLevel);
-        //TODO: ADD INTEGER TO EVERY PLANT AND FOOD AS AN ID THAT CAN BE SAVED!!!!!!!!!!!!!
+        foreach (Plant.plantId id in plantsInSpots)
+        {
+            writer.WriteInt(id);
+        }
+        //turrets data
+        writer.WriteBool(turretsBoostOn);
+        writer.WriteInt(turretsLevel);
+        writer.WriteTime(timeSinceTurretsCDStarted);
+        writer.WriteTime(triggerTurretsMG);
+        //foodGen Data
+        writer.WriteInt(foodGenLevel);
+        writer.WriteInt(selectedFood.foodId);
+        writer.WriteTime(timeSinceFoodGenCDStarted);
+        writer.WriteTime(triggerFoodGenMG);
+        //sleepingquarters data
+        writer.WriteInt(quartersLevel);
+    }
+
+    public void Load(BinarySaver reader)
+    {
+        //ship data
+        spaceShipSpeed = reader.ReadFloat();
+        totalDistanceTraveled = reader.ReadFloat();
+        //cockpit data
+        cockpitBoostOn = reader.ReadBool();
+        cockPitLevel = reader.ReadInt();
+        timeSinceCockPitCDStarted = reader.ReadTime();
+        triggerCockPitMG = reader.ReadTime();
+        //oxygen garden data
+        gardenLevel = reader.ReadInt();
+        for (int i = 0; i < plantsInSpots.Length; i++) 
+        {
+            plantsInSpots[i] = reader.ReadInt();
+        }
+        //turrets data
+        turretsBoostOn = reader.ReadBool();
+        turretsLevel = reader.ReadInt();
+        timeSinceTurretsCDStarted = reader.ReadTime();
+        triggerFoodGenMG = reader.ReadTime();
+        //sleepingquarters data
+        quartersLevel = reader.ReadInt();
     }
 }

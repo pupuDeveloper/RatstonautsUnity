@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine("autosaveWithTimer");
+        //StartCoroutine("autosaveWithTimer"); commented out bcs testing in editor
     }
 
     private void InitializeSaveSystem()
@@ -219,12 +219,12 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(10f);
-            string mainSaveSlot = saveSystem.mainSaveSlot;
+            string mainSaveSlot = saveSystem.MainSaveSlot;
             saveSystem.Save(mainSaveSlot);
         }
     }
 
-    void OnApplicationFocus()
+    /*void OnApplicationFocus() //commented out bcs testing in editor
     {
         string mainSaveSlot = saveSystem.MainSaveSlot;
         saveSystem.Save(mainSaveSlot);
@@ -234,9 +234,9 @@ public class GameManager : MonoBehaviour
     {
         string mainSaveSlot = saveSystem.MainSaveSlot;
         saveSystem.Save(mainSaveSlot);
-    }
+    }*/
 
-    private int getTimeSinceLastSave(DateTime referencedTime)
+    public int getTimeSinceLastSave(DateTime referencedTime) //get time between requested timedate and current timedate in seconds.
     {
         var timeDif = DateTime.Now - referencedTime;
         int differenceInSeconds = timeDif.Seconds;

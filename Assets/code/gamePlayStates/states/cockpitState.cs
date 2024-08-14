@@ -50,6 +50,14 @@ public class cockpitState : State
     private void Start()
     {
         resetState();
+
+        /* float result = 0;
+        for (int L = 1; L < 100; L++)
+        {
+            result += (0.33f * (L + (375f * ((float)Math.Pow(2.05f, L/7.5f)))));
+            int resultInt = (int)Math.Floor(result);
+            Debug.Log("xp needed for lvl " + L + " is " + resultInt);
+        }*/ //FORMULA FOR LEVELS FROM 0 TO 99 FOR EACH ROOM, ALSO IN NOTEBOOK
     }
     public void toMiniGame()
     {

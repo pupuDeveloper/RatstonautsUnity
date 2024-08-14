@@ -86,6 +86,11 @@ public class GameManager : MonoBehaviour
         InitializeSaveSystem();
     }
 
+    private void Start()
+    {
+        StartCoroutine("autosaveWithTimer");
+    }
+
     private void InitializeSaveSystem()
     {
         saveSystem = new SaveSystem();
@@ -208,5 +213,33 @@ public class GameManager : MonoBehaviour
         triggerFoodGenMG = reader.ReadTime();
         //sleepingquarters data
         quartersLevel = reader.ReadInt();
+    }
+    private IEnumerator autosaveWithTimer()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(10f);
+            string mainSaveSlot = saveSystem.mainSaveSlot;
+            saveSystem.Save(mainSaveSlot);
+        }
+    }
+
+    void OnApplicationFocus()
+    {
+        string mainSaveSlot = saveSystem.MainSaveSlot;
+        saveSystem.Save(mainSaveSlot);
+    }
+
+    void OnApplicationQuit()
+    {
+        string mainSaveSlot = saveSystem.MainSaveSlot;
+        saveSystem.Save(mainSaveSlot);
+    }
+
+    private int getTimeSinceLastSave(DateTime referencedTime)
+    {
+        var timeDif = DateTime.Now - referencedTime;
+        int differenceInSeconds = timeDif.Seconds;
+        return differenceInSeconds;
     }
 }

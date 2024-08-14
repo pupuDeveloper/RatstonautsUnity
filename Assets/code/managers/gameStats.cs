@@ -20,7 +20,6 @@ public class gameStats : MonoBehaviour
     public plantBoostSingleton plantEffects;
 
 
-
     private void Update()
     {
         updateSpeedUI();

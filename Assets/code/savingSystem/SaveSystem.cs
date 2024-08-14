@@ -33,6 +33,8 @@ public class SaveSystem
         }
     }
 
+    public string MainSaveSlot { get { return "MainSave";}}
+
     public string QuickSaveSlot { get { return "QuickSave"; } }
 
     public string FileExtension { get { return ".save"; } }
@@ -45,6 +47,12 @@ public class SaveSystem
 
         //TODO: the actual saving
         GameManager.Instance.Save(_saver);
+
+        //if we have gameobjects to save, uncomment below
+        //ISaveable[] saveables = GameObject.FindObjectOfType<MonoBehaviour>(includeInactive: true).OfType<ISaveable>().ToArray();
+        //saver.WriteInt(saveables.Length);
+        //foreach(ISaveable saveable in saveables){ saveable.Save(saver);}
+        //
 
         saver.FinalizeWrite();
     }

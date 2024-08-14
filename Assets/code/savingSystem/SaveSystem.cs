@@ -29,6 +29,7 @@ public class SaveSystem
         {
             string saveLocation = Application.persistentDataPath;
             Path.Combine(saveLocation, "Ratstonauts", "Save");
+            return saveLocation;
         }
     }
 

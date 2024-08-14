@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour
         writer.WriteTime(triggerTurretsMG);
         //foodGen Data
         writer.WriteInt(foodGenLevel);
-        writer.WriteInt(selectedFood.foodId);
+        writer.WriteInt(selectedFood);
         writer.WriteTime(timeSinceFoodGenCDStarted);
         writer.WriteTime(triggerFoodGenMG);
         //sleepingquarters data

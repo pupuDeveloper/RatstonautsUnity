@@ -85,7 +85,7 @@ public class BinarySaver
     {
         return _reader.ReadString();
     }
-    public int ReadTime()
+    public DateTime ReadTime()
     {
         int year = _reader.ReadInt32();
         int month = _reader.ReadInt32();
@@ -93,7 +93,8 @@ public class BinarySaver
         int hour = _reader.ReadInt32();
         int minute = _reader.ReadInt32();
         int second = _reader.ReadInt32();
-        return DateTime(year, month, day, hour, minute, second);
+        DateTime time = new DateTime(year, month, day, hour, minute, second);
+        return time;
     }
     #endregion
 
@@ -117,12 +118,12 @@ public class BinarySaver
 
     public void WriteTime(DateTime time)
     {
-        _writer.Write(time.year);
-        _writer.Write(time.month);
-        _writer.Write(time.day);
-        _writer.Write(time.hour);
-        _writer.Write(time.minute);
-        _writer.Write(time.second);
+        _writer.Write(time.Year);
+        _writer.Write(time.Month);
+        _writer.Write(time.Day);
+        _writer.Write(time.Hour);
+        _writer.Write(time.Minute);
+        _writer.Write(time.Second);
     }
     #endregion
 }

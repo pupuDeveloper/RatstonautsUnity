@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
 
 public class xpManager : MonoBehaviour
 {
@@ -21,13 +23,16 @@ public class xpManager : MonoBehaviour
     private int sleepingQuartersLvl;
     private int turretsLvl;
 
+            /*xpNeededForResult += (L * 100f) * (float)Math.Pow(2, L/12); 
+            int resultXp = (int)Math.Floor(xpNeededForResult);
+            Debug.Log("xp needed for lvl " + L + " is " + resultXp);*/
 
     private void Start()
     {
         xpForLevels[0] = 0;
         for (int i = 1; i < xpForLevels.Length; i++)
         {
-            float xpAverage += (i * 100f) * (float)Math.Pow(2, i/12); 
+            float xpAverage =+ (i * 100f) * (float)Math.Pow(2 + i/99); 
             xpForLevels[i] = (int)Math.Floor(xpAverage);
             Debug.Log("xp needed for lvl " + i + " is " + xpForLevels[i]);
         }
@@ -37,8 +42,6 @@ public class xpManager : MonoBehaviour
         sleepingQuartersLvl = checkLvls(GameManager.Instance.quartersXP);
         turretsLvl = checkLvls(GameManager.Instance.turretsXP);
     }
-
-
     public int checkLvls(int currentXp)
     {
         for (int i = 0; i < xpForLevels.Length; i++)

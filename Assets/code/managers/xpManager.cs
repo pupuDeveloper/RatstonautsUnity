@@ -17,11 +17,11 @@ public class xpManager : MonoBehaviour
     [SerializeField] private turretsState _turretsState;
 
     private int[] xpForLevels = new int[100];
-    private int cockPitLvl;
-    private int foodGenLvl;
-    private int oxygenGardenLvl;
-    private int sleepingQuartersLvl;
-    private int turretsLvl;
+    public int cockPitLvl {get; private set; }
+    public int foodGenLvl {get; private set; }
+    public int oxygenGardenLvl {get; private set; } 
+    public int sleepingQuartersLvl {get; private set; }
+    public int turretsLvl {get; private set; }
 
             /*xpNeededForResult += (L * 100f) * (float)Math.Pow(2, L/12); 
             int resultXp = (int)Math.Floor(xpNeededForResult);
@@ -30,9 +30,10 @@ public class xpManager : MonoBehaviour
     private void Start()
     {
         xpForLevels[0] = 0;
+        float xpAverage = 0;
         for (int i = 1; i < xpForLevels.Length; i++)
         {
-            float xpAverage =+ (i * 100f) * (float)Math.Pow(2 + i/99); 
+            xpAverage += (i * 100) * (float)Math.Pow(2, i/12); 
             xpForLevels[i] = (int)Math.Floor(xpAverage);
             Debug.Log("xp needed for lvl " + i + " is " + xpForLevels[i]);
         }
@@ -59,7 +60,8 @@ public class xpManager : MonoBehaviour
     {
         if (currentXp + addedXp > xpForLevels[roomLvl])
         {
-            
+            return true;
         }
+        return false;
     }
 }

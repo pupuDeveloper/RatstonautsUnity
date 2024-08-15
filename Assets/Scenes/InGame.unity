@@ -14341,14 +14341,9 @@ MonoBehaviour:
   spaceShipSpeed: 0
   totalDistanceTraveled: 0
   cockpitBoostOn: 0
-  cockPitLevel: 0
-  gardenLevel: 0
   plantsInSpots: 
   turretsBoostOn: 0
-  turretsLevel: 0
-  foodGenLevel: 0
   selectedFood: 0
-  quartersLevel: 0
 --- !u!4 &1164436877
 Transform:
   m_ObjectHideFlags: 0
@@ -15005,6 +15000,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75d49403bf435e4aad57991dc412068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level0SpeedBoost: 0
+  _xpManager: {fileID: 0}
   button1: {fileID: 2113044224}
   button2: {fileID: 135026621}
   button3: {fileID: 583371773}
@@ -19851,6 +19848,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506340209}
   m_CullTransparentMesh: 1
+--- !u!1 &1507500963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1507500965}
+  - component: {fileID: 1507500964}
+  m_Layer: 0
+  m_Name: xpmanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1507500964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507500963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112d2d8a1493545a38b181f2b0e0b8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cockpitState: {fileID: 1191357282}
+  _foodgeneratorState: {fileID: 1479490846}
+  _oxygengardenState: {fileID: 648701419}
+  _sleepingquartersState: {fileID: 2056481617}
+  _turretsState: {fileID: 1105820789}
+--- !u!4 &1507500965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507500963}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.57629, y: -1.365847, z: 1946.0813}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1543386035
 GameObject:
   m_ObjectHideFlags: 0
@@ -28385,3 +28431,4 @@ SceneRoots:
   - {fileID: 109847827}
   - {fileID: 854795566}
   - {fileID: 8620456832893669382}
+  - {fileID: 1507500965}

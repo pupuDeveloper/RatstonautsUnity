@@ -37,7 +37,6 @@ public class foodgeneratorState : State
             return gameStateManager.targetState;
         }
 
-        Debug.Log("in food generator");
         return this;
     }
 

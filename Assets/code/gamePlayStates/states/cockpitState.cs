@@ -51,13 +51,14 @@ public class cockpitState : State
     {
         resetState();
 
-        /* float result = 0;
+        // trying out  formulas
+        /*float xpNeededForResult = 0;
         for (int L = 1; L < 100; L++)
         {
-            result += (0.33f * (L + (375f * ((float)Math.Pow(2.05f, L/7.5f)))));
-            int resultInt = (int)Math.Floor(result);
-            Debug.Log("xp needed for lvl " + L + " is " + resultInt);
-        }*/ //FORMULA FOR LEVELS FROM 0 TO 99 FOR EACH ROOM, ALSO IN NOTEBOOK
+            xpNeededForResult += (L * 100f) * (float)Math.Pow(2, L/12); 
+            int resultXp = (int)Math.Floor(xpNeededForResult);
+            Debug.Log("xp needed for lvl " + L + " is " + resultXp);
+        }*/ //formula made, inspired by OSRS formula. I like its even numbers and skaling. lvl 88 its about 50% of xp needed for 99
     }
     public void toMiniGame()
     {

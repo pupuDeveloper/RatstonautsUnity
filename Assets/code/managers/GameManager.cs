@@ -13,32 +13,32 @@ public class GameManager : MonoBehaviour
 
     // cockpit data
     [SerializeField] private bool cockpitBoostOn;
-    [SerializeField] private int cockPitLevel; // correlates boost amount
+    [SerializeField] private int cockPitXP; // correlates boost amount
     [SerializeField] private DateTime timeSinceCockPitCDStarted; //since last minigame was played
     [SerializeField] private DateTime triggerCockPitMG; // when to trigger next minigame
 
     // oxygen garden data
 
-    [SerializeField] private int gardenLevel; //this correlates to unlocked plants
+    [SerializeField] private int gardenXP; //this correlates to unlocked plants
     [SerializeField] private int[] plantsInSpots; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
 
     //turrets data
 
     [SerializeField] private bool turretsBoostOn;
-    [SerializeField] private int turretsLevel;
+    [SerializeField] private int turretsXP;
     [SerializeField] private DateTime timeSinceTurretsCDStarted;
     [SerializeField] private DateTime triggerTurretsMG;
 
     // FoodGenerator Data
 
-    [SerializeField] private int foodGenLevel; //unlocked foods
+    [SerializeField] private int foodGenXP; //unlocked foods
     [SerializeField] private int selectedFood; // food thats been COOKED
     [SerializeField] private DateTime timeSinceFoodGenCDStarted;
     [SerializeField] private DateTime triggerFoodGenMG;
 
     //sleepingQuarters data
 
-    [SerializeField] private int quartersLevel; //unlock cosmetics/customization for sleeping quarters
+    [SerializeField] private int quartersXP; //unlock cosmetics/customization for sleeping quarters
 
     #endregion
 
@@ -167,27 +167,27 @@ public class GameManager : MonoBehaviour
         writer.WriteFloat(totalDistanceTraveled);
         //cockpit data
         writer.WriteBool(cockpitBoostOn);
-        writer.WriteInt(cockPitLevel);
+        writer.WriteInt(cockPitXP);
         writer.WriteTime(timeSinceCockPitCDStarted);
         writer.WriteTime(triggerCockPitMG);
         //oxygen garden data
-        writer.WriteInt(gardenLevel);
+        writer.WriteInt(gardenXP);
         foreach (int id in plantsInSpots)
         {
             writer.WriteInt(id);
         }
         //turrets data
         writer.WriteBool(turretsBoostOn);
-        writer.WriteInt(turretsLevel);
+        writer.WriteInt(turretsXP);
         writer.WriteTime(timeSinceTurretsCDStarted);
         writer.WriteTime(triggerTurretsMG);
         //foodGen Data
-        writer.WriteInt(foodGenLevel);
+        writer.WriteInt(foodGenXP);
         writer.WriteInt(selectedFood);
         writer.WriteTime(timeSinceFoodGenCDStarted);
         writer.WriteTime(triggerFoodGenMG);
         //sleepingquarters data
-        writer.WriteInt(quartersLevel);
+        writer.WriteInt(quartersXP);
     }
 
     public void Load(BinarySaver reader)
@@ -197,22 +197,22 @@ public class GameManager : MonoBehaviour
         totalDistanceTraveled = reader.ReadFloat();
         //cockpit data
         cockpitBoostOn = reader.ReadBool();
-        cockPitLevel = reader.ReadInt();
+        cockPitXP = reader.ReadInt();
         timeSinceCockPitCDStarted = reader.ReadTime();
         triggerCockPitMG = reader.ReadTime();
         //oxygen garden data
-        gardenLevel = reader.ReadInt();
+        gardenXP = reader.ReadInt();
         for (int i = 0; i < plantsInSpots.Length; i++) 
         {
             plantsInSpots[i] = reader.ReadInt();
         }
         //turrets data
         turretsBoostOn = reader.ReadBool();
-        turretsLevel = reader.ReadInt();
+        turretsXP = reader.ReadInt();
         timeSinceTurretsCDStarted = reader.ReadTime();
         triggerFoodGenMG = reader.ReadTime();
         //sleepingquarters data
-        quartersLevel = reader.ReadInt();
+        quartersXP = reader.ReadInt();
     }
     private IEnumerator autosaveWithTimer()
     {

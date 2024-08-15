@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     // cockpit data
     [SerializeField] private bool cockpitBoostOn;
     [SerializeField] public int cockPitXP {get; private set;} // correlates boost amount
-    [SerializeField] private DateTime timeSinceCockPitCDStarted; //since last minigame was played
-    [SerializeField] private DateTime triggerCockPitMG; // when to trigger next minigame
+    [SerializeField] public DateTime timeSinceCockPitCDStarted {get; set;} //since last minigame was played
+    [SerializeField] public DateTime triggerCockPitMG {get; set;} // when to trigger next minigame
 
     // oxygen garden data
 

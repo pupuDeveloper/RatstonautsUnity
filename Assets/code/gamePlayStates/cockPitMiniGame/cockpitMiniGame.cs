@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class cockpitMiniGame : MonoBehaviour
 {
     private int minigameCD; //in seconds
-    private int baseSpeedBoost;
-    private float boostMultiplier;
-    private static bool isBoostOn;
+    private int level0boost;
+    private int boostMultiplier;
+    private static bool isGameDone;
+    private int boostAmount;
+    [SerializeField] private xpManager _xpManager;
     //buttons n other UI stuff
     [SerializeField] private Button button1;
     [SerializeField] private Button button2;
@@ -18,6 +21,8 @@ public class cockpitMiniGame : MonoBehaviour
     [SerializeField] private Button button5;
     [SerializeField] private Button button6;
     [SerializeField] private GameObject clickBlocker;
+    private int minSeconds = 7200;
+    private int maxSeconds = 28800;
 
     //
     private string correctOrder;
@@ -28,14 +33,13 @@ public class cockpitMiniGame : MonoBehaviour
     private void Start()
     {
         //read is boost on etc from file
-        isBoostOn = false;
+        isGameDone = false;
         playerTurn = false;
         coroutineOn = false;
         clickBlocker.SetActive(true);
 
-        //just testing
-        baseSpeedBoost = 20;
-        boostMultiplier = 1;
+
+        level0boost = 10;
     }
 
     public void runMiniGame()
@@ -72,7 +76,8 @@ public class cockpitMiniGame : MonoBehaviour
                 if (i == 6)
                 {
                     Debug.Log("minigame successfull!");
-                    isBoostOn = true;
+                    setWinData();
+                    isGameDone = true;
                 }
             }
         }
@@ -119,7 +124,7 @@ public class cockpitMiniGame : MonoBehaviour
         coroutineOn = true;
         for (int i = 0; i < 6; i++)
         {
-            int nextButton = Random.Range(0, 5);
+            int nextButton = UnityEngine.Random.Range(0, 5);
             yield return new WaitForSeconds(1f);
             switch (nextButton)
             {
@@ -175,11 +180,24 @@ public class cockpitMiniGame : MonoBehaviour
     }
     public bool checkBoost()
     {
-        return isBoostOn;
+        return isGameDone;
     }
     public int cockpitBoost()
     {
-        int result = (int) (baseSpeedBoost * boostMultiplier);
-        return result;
+        return boostAmount;
+    }
+    private void setWinData()
+    {
+        if (_xpManager.cockPitLvl != 0)
+        {
+            boostMultiplier = _xpManager.checkLvls(GameManager.Instance.cockPitXP);
+            boostAmount = level0boost * boostMultiplier;
+        }
+        else
+        {
+            boostAmount = level0boost;
+        }
+        GameManager.Instance.timeSinceCockPitCDStarted = DateTime.Now;
+        GameManager.Instance.triggerCockPitMG = DateTime.Now.AddSeconds(UnityEngine.Random.Range(minSeconds, maxSeconds));
     }
 }

@@ -47,7 +47,7 @@ public class xpManager : MonoBehaviour
     {
         for (int i = 0; i < xpForLevels.Length; i++)
         {
-            if (currentXp > xpForLevels[i])
+            if (currentXp >= xpForLevels[i])
             {
                 return i;
             }

@@ -8,7 +8,6 @@ public class cockpitState : State
 {
     [SerializeField] private GameStateManager gameStateManager;
     private bool stateIsReady;
-    public bool boost;
 
     //visual stuff like background etc to of the minigame
 
@@ -36,12 +35,11 @@ public class cockpitState : State
 
     private void CustomUpdate()
     {
-        boost = _cockpitMinigame.checkBoost();
-        if (!boost && cockPitMiniGameBG.gameObject.activeSelf)
+        if (!GameManager.Instance.cockpitBoostOn && cockPitMiniGameBG.gameObject.activeSelf)
         {
             _cockpitMinigame.runMiniGame();
         }
-        else if (_cockpitMinigame.checkBoost())
+        else if (GameManager.Instance.cockpitBoostOn)
         {
             Debug.Log("not running minigame1");
             //if boost is on and minigame not available

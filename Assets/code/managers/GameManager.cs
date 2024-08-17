@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float totalDistanceTraveled;
 
     // cockpit data
-    [SerializeField] private bool cockpitBoostOn;
+    [SerializeField] public bool cockpitBoostOn {get; set;}
     [SerializeField] public int cockPitXP {get; private set;} // correlates boost amount
     [SerializeField] public DateTime timeSinceCockPitCDStarted {get; set;} //since last minigame was played
     [SerializeField] public DateTime triggerCockPitMG {get; set;} // when to trigger next minigame

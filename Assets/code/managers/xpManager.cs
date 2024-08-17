@@ -55,7 +55,6 @@ public class xpManager : MonoBehaviour
         Debug.LogError("xp value is not valid!");
         return -1;
     }
-
     public bool updateLevel(int currentXp, int addedXp, int roomLvl)
     {
         if (currentXp + addedXp > xpForLevels[roomLvl])
@@ -63,5 +62,9 @@ public class xpManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+    public int addXp (int currentXp, int addedXp)
+    {
+        return currentXp += addedXp;
     }
 }

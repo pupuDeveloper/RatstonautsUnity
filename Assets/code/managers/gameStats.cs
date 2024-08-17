@@ -44,8 +44,12 @@ public class gameStats : MonoBehaviour
         //if no games are played and all levels are 1:
         if (_shipManager.isShipStopped == false)
         {
-            if (_cockPitState.boost)
+            if (GameManager.Instance.cockpitBoostOn)
             {
+                //TODO: check all possible buffs to spaceShipSpeed speed, well rested bonus, plants, foods, etc
+                //TODO: after above todo, add all xp boosts, and with the outcoming number, do methods below.
+                
+
                 spaceShipSpeed += _cockpitMinigame.cockpitBoost();
             }
             if (_oxygenGardenState.plantsWatered)

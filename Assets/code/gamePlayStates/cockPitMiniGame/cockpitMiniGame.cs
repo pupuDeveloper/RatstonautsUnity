@@ -33,7 +33,7 @@ public class cockpitMiniGame : MonoBehaviour
     private void Start()
     {
         //read is boost on etc from file
-        isGameDone = false;
+        isGameDone = GameManager.Instance.cockpitBoostOn;
         playerTurn = false;
         coroutineOn = false;
         clickBlocker.SetActive(true);
@@ -172,15 +172,12 @@ public class cockpitMiniGame : MonoBehaviour
     }
     public void resetMinigamescript() //called at the end of state change
     {
+        isGameDone = GameManager.Instance.cockpitBoostOn;
         StopCoroutine("minigame");
         clickBlocker.SetActive(false);
         coroutineOn = false;
         correctOrder = "";
         playerAttempt = "";
-    }
-    public bool checkBoost()
-    {
-        return isGameDone;
     }
     public int cockpitBoost()
     {
@@ -188,6 +185,8 @@ public class cockpitMiniGame : MonoBehaviour
     }
     private void setWinData()
     {
+        GameManager.Instance.cockpitBoostOn = true;
+        
         if (_xpManager.cockPitLvl != 0)
         {
             boostMultiplier = _xpManager.checkLvls(GameManager.Instance.cockPitXP);

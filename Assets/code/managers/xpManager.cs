@@ -26,7 +26,6 @@ public class xpManager : MonoBehaviour
     public int oxygenGardenLvl {get; private set; } 
     public int sleepingQuartersLvl {get; private set; }
     public int turretsLvl {get; private set; }
-
             /*xpNeededForResult += (L * 100f) * (float)Math.Pow(2, L/12); 
             int resultXp = (int)Math.Floor(xpNeededForResult);
             Debug.Log("xp needed for lvl " + L + " is " + resultXp);*/

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     #region SavedData
     [SerializeField] private float spaceShipSpeed; // km/sec
     [SerializeField] private float totalDistanceTraveled;
+    [SerializeField] private int totalXp;
 
     // cockpit data
     [SerializeField] public bool cockpitBoostOn {get; set;}
@@ -159,12 +160,18 @@ public class GameManager : MonoBehaviour
         }
         return null; //null is used here as error value
     }
+    public int getTotalXP()
+    {
+        totalXp = cockPitXP + gardenXP + turretsXP + quartersXP + foodGenXP;
+        return totalXp;
+    }
 
     public void Save(BinarySaver writer)
     {
         //ship data
         writer.WriteFloat(spaceShipSpeed);
         writer.WriteFloat(totalDistanceTraveled);
+        writer.WriteInt(totalXp);
         //cockpit data
         writer.WriteBool(cockpitBoostOn);
         writer.WriteInt(cockPitXP);
@@ -195,6 +202,7 @@ public class GameManager : MonoBehaviour
         //ship data
         spaceShipSpeed = reader.ReadFloat();
         totalDistanceTraveled = reader.ReadFloat();
+        totalXp = reader.ReadInt();
         //cockpit data
         cockpitBoostOn = reader.ReadBool();
         cockPitXP = reader.ReadInt();

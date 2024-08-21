@@ -926,7 +926,6 @@ MonoBehaviour:
   _oxygenGardenState: {fileID: 648701419}
   shipSpeedText: {fileID: 894777843}
   traveledText: {fileID: 1606191988}
-  calcRunning: 0
   plantEffects: {fileID: 2084009409}
 --- !u!114 &109847829
 MonoBehaviour:
@@ -15471,6 +15470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spaceShipSpeed: 0
   totalDistanceTraveled: 0
+  totalXp: 0
   plantsInSpots: 
   turretsBoostOn: 0
   selectedFood: 0
@@ -21726,6 +21726,8 @@ MonoBehaviour:
   _oxygengardenState: {fileID: 648701419}
   _sleepingquartersState: {fileID: 2056481617}
   _turretsState: {fileID: 1105820789}
+  _gameStats: {fileID: 109847828}
+  totalXpText: {fileID: 1789424011}
 --- !u!4 &1507500965
 Transform:
   m_ObjectHideFlags: 0

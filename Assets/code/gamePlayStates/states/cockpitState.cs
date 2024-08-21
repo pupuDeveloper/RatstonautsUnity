@@ -48,15 +48,6 @@ public class cockpitState : State
     private void Start()
     {
         resetState();
-
-        // trying out  formulas
-        /*float xpNeededForResult = 0;
-        for (int L = 1; L < 100; L++)
-        {
-            xpNeededForResult += (L * 100f) * (float)Math.Pow(2, L/12); 
-            int resultXp = (int)Math.Floor(xpNeededForResult);
-            Debug.Log("xp needed for lvl " + L + " is " + resultXp);
-        }*/ //formula made, inspired by OSRS formula. I like its even numbers and skaling. lvl 88 its about 50% of xp needed for 99
     }
     public void toMiniGame()
     {

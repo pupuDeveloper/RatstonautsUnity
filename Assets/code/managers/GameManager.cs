@@ -10,11 +10,11 @@ public class GameManager : MonoBehaviour
     #region SavedData
     [SerializeField] private float spaceShipSpeed; // km/sec
     [SerializeField] private float totalDistanceTraveled;
-    [SerializeField] private int totalXp;
+    [SerializeField] public int totalXp;
 
     // cockpit data
     [SerializeField] public bool cockpitBoostOn {get; set;}
-    [SerializeField] public int cockPitXP {get; private set;} // correlates boost amount
+    [SerializeField] public int cockPitXP {get; set;} // correlates boost amount
     [SerializeField] public DateTime timeSinceCockPitCDStarted {get; set;} //since last minigame was played
     [SerializeField] public DateTime triggerCockPitMG {get; set;} // when to trigger next minigame
 

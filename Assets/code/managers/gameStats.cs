@@ -6,8 +6,8 @@ using System;
 
 public class gameStats : MonoBehaviour
 {
-    public float spaceShipSpeed { get; private set; } //spaceships speed km/per second
-    public float distanceTraveled { get; private set;} // total distance traveled
+    public int spaceShipSpeed { get; private set; } //spaceships speed km/per second
+    public int distanceTraveled { get; private set;} // total distance traveled
     [SerializeField] private shipManager _shipManager;
     [SerializeField] private cockpitMiniGame _cockpitMinigame;
     [SerializeField] private cockpitState _cockPitState;
@@ -16,25 +16,20 @@ public class gameStats : MonoBehaviour
     private int boostMultiplier;
     public TMP_Text shipSpeedText;
     public TMP_Text traveledText;
-    public bool calcRunning;
     public plantBoostSingleton plantEffects;
 
 
     private void Update()
     {
         updateSpeedUI();
-        if (!calcRunning)
-        {
-            StartCoroutine("distanceCalculator");
-        }
     }
     private void Start()
     {
-        calcRunning = false;
+        StartCoroutine("distanceCalculator");
         spaceShipSpeed = 0;
     }
 
-    private float getShipSpeed()
+    private int getShipSpeed()
     {
         spaceShipSpeed = 0;
         //TODO:get minigame levels to determine speed if none of them are on
@@ -49,16 +44,7 @@ public class gameStats : MonoBehaviour
                 //TODO: check all possible buffs to spaceShipSpeed speed, well rested bonus, plants, foods, etc
                 //TODO: after above todo, add all xp boosts, and with the outcoming number, do methods below.
                 
-
-                spaceShipSpeed += _cockpitMinigame.cockpitBoost();
-            }
-            if (_oxygenGardenState.plantsWatered)
-            {
-                plantEffects.getEffect();
-                if (plantEffects.boostShipSpeed)
-                {
-                    spaceShipSpeed *= plantEffects.plantEffectsOnShipSpeed();
-                }
+                spaceShipSpeed += getCockPitSpeedBoost();
             }
         }
 
@@ -67,19 +53,68 @@ public class gameStats : MonoBehaviour
         //TODO:save and load all these values from file
     }
 
+    //below functions calculate each rooms contribution (if any) to the spaceships speed.
+    //these are done separately for each room, because each room's XP has to be calculated separately.
+    //figure out a good way to work with speed, and XPmanager script, since not all rooms contribute directly
+    //to spaceship speed.
+
+
+    public int getCockPitSpeedBoost()
+    {
+        int addedSpeed = 0;
+        addedSpeed += _cockpitMinigame.cockpitBoost();
+        for (int i = 0; i < _oxygenGardenState.getPlantsInSpots().Count; i++)
+        {
+            switch (_oxygenGardenState.getPlantsInSpots()[i].plantId)
+            {
+                case 1:
+                addedSpeed = (int)(addedSpeed * 1.05);
+                break;
+                case 5:
+                addedSpeed = (int)(addedSpeed * 1.1);
+                break;
+                case 6:
+                addedSpeed = (int)(addedSpeed * 0.95);
+                break;
+                case 0:
+                break;
+                case 11:
+                addedSpeed = (int)(addedSpeed * 1.1);
+                break;
+                default:
+                Debug.LogError("ERROR!!! DIDNT FIND ANY PLANT IDS");
+                break;
+            }
+        }
+        return addedSpeed;
+    }
+    //TODO: make above-like functions for other rooms too
+
+
+
+
+
+    //
+
     public void updateSpeedUI()
     {
-        string shipSpeed = Math.Round(getShipSpeed(), 2, MidpointRounding.AwayFromZero).ToString("0.00");
-        shipSpeedText.SetText(shipSpeed + " km/s");
-        string distance = Math.Round(distanceTraveled, 2, MidpointRounding.AwayFromZero).ToString("0.00");
+        int shipSpeed = getShipSpeed();
+        string shipSpeedDisplay = shipSpeed.ToString();
+        shipSpeedDisplay = shipSpeedDisplay.Insert(shipSpeedDisplay.Length - 1, ".");
+
+        shipSpeedText.SetText(shipSpeedDisplay + " km/s");
+
+        string distance = distanceTraveled.ToString();
+        distance = distance.Insert(distance.Length - 1, ".");
+
         traveledText.SetText(distance + " km traveled");
     }
     private IEnumerator distanceCalculator()
     {
-        calcRunning = true;
-        float dividedSpeed = spaceShipSpeed / 10;
-        distanceTraveled += dividedSpeed;
-        yield return new WaitForSeconds(0.1f);
-        calcRunning = false;
+        while (true)
+        {
+            distanceTraveled += spaceShipSpeed;
+            yield return new WaitForSeconds(1f);
+        }
     }
 }

@@ -39,7 +39,7 @@ public class cockpitMiniGame : MonoBehaviour
         clickBlocker.SetActive(true);
 
 
-        level0boost = 10;
+        level0boost = 100; //xp is 10x in code
     }
 
     public void runMiniGame()
@@ -189,7 +189,7 @@ public class cockpitMiniGame : MonoBehaviour
         
         if (_xpManager.cockPitLvl != 0)
         {
-            boostMultiplier = _xpManager.checkLvls(GameManager.Instance.cockPitXP);
+            boostMultiplier = _xpManager.checkLvls(GameManager.Instance.cockPitXP); //REMEMBER!! XP STUFF IS 10X IN CODE
             boostAmount = level0boost * boostMultiplier;
         }
         else

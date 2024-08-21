@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class oxygengardenState : State
 {
@@ -69,5 +70,9 @@ public class oxygengardenState : State
         oxygenGardenBG2.SetActive(false);
         toGardenButton.gameObject.SetActive(true);
         stateIsReady = true;
+    }
+    public List<Plant> getPlantsInSpots()
+    {
+        return _gardenManager.plantsInSpots;
     }
 }

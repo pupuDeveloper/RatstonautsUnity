@@ -85,7 +85,7 @@ public class xpManager : MonoBehaviour
     }
     public bool updateLevel(int currentXp, int roomLvl)
     {
-        if (currentXp > xpForLevels[roomLvl])
+        if (currentXp > xpForLevels[roomLvl + 1])
         {
             Debug.Log("LEVELD UP!");
             return true;
@@ -134,6 +134,7 @@ public class xpManager : MonoBehaviour
     private IEnumerator trackCockPitXP()
     {
         cockPitCoroutine = false;
+        yield return new WaitForSeconds(3);
         int xpToAdd;
         xpToAdd = _gameStats.getCockPitSpeedBoost();
         GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
@@ -142,7 +143,6 @@ public class xpManager : MonoBehaviour
             cockPitLvl++;
         }
         updateTotalXp(xpToAdd);
-        yield return new WaitForSeconds(3);
         cockPitCoroutine = true;
     }
     public void cockpitMGXPReward()

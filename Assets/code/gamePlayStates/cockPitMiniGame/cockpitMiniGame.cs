@@ -124,7 +124,7 @@ public class cockpitMiniGame : MonoBehaviour
         coroutineOn = true;
         for (int i = 0; i < 6; i++)
         {
-            int nextButton = UnityEngine.Random.Range(0, 5);
+            int nextButton = UnityEngine.Random.Range(0, 6);
             yield return new WaitForSeconds(1f);
             switch (nextButton)
             {

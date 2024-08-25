@@ -71,13 +71,9 @@ public class xpManager : MonoBehaviour
     {
         for (int i = 0; i < xpForLevels.Length; i++)
         {
-            if (currentXp >= xpForLevels[i])
+            if (currentXp < xpForLevels[i])
             {
-                if (i > 0)
-                {
-                    return i - 1;
-                }
-                return i;
+                return i - 1;
             }
         }
         Debug.LogError("xp value is not valid!");

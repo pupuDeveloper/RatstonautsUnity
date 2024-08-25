@@ -181,23 +181,29 @@ public class cockpitMiniGame : MonoBehaviour
     }
     public int cockpitBoost()
     {
+        calculateBoost();
         return boostAmount;
     }
     private void setWinData()
     {
-        
-        if (_xpManager.cockPitLvl != 0)
-        {
-            boostMultiplier = _xpManager.checkLvls(GameManager.Instance.cockPitXP); //REMEMBER!! XP STUFF IS 10X IN CODE
-            boostAmount = level0boost * boostMultiplier;
-        }
-        else
-        {
-            boostAmount = level0boost;
-        }
+        calculateBoost();
         _xpManager.cockpitMGXPReward();
         GameManager.Instance.timeSinceCockPitCDStarted = DateTime.Now;
         GameManager.Instance.triggerCockPitMG = DateTime.Now.AddSeconds(UnityEngine.Random.Range(minSeconds, maxSeconds));
         GameManager.Instance.cockpitBoostOn = true;
+    }
+    private void calculateBoost()
+    {
+        if (_xpManager.cockPitLvl == 0)
+        {
+            boostAmount = level0boost;
+        }
+        else
+        {
+            boostMultiplier = _xpManager.checkLvls(GameManager.Instance.cockPitXP); //REMEMBER!! XP STUFF IS 10X IN CODE
+            Debug.Log("cockpit xp is: " + GameManager.Instance.cockPitXP);
+            Debug.Log("Boostmultiplier is: " + boostMultiplier);
+            boostAmount = level0boost * boostMultiplier;
+        }
     }
 }

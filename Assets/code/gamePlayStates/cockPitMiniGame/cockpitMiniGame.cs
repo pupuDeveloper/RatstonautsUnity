@@ -185,7 +185,6 @@ public class cockpitMiniGame : MonoBehaviour
     }
     private void setWinData()
     {
-        GameManager.Instance.cockpitBoostOn = true;
         
         if (_xpManager.cockPitLvl != 0)
         {
@@ -196,7 +195,9 @@ public class cockpitMiniGame : MonoBehaviour
         {
             boostAmount = level0boost;
         }
+        _xpManager.cockpitMGXPReward();
         GameManager.Instance.timeSinceCockPitCDStarted = DateTime.Now;
         GameManager.Instance.triggerCockPitMG = DateTime.Now.AddSeconds(UnityEngine.Random.Range(minSeconds, maxSeconds));
+        GameManager.Instance.cockpitBoostOn = true;
     }
 }

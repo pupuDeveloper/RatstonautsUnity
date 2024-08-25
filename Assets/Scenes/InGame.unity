@@ -29114,6 +29114,7 @@ GameObject:
   - component: {fileID: 2014436956}
   - component: {fileID: 2014436955}
   - component: {fileID: 2014436957}
+  - component: {fileID: 2014436958}
   m_Layer: 5
   m_Name: topBar
   m_TagString: Untagged
@@ -29197,6 +29198,29 @@ MonoBehaviour:
   menuButton: {fileID: 1796495522}
   roomBoardButton: {fileID: 1334343170}
   roomBoard: {fileID: 2147382882}
+--- !u!114 &2014436958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014436953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43afde9478387e04799107ec9c6e49d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillLvlText1: {fileID: 1592500904}
+  skillLvlText2: {fileID: 2116262061}
+  skillLvlText3: {fileID: 1444291217}
+  skillLvlText4: {fileID: 118381709}
+  skillLvlText5: {fileID: 1962841278}
+  skillXPText1: {fileID: 2121836713}
+  skillXPText2: {fileID: 1534442397}
+  skillXPText3: {fileID: 1368990465}
+  skillXPText4: {fileID: 1316184979}
+  skillXPText5: {fileID: 847480099}
+  _xpManager: {fileID: 1507500964}
 --- !u!1 &2016571580
 GameObject:
   m_ObjectHideFlags: 0

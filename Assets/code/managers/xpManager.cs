@@ -61,7 +61,8 @@ public class xpManager : MonoBehaviour
         {
             StartCoroutine("trackCockPitXP");
         }
-        else
+        
+        if (GameManager.Instance.cockpitBoostOn == false)
         {
             StopCoroutine("trackCockPitXP");
         }
@@ -72,16 +73,21 @@ public class xpManager : MonoBehaviour
         {
             if (currentXp >= xpForLevels[i])
             {
+                if (i > 0)
+                {
+                    return i - 1;
+                }
                 return i;
             }
         }
         Debug.LogError("xp value is not valid!");
         return -1;
     }
-    public bool updateLevel(int currentXp, int addedXp, int roomLvl)
+    public bool updateLevel(int currentXp, int roomLvl)
     {
-        if (currentXp + addedXp > xpForLevels[roomLvl])
+        if (currentXp > xpForLevels[roomLvl])
         {
+            Debug.Log("LEVELD UP!");
             return true;
         }
         return false;
@@ -129,14 +135,33 @@ public class xpManager : MonoBehaviour
     {
         cockPitCoroutine = false;
         int xpToAdd;
-        xpToAdd = _gameStats.getCockPitSpeedBoost() / 3;
-        if (updateLevel(GameManager.Instance.cockPitXP, xpToAdd, cockPitLvl))
+        xpToAdd = _gameStats.getCockPitSpeedBoost();
+        GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
+        if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
         {
             cockPitLvl++;
         }
-        GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
         updateTotalXp(xpToAdd);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         cockPitCoroutine = true;
+    }
+    public void cockpitMGXPReward()
+    {
+        int xpToAdd = _gameStats.getCockPitSpeedBoost();
+        if (cockPitLvl != 0)
+        {
+            xpToAdd = xpToAdd * cockPitLvl * 10;
+        }
+        else
+        {
+            xpToAdd = xpToAdd * 10;
+        }
+
+        GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
+        if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
+        {
+            cockPitLvl++;
+        }
+        updateTotalXp(xpToAdd);
     }
 }

@@ -41,7 +41,6 @@ public class cockpitState : State
         }
         else if (GameManager.Instance.cockpitBoostOn)
         {
-            Debug.Log("not running minigame1");
             //if boost is on and minigame not available
         }
     }

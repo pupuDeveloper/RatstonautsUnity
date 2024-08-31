@@ -21728,6 +21728,7 @@ MonoBehaviour:
   _turretsState: {fileID: 1105820789}
   _gameStats: {fileID: 109847828}
   totalXpText: {fileID: 1789424011}
+  xpPopUpPrefab: {fileID: 5828576990163145645, guid: 07aa3ddffdd824343862b9b92cbb7308, type: 3}
 --- !u!4 &1507500965
 Transform:
   m_ObjectHideFlags: 0

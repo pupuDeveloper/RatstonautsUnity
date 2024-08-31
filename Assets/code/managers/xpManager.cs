@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
-using System;
 using TMPro;
+using UnityEngine.UI;
 
 public class xpManager : MonoBehaviour
 {
@@ -20,9 +20,8 @@ public class xpManager : MonoBehaviour
     [SerializeField] private sleepingquartersState _sleepingquartersState;
     [SerializeField] private turretsState _turretsState;
     [SerializeField] private gameStats _gameStats;
-
-
     [SerializeField] private TMP_Text totalXpText;
+    [SerializeField] private GameObject xpPopUpPrefab;
     private int[] xpForLevels = new int[100];
     public int cockPitLvl { get; private set; }
     public int foodGenLvl { get; private set; }
@@ -134,6 +133,7 @@ public class xpManager : MonoBehaviour
         int xpToAdd;
         xpToAdd = _gameStats.getCockPitSpeedBoost();
         GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
+        showXpInUI(0,xpToAdd);
         if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
         {
             cockPitLvl++;
@@ -152,12 +152,38 @@ public class xpManager : MonoBehaviour
         {
             xpToAdd = xpToAdd * 10;
         }
-
         GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
+        showXpInUI(0, xpToAdd);
         if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
         {
             cockPitLvl++;
         }
         updateTotalXp(xpToAdd);
+    }
+
+    private void showXpInUI(int roomId, int xpAmount)
+    {
+        Sprite displaySprite = null;
+        switch (roomId)
+        {
+            case 0:
+            displaySprite =  Resources.Load<Sprite>("roomButtonImages/Radar1");
+            break;
+            case 1:
+            displaySprite =  Resources.Load<Sprite>("roomButtonImages/Branch1");
+            break;
+            case 2:
+            displaySprite =  Resources.Load<Sprite>("roomButtonImages/Meteorite5");
+            break;
+            case 3:
+            displaySprite =  Resources.Load<Sprite>("roomButtonImages/CockHat2");
+            break;
+            case 4:
+            displaySprite =  Resources.Load<Sprite>("roomButtonImages/Sofa2");
+            break;
+        }
+        xpPopUpPrefab.GetComponent<SpriteRenderer>().sprite = displaySprite;
+        xpPopUpPrefab.GetComponentInChildren<TMP_Text>().SetText(convertToUIText(xpAmount));
+        Instantiate(xpPopUpPrefab, new UnityEngine.Vector3(-5, 5.75f, 10), transform.rotation);
     }
 }

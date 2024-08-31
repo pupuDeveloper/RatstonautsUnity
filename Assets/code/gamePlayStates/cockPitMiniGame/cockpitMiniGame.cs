@@ -7,6 +7,20 @@ using System;
 
 public class cockpitMiniGame : MonoBehaviour
 {
+    #region sprites
+    private Sprite btn1sprite1;
+    private Sprite btn1sprite2;
+    private Sprite btn2sprite1;
+    private Sprite btn2sprite2;
+    private Sprite btn3sprite1;
+    private Sprite btn3sprite2;
+    private Sprite btn4sprite1;
+    private Sprite btn4sprite2;
+    private Sprite btn5sprite1;
+    private Sprite btn5sprite2;
+    private Sprite btn6sprite1;
+    private Sprite btn6sprite2;
+    #endregion
     private int minigameCD; //in seconds
     private int level0boost;
     private int boostMultiplier;
@@ -37,9 +51,20 @@ public class cockpitMiniGame : MonoBehaviour
         playerTurn = false;
         coroutineOn = false;
         clickBlocker.SetActive(true);
-
-
         level0boost = 100; //xp is 10x in code
+        btn1sprite1 = Resources.Load<Sprite>("cockpitButtons/GameButton1");
+        btn1sprite2 = Resources.Load<Sprite>("cockpitButtons/GameButton2");
+        btn2sprite1 = Resources.Load<Sprite>("cockpitButtons/GameButton3");
+        btn2sprite2 = Resources.Load<Sprite>("cockpitButtons/GameButton4");
+        btn3sprite1 = Resources.Load<Sprite>("cockpitButtons/GameButton5");
+        btn3sprite2 = Resources.Load<Sprite>("cockpitButtons/GameButton6");
+        btn4sprite1 = Resources.Load<Sprite>("cockpitButtons/GameButton7");
+        btn4sprite2 = Resources.Load<Sprite>("cockpitButtons/GameButton8");
+        btn5sprite1 = Resources.Load<Sprite>("cockpitButtons/GameButton9");
+        btn5sprite2 = Resources.Load<Sprite>("cockpitButtons/GameButton10");
+        btn6sprite1 = Resources.Load<Sprite>("cockpitButtons/GameButton15");
+        btn6sprite2 = Resources.Load<Sprite>("cockpitButtons/GameButton16");
+
     }
 
     public void runMiniGame()
@@ -89,32 +114,32 @@ public class cockpitMiniGame : MonoBehaviour
             switch (EventSystem.current.currentSelectedGameObject.name)
             {
                 case "button1":
-                AudioManager.instance.Play("minigameB1");
-                playerAttempt += "1";
-                break;
+                    AudioManager.instance.Play("minigameB1");
+                    playerAttempt += "1";
+                    break;
                 case "button2":
-                AudioManager.instance.Play("minigameB2");
-                playerAttempt += "2";
-                break;
+                    AudioManager.instance.Play("minigameB2");
+                    playerAttempt += "2";
+                    break;
                 case "button3":
-                AudioManager.instance.Play("minigameB3");
-                playerAttempt += "3";
-                break;
+                    AudioManager.instance.Play("minigameB3");
+                    playerAttempt += "3";
+                    break;
                 case "button4":
-                AudioManager.instance.Play("minigameB4");
-                playerAttempt += "4";
-                break;
+                    AudioManager.instance.Play("minigameB4");
+                    playerAttempt += "4";
+                    break;
                 case "button5":
-                AudioManager.instance.Play("minigameB5");
-                playerAttempt += "5";
-                break;
+                    AudioManager.instance.Play("minigameB5");
+                    playerAttempt += "5";
+                    break;
                 case "button6":
-                AudioManager.instance.Play("minigameB6");
-                playerAttempt += "6";
-                break;
+                    AudioManager.instance.Play("minigameB6");
+                    playerAttempt += "6";
+                    break;
                 default:
-                Debug.LogError("NAME OF SELECTED OBJECT WAS NOT ONE OF THE BUTTONS! BREAKS MINIGAME");
-                break;
+                    Debug.LogError("NAME OF SELECTED OBJECT WAS NOT ONE OF THE BUTTONS! BREAKS MINIGAME");
+                    break;
             }
         }
     }
@@ -126,46 +151,65 @@ public class cockpitMiniGame : MonoBehaviour
         {
             int nextButton = UnityEngine.Random.Range(0, 6);
             yield return new WaitForSeconds(1f);
+            button1.image.sprite = btn1sprite1;
+            button2.image.sprite = btn2sprite1;
+            button3.image.sprite = btn3sprite1;
+            button4.image.sprite = btn4sprite1;
+            button5.image.sprite = btn5sprite1;
+            button6.image.sprite = btn6sprite1;
             switch (nextButton)
             {
                 case 0:
-                button1.onClick.Invoke();
-                AudioManager.instance.Play("minigameB1");
-                correctOrder += "1";
-                Debug.Log("1 pressed");
-                break;
+                    button1.onClick.Invoke();
+                    AudioManager.instance.Play("minigameB1");
+                    button1.image.sprite = btn1sprite2;
+                    correctOrder += "1";
+                    Debug.Log("1 pressed");
+                    break;
                 case 1:
-                button2.onClick.Invoke();
-                AudioManager.instance.Play("minigameB2");
-                correctOrder += "2";
-                Debug.Log("2 pressed");
-                break;
+                    button2.onClick.Invoke();
+                    AudioManager.instance.Play("minigameB2");
+                    button2.image.sprite = btn2sprite2;
+                    correctOrder += "2";
+                    Debug.Log("2 pressed");
+                    break;
                 case 2:
-                button3.onClick.Invoke();
-                AudioManager.instance.Play("minigameB3");
-                correctOrder += "3";
-                Debug.Log("3 pressed");
-                break;
+                    button3.onClick.Invoke();
+                    AudioManager.instance.Play("minigameB3");
+                    button3.image.sprite = btn3sprite2;
+                    correctOrder += "3";
+                    Debug.Log("3 pressed");
+                    break;
                 case 3:
-                button4.onClick.Invoke();
-                AudioManager.instance.Play("minigameB4");
-                correctOrder += "4";
-                Debug.Log("4 pressed");
-                break;
+                    button4.onClick.Invoke();
+                    AudioManager.instance.Play("minigameB4");
+                    button4.image.sprite = btn4sprite2;
+                    correctOrder += "4";
+                    Debug.Log("4 pressed");
+                    break;
                 case 4:
-                button5.onClick.Invoke();
-                AudioManager.instance.Play("minigameB5");
-                correctOrder += "5";
-                Debug.Log("5 pressed");
-                break;
+                    button5.onClick.Invoke();
+                    AudioManager.instance.Play("minigameB5");
+                    button5.image.sprite = btn5sprite2;
+                    correctOrder += "5";
+                    Debug.Log("5 pressed");
+                    break;
                 case 5:
-                button6.onClick.Invoke();
-                AudioManager.instance.Play("minigameB6");
-                correctOrder += "6";
-                Debug.Log("6 pressed");
-                break;
+                    button6.onClick.Invoke();
+                    AudioManager.instance.Play("minigameB6");
+                    button6.image.sprite = btn6sprite2;
+                    correctOrder += "6";
+                    Debug.Log("6 pressed");
+                    break;
             }
         }
+        yield return new WaitForSeconds(1);
+        button1.image.sprite = btn1sprite1;
+        button2.image.sprite = btn2sprite1;
+        button3.image.sprite = btn3sprite1;
+        button4.image.sprite = btn4sprite1;
+        button5.image.sprite = btn5sprite1;
+        button6.image.sprite = btn6sprite1;
         Debug.Log(correctOrder);
         playerTurn = true;
         coroutineOn = false;

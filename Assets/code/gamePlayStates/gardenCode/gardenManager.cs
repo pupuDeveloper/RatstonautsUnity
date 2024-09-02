@@ -18,13 +18,13 @@ public class gardenManager : MonoBehaviour
     public GameObject scrollableList;
     public GameObject closePlantListButton;
     [SerializeField] private GameObject[] removeButtons;
-
+    private static bool arePlantsWatered;
 
     private void Start()
     {
         unlockedPlants = new List<Plant>();
         //TODO: read these plants from file, for now creating them in start
-        Plant BonsaiTree = new Plant("Bonsai tree", 11,"Boost all minigame effectiveness by x%", false, false);
+        Plant BonsaiTree = new Plant("Bonsai tree", 11, "Boost all minigame effectiveness by x%", false, false);
         if (!allPlants.Contains(BonsaiTree)) allPlants.Add(BonsaiTree);
 
         Plant Dandelion = new Plant("Dandelion", 1, "Boost autopilot effectiveness by 5%", true, false);
@@ -64,7 +64,7 @@ public class gardenManager : MonoBehaviour
         //
 
         //blank plant
-        blank = new Plant("Blank", 0,"Blank plant", false, false);
+        blank = new Plant("Blank", 0, "Blank plant", false, false);
 
         //current plants in spots TODO: read this from file later
         plantsInSpots.AddRange(Enumerable.Repeat(blank, 3));
@@ -95,18 +95,21 @@ public class gardenManager : MonoBehaviour
         switch (unlockedSlots)
         {
             case 1:
-            plantSpots[0].GetChild(2).gameObject.SetActive(false);
-            break;
+                plantSpots[0].GetChild(2).gameObject.SetActive(false);
+                break;
             case 2:
-            plantSpots[0].GetChild(2).gameObject.SetActive(false);
-            plantSpots[1].GetChild(2).gameObject.SetActive(false);
-            break;
+                plantSpots[0].GetChild(2).gameObject.SetActive(false);
+                plantSpots[1].GetChild(2).gameObject.SetActive(false);
+                break;
             case 3:
-            plantSpots[0].GetChild(2).gameObject.SetActive(false);
-            plantSpots[1].GetChild(2).gameObject.SetActive(false);
-            plantSpots[2].GetChild(2).gameObject.SetActive(false);
-            break;
+                plantSpots[0].GetChild(2).gameObject.SetActive(false);
+                plantSpots[1].GetChild(2).gameObject.SetActive(false);
+                plantSpots[2].GetChild(2).gameObject.SetActive(false);
+                break;
         }
+
+        //TODO:Change below to be read from file
+        arePlantsWatered = GameManager.Instance.gardenBoostOn;
     }
     public void addPlant(Plant plant)
     {
@@ -150,27 +153,27 @@ public class gardenManager : MonoBehaviour
     public void removeButton()
     {
         Plant plantToBeRemoved = blank;
-        switch(EventSystem.current.currentSelectedGameObject.transform.parent.name)
+        switch (EventSystem.current.currentSelectedGameObject.transform.parent.name)
         {
             case "spot1":
-            plantToBeRemoved = plantsInSpots[0];
-            break;
+                plantToBeRemoved = plantsInSpots[0];
+                break;
             case "spot2":
-            plantToBeRemoved = plantsInSpots[1];
-            break;
+                plantToBeRemoved = plantsInSpots[1];
+                break;
             case "spot3":
-            plantToBeRemoved = plantsInSpots[2];
-            break;
+                plantToBeRemoved = plantsInSpots[2];
+                break;
             default:
-            Debug.LogWarning("plant was not found. THIS IS AN ERROR");
-            break;
+                Debug.LogWarning("plant was not found. THIS IS AN ERROR");
+                break;
         }
         removePlant(plantToBeRemoved);
     }
     public void addButton()
     {
         Plant plantToBeAdded = blank;
-        
+
         foreach (Plant p in allPlants)
         {
             string plantName = p.name.ToLower();

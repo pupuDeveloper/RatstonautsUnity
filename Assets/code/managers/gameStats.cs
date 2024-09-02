@@ -13,6 +13,8 @@ public class gameStats : MonoBehaviour
     [SerializeField] private cockpitState _cockPitState;
     [SerializeField] private oxygengardenState _oxygenGardenState;
     [SerializeField] private foodgeneratorState _foodgeneratorState;
+    //
+    [SerializeField] private wateringEvent _wateringEvent;
     private bool speedBoost; //when all available minigames are done add boostMultiplier to shipspeed
     private int boostMultiplier;
     public TMP_Text shipSpeedText;
@@ -44,8 +46,11 @@ public class gameStats : MonoBehaviour
             {
                 //TODO: check all possible buffs to spaceShipSpeed speed, well rested bonus, plants, foods, etc
                 //TODO: after above todo, add all xp boosts, and with the outcoming number, do methods below.
-                
                 spaceShipSpeed += getCockPitSpeedBoost();
+            }
+            if (GameManager.Instance.gardenBoostOn)
+            {
+                spaceShipSpeed += _wateringEvent.getBoostAmount();
             }
         }
 

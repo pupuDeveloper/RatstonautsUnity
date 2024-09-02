@@ -11,7 +11,7 @@ public class xpManager : MonoBehaviour
     //use gamemanager's getTimeSinceLastSave to calculate xp gained while not in game,
     //based on TimeDate differences
 
-    //TODO: HUGE TODO!!! CHANGE ALL FLOATING POINT VALUES TO INTEGERS
+
     // IN CODE, ALL INTEGERS ARE 10 TIMES LARGER THAN USUAL, SO IN CODE 105 + 38 = 143 MEANS IN GAME, AND IN UI 10.5 + 3.8 = 14.3
 
     [SerializeField] private cockpitState _cockpitState;
@@ -188,6 +188,10 @@ public class xpManager : MonoBehaviour
         }
         updateTotalXp(xpToAdd);
         cockPitCoroutine = true;
+    }
+    public void wateringXPReward()
+    {
+        int xpToAdd = ();
     }
     public void cockpitMGXPReward()
     {

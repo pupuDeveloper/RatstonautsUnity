@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     // oxygen garden data
 
+    [SerializeField] public bool gardenBoostOn {get; set;}
     [SerializeField] public int gardenXP {get; private set;} //this correlates to unlocked plants
     [SerializeField] private int[] plantsInSpots; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
     [SerializeField] public DateTime timeSinceGardenCDStarted {get; set;}
@@ -180,6 +181,7 @@ public class GameManager : MonoBehaviour
         writer.WriteTime(timeSinceCockPitCDStarted);
         writer.WriteTime(triggerCockPitMG);
         //oxygen garden data
+        writer.WriteBool(gardenBoostOn);
         writer.WriteInt(gardenXP);
         foreach (int id in plantsInSpots)
         {
@@ -213,6 +215,7 @@ public class GameManager : MonoBehaviour
         timeSinceCockPitCDStarted = reader.ReadTime();
         triggerCockPitMG = reader.ReadTime();
         //oxygen garden data
+        gardenBoostOn = reader.ReadBool();
         gardenXP = reader.ReadInt();
         for (int i = 0; i < plantsInSpots.Length; i++) 
         {

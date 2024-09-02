@@ -14,8 +14,7 @@ public class oxygengardenState : State
     [SerializeField] private GameObject oxygenGardenBG2;
     private bool isMinigameUnlocked;
     [SerializeField] private gardenManager _gardenManager;
-    public bool plantsWatered;
-
+    [SerializeField] private wateringEvent _wateringEvent;
 
 
     public override State RunCurrentState()
@@ -35,16 +34,14 @@ public class oxygengardenState : State
 
         return this;
     }
-
-    private void CustomUpdate()
-    {
-
-    }
-
     private void Start()
     {
         resetState();
-        plantsWatered = true;
+    }
+
+    void CustomUpdate()
+    {
+        checkSpotsForDryPlants();
     }
 
     public void toGarden()
@@ -74,5 +71,19 @@ public class oxygengardenState : State
     public List<Plant> getPlantsInSpots()
     {
         return _gardenManager.plantsInSpots;
+    }
+    public void checkSpotsForDryPlants()
+    {
+        if (GameManager.Instance.gardenBoostOn)
+        {
+            return;
+        }
+        foreach (Plant plant in getPlantsInSpots())
+        {
+            if (plant != blank)
+            {
+                _wateringEvent.gardenEvent();
+            }
+        }
     }
 }

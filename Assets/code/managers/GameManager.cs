@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public int gardenXP {get; private set;} //this correlates to unlocked plants
     [SerializeField] private int[] plantsInSpots; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
+    [SerializeField] public DateTime timeSinceGardenCDStarted {get; set;}
+    [SerializeField] public DateTime triggerGardenWatering {get; set;}
 
     //turrets data
 
@@ -183,6 +185,8 @@ public class GameManager : MonoBehaviour
         {
             writer.WriteInt(id);
         }
+        writer.WriteTime(timeSinceGardenCDStarted);
+        writer.WriteTime(triggerGardenWatering);
         //turrets data
         writer.WriteBool(turretsBoostOn);
         writer.WriteInt(turretsXP);
@@ -214,6 +218,8 @@ public class GameManager : MonoBehaviour
         {
             plantsInSpots[i] = reader.ReadInt();
         }
+        timeSinceGardenCDStarted = reader.ReadTime();
+        triggerGardenWatering = reader.ReadTime();
         //turrets data
         turretsBoostOn = reader.ReadBool();
         turretsXP = reader.ReadInt();

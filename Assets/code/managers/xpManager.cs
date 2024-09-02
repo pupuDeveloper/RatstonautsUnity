@@ -96,6 +96,7 @@ public class xpManager : MonoBehaviour
     private string convertToUIText(int xp, bool total, bool decPoint)
     {
         string stringToDisplay = "";
+
         if (total)
         {
             xp = xp / 10;
@@ -119,8 +120,10 @@ public class xpManager : MonoBehaviour
             }
             return stringToDisplay;
         }
+
         else
         {
+
             if (decPoint)
             {
                 stringToDisplay = xp.ToString();
@@ -140,6 +143,7 @@ public class xpManager : MonoBehaviour
                 }
                 return stringToDisplay;
             }
+
             else
             {
                 xp = xp / 10;
@@ -227,6 +231,7 @@ public class xpManager : MonoBehaviour
                 break;
         }
         xpPopUpPrefab.GetComponent<SpriteRenderer>().sprite = displaySprite;
+        Debug.Log("xp awarded: " + xpAmount);
         if (xpAmount % 10 != 0)
         {
             xpPopUpPrefab.GetComponentInChildren<TMP_Text>().SetText(convertToUIText(xpAmount, false, true));

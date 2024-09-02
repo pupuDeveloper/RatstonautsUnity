@@ -8,7 +8,7 @@ using TMPro;
 public class foodGen : MonoBehaviour
 {
     [SerializeField] private Transform selectedFoodDisplay;
-    [SerializeField] private food foodInSpot;
+    public food foodInSpot;
     private food blank;
     public List<food> allFoods = new List<food>();
     public List<food> unlockedFoods { get; private set; }

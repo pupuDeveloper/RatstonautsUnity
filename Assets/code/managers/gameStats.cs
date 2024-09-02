@@ -12,6 +12,7 @@ public class gameStats : MonoBehaviour
     [SerializeField] private cockpitMiniGame _cockpitMinigame;
     [SerializeField] private cockpitState _cockPitState;
     [SerializeField] private oxygengardenState _oxygenGardenState;
+    [SerializeField] private foodgeneratorState _foodgeneratorState;
     private bool speedBoost; //when all available minigames are done add boostMultiplier to shipspeed
     private int boostMultiplier;
     public TMP_Text shipSpeedText;
@@ -85,6 +86,17 @@ public class gameStats : MonoBehaviour
                 Debug.LogError("ERROR!!! DIDNT FIND ANY PLANT IDS");
                 break;
             }
+        }
+        switch (_foodgeneratorState.getFoodInSpot().foodId)
+        {
+            case 1:
+            addedSpeed = (int)(addedSpeed * 1.01);
+            break;
+            case 0:
+            break;
+            default:
+            Debug.LogError("ERROR!!! DIDNT FIND ANY FOOD ID'S");
+            break;
         }
         return addedSpeed;
     }

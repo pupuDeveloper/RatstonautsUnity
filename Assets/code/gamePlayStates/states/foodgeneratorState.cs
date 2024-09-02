@@ -67,4 +67,8 @@ public class foodgeneratorState : State
         toMiniGameButton.gameObject.SetActive(true);
         stateIsReady = true;
     }
+    public food getFoodInSpot()
+    {
+        return _foodGenScript.foodInSpot;
+    }
 }

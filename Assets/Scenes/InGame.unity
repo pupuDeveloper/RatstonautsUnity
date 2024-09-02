@@ -924,6 +924,7 @@ MonoBehaviour:
   _cockpitMinigame: {fileID: 1191357283}
   _cockPitState: {fileID: 1191357282}
   _oxygenGardenState: {fileID: 648701419}
+  _foodgeneratorState: {fileID: 1479490846}
   shipSpeedText: {fileID: 894777843}
   traveledText: {fileID: 1606191988}
   plantEffects: {fileID: 2084009409}

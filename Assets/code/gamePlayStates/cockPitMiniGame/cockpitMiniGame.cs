@@ -80,7 +80,6 @@ public class cockpitMiniGame : MonoBehaviour
         if (playerTurn)
         {
             clickBlocker.SetActive(false);
-            Debug.Log("your turn!");
             if (playerAttempt != "")
             {
                 int i = 0;
@@ -245,8 +244,6 @@ public class cockpitMiniGame : MonoBehaviour
         else
         {
             boostMultiplier = _xpManager.checkLvls(GameManager.Instance.cockPitXP); //REMEMBER!! XP STUFF IS 10X IN CODE
-            Debug.Log("cockpit xp is: " + GameManager.Instance.cockPitXP);
-            Debug.Log("Boostmultiplier is: " + boostMultiplier);
             boostAmount = level0boost * boostMultiplier;
         }
     }

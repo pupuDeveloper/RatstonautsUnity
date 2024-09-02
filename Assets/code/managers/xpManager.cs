@@ -60,7 +60,7 @@ public class xpManager : MonoBehaviour
         {
             StartCoroutine("trackCockPitXP");
         }
-        
+
         if (GameManager.Instance.cockpitBoostOn == false)
         {
             StopCoroutine("trackCockPitXP");
@@ -93,36 +93,80 @@ public class xpManager : MonoBehaviour
         return result;
     }
 
-    private string convertToUIText(int xp)
+    private string convertToUIText(int xp, bool total, bool decPoint)
     {
-        xp = xp / 10;
-        string stringToDisplay = xp.ToString();
-        int stringLenght = stringToDisplay.Length;
-
-        if (stringLenght > 3)
+        string stringToDisplay = "";
+        if (total)
         {
-            stringToDisplay = stringToDisplay.Insert(3, ",");
-        }
+            xp = xp / 10;
+            stringToDisplay = xp.ToString();
+            int stringLenght = stringToDisplay.Length;
 
-        if (stringLenght > 6)
+            if (stringLenght > 3)
+            {
+                stringToDisplay = stringToDisplay.Insert(3, ",");
+            }
+
+            if (stringLenght > 6)
+            {
+                stringToDisplay = stringToDisplay.Insert(3, ",");
+                stringToDisplay = stringToDisplay.Insert(6, ",");
+            }
+
+            if (xp >= 200000000)
+            {
+                stringToDisplay = "200,000,000";
+            }
+            return stringToDisplay;
+        }
+        else
         {
-            stringToDisplay = stringToDisplay.Insert(3, ",");
-            stringToDisplay = stringToDisplay.Insert(6, ",");
-        }
+            if (decPoint)
+            {
+                stringToDisplay = xp.ToString();
+                int stringPos = stringToDisplay.Length - 1;
+                stringToDisplay = stringToDisplay.Insert(stringPos, ".");
 
-        if (xp >= 200000000)
-        {
-            stringToDisplay = "200,000,000";
-        }
+                int stringLenght = stringToDisplay.Length;
+                if (stringLenght > 4)
+                {
+                    stringToDisplay = stringToDisplay.Insert(3, ",");
+                }
 
-        return stringToDisplay;
+                if (stringLenght > 7)
+                {
+                    stringToDisplay = stringToDisplay.Insert(3, ",");
+                    stringToDisplay = stringToDisplay.Insert(6, ",");
+                }
+                return stringToDisplay;
+            }
+            else
+            {
+                xp = xp / 10;
+                stringToDisplay = xp.ToString();
+                int stringLenght = stringToDisplay.Length;
+                if (stringLenght > 3)
+                {
+                    stringToDisplay = stringToDisplay.Insert(3, ",");
+                }
+
+                if (stringLenght > 6)
+                {
+                    stringToDisplay = stringToDisplay.Insert(3, ",");
+                    stringToDisplay = stringToDisplay.Insert(6, ",");
+                }
+                return stringToDisplay;
+            }
+        }
+        Debug.LogError("shouldnt return this ever its an error");
+        return null;
     }
     public void updateTotalXp(int addedXp)
     {
         //first do it to file
         GameManager.Instance.totalXp = addXp(GameManager.Instance.getTotalXP(), addedXp);
         //then do it in UI
-        string myXp = convertToUIText(GameManager.Instance.getTotalXP());
+        string myXp = convertToUIText(GameManager.Instance.getTotalXP(), true, false);
         totalXpText.SetText("TOTAL XP<br>" + myXp);
     }
 
@@ -133,7 +177,7 @@ public class xpManager : MonoBehaviour
         int xpToAdd;
         xpToAdd = _gameStats.getCockPitSpeedBoost();
         GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
-        showXpInUI(0,xpToAdd);
+        showXpInUI(0, xpToAdd);
         if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
         {
             cockPitLvl++;
@@ -167,23 +211,30 @@ public class xpManager : MonoBehaviour
         switch (roomId)
         {
             case 0:
-            displaySprite =  Resources.Load<Sprite>("roomButtonImages/Radar1");
-            break;
+                displaySprite = Resources.Load<Sprite>("roomButtonImages/Radar1");
+                break;
             case 1:
-            displaySprite =  Resources.Load<Sprite>("roomButtonImages/Branch1");
-            break;
+                displaySprite = Resources.Load<Sprite>("roomButtonImages/Branch1");
+                break;
             case 2:
-            displaySprite =  Resources.Load<Sprite>("roomButtonImages/Meteorite5");
-            break;
+                displaySprite = Resources.Load<Sprite>("roomButtonImages/Meteorite5");
+                break;
             case 3:
-            displaySprite =  Resources.Load<Sprite>("roomButtonImages/CockHat2");
-            break;
+                displaySprite = Resources.Load<Sprite>("roomButtonImages/CockHat2");
+                break;
             case 4:
-            displaySprite =  Resources.Load<Sprite>("roomButtonImages/Sofa2");
-            break;
+                displaySprite = Resources.Load<Sprite>("roomButtonImages/Sofa2");
+                break;
         }
         xpPopUpPrefab.GetComponent<SpriteRenderer>().sprite = displaySprite;
-        xpPopUpPrefab.GetComponentInChildren<TMP_Text>().SetText(convertToUIText(xpAmount));
+        if (xpAmount % 10 != 0)
+        {
+            xpPopUpPrefab.GetComponentInChildren<TMP_Text>().SetText(convertToUIText(xpAmount, false, true));
+        }
+        else
+        {
+            xpPopUpPrefab.GetComponentInChildren<TMP_Text>().SetText(convertToUIText(xpAmount, false, false));
+        }
         Instantiate(xpPopUpPrefab, new UnityEngine.Vector3(-5, 5.75f, 10), transform.rotation);
     }
 }

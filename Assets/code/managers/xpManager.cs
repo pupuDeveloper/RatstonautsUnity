@@ -29,6 +29,7 @@ public class xpManager : MonoBehaviour
     public int oxygenGardenLvl { get; private set; }
     public int sleepingQuartersLvl { get; private set; }
     public int turretsLvl { get; private set; }
+    private float lastTimeCalled = 0.0f;
     /*xpNeededForResult += (L * 100f) * (float)Math.Pow(2, L/12); 
     int resultXp = (int)Math.Floor(xpNeededForResult);
     Debug.Log("xp needed for lvl " + L + " is " + resultXp);*/
@@ -185,7 +186,7 @@ public class xpManager : MonoBehaviour
         {
             gardenPassiveXP(xpToAdd);
         }
-        showXpInUI(0, xpToAdd);
+        StartCoroutine(showXpInUI(0, xpToAdd));
         if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
         {
             cockPitLvl++;
@@ -197,7 +198,7 @@ public class xpManager : MonoBehaviour
     {
         xpToAdd = xpToAdd / 3;
         GameManager.Instance.gardenXP = addXp(GameManager.Instance.gardenXP, xpToAdd);
-        showXpInUI(1, xpToAdd);
+        StartCoroutine(showXpInUI(1, xpToAdd));
         if (updateLevel(GameManager.Instance.gardenXP, oxygenGardenLvl))
         {
             oxygenGardenLvl++;
@@ -216,7 +217,7 @@ public class xpManager : MonoBehaviour
             xpToAdd = xpToAdd * 10;
         }
         GameManager.Instance.gardenXP = addXp(GameManager.Instance.gardenXP, xpToAdd);
-        showXpInUI(1, xpToAdd);
+        StartCoroutine(showXpInUI(1, xpToAdd));
         if (updateLevel(GameManager.Instance.gardenXP, oxygenGardenLvl))
         {
             oxygenGardenLvl++;
@@ -235,7 +236,7 @@ public class xpManager : MonoBehaviour
             xpToAdd = xpToAdd * 10;
         }
         GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
-        showXpInUI(0, xpToAdd);
+        StartCoroutine(showXpInUI(0, xpToAdd));
         if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
         {
             cockPitLvl++;
@@ -243,8 +244,14 @@ public class xpManager : MonoBehaviour
         updateTotalXp(xpToAdd);
     }
 
-    private void showXpInUI(int roomId, int xpAmount)
+    private IEnumerator showXpInUI(int roomId, int xpAmount)
     {
+        float timeDifference = Time.time - lastTimeCalled;
+        if (timeDifference < 0.50f)
+        {
+            float waitTime = 0.5f - timeDifference;
+            yield return new WaitForSeconds(waitTime);
+        }
         Sprite displaySprite = null;
         switch (roomId)
         {
@@ -274,5 +281,6 @@ public class xpManager : MonoBehaviour
             xpPopUpPrefab.GetComponentInChildren<TMP_Text>().SetText(convertToUIText(xpAmount, false, false));
         }
         Instantiate(xpPopUpPrefab, new UnityEngine.Vector3(-5, 5.75f, 10), transform.rotation);
+        lastTimeCalled = Time.time;
     }
 }

@@ -83,7 +83,6 @@ public class xpManager : MonoBehaviour
     {
         if (currentXp > xpForLevels[roomLvl + 1])
         {
-            Debug.Log("LEVELD UP!");
             return true;
         }
         return false;
@@ -182,6 +181,10 @@ public class xpManager : MonoBehaviour
         int xpToAdd;
         xpToAdd = _gameStats.getCockPitSpeedBoost();
         GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
+        if (_oxygengardenState.areAllPlantsBlank() == false)
+        {
+            gardenPassiveXP(xpToAdd);
+        }
         showXpInUI(0, xpToAdd);
         if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
         {
@@ -189,6 +192,17 @@ public class xpManager : MonoBehaviour
         }
         updateTotalXp(xpToAdd);
         cockPitCoroutine = true;
+    }
+    private void gardenPassiveXP(int xpToAdd)
+    {
+        xpToAdd = xpToAdd / 3;
+        GameManager.Instance.gardenXP = addXp(GameManager.Instance.gardenXP, xpToAdd);
+        showXpInUI(1, xpToAdd);
+        if (updateLevel(GameManager.Instance.gardenXP, oxygenGardenLvl))
+        {
+            oxygenGardenLvl++;
+        }
+        updateTotalXp(xpToAdd);
     }
     public void wateringXPReward()
     {
@@ -251,7 +265,6 @@ public class xpManager : MonoBehaviour
                 break;
         }
         xpPopUpPrefab.GetComponent<SpriteRenderer>().sprite = displaySprite;
-        Debug.Log("xp awarded: " + xpAmount);
         if (xpAmount % 10 != 0)
         {
             xpPopUpPrefab.GetComponentInChildren<TMP_Text>().SetText(convertToUIText(xpAmount, false, true));

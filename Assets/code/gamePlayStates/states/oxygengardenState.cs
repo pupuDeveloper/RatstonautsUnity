@@ -90,4 +90,16 @@ public class oxygengardenState : State
     {
         return _gardenManager.arePlantsWatered;
     }
+    public bool areAllPlantsBlank()
+    {
+        List<Plant> plants = getPlantsInSpots();
+        for (int i = 0; i < plants.Count; i++)
+        {
+            if (plants[i].plantId != 0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 }

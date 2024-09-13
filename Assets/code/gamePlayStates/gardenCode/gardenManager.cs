@@ -10,7 +10,7 @@ public class gardenManager : MonoBehaviour
 {
     [SerializeField] private Transform[] plantSpots;
     public List<Plant> plantsInSpots = new List<Plant>();
-    private Plant blank;
+    public Plant blank;
     public List<Plant> allPlants = new List<Plant>();
     public List<Plant> unlockedPlants { get; private set; }
     [SerializeField] private GameObject[] plantsUI;
@@ -18,7 +18,7 @@ public class gardenManager : MonoBehaviour
     public GameObject scrollableList;
     public GameObject closePlantListButton;
     [SerializeField] private GameObject[] removeButtons;
-    private static bool arePlantsWatered;
+    public bool arePlantsWatered;
 
     private void Start()
     {

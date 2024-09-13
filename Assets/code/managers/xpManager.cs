@@ -20,6 +20,7 @@ public class xpManager : MonoBehaviour
     [SerializeField] private sleepingquartersState _sleepingquartersState;
     [SerializeField] private turretsState _turretsState;
     [SerializeField] private gameStats _gameStats;
+    [SerializeField] private wateringEvent _wateringEvent;
     [SerializeField] private TMP_Text totalXpText;
     [SerializeField] private GameObject xpPopUpPrefab;
     private int[] xpForLevels = new int[100];
@@ -191,7 +192,22 @@ public class xpManager : MonoBehaviour
     }
     public void wateringXPReward()
     {
-        int xpToAdd = ();
+        int xpToAdd = _wateringEvent.getBoostAmount();
+        if (oxygenGardenLvl != 0)
+        {
+            xpToAdd = xpToAdd * oxygenGardenLvl * 10;
+        }
+        else
+        {
+            xpToAdd = xpToAdd * 10;
+        }
+        GameManager.Instance.gardenXP = addXp(GameManager.Instance.gardenXP, xpToAdd);
+        showXpInUI(1, xpToAdd);
+        if (updateLevel(GameManager.Instance.gardenXP, oxygenGardenLvl))
+        {
+            oxygenGardenLvl++;
+        }
+        updateTotalXp(xpToAdd);
     }
     public void cockpitMGXPReward()
     {

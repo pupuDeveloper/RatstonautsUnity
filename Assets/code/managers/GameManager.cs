@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     // oxygen garden data
 
     [SerializeField] public bool gardenBoostOn {get; set;}
-    [SerializeField] public int gardenXP {get; private set;} //this correlates to unlocked plants
+    [SerializeField] public int gardenXP {get; set;} //this correlates to unlocked plants
     [SerializeField] private int[] plantsInSpots; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
     [SerializeField] public DateTime timeSinceGardenCDStarted {get; set;}
     [SerializeField] public DateTime triggerGardenWatering {get; set;}
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int foodGenXP {get; private set;} //unlocked foods
     [SerializeField] private int selectedFood; // food thats been COOKED
     [SerializeField] private DateTime timeSinceFoodGenCDStarted;
-    [SerializeField] private DateTime triggerFoodGenMG;
+    [SerializeField] public DateTime triggerFoodGenMG;
 
     //sleepingQuarters data
 

@@ -6,7 +6,8 @@ using System;
 public class wateringEvent : MonoBehaviour
 {
     [SerializeField] private oxygengardenState _oxygengardenState;
-    [SerializeField] private GameObject[] popups = new GameObject[2];
+    [SerializeField] private gardenManager _gardenManager;
+    [SerializeField] private GameObject[] popups = new GameObject[3];
     [SerializeField] private xpManager _xpManager;
     private int level0boost;
     private int boostOnWatering;
@@ -23,26 +24,27 @@ public class wateringEvent : MonoBehaviour
     {
         for (int i = 0; i < _oxygengardenState.getPlantsInSpots().Count; i++)
         {
-            if (_oxygengardenState.getPlantsInSpots()[i] != blank)
+            if (_oxygengardenState.getPlantsInSpots()[i] != _gardenManager.blank)
             {
                 popups[i].SetActive(true);
             }
         }
     }
     public void plantsWatered()
-    {
+    { 
         //TODO: play animation when watering plants, XP reward too.
         calculateboost();
         _xpManager.wateringXPReward();
         GameManager.Instance.timeSinceGardenCDStarted = DateTime.Now;
         GameManager.Instance.triggerFoodGenMG = DateTime.Now.AddSeconds(UnityEngine.Random.Range(minTimeSec, maxTimeSec));
+        _gardenManager.arePlantsWatered = true;
         GameManager.Instance.gardenBoostOn = true;
     }
 
     private void calculateboost()
     {
         int spotMultiplier = 0;
-        foreach (gameObject o in popups)
+        foreach (GameObject o in popups)
         {
             o.SetActive(false);
             spotMultiplier++;

@@ -80,10 +80,14 @@ public class oxygengardenState : State
         }
         foreach (Plant plant in getPlantsInSpots())
         {
-            if (plant != blank)
+            if (plant != _gardenManager.blank)
             {
                 _wateringEvent.gardenEvent();
             }
         }
+    }
+    public bool arePlantsWatered()
+    {
+        return _gardenManager.arePlantsWatered;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 public class turretsMiniGame : MonoBehaviour
@@ -21,21 +22,27 @@ public class turretsMiniGame : MonoBehaviour
     public int asteroidAmount;
     public turretsState _turretsState;
     private bool asteroidsSpawned;
+    [SerializeField] private xpManager _xpManager;
+    private int level0boost;
+    private int boostAmount;
+    private int minSeconds = 7200;
+    private int maxSeconds = 28800;
 
     private void Start()
     {
         asteroidsSpawned = false;
+        level0boost = 100;
     }
     public void minigame()
     {
-        asteroidAmount = Random.Range(minAsteroidAmount, maxAsteroidAmount);
+        asteroidAmount = UnityEngine.Random.Range(minAsteroidAmount, maxAsteroidAmount);
         for (int i = 0; i < asteroidAmount; i++)
         {
-            int whichAsteroid = Random.Range(0, asteroids.Length);
-            xPos = Random.Range(minX + 0.5f, maxX - 0.5f);
-            yPos = Random.Range(minY + 0.5f, maxY - 0.5f);
+            int whichAsteroid = UnityEngine.Random.Range(0, asteroids.Length);
+            xPos = UnityEngine.Random.Range(minX + 0.5f, maxX - 0.5f);
+            yPos = UnityEngine.Random.Range(minY + 0.5f, maxY - 0.5f);
             asteroidPos = new Vector3(xPos, yPos, zPos);
-            asteroidClones.Add(Instantiate(asteroids[whichAsteroid], asteroidPos, Quaternion.Euler(0, 0, Random.Range(0, 360))));
+            asteroidClones.Add(Instantiate(asteroids[whichAsteroid], asteroidPos, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360))));
         }
         asteroidsSpawned = true;
     }
@@ -53,7 +60,7 @@ public class turretsMiniGame : MonoBehaviour
         if (asteroidAmount == 0 && asteroidsSpawned)
         {
             _turretsState.cooldownOn = true;
-            gameWon();
+            gameWonSendData();
             asteroidsSpawned = false;
         }
     }
@@ -67,8 +74,31 @@ public class turretsMiniGame : MonoBehaviour
         }
     }
 
-    private void gameWon()
+    private void gameWonSendData()
     {
+        calculateBoost();
+        _xpManager.turretMGReward();
+        GameManager.Instance.timeSinceTurretsCDStarted = DateTime.Now;
+        GameManager.Instance.triggerTurretsMG = DateTime.Now.AddSeconds(UnityEngine.Random.Range(minSeconds, maxSeconds));
+        GameManager.Instance.turretsBoostOn = true;
         Debug.Log("All asteroids destroyed!");
+    }
+
+    private void calculateBoost()
+    {
+        if (_xpManager.turretsLvl == 0)
+        {
+            boostAmount = level0boost;
+        }
+        else
+        {
+            int boostMultiplier = _xpManager.checkLvls(GameManager.Instance.turretsXP);
+            boostAmount = boostMultiplier * level0boost;
+        }
+    }
+    public int getBoost()
+    {
+        calculateBoost();
+        return boostAmount;
     }
 }

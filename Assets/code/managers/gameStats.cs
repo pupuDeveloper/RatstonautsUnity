@@ -7,12 +7,13 @@ using System;
 public class gameStats : MonoBehaviour
 {
     public int spaceShipSpeed { get; private set; } //spaceships speed km/per second
-    public int distanceTraveled { get; private set;} // total distance traveled
+    public int distanceTraveled { get; private set; } // total distance traveled
     [SerializeField] private shipManager _shipManager;
     [SerializeField] private cockpitMiniGame _cockpitMinigame;
     [SerializeField] private cockpitState _cockPitState;
     [SerializeField] private oxygengardenState _oxygenGardenState;
     [SerializeField] private foodgeneratorState _foodgeneratorState;
+    [SerializeField] private turretsMiniGame _turretMiniGame;
     //
     [SerializeField] private wateringEvent _wateringEvent;
     private bool speedBoost; //when all available minigames are done add boostMultiplier to shipspeed
@@ -48,9 +49,13 @@ public class gameStats : MonoBehaviour
                 //TODO: after above todo, add all xp boosts, and with the outcoming number, do methods below.
                 spaceShipSpeed += getCockPitSpeedBoost();
             }
-            if (GameManager.Instance.gardenBoostOn && _oxygenGardenState.areAllPlantsBlank() == false)
+            if (GameManager.Instance.gardenBoostOn && _oxygenGardenState.areAllPlantsBlank() == false && _oxygenGardenState.arePlantsWatered())
             {
                 spaceShipSpeed += _wateringEvent.getBoostAmount();
+            }
+            if (GameManager.Instance.turretsBoostOn)
+            {
+                spaceShipSpeed += getTurretSpeedBoost();
             }
         }
 
@@ -69,40 +74,88 @@ public class gameStats : MonoBehaviour
     {
         int addedSpeed = 0;
         addedSpeed += _cockpitMinigame.cockpitBoost();
-        for (int i = 0; i < _oxygenGardenState.getPlantsInSpots().Count; i++)
+        if (_oxygenGardenState.arePlantsWatered())
         {
-            switch (_oxygenGardenState.getPlantsInSpots()[i].plantId)
+            for (int i = 0; i < _oxygenGardenState.getPlantsInSpots().Count; i++)
             {
-                case 1:
-                addedSpeed = (int)(addedSpeed * 1.05);
-                break;
-                case 5:
-                addedSpeed = (int)(addedSpeed * 1.1);
-                break;
-                case 6:
-                addedSpeed = (int)(addedSpeed * 0.95);
-                break;
-                case 0:
-                break;
-                case 11:
-                addedSpeed = (int)(addedSpeed * 1.1);
-                break;
-                default:
-                Debug.LogError("ERROR!!! DIDNT FIND ANY PLANT IDS");
-                break;
+                switch (_oxygenGardenState.getPlantsInSpots()[i].plantId)
+                {
+                    case 1:
+                        addedSpeed = (int)(addedSpeed * 1.05);
+                        break;
+                    case 5:
+                        addedSpeed = (int)(addedSpeed * 1.1);
+                        break;
+                    case 6:
+                        addedSpeed = (int)(addedSpeed * 0.95);
+                        break;
+                    case 0:
+                        break;
+                    case 11:
+                        addedSpeed = (int)(addedSpeed * 1.1);
+                        break;
+                    default:
+                        Debug.Log("didnt find any plants helping this room");
+                        break;
+                }
             }
         }
         switch (_foodgeneratorState.getFoodInSpot().foodId)
         {
             case 1:
-            addedSpeed = (int)(addedSpeed * 1.01);
-            break;
+                addedSpeed = (int)(addedSpeed * 1.01);
+                break;
             case 0:
-            break;
+                break;
             default:
-            Debug.LogError("ERROR!!! DIDNT FIND ANY FOOD ID'S");
-            break;
+                Debug.LogError("ERROR!!! DIDNT FIND ANY FOOD ID'S");
+                break;
         }
+        return addedSpeed;
+    }
+
+    public int getTurretSpeedBoost()
+    {
+        int addedSpeed = 0;
+        addedSpeed += _turretMiniGame.getBoost();
+        if (_oxygenGardenState.arePlantsWatered())
+        {
+            for (int i = 0; i < _oxygenGardenState.getPlantsInSpots().Count; i++)
+            {
+                switch (_oxygenGardenState.getPlantsInSpots()[i].plantId)
+                {
+                    case 3:
+                        addedSpeed = (int)(addedSpeed * 1.05);
+                        break;
+                    case 5:
+                        addedSpeed = (int)(addedSpeed * 1.1);
+                        break;
+                    case 6:
+                        addedSpeed = (int)(addedSpeed * 0.95);
+                        break;
+                    case 11:
+                        addedSpeed = (int)(addedSpeed * 1.1);
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        Debug.Log("didnt find any plants helping this room");
+                        break;
+                }
+            }
+        }
+        switch (_foodgeneratorState.getFoodInSpot().foodId)
+        {
+            case 1:
+                addedSpeed = (int)(addedSpeed * 1.01);
+                break;
+            case 0:
+                break;
+            default:
+                Debug.LogError("ERROR!!! DIDNT FIND ANY FOOD ID'S");
+                break;
+        }
+        Debug.Log("added speed is: " + addedSpeed);
         return addedSpeed;
     }
     //TODO: make above-like functions for other rooms too

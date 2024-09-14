@@ -925,6 +925,7 @@ MonoBehaviour:
   _cockPitState: {fileID: 1191357282}
   _oxygenGardenState: {fileID: 648701419}
   _foodgeneratorState: {fileID: 1479490846}
+  _turretMiniGame: {fileID: 1105820790}
   _wateringEvent: {fileID: 648701421}
   shipSpeedText: {fileID: 894777843}
   traveledText: {fileID: 1606191988}
@@ -14797,6 +14798,7 @@ MonoBehaviour:
   zPos: 0
   asteroidAmount: 0
   _turretsState: {fileID: 1105820789}
+  _xpManager: {fileID: 1507500964}
 --- !u!1 &1107601751
 GameObject:
   m_ObjectHideFlags: 0
@@ -15779,7 +15781,6 @@ MonoBehaviour:
   totalDistanceTraveled: 0
   totalXp: 0
   plantsInSpots: 
-  turretsBoostOn: 0
   selectedFood: 0
 --- !u!4 &1164436877
 Transform:

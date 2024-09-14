@@ -37,6 +37,7 @@ public class xpManager : MonoBehaviour
     //bools
 
     private bool cockPitCoroutine;
+    private bool turretCoroutine;
 
     private void Start()
     {
@@ -54,6 +55,7 @@ public class xpManager : MonoBehaviour
         sleepingQuartersLvl = checkLvls(GameManager.Instance.quartersXP);
         turretsLvl = checkLvls(GameManager.Instance.turretsXP);
         cockPitCoroutine = true;
+        turretCoroutine = true;
     }
 
     private void Update()
@@ -66,6 +68,16 @@ public class xpManager : MonoBehaviour
         if (GameManager.Instance.cockpitBoostOn == false)
         {
             StopCoroutine("trackCockPitXP");
+        }
+
+        if (GameManager.Instance.turretsBoostOn && turretCoroutine)
+        {
+            StartCoroutine("trackTurretXP");
+        }
+
+        if (GameManager.Instance.turretsBoostOn == false)
+        {
+            StopCoroutine("trackTurretXP");
         }
     }
     public int checkLvls(int currentXp)
@@ -182,7 +194,7 @@ public class xpManager : MonoBehaviour
         int xpToAdd;
         xpToAdd = _gameStats.getCockPitSpeedBoost();
         GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
-        if (_oxygengardenState.areAllPlantsBlank() == false)
+        if (_oxygengardenState.doPlantsAffectRoom("cockpit") && _oxygengardenState.arePlantsWatered())
         {
             gardenPassiveXP(xpToAdd);
         }
@@ -193,6 +205,25 @@ public class xpManager : MonoBehaviour
         }
         updateTotalXp(xpToAdd);
         cockPitCoroutine = true;
+    }
+    private IEnumerator trackTurretXP()
+    {
+        turretCoroutine = false;
+        yield return new WaitForSeconds(3);
+        int xpToAdd;
+        xpToAdd = _gameStats.getTurretSpeedBoost();
+        GameManager.Instance.turretsXP = addXp(GameManager.Instance.turretsXP, xpToAdd);
+        if (_oxygengardenState.doPlantsAffectRoom("turrets") && _oxygengardenState.arePlantsWatered())
+        {
+            gardenPassiveXP(xpToAdd);
+        }
+        StartCoroutine(showXpInUI(2, xpToAdd));
+        if (updateLevel(GameManager.Instance.turretsXP, turretsLvl))
+        {
+            turretsLvl++;
+        }
+        updateTotalXp(xpToAdd);
+        turretCoroutine = true;
     }
     private void gardenPassiveXP(int xpToAdd)
     {
@@ -240,6 +271,25 @@ public class xpManager : MonoBehaviour
         if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
         {
             cockPitLvl++;
+        }
+        updateTotalXp(xpToAdd);
+    }
+    public void turretMGReward()
+    {
+        int xpToAdd = _gameStats.getTurretSpeedBoost();
+        if (turretsLvl != 0)
+        {
+            xpToAdd = xpToAdd * cockPitLvl * 10;
+        }
+        else
+        {
+            xpToAdd = xpToAdd * 10;
+        }
+        GameManager.Instance.turretsXP = addXp(GameManager.Instance.turretsXP, xpToAdd);
+        StartCoroutine(showXpInUI(2, xpToAdd));
+        if (updateLevel(GameManager.Instance.turretsXP, turretsLvl))
+        {
+            turretsLvl++;
         }
         updateTotalXp(xpToAdd);
     }

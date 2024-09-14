@@ -102,4 +102,33 @@ public class oxygengardenState : State
         }
         return true;
     }
+    public bool doPlantsAffectRoom(string roomName)
+    //checks if plants currently active affect given room. Bunch of loops and switch cases
+    //goes through each spot, then each relevant plant id
+
+    {
+        List<Plant> plants = getPlantsInSpots();
+        switch (roomName)
+        {
+            case "cockpit":
+            for (int i = 0; i < plants.Count; i++)
+            {
+                if (plants[i].plantId == 1 || plants[i].plantId == 5 || plants[i].plantId == 6 || plants[i].plantId == 11)
+                return true;
+            }
+            return false;
+            break;
+            case "turrets":
+            for (int i = 0; i < plants.Count; i++)
+            {
+                if (plants[i].plantId == 3 || plants[i].plantId == 5 || plants[i].plantId == 6 || plants[i].plantId == 11)
+                return true;
+            }
+            return false;
+            break;
+            //TODO: add rest of rooms
+        }
+        Debug.LogError("ERROR!!! SHOULDNT GET HERE!");
+        return false;
+    }
 }

@@ -28,10 +28,10 @@ public class GameManager : MonoBehaviour
 
     //turrets data
 
-    [SerializeField] private bool turretsBoostOn;
-    [SerializeField] public int turretsXP {get; private set;}
-    [SerializeField] private DateTime timeSinceTurretsCDStarted;
-    [SerializeField] private DateTime triggerTurretsMG;
+    [SerializeField] public bool turretsBoostOn {get; set;}
+    [SerializeField] public int turretsXP {get; set;}
+    [SerializeField] public DateTime timeSinceTurretsCDStarted {get; set;}
+    [SerializeField] public DateTime triggerTurretsMG {get; set;}
 
     // FoodGenerator Data
 

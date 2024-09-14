@@ -21,7 +21,7 @@ public class foodGen : MonoBehaviour
     {
         unlockedFoods = new List<food>();
 
-        food asteroidCheese = new food("Asteroid Cheese", 1, "Not as good as the real thing, but it works. Tiny 1% xp boost to all effects.", true, false);
+        food asteroidCheese = new food("Asteroid Cheese", 1, "Not as good as the real thing, but it works. Tiny 1% xp boost to all room effects.", true, false);
         if (!allFoods.Contains(asteroidCheese)) allFoods.Add(asteroidCheese);
 
         //blank food

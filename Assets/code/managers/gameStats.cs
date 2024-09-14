@@ -16,7 +16,6 @@ public class gameStats : MonoBehaviour
     //
     [SerializeField] private wateringEvent _wateringEvent;
     private bool speedBoost; //when all available minigames are done add boostMultiplier to shipspeed
-    private bool plantsBuffing;
     private int boostMultiplier;
     public TMP_Text shipSpeedText;
     public TMP_Text traveledText;
@@ -31,7 +30,6 @@ public class gameStats : MonoBehaviour
     {
         StartCoroutine("distanceCalculator");
         spaceShipSpeed = 0;
-        plantsBuffing = false;
     }
 
     private int getShipSpeed()

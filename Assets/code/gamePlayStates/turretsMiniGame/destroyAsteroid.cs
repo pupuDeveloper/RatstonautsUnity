@@ -8,7 +8,7 @@ public class destroyAsteroid : MonoBehaviour
     private turretsMiniGame _turretsMinigame;
     private float rotationSpeed;
     public float speed;
-    private float minSpeed = 0.001f;
+    private float minSpeed = 0.01f;
     public float targetSpeed;
     private Vector3 direction;
     private bool SlowcoroutineRunning;
@@ -62,7 +62,7 @@ public class destroyAsteroid : MonoBehaviour
     }
     private void move()
     {
-        transform.position += direction * speed;
+        transform.position += direction * speed * Time.deltaTime;
     }
     private bool isTooClose(float limit)
     {
@@ -97,14 +97,14 @@ public class destroyAsteroid : MonoBehaviour
     {
         SlowcoroutineRunning = true;
         yield return new WaitForSeconds(0.05f);
-        speed -= 0.0001f;
+        speed -= 0.01f;
         SlowcoroutineRunning = false;
     }
     private IEnumerator speedUp()
     {
         SpeedcoroutineRunning = true;
         yield return new WaitForSeconds(0.05f);
-        speed += 0.0001f;
+        speed += 0.01f;
         SpeedcoroutineRunning = false;
     }
     private void newDirectionAndSpeed()
@@ -112,6 +112,6 @@ public class destroyAsteroid : MonoBehaviour
         Debug.Log("direction changed");
         direction.x = Random.Range(-1f, 1f);
         direction.y = Random.Range(-1f, 1f);
-        targetSpeed = Random.Range(0.001f, 0.005f);
+        targetSpeed = Random.Range(0.1f, 0.5f);
     }
 }

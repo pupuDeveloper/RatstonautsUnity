@@ -2,108 +2,130 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class slideRooms : MonoBehaviour
 {
     [SerializeField] private Vector2[] roomPositions = new Vector2[5];
+    [SerializeField] private dragDetection _dragDetection;
     public Transform allRooms;
     public Vector2 currentPos;
     public Vector2 targetPos;
-
-    private Vector3 velocity = Vector3.zero;
-    private float smoothTime = 0.15f;
-    public bool adjusting;
-    public bool moving;
+    private bool checkerOn = false;
+    private bool transitionOn;
+    private float TimeLerped;
+    public float speed;
+    private bool overLapping;
+    private int roomInt;
 
     private void Start()
     {
-        currentPos = roomPositions[0];
-        targetPos = roomPositions[0];
-        moving = false;
+        roomInt = 0;
+        currentPos = roomPositions[roomInt];
+        targetPos = roomPositions[roomInt];
+        checkerOn = false;
+        overLapping = false;
     }
-
-    private void Update()
+    public void slide(dragDetection.DraggedDirection direction, float distance)
     {
-        if (currentPos == targetPos || adjusting == false)
+        Debug.Log("drag distance is: " + distance);
+        Debug.Log("Drag direction is: " + direction);
+        if (distance > 50 && direction == dragDetection.DraggedDirection.Left)
         {
-            detectMove(allRooms.InverseTransformPoint(transform.position).x);
-        }
-        smoothTransition(targetPos);
-    }
-
-    public void detectMove(float pos)
-    {
-        if (pos - 50 > Mathf.Abs(currentPos.x))
-        {
-            moving = true;
             switch (currentPos)
             {
                 case var value when value == roomPositions[0]:
+                    roomInt = 0;
                     targetPos = roomPositions[1];
                     break;
                 case var value when value == roomPositions[1]:
+                    roomInt = 1;
                     targetPos = roomPositions[2];
                     break;
                 case var value when value == roomPositions[2]:
+                    roomInt = 2;
                     targetPos = roomPositions[3];
                     break;
                 case var value when value == roomPositions[3]:
+                    roomInt = 3;
                     targetPos = roomPositions[4];
                     break;
                 case var value when value == roomPositions[4]:
+                    roomInt = 4;
                     targetPos = roomPositions[4]; //cant move more right
                     break;
             }
+            if (overLapping && roomInt <= 2)
+            {
+                currentPos = roomPositions[roomInt + 1];
+                targetPos = roomPositions[roomInt + 2];
+            }
+            StartCoroutine("smoothTransition");
         }
-        if (pos + 50 < Mathf.Abs(currentPos.x))
+        if (distance > 50 && direction == dragDetection.DraggedDirection.Right)
         {
-            moving = true;
             switch (currentPos)
             {
                 case var value when value == roomPositions[4]:
+                    roomInt = 4;
                     targetPos = roomPositions[3];
                     break;
                 case var value when value == roomPositions[3]:
+                    roomInt = 3;
                     targetPos = roomPositions[2];
                     break;
                 case var value when value == roomPositions[2]:
+                    roomInt = 2;
                     targetPos = roomPositions[1];
                     break;
                 case var value when value == roomPositions[1]:
+                    roomInt = 1;
                     targetPos = roomPositions[0];
                     break;
                 case var value when value == roomPositions[0]:
+                    roomInt = 0;
                     targetPos = roomPositions[0]; //cant move more left
                     break;
             }
+            if (overLapping && roomInt >= 2)
+            {
+                currentPos = roomPositions[roomInt - 1];
+                targetPos = roomPositions[roomInt - 2];
+            }
+            StartCoroutine("smoothTransition");
         }
+    }
+    private void checker()
+    {
+        allRooms.localPosition = targetPos;
     }
 
-    private void smoothTransition(Vector2 targetPos)
+    private IEnumerator smoothTransition()
     {
-        allRooms.localPosition = Vector3.SmoothDamp(allRooms.localPosition, targetPos, ref velocity, smoothTime);
-        float difference = getDifference();
-
-        if (difference < 150 && difference > -150)
+        overLapping = true;
+        speed = 8f;
+        TimeLerped = 0;
+        while(TimeLerped < 1)
         {
-            currentPos = targetPos;
-            moving = false;
-            adjusting = true;
-            adjust(difference);
+            allRooms.localPosition = Vector3.Lerp(currentPos, targetPos, TimeLerped);
+            if (TimeLerped < 0.6f)
+            {
+                TimeLerped += Time.deltaTime * speed;
+            }
+            else
+            {
+                if (speed > 0.85f)
+                {
+                    speed *= 0.75f;
+                }
+                TimeLerped += Time.deltaTime * speed;
+            }
+            Debug.Log("lerping");
+            yield return null;
         }
-    }
-    private void adjust(float difference)
-    {
-        if (difference < 5)
-        {
-            adjusting = false;
-            allRooms.localPosition = currentPos;
-            currentPos = targetPos;
-        }
-    }
-    private float getDifference()
-    {
-        return Mathf.Abs(targetPos.x) - Mathf.Abs(allRooms.localPosition.x);
+        overLapping = false;
+        allRooms.localPosition = targetPos;
+        currentPos = targetPos;
     }
 }
 

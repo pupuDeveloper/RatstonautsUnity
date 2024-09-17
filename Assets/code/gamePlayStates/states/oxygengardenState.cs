@@ -52,8 +52,6 @@ public class oxygengardenState : State
     }
     private void resetState()
     {
-        toGardenButton.gameObject.SetActive(false);
-        oxygenGardenBG1.SetActive(false);
         oxygenGardenBG2.SetActive(false);
         _gardenManager.scrollableList.SetActive(false);
         _gardenManager.closePlantListButton.SetActive(false);

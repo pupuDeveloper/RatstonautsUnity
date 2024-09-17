@@ -37,9 +37,7 @@ public class turretsState : State
     private void resetState()
     {
         _turretsMinigame.resetMiniGame();
-        turretBG.SetActive(false);
         turretsMiniGameBG.SetActive(false);
-        toMiniGameButton.gameObject.SetActive(false);
         stateIsReady = false;
     }
     public void SetupState()

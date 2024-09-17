@@ -57,9 +57,7 @@ public class cockpitState : State
     private void resetState()
     {
         _cockpitMinigame.resetMinigamescript();
-        cockPitBackground.SetActive(false);
         cockPitMiniGameBG.SetActive(false);
-        toMiniGameButton.gameObject.SetActive(false);
         stateIsReady = false;
     }
     public void setupState()

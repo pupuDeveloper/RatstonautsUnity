@@ -52,11 +52,8 @@ public class foodgeneratorState : State
     }
     private void resetState()
     {
-        BG1.SetActive(false);
         BG2.SetActive(false);
-        toMiniGameButton.gameObject.SetActive(false);
         _foodGenScript.scrollableList.SetActive(false);
-        _foodGenScript.closeFoodListButton.SetActive(false);
         stateIsReady = false;
     }
     public void setupState()

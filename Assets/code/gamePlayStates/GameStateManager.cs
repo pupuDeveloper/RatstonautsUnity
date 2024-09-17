@@ -11,6 +11,7 @@ public class GameStateManager : MonoBehaviour
     public oxygengardenState _oxygengardenState;
     public sleepingquartersState _sleepingquartersState;
     public turretsState _turretsState;
+    [SerializeField] slideRooms _slideRooms;
     void Update()
     {
         RunStateMachine();
@@ -36,6 +37,35 @@ public class GameStateManager : MonoBehaviour
         currentState = nextState;
     }
     public void roomButtonPressed(string stateName)
+    {
+        switch (stateName)
+        {
+            case "cockPit":
+            targetState = _cockpitState;
+            StartCoroutine(_slideRooms.smoothTransition(_slideRooms.roomPositions[0]));
+            break;
+            case "oxygenGarden":
+            targetState = _oxygengardenState;
+            StartCoroutine(_slideRooms.smoothTransition(_slideRooms.roomPositions[1]));
+            break;
+            case "turrets":
+            targetState = _turretsState;
+            StartCoroutine(_slideRooms.smoothTransition(_slideRooms.roomPositions[2]));
+            break;
+            case "foodGenerator":
+            targetState =  _foodgeneratorState;
+            StartCoroutine(_slideRooms.smoothTransition(_slideRooms.roomPositions[3]));
+            break;
+            case "sleepingQuarters":
+            targetState = _sleepingquartersState;
+            StartCoroutine(_slideRooms.smoothTransition(_slideRooms.roomPositions[4]));
+            break;
+            default:
+            targetState = null;
+            break;
+        }
+    }
+    public void swiped(string stateName)
     {
         switch (stateName)
         {

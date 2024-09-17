@@ -30,7 +30,6 @@ public class sleepingquartersState : State
     }
     private void resetState()
     {
-        background.SetActive(false);
         stateIsReady = false;
     }
     private void setupState()

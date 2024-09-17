@@ -42,23 +42,23 @@ public class GameStateManager : MonoBehaviour
         {
             case "cockPit":
             targetState = _cockpitState;
-            StartCoroutine(_slideRooms.smoothTransition(_slideRooms.roomPositions[0]));
+            StartCoroutine(_slideRooms.smoothTransition(_slideRooms.roomPositions[0], 0));
             break;
             case "oxygenGarden":
             targetState = _oxygengardenState;
-            StartCoroutine(_slideRooms.smoothTransition(_slideRooms.roomPositions[1]));
+            StartCoroutine(_slideRooms.smoothTransition(_slideRooms.roomPositions[1], 1));
             break;
             case "turrets":
             targetState = _turretsState;
-            StartCoroutine(_slideRooms.smoothTransition(_slideRooms.roomPositions[2]));
+            StartCoroutine(_slideRooms.smoothTransition(_slideRooms.roomPositions[2], 2));
             break;
             case "foodGenerator":
             targetState =  _foodgeneratorState;
-            StartCoroutine(_slideRooms.smoothTransition(_slideRooms.roomPositions[3]));
+            StartCoroutine(_slideRooms.smoothTransition(_slideRooms.roomPositions[3], 3));
             break;
             case "sleepingQuarters":
             targetState = _sleepingquartersState;
-            StartCoroutine(_slideRooms.smoothTransition(_slideRooms.roomPositions[4]));
+            StartCoroutine(_slideRooms.smoothTransition(_slideRooms.roomPositions[4], 4));
             break;
             default:
             targetState = null;

@@ -7,11 +7,15 @@ using UnityEngine.EventSystems;
 public class slideRooms : MonoBehaviour
 {
     public Vector2[] roomPositions = new Vector2[5];
+    public Vector2[] buttonPositions = new Vector2[5];
+    [SerializeField] private GameObject outline;
     [SerializeField] private dragDetection _dragDetection;
     [SerializeField] GameStateManager _gameStateManager;
     public Transform allRooms;
     public Vector2 currentPos;
     public Vector2 targetPos;
+    public Vector2 outLineCurrentPos;
+    public Vector2 outLineTargetPos;
     private bool checkerOn = false;
     private bool transitionOn;
     private float TimeLerped;
@@ -24,6 +28,8 @@ public class slideRooms : MonoBehaviour
         roomInt = 0;
         currentPos = roomPositions[roomInt];
         targetPos = roomPositions[roomInt];
+        outLineCurrentPos = buttonPositions[roomInt];
+        outLineTargetPos = buttonPositions[roomInt];
         checkerOn = false;
         overLapping = false;
     }
@@ -36,22 +42,22 @@ public class slideRooms : MonoBehaviour
             switch (currentPos)
             {
                 case var value when value == roomPositions[0]:
-                    roomInt = 0;
+                    roomInt = 1;
                     targetPos = roomPositions[1];
                     _gameStateManager.swiped("oxygenGarden");
                     break;
                 case var value when value == roomPositions[1]:
-                    roomInt = 1;
+                    roomInt = 2;
                     targetPos = roomPositions[2];
                     _gameStateManager.swiped("turrets");
                     break;
                 case var value when value == roomPositions[2]:
-                    roomInt = 2;
+                    roomInt = 3;
                     targetPos = roomPositions[3];
                     _gameStateManager.swiped("foodGenerator");
                     break;
                 case var value when value == roomPositions[3]:
-                    roomInt = 3;
+                    roomInt = 4;
                     targetPos = roomPositions[4];
                     _gameStateManager.swiped("sleepingQuarters");
                     break;
@@ -65,29 +71,29 @@ public class slideRooms : MonoBehaviour
                 currentPos = roomPositions[roomInt + 1];
                 targetPos = roomPositions[roomInt + 2];
             }
-            StartCoroutine(smoothTransition(targetPos));
+            StartCoroutine(smoothTransition(targetPos, roomInt));
         }
         if (distance > 50 && direction == dragDetection.DraggedDirection.Right)
         {
             switch (currentPos)
             {
                 case var value when value == roomPositions[4]:
-                    roomInt = 4;
+                    roomInt = 3;
                     targetPos = roomPositions[3];
                     _gameStateManager.swiped("foodGenerator");
                     break;
                 case var value when value == roomPositions[3]:
-                    roomInt = 3;
+                    roomInt = 2;
                     targetPos = roomPositions[2];
                     _gameStateManager.swiped("turrets");
                     break;
                 case var value when value == roomPositions[2]:
-                    roomInt = 2;
+                    roomInt = 1;
                     targetPos = roomPositions[1];
                     _gameStateManager.swiped("oxygenGarden");
                     break;
                 case var value when value == roomPositions[1]:
-                    roomInt = 1;
+                    roomInt = 0;
                     targetPos = roomPositions[0];
                     _gameStateManager.swiped("cockPit");
                     break;
@@ -101,7 +107,7 @@ public class slideRooms : MonoBehaviour
                 currentPos = roomPositions[roomInt - 1];
                 targetPos = roomPositions[roomInt - 2];
             }
-            StartCoroutine(smoothTransition(targetPos));
+            StartCoroutine(smoothTransition(targetPos, roomInt));
         }
     }
     private void checker()
@@ -109,14 +115,18 @@ public class slideRooms : MonoBehaviour
         allRooms.localPosition = targetPos;
     }
 
-    public IEnumerator smoothTransition(Vector2 endPoint)
+    public IEnumerator smoothTransition(Vector2 endPoint, int whichRoom)
     {
         targetPos = endPoint;
+        outLineTargetPos = buttonPositions[whichRoom];
+        Debug.Log("CurrentPos: " + outLineCurrentPos);
+        Debug.Log("TargetPos: "+ outLineTargetPos);
         overLapping = true;
         speed = 8f;
         TimeLerped = 0;
         while(TimeLerped < 1)
         {
+            outline.transform.localPosition = Vector3.Lerp(outLineCurrentPos, outLineTargetPos, TimeLerped);
             allRooms.localPosition = Vector3.Lerp(currentPos, endPoint, TimeLerped);
             if (TimeLerped < 0.6f)
             {
@@ -136,6 +146,7 @@ public class slideRooms : MonoBehaviour
         overLapping = false;
         allRooms.localPosition = endPoint;
         currentPos = targetPos;
+        outLineCurrentPos = outLineTargetPos;
     }
 }
 

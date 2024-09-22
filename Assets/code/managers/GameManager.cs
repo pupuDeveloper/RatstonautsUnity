@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public DateTime triggerTurretsMG {get; set;}
 
     // FoodGenerator Data
-
+    [SerializeField] public bool foodGenBoostOn {get; set;}
     [SerializeField] public int foodGenXP {get; private set;} //unlocked foods
     [SerializeField] private int selectedFood; // food thats been COOKED
     [SerializeField] private DateTime timeSinceFoodGenCDStarted;
@@ -66,9 +66,8 @@ public class GameManager : MonoBehaviour
     private List<GameStateBase> _states = new List<GameStateBase>();
     public GameStateBase CurrentState { get; private set;}
     private GameStateBase PreviousState {get; set;}
-
     public SaveSystem saveSystem { get; private set;}
-
+    public bool unlockEverything { get; private set;} // for developing purposes, unlocks progression form start for testing/debugging etc.
 
     private void Awake()
     {
@@ -195,6 +194,7 @@ public class GameManager : MonoBehaviour
         writer.WriteTime(timeSinceTurretsCDStarted);
         writer.WriteTime(triggerTurretsMG);
         //foodGen Data
+        writer.WriteBool(foodGenBoostOn);
         writer.WriteInt(foodGenXP);
         writer.WriteInt(selectedFood);
         writer.WriteTime(timeSinceFoodGenCDStarted);
@@ -227,6 +227,12 @@ public class GameManager : MonoBehaviour
         turretsBoostOn = reader.ReadBool();
         turretsXP = reader.ReadInt();
         timeSinceTurretsCDStarted = reader.ReadTime();
+        triggerTurretsMG = reader.ReadTime();
+        //foodGen Data
+        foodGenBoostOn = reader.ReadBool();
+        foodGenXP = reader.ReadInt();
+        selectedFood = reader.ReadInt();
+        timeSinceFoodGenCDStarted = reader.ReadTime();
         triggerFoodGenMG = reader.ReadTime();
         //sleepingquarters data
         quartersXP = reader.ReadInt();

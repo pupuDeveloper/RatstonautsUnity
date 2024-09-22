@@ -24,6 +24,9 @@ public class foodGen : MonoBehaviour
         food asteroidCheese = new food("Asteroid Cheese", 1, "Not as good as the real thing, but it works. Tiny 1% xp boost to all room effects.", true, false);
         if (!allFoods.Contains(asteroidCheese)) allFoods.Add(asteroidCheese);
 
+        food friedEgg = new food("Sunny-Side-Up Egg", 2, "Write buff here.", false, false);
+        if (!allFoods.Contains(friedEgg)) allFoods.Add(friedEgg);
+
         //blank food
 
         blank = new food("Blank", 0,"Blank food", false, false);

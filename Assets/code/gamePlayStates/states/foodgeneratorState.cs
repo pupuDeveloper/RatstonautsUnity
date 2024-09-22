@@ -7,14 +7,18 @@ public class foodgeneratorState : State
 {
 
     //thinking notes:
-    // foodgen mechanic could be like this:
     // Choose what food to make out of destroyed asteroid pieces,
     // there are different foods to choose from, all give different kind of boosts/buffs
-    // gameplay is just after cooldown of after choosing a food, that food keeps being made and fed to rats
-    // gameplay event appears after cooldown is ended (x amount of hours), which is just to clear a jam in the foodgen machine
-    // after this is done, it continues making said food (and spaceship continues to fly)
-    // "lore" reasoning why it doesn't fly without it, is that when it doesn't work rats are resorted to use icky ratstonaut goo that isn't good
-    // and makes them upset so they don't wanna work or something 
+
+    // There are 2 Active events:
+
+    // 1: fill foodgenerator with asteroid pieces. Filling always works for x amount of hours
+    // when foodgenerator levels up, choose to upgrade either size or efficiency
+    // Efficiency -> foodgenerator is more efficient with given asteroid pieces, uses them faster but gives more XP
+    // Size -> can fit more asteroid pieces, so it doesn't empty so fast.
+
+    // 2: Every random hour, food generator's gears get stuck, and they need to be cleared.
+    // active gameplay is probably just swiping the rocks from the gears away
 
     // TODO: come up with a couple of foods
     // TODO: figure out minigame for how to "clear" jammed foodgen machine, similar time/challenge than cockpit minigame
@@ -24,12 +28,21 @@ public class foodgeneratorState : State
     [SerializeField] private GameObject BG2;
     [SerializeField] private GameObject toMiniGameButton;
     [SerializeField] private foodGen _foodGenScript;
+    [SerializeField] private GameObject gear1;
+    [SerializeField] private GameObject gear2;
+    [SerializeField] private GameObject gear3;
+    private gearTurning _gearTurning1;
+    private gearTurning _gearTurning2;
+    private gearTurning _gearTurning3;
+    private bool inMinigame;
     public override State RunCurrentState()
     {
         if (!stateIsReady)
         {
             setupState();
         }
+
+        customUpdate();
 
         if (gameStateManager.targetState != this)
         {
@@ -43,18 +56,42 @@ public class foodgeneratorState : State
     private void Start()
     {
         resetState();
+        _gearTurning1 = gear1.GetComponent<gearTurning>();
+        _gearTurning2 = gear2.GetComponent<gearTurning>();
+        _gearTurning3 = gear3.GetComponent<gearTurning>();
+        inMinigame = false;
+    }
+    void customUpdate()
+    {
+        if (inMinigame)
+        {
+            //_gearTurning1.turnMotion();
+            //_gearTurning2.turnMotion();
+            //_gearTurning3.turnMotion();
+            _gearTurning1.stuckMotion();
+            _gearTurning2.stuckMotion();
+            _gearTurning3.stuckMotion();
+        }
+        /*else
+        {
+            _gearTurning1.stuckMotion();
+            _gearTurning2.stuckMotion();
+            _gearTurning3.stuckMotion();
+        }*/
     }
     public void toMiniGame()
     {
         toMiniGameButton.gameObject.SetActive(false);
         BG1.SetActive(false);
         BG2.SetActive(true);
+        inMinigame = true;
     }
     private void resetState()
     {
         BG2.SetActive(false);
         _foodGenScript.scrollableList.SetActive(false);
         stateIsReady = false;
+        inMinigame = false;
     }
     public void setupState()
     {
@@ -63,6 +100,7 @@ public class foodgeneratorState : State
         BG2.SetActive(false);
         toMiniGameButton.gameObject.SetActive(true);
         stateIsReady = true;
+        inMinigame = false;
     }
     public food getFoodInSpot()
     {

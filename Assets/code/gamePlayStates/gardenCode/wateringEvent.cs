@@ -11,13 +11,15 @@ public class wateringEvent : MonoBehaviour
     [SerializeField] private xpManager _xpManager;
     private int level0boost;
     private int boostOnWatering;
-    private int minTimeSec = 3600;
-    private int maxTimeSec = 18000;
+    public int minTimeSec {get; private set;}
+    public int maxTimeSec {get; private set;}
 
 
     private void Start()
     {
         level0boost = 50;
+        minTimeSec = 3600;
+        maxTimeSec = 18000;
     }
 
     public void gardenEvent()

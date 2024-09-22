@@ -12,7 +12,6 @@ public class oxygengardenState : State
     [SerializeField] private Button toGardenButton;
     [SerializeField] private GameObject oxygenGardenBG1;
     [SerializeField] private GameObject oxygenGardenBG2;
-    private bool isMinigameUnlocked;
     [SerializeField] private gardenManager _gardenManager;
     [SerializeField] private wateringEvent _wateringEvent;
 

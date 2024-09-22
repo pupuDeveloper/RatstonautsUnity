@@ -65,19 +65,19 @@ public class foodgeneratorState : State
     {
         if (inMinigame)
         {
-            //_gearTurning1.turnMotion();
-            //_gearTurning2.turnMotion();
-            //_gearTurning3.turnMotion();
-            _gearTurning1.stuckMotion();
-            _gearTurning2.stuckMotion();
-            _gearTurning3.stuckMotion();
+            if (GameManager.Instance.foodGenBoostOn)
+            {
+                _gearTurning1.turnMotion();
+                _gearTurning2.turnMotion();
+                _gearTurning3.turnMotion();
+            }
+            else
+            {
+                _gearTurning1.stuckMotion();
+                _gearTurning2.stuckMotion();
+                _gearTurning3.stuckMotion();
+            }
         }
-        /*else
-        {
-            _gearTurning1.stuckMotion();
-            _gearTurning2.stuckMotion();
-            _gearTurning3.stuckMotion();
-        }*/
     }
     public void toMiniGame()
     {

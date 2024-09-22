@@ -13,9 +13,9 @@ public class gearTurning : MonoBehaviour
     private float shakeX;
     private float shakeY;
     private bool lerpBack;
-    private float lerpBackSpeed = 2f;
-    private float lerpForwardSpeed = 6f;
-    private float timeCount = 0.0f;
+    private float lerpBackSpeed = 1.5f;
+    private float lerpForwardSpeed = 2.5f;
+    public float timeCount = 0.0f;
     private bool shakeTimerOn;
     private bool constantShakeTimerOn;
 
@@ -33,48 +33,46 @@ public class gearTurning : MonoBehaviour
     {
         if (timeCount < 1)
         {
-
-            if (lerpBack) //lerping back on counterclockwise 
-            {
-
-                if (!clockWiseRotation)
-                {
-                    transform.rotation = Quaternion.Lerp(rotationMinusEnd, rotationPlusEnd, timeCount * lerpBackSpeed);
-                    timeCount = timeCount + Time.deltaTime;
-                }
-                else
-                {
-                    transform.rotation = Quaternion.Lerp(rotationPlusEnd, rotationMinusEnd, timeCount * lerpBackSpeed);
-                    timeCount = timeCount + Time.deltaTime;
-                }
-            }
-
-            else
-            {
-
-                if (!clockWiseRotation)
-                {
-                    transform.rotation = Quaternion.Lerp(rotationPlusEnd, rotationMinusEnd, timeCount * lerpForwardSpeed);
-                    timeCount = timeCount + Time.deltaTime;
-                }
-                else
-                {
-                    transform.rotation = Quaternion.Lerp(rotationMinusEnd, rotationPlusEnd, timeCount * lerpForwardSpeed);
-                    timeCount = timeCount + Time.deltaTime;
-                }
-            }
-        }
-        else if (timeCount > 0.7f && timeCount < 1f && lerpBack == false)
-        {
-            if (shakeTimerOn == false)
-            {
-                StartCoroutine("stuckShake");
-            }
+            moveBackForth(clockWiseRotation, lerpBack);
         }
         else
         {
-            timeCount = 0.0f;
-            lerpBack = false;
+            if (lerpBack == false && shakeTimerOn == false)
+            {
+                StartCoroutine("stuckShake");
+            }
+            if (lerpBack)
+            {
+                timeCount = 0f;
+                lerpBack = false;
+            }
+        }
+    }
+    private void moveBackForth(bool clockwise, bool backwards)
+    {
+        if (backwards)
+        {
+            if (!clockwise)
+            {
+                transform.rotation = Quaternion.Lerp(rotationMinusEnd, rotationPlusEnd, timeCount * lerpBackSpeed);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Lerp(rotationPlusEnd, rotationMinusEnd, timeCount * lerpBackSpeed);
+            }
+            timeCount = timeCount + Time.deltaTime * lerpBackSpeed;
+        }
+        else
+        {
+            if (!clockwise)
+            {
+                transform.rotation = Quaternion.Lerp(rotationPlusEnd, rotationMinusEnd, timeCount * lerpForwardSpeed);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Lerp(rotationMinusEnd, rotationPlusEnd, timeCount * lerpForwardSpeed);
+            }
+            timeCount = timeCount + Time.deltaTime * lerpForwardSpeed;
         }
     }
     public void turnMotion()
@@ -106,7 +104,7 @@ public class gearTurning : MonoBehaviour
     private IEnumerator stuckShake()
     {
         shakeTimerOn = true;
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 10; i++)
         {
             shakeX = Random.Range((defaultLocation.x - 1f) - 5f, (defaultLocation.x + 1f) + 5f);
             shakeY = Random.Range((defaultLocation.y - 1f) - 5f, (defaultLocation.y + 1f) + 5f);
@@ -114,9 +112,9 @@ public class gearTurning : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
             transform.localPosition = defaultLocation;
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         lerpBack = true;
         shakeTimerOn = false;
-        timeCount = 0;
+        timeCount = 0f;
     }
 }

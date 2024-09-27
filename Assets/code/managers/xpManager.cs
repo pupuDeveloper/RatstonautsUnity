@@ -4,6 +4,7 @@ using System.Numerics;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class xpManager : MonoBehaviour
 {
@@ -38,7 +39,28 @@ public class xpManager : MonoBehaviour
 
     private bool cockPitCoroutine;
     private bool turretCoroutine;
-
+    public Action<bool, string> onBoostChanged;
+    public void changeBoost(bool toWhat, string whichRoom)
+    {
+        switch (whichRoom)
+        {
+            case "cockpit":
+            GameManager.Instance.cockpitBoostOn = toWhat;
+            break;
+            case "oxygengarden":
+            GameManager.Instance.gardenBoostOn = toWhat;
+            break;
+            case "turrets":
+            GameManager.Instance.turretsBoostOn = toWhat;
+            break;
+            case "foodgen":
+            GameManager.Instance.foodGenBoostOn = toWhat;
+            break;
+            default:
+            Debug.LogException("THIS SHOULDNT HAPPEN! BREAKS GAME");
+            break;
+        }
+    }
     private void Start()
     {
         xpForLevels[0] = 0;

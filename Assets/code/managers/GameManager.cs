@@ -13,44 +13,63 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int totalXp;
 
     // cockpit data
-    [SerializeField] public bool cockpitBoostOn
+    private bool _cockpitBoostOn;
+    public bool cockpitBoostOn
     {
-        get => this.cockpitboost;
+        get
+        {
+            return _cockpitBoostOn;
+        }
         set
         {
-            this.cockpitboost =  value;
-            this.onBoostChanged?.Invoke(this, this.cockpitboost); //checks if null first
+            if (cockpitBoostOn != value)
+            {
+                cockpitBoostOn = value;
+            }
         }
     }
-    [SerializeField] public int cockPitXP {get; set;} // correlates boost amount
-    [SerializeField] public DateTime timeSinceCockPitCDStarted {get; set;} //since last minigame was played
-    [SerializeField] public DateTime triggerCockPitMG {get; set;} // when to trigger next minigame
+    [SerializeField] public int cockPitXP { get; set; } // correlates boost amount
+    [SerializeField] public DateTime timeSinceCockPitCDStarted { get; set; } //since last minigame was played
+    [SerializeField] public DateTime triggerCockPitMG { get; set; } // when to trigger next minigame
 
     // oxygen garden data
-
-    [SerializeField] public bool gardenBoostOn {get; set;}
-    [SerializeField] public int gardenXP {get; set;} //this correlates to unlocked plants
+    private bool _gardenBoostOn;
+    public bool gardenBoostOn
+    {
+        get
+        {
+            return _gardenBoostOn;
+        }
+        set
+        {
+            if (gardenBoostOn != value)
+            {
+                gardenBoostOn = value;
+            }
+        }
+    }
+    [SerializeField] public int gardenXP { get; set; } //this correlates to unlocked plants
     [SerializeField] private int[] plantsInSpots; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
-    [SerializeField] public DateTime timeSinceGardenCDStarted {get; set;}
-    [SerializeField] public DateTime triggerGardenWatering {get; set;}
+    [SerializeField] public DateTime timeSinceGardenCDStarted { get; set; }
+    [SerializeField] public DateTime triggerGardenWatering { get; set; }
 
     //turrets data
-
-    [SerializeField] public bool turretsBoostOn {get; set;}
-    [SerializeField] public int turretsXP {get; set;}
-    [SerializeField] public DateTime timeSinceTurretsCDStarted {get; set;}
-    [SerializeField] public DateTime triggerTurretsMG {get; set;}
+    private bool _cockpitBoostOn;
+    [SerializeField] public bool turretsBoostOn { get; set; }
+    [SerializeField] public int turretsXP { get; set; }
+    [SerializeField] public DateTime timeSinceTurretsCDStarted { get; set; }
+    [SerializeField] public DateTime triggerTurretsMG { get; set; }
 
     // FoodGenerator Data
-    [SerializeField] public bool foodGenBoostOn {get; set;}
-    [SerializeField] public int foodGenXP {get; private set;} //unlocked foods
+    [SerializeField] public bool foodGenBoostOn { get; set; }
+    [SerializeField] public int foodGenXP { get; private set; } //unlocked foods
     [SerializeField] private int selectedFood; // food thats been COOKED
     [SerializeField] private DateTime timeSinceFoodGenCDStarted;
     [SerializeField] public DateTime triggerFoodGenMG;
 
     //sleepingQuarters data
 
-    [SerializeField] public int quartersXP{get; private set;} //unlock cosmetics/customization for sleeping quarters
+    [SerializeField] public int quartersXP { get; private set; } //unlock cosmetics/customization for sleeping quarters
 
     #endregion
 
@@ -69,14 +88,13 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion statics
-    
+
 
     private List<GameStateBase> _states = new List<GameStateBase>();
-    public GameStateBase CurrentState { get; private set;}
-    private GameStateBase PreviousState {get; set;}
-    public SaveSystem saveSystem { get; private set;}
-    public bool unlockEverything { get; private set;} // for developing purposes, unlocks progression form start for testing/debugging etc.
-    public Action<string> minigameTrigger
+    public GameStateBase CurrentState { get; private set; }
+    private GameStateBase PreviousState { get; set; }
+    public SaveSystem saveSystem { get; private set; }
+    public bool unlockEverything { get; private set; } // for developing purposes, unlocks progression form start for testing/debugging etc.
 
 
     private void Awake()
@@ -102,7 +120,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //StartCoroutine("autosaveWithTimer"); commented out bcs testing in editor
-        minigameTrigger = (string whichBoost) => {}
     }
 
     private void InitializeSaveSystem()
@@ -228,7 +245,7 @@ public class GameManager : MonoBehaviour
         //oxygen garden data
         gardenBoostOn = reader.ReadBool();
         gardenXP = reader.ReadInt();
-        for (int i = 0; i < plantsInSpots.Length; i++) 
+        for (int i = 0; i < plantsInSpots.Length; i++)
         {
             plantsInSpots[i] = reader.ReadInt();
         }

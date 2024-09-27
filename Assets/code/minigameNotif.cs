@@ -8,7 +8,7 @@ public class minigameNotif : MonoBehaviour
 
     void Start()
     {
-        checkIfGameplayAvailable();
+        GameManager.Instance.
     }
 
     public void checkIfGameplayAvailable()

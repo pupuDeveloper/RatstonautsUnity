@@ -32,6 +32,7 @@ public class turretsMiniGame : MonoBehaviour
     {
         asteroidsSpawned = false;
         level0boost = 100;
+        GameManager.Instance.minigameTrigger +=
     }
     public void minigame()
     {

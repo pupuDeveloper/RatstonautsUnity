@@ -13,15 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int totalXp;
 
     // cockpit data
-    [SerializeField] public bool cockpitBoostOn
-    {
-        get => this.cockpitboost;
-        set
-        {
-            this.cockpitboost =  value;
-            this.onBoostChanged?.Invoke(this, this.cockpitboost); //checks if null first
-        }
-    }
+    [SerializeField] public bool cockpitBoostOn { get; set; }
     [SerializeField] public int cockPitXP {get; set;} // correlates boost amount
     [SerializeField] public DateTime timeSinceCockPitCDStarted {get; set;} //since last minigame was played
     [SerializeField] public DateTime triggerCockPitMG {get; set;} // when to trigger next minigame
@@ -76,7 +68,6 @@ public class GameManager : MonoBehaviour
     private GameStateBase PreviousState {get; set;}
     public SaveSystem saveSystem { get; private set;}
     public bool unlockEverything { get; private set;} // for developing purposes, unlocks progression form start for testing/debugging etc.
-    public Action<string> minigameTrigger
 
 
     private void Awake()
@@ -102,7 +93,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //StartCoroutine("autosaveWithTimer"); commented out bcs testing in editor
-        minigameTrigger = (string whichBoost) => {}
     }
 
     private void InitializeSaveSystem()

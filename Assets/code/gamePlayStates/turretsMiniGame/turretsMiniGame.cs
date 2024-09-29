@@ -32,7 +32,7 @@ public class turretsMiniGame : MonoBehaviour
     {
         asteroidsSpawned = false;
         level0boost = 100;
-        GameManager.Instance.onBoostChanged +=
+        //GameManager.Instance.onBoostChanged +=
     }
     public void minigame()
     {

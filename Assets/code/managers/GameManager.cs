@@ -54,8 +54,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] public DateTime triggerGardenWatering { get; set; }
 
     //turrets data
-    private bool _cockpitBoostOn;
-    [SerializeField] public bool turretsBoostOn { get; set; }
+    private bool _turretsBoostOn;
+    public bool turretsBoostOn
+    {
+        get
+        {
+            return _turretsBoostOn;
+        }
+        set
+        {
+            if (turretsBoostOn != value)
+            {
+                turretsBoostOn = value;
+            }
+        }
+    }
     [SerializeField] public int turretsXP { get; set; }
     [SerializeField] public DateTime timeSinceTurretsCDStarted { get; set; }
     [SerializeField] public DateTime triggerTurretsMG { get; set; }

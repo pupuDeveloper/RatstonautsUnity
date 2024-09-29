@@ -19,42 +19,43 @@ public class gardenManager : MonoBehaviour
     public GameObject closePlantListButton;
     [SerializeField] private GameObject[] removeButtons;
     public bool arePlantsWatered;
+    private xpManager _xpManager;
 
     private void Start()
     {
         unlockedPlants = new List<Plant>();
         //TODO: read these plants from file, for now creating them in start
-        Plant BonsaiTree = new Plant("Bonsai tree", 11, "Boost all minigame effectiveness by x%", false, false);
+        Plant BonsaiTree = new Plant("Bonsai tree", 11, "Boost all minigame effectiveness by x%", false, false, 92);
         if (!allPlants.Contains(BonsaiTree)) allPlants.Add(BonsaiTree);
 
-        Plant Dandelion = new Plant("Dandelion", 1, "Boost autopilot effectiveness by 5%", true, false);
+        Plant Dandelion = new Plant("Dandelion", 1, "Boost autopilot effectiveness by 5%", true, false, 0);
         if (!allPlants.Contains(Dandelion)) allPlants.Add(Dandelion);
 
-        Plant Clover = new Plant("Clover", 2, "Boost food generator by 5%", false, false);
+        Plant Clover = new Plant("Clover", 2, "Boost food generator by 5%", false, false, 100);
         if (!allPlants.Contains(Clover)) allPlants.Add(Clover);
 
-        Plant Violet = new Plant("Violet", 3, "Boost turrets by 5%", false, false);
+        Plant Violet = new Plant("Violet", 3, "Boost turrets by 5%", false, false, 5);
         if (!allPlants.Contains(Violet)) allPlants.Add(Violet);
 
-        Plant SeaMayweed = new Plant("Sea Mayweed", 4, "Boost well slept buff by 5%", false, false);
+        Plant SeaMayweed = new Plant("Sea Mayweed", 4, "Boost well slept buff by 5%", false, false, 100);
         if (!allPlants.Contains(SeaMayweed)) allPlants.Add(SeaMayweed);
 
-        Plant Nettle = new Plant("Nettle", 5, "decrease minigame cooldown by 50%, increase all minigame effectiveness by 10%", false, false);
+        Plant Nettle = new Plant("Nettle", 5, "decrease minigame cooldown by 50%, increase all minigame effectiveness by 10%", false, false, 20);
         if (!allPlants.Contains(Nettle)) allPlants.Add(Nettle);
 
-        Plant ArcticStarflower = new Plant("Arctic Starflower", 6, "increase all minigame cooldown by 50%, decrease effectiveness by 5%", false, false);
+        Plant ArcticStarflower = new Plant("Arctic Starflower", 6, "increase all minigame cooldown by 50%, decrease effectiveness by 5%", false, false, 30);
         if (!allPlants.Contains(ArcticStarflower)) allPlants.Add(ArcticStarflower);
 
-        Plant SolomonsSeal = new Plant("Solomon's Seal", 7, "rats need 1-2 hours less sleep per night", false, false);
+        Plant SolomonsSeal = new Plant("Solomon's Seal", 7, "rats need 1-2 hours less sleep per night", false, false, 100);
         if (!allPlants.Contains(SolomonsSeal)) allPlants.Add(SolomonsSeal);
 
-        Plant GoldenRod = new Plant("Goldenrod", 8, "Increase XP received after succesfull minigame by 10%", false, false);
+        Plant GoldenRod = new Plant("Goldenrod", 8, "Increase XP received after succesfull minigame by 10%", false, false, 60);
         if (!allPlants.Contains(GoldenRod)) allPlants.Add(GoldenRod);
 
-        Plant Harebell = new Plant("Harebell", 9, "think of a new effect", false, false);
+        Plant Harebell = new Plant("Harebell", 9, "think of a new effect", false, false, 100);
         if (!allPlants.Contains(Harebell)) allPlants.Add(Harebell);
 
-        Plant Daffodil = new Plant("Daffodil", 10, "Disable one room of spaceship, other rooms gain x% efficiency and xp boost", false, false);
+        Plant Daffodil = new Plant("Daffodil", 10, "Disable one room of spaceship, other rooms gain x% efficiency and xp boost", false, false, 85);
         if (!allPlants.Contains(Daffodil)) allPlants.Add(Daffodil);
 
 
@@ -64,7 +65,7 @@ public class gardenManager : MonoBehaviour
         //
 
         //blank plant
-        blank = new Plant("Blank", 0, "Blank plant", false, false);
+        blank = new Plant("Blank", 0, "Blank plant", false, false, 0);
 
         //current plants in spots TODO: read this from file later
         plantsInSpots.AddRange(Enumerable.Repeat(blank, 3));
@@ -108,8 +109,22 @@ public class gardenManager : MonoBehaviour
                 break;
         }
 
+        _xpManager = GameObject.Find("xpmanager").GetComponent<xpManager>();
+        whatPlantsAreUnlocked();
+
         //TODO:Change below to be read from file
         arePlantsWatered = GameManager.Instance.gardenBoostOn;
+    }
+    private void whatPlantsAreUnlocked()
+    {
+        foreach (Plant p in allPlants)
+        {
+            if (p.unlockedAtThisLevel >= _xpManager.oxygenGardenLvl)
+            {
+                p.isUnlocked = true;
+                if (!unlockedPlants.Contains(p)) unlockedPlants.Add(p);
+            }
+        }
     }
     public void addPlant(Plant plant)
     {

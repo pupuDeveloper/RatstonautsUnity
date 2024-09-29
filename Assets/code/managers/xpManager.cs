@@ -57,7 +57,7 @@ public class xpManager : MonoBehaviour
             GameManager.Instance.foodGenBoostOn = toWhat;
             break;
             default:
-            Debug.LogException("THIS SHOULDNT HAPPEN! BREAKS GAME");
+            Debug.LogWarning("THIS SHOULDNT HAPPEN! BREAKS GAME");
             break;
         }
     }

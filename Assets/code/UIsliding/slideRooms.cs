@@ -52,9 +52,13 @@ public class slideRooms : MonoBehaviour
                     _gameStateManager.swiped("turrets");
                     break;
                 case var value when value == roomPositions[2]:
-                    roomInt = 3;
+                    //temporary limitation to 3 rooms only for first build
+                    roomInt = 2;
+                    targetPos = roomPositions[2];
+                    break;
+                    /*roomInt = 3;
                     targetPos = roomPositions[3];
-                    _gameStateManager.swiped("foodGenerator");
+                    _gameStateManager.swiped("foodGenerator");*/
                     break;
                 case var value when value == roomPositions[3]:
                     roomInt = 4;

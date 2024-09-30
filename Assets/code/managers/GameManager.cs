@@ -235,13 +235,13 @@ public class GameManager : MonoBehaviour
         writer.WriteTime(timeSinceTurretsCDStarted);
         writer.WriteTime(triggerTurretsMG);
         //foodGen Data
-        writer.WriteBool(foodGenBoostOn);
-        writer.WriteInt(foodGenXP);
-        writer.WriteInt(selectedFood);
-        writer.WriteTime(timeSinceFoodGenCDStarted);
-        writer.WriteTime(triggerFoodGenMG);
+        //writer.WriteBool(foodGenBoostOn);
+        //writer.WriteInt(foodGenXP);
+        //writer.WriteInt(selectedFood);
+        //writer.WriteTime(timeSinceFoodGenCDStarted);
+        //writer.WriteTime(triggerFoodGenMG);
         //sleepingquarters data
-        writer.WriteInt(quartersXP);
+        //writer.WriteInt(quartersXP);
     }
 
     public void Load(BinarySaver reader)
@@ -270,13 +270,13 @@ public class GameManager : MonoBehaviour
         timeSinceTurretsCDStarted = reader.ReadTime();
         triggerTurretsMG = reader.ReadTime();
         //foodGen Data
-        foodGenBoostOn = reader.ReadBool();
-        foodGenXP = reader.ReadInt();
-        selectedFood = reader.ReadInt();
-        timeSinceFoodGenCDStarted = reader.ReadTime();
-        triggerFoodGenMG = reader.ReadTime();
+        //foodGenBoostOn = reader.ReadBool();
+        //foodGenXP = reader.ReadInt();
+        //selectedFood = reader.ReadInt();
+        //timeSinceFoodGenCDStarted = reader.ReadTime();
+        //triggerFoodGenMG = reader.ReadTime();
         //sleepingquarters data
-        quartersXP = reader.ReadInt();
+        //quartersXP = reader.ReadInt();
     }
     private IEnumerator autosaveWithTimer()
     {

@@ -30,7 +30,8 @@ public class gameStats : MonoBehaviour
     private void Start()
     {
         StartCoroutine("distanceCalculator");
-        spaceShipSpeed = 0;
+        spaceShipSpeed = GameManager.Instance.spaceShipSpeed;
+        distanceTraveled = GameManager.Instance.totalDistanceTraveled;
     }
 
     private int getShipSpeed()
@@ -184,6 +185,7 @@ public class gameStats : MonoBehaviour
         while (true)
         {
             distanceTraveled += spaceShipSpeed;
+            GameManager.Instance.totalDistanceTraveled = distanceTraveled;
             yield return new WaitForSeconds(1f);
         }
     }

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class minigameNotif : MonoBehaviour
 {
-    [SerializeField] private GameObject notif1, notif2, notif3, notif4;
+    [SerializeField] private GameObject notif1, notif2, notif3;//, notif4;
 
     void Start()
     {
+        checkIfGameplayAvailable();
     }
 
     public void checkIfGameplayAvailable()
@@ -39,13 +40,13 @@ public class minigameNotif : MonoBehaviour
             notif3.SetActive(false);
         }
 
-        if (GameManager.Instance.foodGenBoostOn == false)
+        /*if (GameManager.Instance.foodGenBoostOn == false)
         {
             notif4.SetActive(true);
         }
         else
         {
             notif4.SetActive(false);
-        }
+        }*/
     }
 }

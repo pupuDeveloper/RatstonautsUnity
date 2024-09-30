@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
 {
 
     #region SavedData
-    [SerializeField] private float spaceShipSpeed; // km/sec
-    [SerializeField] private float totalDistanceTraveled;
+    [SerializeField] public int spaceShipSpeed {get; set;} // km/sec
+    [SerializeField] public int totalDistanceTraveled {get; set;}
     [SerializeField] public int totalXp;
 
     // cockpit data
@@ -22,9 +22,9 @@ public class GameManager : MonoBehaviour
         }
         set
         {
-            if (cockpitBoostOn != value)
+            if (_cockpitBoostOn != value)
             {
-                cockpitBoostOn = value;
+                _cockpitBoostOn = value;
             }
         }
     }
@@ -42,9 +42,9 @@ public class GameManager : MonoBehaviour
         }
         set
         {
-            if (gardenBoostOn != value)
+            if (_gardenBoostOn != value)
             {
-                gardenBoostOn = value;
+                _gardenBoostOn = value;
             }
         }
     }
@@ -63,9 +63,9 @@ public class GameManager : MonoBehaviour
         }
         set
         {
-            if (turretsBoostOn != value)
+            if (_turretsBoostOn != value)
             {
-                turretsBoostOn = value;
+                _turretsBoostOn = value;
             }
         }
     }
@@ -132,7 +132,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //StartCoroutine("autosaveWithTimer"); commented out bcs testing in editor
+        StartCoroutine("autosaveWithTimer");
+        string mainSaveSlot = saveSystem.MainSaveSlot;
+        saveSystem.Load(mainSaveSlot);
+        if (CurrentState.Type == StateType.Initialization && totalDistanceTraveled == 0)
+        {
+            Go(StateType.MainMenu);
+        }
+        else
+        {
+            Go(StateType.InGame);
+        }
     }
 
     private void InitializeSaveSystem()
@@ -142,9 +152,10 @@ public class GameManager : MonoBehaviour
 
     private void InitializeStates()
     {
-        GameStateBase initialState = new MainMenuState();
+        GameStateBase initialState = new InitState();
         //create all states
         _states.Add(initialState);
+        _states.Add(new MainMenuState());
         _states.Add(new InGameState());
         _states.Add(new OptionsState());
 
@@ -212,8 +223,8 @@ public class GameManager : MonoBehaviour
     public void Save(BinarySaver writer)
     {
         //ship data
-        writer.WriteFloat(spaceShipSpeed);
-        writer.WriteFloat(totalDistanceTraveled);
+        writer.WriteInt(spaceShipSpeed);
+        writer.WriteInt(totalDistanceTraveled);
         writer.WriteInt(totalXp);
         //cockpit data
         writer.WriteBool(cockpitBoostOn);
@@ -247,8 +258,8 @@ public class GameManager : MonoBehaviour
     public void Load(BinarySaver reader)
     {
         //ship data
-        spaceShipSpeed = reader.ReadFloat();
-        totalDistanceTraveled = reader.ReadFloat();
+        spaceShipSpeed = reader.ReadInt();
+        totalDistanceTraveled = reader.ReadInt();
         totalXp = reader.ReadInt();
         //cockpit data
         cockpitBoostOn = reader.ReadBool();
@@ -288,17 +299,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /*void OnApplicationFocus() //commented out bcs testing in editor
+    void OnApplicationFocus() //commented out bcs testing in editor
     {
-        string mainSaveSlot = saveSystem.MainSaveSlot;
-        saveSystem.Save(mainSaveSlot);
+        //string mainSaveSlot = saveSystem.MainSaveSlot;
+        //saveSystem.Save(mainSaveSlot);
     }
 
     void OnApplicationQuit()
     {
         string mainSaveSlot = saveSystem.MainSaveSlot;
         saveSystem.Save(mainSaveSlot);
-    }*/
+    }
 
     public int getTimeSinceLastSave(DateTime referencedTime) //get time between requested timedate and current timedate in seconds.
     {

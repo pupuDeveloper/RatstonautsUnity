@@ -25,13 +25,15 @@ public class turretsMiniGame : MonoBehaviour
     [SerializeField] private xpManager _xpManager;
     private int level0boost;
     private int boostAmount;
-    private int minSeconds = 7200;
-    private int maxSeconds = 28800;
+    private int minSeconds;
+    private int maxSeconds;
 
     private void Start()
     {
         asteroidsSpawned = false;
         level0boost = 100;
+        minSeconds = 7200;
+        maxSeconds = 28800;
         //GameManager.Instance.onBoostChanged +=
     }
     public void minigame()

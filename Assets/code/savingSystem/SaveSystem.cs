@@ -41,20 +41,20 @@ public class SaveSystem
 
     public void Save(string slot)
     {
-        BinarySaver saver = new BinarySaver();
+        _saver = new BinarySaver();
         string saveFilePath = Path.Combine(SaveFolder, slot + FileExtension);
-        saver.PrepareWrite(saveFilePath);
+        _saver.PrepareWrite(saveFilePath);
 
         //TODO: the actual saving
         GameManager.Instance.Save(_saver);
 
         //if we have gameobjects to save, uncomment below
         //ISaveable[] saveables = GameObject.FindObjectOfType<MonoBehaviour>(includeInactive: true).OfType<ISaveable>().ToArray();
-        //saver.WriteInt(saveables.Length);
-        //foreach(ISaveable saveable in saveables){ saveable.Save(saver);}
+        //_saver.WriteInt(saveables.Length);
+        //foreach(ISaveable saveable in saveables){ saveable.Save(_saver);}
         //
 
-        saver.FinalizeWrite();
+        _saver.FinalizeWrite();
     }
 
     public void Load(string slot)
@@ -64,5 +64,6 @@ public class SaveSystem
         _saver.PrepareRead(saveFilePath);
 
         GameManager.Instance.Load(_saver);
+        _saver.FinalizeRead();
     }
 }

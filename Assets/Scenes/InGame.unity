@@ -20770,6 +20770,7 @@ GameObject:
   - component: {fileID: 1233639079}
   - component: {fileID: 1233639078}
   - component: {fileID: 1233639077}
+  - component: {fileID: 1233639080}
   m_Layer: 5
   m_Name: bottomBar
   m_TagString: Untagged
@@ -20865,6 +20866,21 @@ Canvas:
   m_SortingLayerID: 1698960007
   m_SortingOrder: 2
   m_TargetDisplay: 0
+--- !u!114 &1233639080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233639075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d37b8723c8e1553469a56cf4ffe9ad25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notif1: {fileID: 17531375}
+  notif2: {fileID: 1388297004}
+  notif3: {fileID: 1105299653}
 --- !u!1 &1240315000
 GameObject:
   m_ObjectHideFlags: 0

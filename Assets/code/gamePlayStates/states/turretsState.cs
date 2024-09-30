@@ -26,12 +26,11 @@ public class turretsState : State
             resetState();
             return gameStateManager.targetState;
         }
-        Debug.Log("in turrets");
         return this;
     }
     private void Start()
     {
-        cooldownOn = false;
+        cooldownOn = GameManager.Instance.turretsBoostOn;
     }
 
     private void resetState()

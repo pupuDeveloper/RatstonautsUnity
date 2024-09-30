@@ -123,8 +123,6 @@ public class slideRooms : MonoBehaviour
     {
         targetPos = endPoint;
         outLineTargetPos = buttonPositions[whichRoom];
-        Debug.Log("CurrentPos: " + outLineCurrentPos);
-        Debug.Log("TargetPos: "+ outLineTargetPos);
         overLapping = true;
         speed = 8f;
         TimeLerped = 0;
@@ -144,7 +142,6 @@ public class slideRooms : MonoBehaviour
                 }
                 TimeLerped += Time.deltaTime * speed;
             }
-            Debug.Log("lerping");
             yield return null;
         }
         overLapping = false;

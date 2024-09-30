@@ -6,8 +6,8 @@ using System;
 
 public class gameStats : MonoBehaviour
 {
-    public int spaceShipSpeed { get; private set; } //spaceships speed km/per second
-    public int distanceTraveled { get; private set; } // total distance traveled
+    public int spaceShipSpeed; //spaceships speed km/per second
+    public int distanceTraveled; // total distance traveled
     [SerializeField] private shipManager _shipManager;
     [SerializeField] private cockpitMiniGame _cockpitMinigame;
     [SerializeField] private cockpitState _cockPitState;
@@ -29,9 +29,9 @@ public class gameStats : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine("distanceCalculator");
         spaceShipSpeed = GameManager.Instance.spaceShipSpeed;
         distanceTraveled = GameManager.Instance.totalDistanceTraveled;
+        StartCoroutine("distanceCalculator");
     }
 
     private int getShipSpeed()

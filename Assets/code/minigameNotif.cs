@@ -8,6 +8,7 @@ public class minigameNotif : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.roomBoostOn += checkIfGameplayAvailable;
         checkIfGameplayAvailable();
     }
 
@@ -48,5 +49,9 @@ public class minigameNotif : MonoBehaviour
         {
             notif4.SetActive(false);
         }*/
+    }
+    private void OnApplicationQuit()
+    {
+        GameManager.Instance.roomBoostOn -= checkIfGameplayAvailable;
     }
 }

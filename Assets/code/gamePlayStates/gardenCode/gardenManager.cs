@@ -14,7 +14,7 @@ public class gardenManager : MonoBehaviour
     public List<Plant> allPlants = new List<Plant>();
     public List<Plant> unlockedPlants { get; private set; }
     [SerializeField] private GameObject[] plantsUI;
-    [Range(0, 3)] private int unlockedSlots;
+    [SerializeField] [Range(0, 3)] private int unlockedSlots;
     public GameObject scrollableList;
     public GameObject closePlantListButton;
     [SerializeField] private GameObject[] removeButtons;
@@ -66,9 +66,27 @@ public class gardenManager : MonoBehaviour
 
         //blank plant
         blank = new Plant("Blank", 0, "Blank plant", false, false, 0);
-
+        if (!allPlants.Contains(blank)) allPlants.Add(blank);
         //current plants in spots TODO: read this from file later
-        plantsInSpots.AddRange(Enumerable.Repeat(blank, 3));
+        if (GameManager.Instance.plantsInSpots.Length != 0)
+        {
+            for (int i = 0; i < GameManager.Instance.plantsInSpots.Length; i++)
+            {
+                Plant myplant = allPlants.Find(x => x.plantId == GameManager.Instance.plantsInSpots[i]);
+                Debug.Log(myplant);
+                plantsInSpots[i] = myplant;
+            }
+        }
+        else
+        {
+            GameManager.Instance.plantsInSpots = new int[3];
+            for (int i = 0; i < 3; i++)
+            {
+                plantsInSpots.Add(blank);
+                GameManager.Instance.plantsInSpots[i] = 0;
+            }
+            Debug.Log(plantsInSpots);
+        }
 
 
         foreach (Plant p in allPlants)
@@ -112,7 +130,6 @@ public class gardenManager : MonoBehaviour
         _xpManager = GameObject.Find("xpmanager").GetComponent<xpManager>();
         whatPlantsAreUnlocked();
 
-        //TODO:Change below to be read from file
         arePlantsWatered = GameManager.Instance.gardenBoostOn;
     }
     private void whatPlantsAreUnlocked()
@@ -140,6 +157,7 @@ public class gardenManager : MonoBehaviour
                 plantsInSpots[i] = plant;
                 removeButtons[i].SetActive(true);
                 plantSpots[i].GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = plant.name;
+                updateGameManagerList();
                 break;
             }
             if (i == 2)
@@ -157,6 +175,7 @@ public class gardenManager : MonoBehaviour
                 plantsInSpots[i] = blank;
                 removeButtons[i].SetActive(false);
                 plantSpots[i].GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = "";
+                updateGameManagerList();
                 break;
             }
             if (i == 3)
@@ -184,6 +203,7 @@ public class gardenManager : MonoBehaviour
                 break;
         }
         removePlant(plantToBeRemoved);
+
     }
     public void addButton()
     {
@@ -202,6 +222,15 @@ public class gardenManager : MonoBehaviour
                 addPlant(plantToBeAdded);
                 break;
             }
+        }
+    }
+    private void updateGameManagerList()
+    {
+        int i = 0;
+        foreach (Plant p in plantsInSpots)
+        {
+            GameManager.Instance.plantsInSpots[i] = p.plantId;
+            i++;
         }
     }
 }

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int spaceShipSpeed {get; set;} // km/sec
     [SerializeField] public int totalDistanceTraveled {get; set;}
     [SerializeField] public int totalXp;
+    public event Action roomBoostOn;
 
     // cockpit data
     private bool _cockpitBoostOn;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
             if (_cockpitBoostOn != value)
             {
                 _cockpitBoostOn = value;
+                roomBoostOn?.Invoke();
             }
         }
     }
@@ -45,11 +47,12 @@ public class GameManager : MonoBehaviour
             if (_gardenBoostOn != value)
             {
                 _gardenBoostOn = value;
+                roomBoostOn?.Invoke();
             }
         }
     }
     [SerializeField] public int gardenXP { get; set; } //this correlates to unlocked plants
-    [SerializeField] private int[] plantsInSpots; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
+    [SerializeField] public int[] plantsInSpots; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
     [SerializeField] public DateTime timeSinceGardenCDStarted { get; set; }
     [SerializeField] public DateTime triggerGardenWatering { get; set; }
 
@@ -66,6 +69,7 @@ public class GameManager : MonoBehaviour
             if (_turretsBoostOn != value)
             {
                 _turretsBoostOn = value;
+                roomBoostOn?.Invoke();
             }
         }
     }
@@ -108,6 +112,7 @@ public class GameManager : MonoBehaviour
     private GameStateBase PreviousState { get; set; }
     public SaveSystem saveSystem { get; private set; }
     public bool unlockEverything { get; private set; } // for developing purposes, unlocks progression form start for testing/debugging etc.
+
 
 
     private void Awake()

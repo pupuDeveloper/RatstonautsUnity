@@ -27,9 +27,8 @@ public class SaveSystem
     {
         get
         {
-            string saveLocation = Application.persistentDataPath;
-            Path.Combine(saveLocation, "Ratstonauts", "Save");
-            return saveLocation;
+            string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            return Path.Combine(documents, "Ratstonauts", "Save");
         }
     }
 
@@ -45,7 +44,6 @@ public class SaveSystem
         string saveFilePath = Path.Combine(SaveFolder, slot + FileExtension);
         _saver.PrepareWrite(saveFilePath);
 
-        //TODO: the actual saving
         GameManager.Instance.Save(_saver);
 
         //if we have gameobjects to save, uncomment below
@@ -61,7 +59,10 @@ public class SaveSystem
     {
         _saver = new BinarySaver();
         string saveFilePath = Path.Combine(SaveFolder, slot + FileExtension);
-        _saver.PrepareRead(saveFilePath);
+        if (_saver.PrepareRead(saveFilePath) == false)
+        {
+            return;
+        }
 
         GameManager.Instance.Load(_saver);
         _saver.FinalizeRead();

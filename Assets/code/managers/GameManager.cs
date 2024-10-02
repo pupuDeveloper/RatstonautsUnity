@@ -322,4 +322,15 @@ public class GameManager : MonoBehaviour
         int differenceInSeconds = timeDif.Seconds;
         return differenceInSeconds;
     }
+    private void checkForNullTimes()
+    {
+        if (timeSinceCockPitCDStarted < new DateTime(2000,01,01)) timeSinceCockPitCDStarted = DateTime.Now;
+        if (timeSinceGardenCDStarted < new DateTime(2000,01,01)) timeSinceGardenCDStarted = DateTime.Now;
+        if (timeSinceTurretsCDStarted < new DateTime(2000,01,01)) timeSinceTurretsCDStarted = DateTime.Now;
+        if (triggerCockPitMG < new DateTime(2000,01,01)) triggerCockPitMG = DateTime.Now;
+        if (triggerGardenWatering < new DateTime(2000,01,01)) triggerGardenWatering = DateTime.Now;
+        if (triggerTurretsMG < new DateTime(2000,01,01)) triggerTurretsMG = DateTime.Now;
+        //timeSinceFoodGenCDStarted = (null) ? timeSinceFoodGenCDStarted = DateTime.Now:;
+        //triggerFoodGenMG = (null) ? triggerFoodGenMG = DateTime.Now:;
+    }
 }

@@ -75,13 +75,19 @@ public class oxygengardenState : State
         {
             return;
         }
+        int i = 0;
         foreach (Plant plant in getPlantsInSpots())
         {
-            if (plant != _gardenManager.blank)
+            if (plant.name == "Blank")
             {
-                _wateringEvent.gardenEvent();
+                i++;
+            }
+            else
+            {
+                _wateringEvent.gardenEvent(true);
             }
         }
+        if (i == 3) _wateringEvent.gardenEvent(false);
     }
     public bool arePlantsWatered()
     {

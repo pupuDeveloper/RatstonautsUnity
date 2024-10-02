@@ -34,13 +34,13 @@ public class turretsMiniGame : MonoBehaviour
         level0boost = 100;
         minSeconds = 7200;
         maxSeconds = 28800;
-        //GameManager.Instance.onBoostChanged +=
     }
     public void minigame()
     {
         asteroidAmount = UnityEngine.Random.Range(minAsteroidAmount, maxAsteroidAmount);
         for (int i = 0; i < asteroidAmount; i++)
         {
+            GameEvents.current.onAsteroidDestroyed += CheckAsteroidAmount;
             int whichAsteroid = UnityEngine.Random.Range(0, asteroids.Length);
             xPos = UnityEngine.Random.Range(minX + 0.5f, maxX - 0.5f);
             yPos = UnityEngine.Random.Range(minY + 0.5f, maxY - 0.5f);
@@ -52,19 +52,20 @@ public class turretsMiniGame : MonoBehaviour
 
     public void checkForAsteroids()
     {
-        if (_turretsState.cooldownOn == false && asteroidsSpawned == false)
+        if (GameManager.Instance.turretsBoostOn == false && asteroidsSpawned == false)
         {
             minigame();
         }
     }
 
-    void Update()
+    private void CheckAsteroidAmount()
     {
         if (asteroidAmount == 0 && asteroidsSpawned)
         {
-            _turretsState.cooldownOn = true;
-            gameWonSendData();
+            GameManager.Instance.turretsBoostOn = true;
             asteroidsSpawned = false;
+            gameWonSendData();
+            GameEvents.current.onAsteroidDestroyed -= CheckAsteroidAmount;
         }
     }
 

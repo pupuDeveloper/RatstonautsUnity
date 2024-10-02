@@ -1672,6 +1672,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13bdc86ecd4726e43922120d17a08215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spaceShipSpeed: 0
+  distanceTraveled: 0
   _shipManager: {fileID: 174217162}
   _cockpitMinigame: {fileID: 1191357283}
   _cockPitState: {fileID: 1191357282}
@@ -10196,6 +10198,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533674446}
   m_CullTransparentMesh: 1
+--- !u!1 &537514683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 537514685}
+  - component: {fileID: 537514684}
+  m_Layer: 0
+  m_Name: Game Event System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &537514684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537514683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07336096a4e751e45b34f26e106e4236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &537514685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537514683}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.9484277, y: -1.276169, z: -4.1294403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &547458341
 GameObject:
   m_ObjectHideFlags: 0
@@ -11890,6 +11936,7 @@ MonoBehaviour:
   - {fileID: 1062881902}
   - {fileID: 1513397518}
   - {fileID: 1388585761}
+  unlockedSlots: 0
   scrollableList: {fileID: 1481814156}
   closePlantListButton: {fileID: 1404955234}
   removeButtons:
@@ -19132,7 +19179,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStateManager: {fileID: 109847829}
-  cooldownOn: 0
   toMiniGameButton: {fileID: 1986348657}
   turretBG: {fileID: 610954423}
   turretsMiniGameBG: {fileID: 2027953146}
@@ -19875,8 +19921,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e5431e3197f154f9f73f124ed9bf68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceShipSpeed: 0
-  totalDistanceTraveled: 0
   totalXp: 0
   plantsInSpots: 
   selectedFood: 0
@@ -33660,3 +33704,4 @@ SceneRoots:
   - {fileID: 854795566}
   - {fileID: 8620456832893669382}
   - {fileID: 1507500965}
+  - {fileID: 537514685}

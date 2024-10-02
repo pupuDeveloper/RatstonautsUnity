@@ -70,11 +70,16 @@ public class gardenManager : MonoBehaviour
         //current plants in spots TODO: read this from file later
         if (GameManager.Instance.plantsInSpots.Length != 0)
         {
-            for (int i = 0; i < GameManager.Instance.plantsInSpots.Length; i++)
+            int i = 0;
+            foreach (int id in GameManager.Instance.plantsInSpots)
             {
-                Plant myplant = allPlants.Find(x => x.plantId == GameManager.Instance.plantsInSpots[i]);
-                Debug.Log(myplant);
-                plantsInSpots[i] = myplant;
+                Plant myplant = allPlants.Find(x => x.plantId == id);
+                if (allPlants.Contains(myplant))
+                {
+                    Debug.Log(myplant);
+                    plantsInSpots[i] = myplant;
+                }
+                i++;
             }
         }
         else
@@ -85,7 +90,7 @@ public class gardenManager : MonoBehaviour
                 plantsInSpots.Add(blank);
                 GameManager.Instance.plantsInSpots[i] = 0;
             }
-            Debug.Log(plantsInSpots);
+            Debug.Log(plantsInSpots[0].name);
         }
 
 

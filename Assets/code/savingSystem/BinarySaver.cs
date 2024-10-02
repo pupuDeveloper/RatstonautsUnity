@@ -93,17 +93,16 @@ public class BinarySaver
         int hour = _reader.ReadInt32();
         int minute = _reader.ReadInt32();
         int second = _reader.ReadInt32();
-        DateTime time = DateTime.Now;
         try
         {
-            time = new DateTime(year, month, day, hour, minute, second);
+            DateTime time = new DateTime(year, month, day, hour, minute, second);
+            return time;
         }
         catch (Exception e)
         {
-            Debug.LogException(e);
+            DateTime time = DateTime.Now;
+            return time;
         }
-        Debug.Log("time is: " + time);
-        return time;
     }
     #endregion
 

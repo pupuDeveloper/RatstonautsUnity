@@ -77,7 +77,7 @@ public class gameStats : MonoBehaviour
         addedSpeed += _cockpitMinigame.cockpitBoost();
         if (_oxygenGardenState.arePlantsWatered())
         {
-            for (int i = 0; i < _oxygenGardenState.getPlantsInSpots().Count; i++)
+            for (int i = 0; i < _oxygenGardenState.getPlantsInSpots().Length; i++)
             {
                 switch (_oxygenGardenState.getPlantsInSpots()[i].plantId)
                 {
@@ -121,7 +121,7 @@ public class gameStats : MonoBehaviour
         addedSpeed += _turretMiniGame.getBoost();
         if (_oxygenGardenState.arePlantsWatered())
         {
-            for (int i = 0; i < _oxygenGardenState.getPlantsInSpots().Count; i++)
+            for (int i = 0; i < _oxygenGardenState.getPlantsInSpots().Length; i++)
             {
                 switch (_oxygenGardenState.getPlantsInSpots()[i].plantId)
                 {

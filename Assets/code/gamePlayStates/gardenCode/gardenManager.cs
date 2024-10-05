@@ -9,12 +9,12 @@ using TMPro;
 public class gardenManager : MonoBehaviour
 {
     [SerializeField] private Transform[] plantSpots;
-    public List<Plant> plantsInSpots = new List<Plant>();
+    public Plant[] plantsInSpots = new Plant[3];
     public Plant blank;
     public List<Plant> allPlants = new List<Plant>();
     public List<Plant> unlockedPlants { get; private set; }
     [SerializeField] private GameObject[] plantsUI;
-    [SerializeField] [Range(0, 3)] private int unlockedSlots;
+    [SerializeField][Range(0, 3)] private int unlockedSlots;
     public GameObject scrollableList;
     public GameObject closePlantListButton;
     [SerializeField] private GameObject[] removeButtons;
@@ -67,32 +67,8 @@ public class gardenManager : MonoBehaviour
         //blank plant
         blank = new Plant("Blank", 0, "Blank plant", false, false, 0);
         if (!allPlants.Contains(blank)) allPlants.Add(blank);
-        //current plants in spots TODO: read this from file later
-        if (GameManager.Instance.plantsInSpots.Length != 0)
-        {
-            int i = 0;
-            foreach (int id in GameManager.Instance.plantsInSpots)
-            {
-                Plant myplant = allPlants.Find(x => x.plantId == id);
-                if (allPlants.Contains(myplant))
-                {
-                    Debug.Log(myplant);
-                    plantsInSpots[i] = myplant;
-                }
-                i++;
-            }
-        }
-        else
-        {
-            GameManager.Instance.plantsInSpots = new int[3];
-            for (int i = 0; i < 3; i++)
-            {
-                plantsInSpots.Add(blank);
-                GameManager.Instance.plantsInSpots[i] = 0;
-            }
-            Debug.Log(plantsInSpots[0].name);
-        }
 
+        instantiatePlants();
 
         foreach (Plant p in allPlants)
         {
@@ -236,6 +212,40 @@ public class gardenManager : MonoBehaviour
         {
             GameManager.Instance.plantsInSpots[i] = p.plantId;
             i++;
+        }
+    }
+    public void instantiatePlants()
+    {
+        if (GameManager.Instance.plantsInSpots == null || GameManager.Instance.plantsInSpots.Length == 0)
+        {
+            GameManager.Instance.plantsInSpots = new int[3];
+            plantsInSpots = new Plant[3];
+            for (int i = 0; i < plantsInSpots.Length; i++)
+            {
+                plantsInSpots[i] = blank;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GameManager.Instance.plantsInSpots.Length; i++)
+            {
+                if (GameManager.Instance.plantsInSpots[i] != 0)
+                {
+                    Plant myplant = allPlants.Find(x => x.plantId == GameManager.Instance.plantsInSpots[i]);
+                    if (allPlants.Contains(myplant))
+                    {
+                        plantsInSpots[i] = myplant;
+                        removeButtons[i].SetActive(true);
+                        plantSpots[i].GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = myplant.name;
+                    }
+                }
+                else
+                {
+                    plantsInSpots[i] = blank;
+                    removeButtons[i].SetActive(false);
+                    plantSpots[i].GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = "";
+                }
+            }
         }
     }
 }

@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
 {
 
     #region SavedData
-    [SerializeField] public int spaceShipSpeed {get; set;} // km/sec
-    [SerializeField] public int totalDistanceTraveled {get; set;}
+    [SerializeField] public int spaceShipSpeed { get; set; } // km/sec
+    [SerializeField] public int totalDistanceTraveled { get; set; }
     [SerializeField] public int totalXp;
     public event Action roomBoostOn;
 
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         }
     }
     [SerializeField] public int gardenXP { get; set; } //this correlates to unlocked plants
-    [SerializeField] public int[] plantsInSpots; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
+    [SerializeField] public int[] plantsInSpots = new int[3]; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
     [SerializeField] public DateTime timeSinceGardenCDStarted { get; set; }
     [SerializeField] public DateTime triggerGardenWatering { get; set; }
 
@@ -130,16 +130,15 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         //
-
-        InitializeStates();
         InitializeSaveSystem();
+        string mainSaveSlot = saveSystem.MainSaveSlot;
+        saveSystem.Load(mainSaveSlot);
+        InitializeStates();
     }
 
     private void Start()
     {
         StartCoroutine("autosaveWithTimer");
-        string mainSaveSlot = saveSystem.MainSaveSlot;
-        saveSystem.Load(mainSaveSlot);
         if (CurrentState.Type == StateType.Initialization && totalDistanceTraveled == 0)
         {
             Go(StateType.MainMenu);
@@ -239,9 +238,16 @@ public class GameManager : MonoBehaviour
         //oxygen garden data
         writer.WriteBool(gardenBoostOn);
         writer.WriteInt(gardenXP);
-        foreach (int id in plantsInSpots)
+        if (plantsInSpots == null || plantsInSpots.Length == 0)
         {
-            writer.WriteInt(id);
+            plantsInSpots = new int[3];
+        }
+        else
+        {
+            foreach (int id in plantsInSpots)
+            {
+                writer.WriteInt(id);
+            }
         }
         writer.WriteTime(timeSinceGardenCDStarted);
         writer.WriteTime(triggerGardenWatering);
@@ -275,11 +281,8 @@ public class GameManager : MonoBehaviour
         //oxygen garden data
         gardenBoostOn = reader.ReadBool();
         gardenXP = reader.ReadInt();
-        if (plantsInSpots == null || plantsInSpots.Length == 0)
-        {
-            plantsInSpots = new int[3]
-        }
-        for (int i = 0; i < plantsInSpots.Length; i++)
+        plantsInSpots = new int[3];
+        for (int i = 0; i < 3; i++)
         {
             plantsInSpots[i] = reader.ReadInt();
         }
@@ -329,12 +332,12 @@ public class GameManager : MonoBehaviour
     }
     private void checkForNullTimes()
     {
-        if (timeSinceCockPitCDStarted < new DateTime(2000,01,01)) timeSinceCockPitCDStarted = DateTime.Now;
-        if (timeSinceGardenCDStarted < new DateTime(2000,01,01)) timeSinceGardenCDStarted = DateTime.Now;
-        if (timeSinceTurretsCDStarted < new DateTime(2000,01,01)) timeSinceTurretsCDStarted = DateTime.Now;
-        if (triggerCockPitMG < new DateTime(2000,01,01)) triggerCockPitMG = DateTime.Now;
-        if (triggerGardenWatering < new DateTime(2000,01,01)) triggerGardenWatering = DateTime.Now;
-        if (triggerTurretsMG < new DateTime(2000,01,01)) triggerTurretsMG = DateTime.Now;
+        if (timeSinceCockPitCDStarted < new DateTime(2000, 01, 01)) timeSinceCockPitCDStarted = DateTime.Now;
+        if (timeSinceGardenCDStarted < new DateTime(2000, 01, 01)) timeSinceGardenCDStarted = DateTime.Now;
+        if (timeSinceTurretsCDStarted < new DateTime(2000, 01, 01)) timeSinceTurretsCDStarted = DateTime.Now;
+        if (triggerCockPitMG < new DateTime(2000, 01, 01)) triggerCockPitMG = DateTime.Now;
+        if (triggerGardenWatering < new DateTime(2000, 01, 01)) triggerGardenWatering = DateTime.Now;
+        if (triggerTurretsMG < new DateTime(2000, 01, 01)) triggerTurretsMG = DateTime.Now;
         //timeSinceFoodGenCDStarted = (null) ? timeSinceFoodGenCDStarted = DateTime.Now:;
         //triggerFoodGenMG = (null) ? triggerFoodGenMG = DateTime.Now:;
     }

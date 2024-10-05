@@ -248,6 +248,7 @@ public class GameManager : MonoBehaviour
         //turrets data
         writer.WriteBool(turretsBoostOn);
         writer.WriteInt(turretsXP);
+        Debug.Log("saved turret xp: " + turretsXP);
         writer.WriteTime(timeSinceTurretsCDStarted);
         writer.WriteTime(triggerTurretsMG);
         //foodGen Data
@@ -274,6 +275,10 @@ public class GameManager : MonoBehaviour
         //oxygen garden data
         gardenBoostOn = reader.ReadBool();
         gardenXP = reader.ReadInt();
+        if (plantsInSpots == null || plantsInSpots.Length == 0)
+        {
+            plantsInSpots = new int[3]
+        }
         for (int i = 0; i < plantsInSpots.Length; i++)
         {
             plantsInSpots[i] = reader.ReadInt();

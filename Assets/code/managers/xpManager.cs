@@ -69,7 +69,6 @@ public class xpManager : MonoBehaviour
         {
             xpAverage += (i * 100) * (int)BigInteger.Pow(2, i / 12) * 10; // times 10, because last digit is a decimal.
             xpForLevels[i] = xpAverage;
-            Debug.Log("xp needed for lvl " + i + " is " + xpForLevels[i]);
         }
         cockPitLvl = checkLvls(GameManager.Instance.cockPitXP);
         foodGenLvl = checkLvls(GameManager.Instance.foodGenXP);
@@ -111,6 +110,7 @@ public class xpManager : MonoBehaviour
                 return i - 1;
             }
         }
+        Debug.Log("xp value is: " + currentXp);
         Debug.LogError("xp value is not valid!");
         return -1;
     }
@@ -301,7 +301,7 @@ public class xpManager : MonoBehaviour
         int xpToAdd = _gameStats.getTurretSpeedBoost();
         if (turretsLvl != 0)
         {
-            xpToAdd = xpToAdd * cockPitLvl * 10;
+            xpToAdd = xpToAdd * turretsLvl * 10;
         }
         else
         {

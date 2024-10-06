@@ -239,13 +239,13 @@ public class cockpitMiniGame : MonoBehaviour
     }
     private void calculateBoost()
     {
-        if (_xpManager.cockPitLvl == 0)
+        if (_xpManager.cockPitLvl <= 1)
         {
             boostAmount = level0boost;
         }
         else
         {
-            boostMultiplier = _xpManager.checkLvls(GameManager.Instance.cockPitXP); //REMEMBER!! XP STUFF IS 10X IN CODE
+            boostMultiplier = _xpManager.cockPitLvl / 2; //REMEMBER!! XP STUFF IS 10X IN CODE
             boostAmount = level0boost * boostMultiplier;
         }
     }

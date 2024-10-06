@@ -24,6 +24,7 @@ public class xpManager : MonoBehaviour
     [SerializeField] private wateringEvent _wateringEvent;
     [SerializeField] private TMP_Text totalXpText;
     [SerializeField] private GameObject xpPopUpPrefab;
+    private Transform canvasForPopup;
     public int[] xpForLevels { get; private set; }
     public int cockPitLvl { get; private set; }
     public int foodGenLvl { get; private set; }
@@ -67,6 +68,7 @@ public class xpManager : MonoBehaviour
     }
     private void Start()
     {
+        canvasForPopup = GameObject.Find("worldSpaceCanvas").transform;
         xpForLevels = new int[100];
         xpForLevels[0] = 0;
         int xpAverage = 0;
@@ -330,24 +332,24 @@ public class xpManager : MonoBehaviour
     private IEnumerator showXpInUI(int roomId, int xpAmount)
     {
         popupOnCDOn = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.65f);
         Sprite displaySprite = null;
         switch (roomId)
         {
             case 0:
-                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[0];
+                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[4];
                 break;
             case 1:
-                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[1];
-                break;
-            case 2:
-                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[2];
-                break;
-            case 3:
                 displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[3];
                 break;
+            case 2:
+                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[1];
+                break;
+            case 3:
+                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[2];
+                break;
             case 4:
-                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[4];
+                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[0];
                 break;
         }
         xpPopUpPrefab.GetComponent<SpriteRenderer>().sprite = displaySprite;
@@ -359,7 +361,7 @@ public class xpManager : MonoBehaviour
         {
             xpPopUpPrefab.GetComponentInChildren<TMP_Text>().SetText(convertToUIText(xpAmount, false, false));
         }
-        Instantiate(xpPopUpPrefab, new UnityEngine.Vector3(-5, 5.75f, 10), transform.rotation);
+        Instantiate(xpPopUpPrefab,new UnityEngine.Vector3(-5, 5.75f, 10), transform.rotation,canvasForPopup);
         popupArgs.Dequeue();
         popupOnCDOn = false;
     }
@@ -426,7 +428,7 @@ public class xpManager : MonoBehaviour
                     cockPitLvl++;
                 }
             }
-            popupArgs.Enqueue(new Tuple<int,int>(0, totalXpOffline1));
+            if (totalXpOffline1 != 0) popupArgs.Enqueue(new Tuple<int,int>(0, totalXpOffline1));
         }
 
         howManyXpDrops = 0;
@@ -448,12 +450,12 @@ public class xpManager : MonoBehaviour
                     turretsLvl++;
                 }
             }
-            popupArgs.Enqueue(new Tuple<int,int>(2, totalXpOffline3));
+            if (totalXpOffline3 != 0) popupArgs.Enqueue(new Tuple<int,int>(2, totalXpOffline3));
         }
         Debug.Log("cockpit gained :" + totalXpOffline1 + " xp while offline");
         Debug.Log("oxygen garden gained :" + totalXpOffline2 + " xp while offline");
         Debug.Log("turrets gained :" + totalXpOffline3 + " xp while offline");
-        popupArgs.Enqueue(new Tuple<int,int>(1, totalXpOffline2));
+        if (totalXpOffline2 != 0) popupArgs.Enqueue(new Tuple<int,int>(1, totalXpOffline2));
         updateTotalXp(totalXpOffline1 + totalXpOffline2 + totalXpOffline3);
     }
 }

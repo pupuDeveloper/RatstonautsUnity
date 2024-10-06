@@ -90,13 +90,13 @@ public class turretsMiniGame : MonoBehaviour
 
     private void calculateBoost()
     {
-        if (_xpManager.turretsLvl == 0)
+        if (_xpManager.turretsLvl <= 1)
         {
             boostAmount = level0boost;
         }
         else
         {
-            int boostMultiplier = _xpManager.checkLvls(GameManager.Instance.turretsXP);
+            int boostMultiplier = _xpManager.turretsLvl / 2;
             boostAmount = boostMultiplier * level0boost;
         }
     }

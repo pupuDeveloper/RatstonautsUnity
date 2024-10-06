@@ -4,6 +4,7 @@ using System.Numerics;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class xpManager : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class xpManager : MonoBehaviour
     [SerializeField] private wateringEvent _wateringEvent;
     [SerializeField] private TMP_Text totalXpText;
     [SerializeField] private GameObject xpPopUpPrefab;
-    private int[] xpForLevels = new int[100];
+    public int[] xpForLevels { get; private set; }
     public int cockPitLvl { get; private set; }
     public int foodGenLvl { get; private set; }
     public int oxygenGardenLvl { get; private set; }
@@ -38,16 +39,37 @@ public class xpManager : MonoBehaviour
 
     private bool cockPitCoroutine;
     private bool turretCoroutine;
-
+    public Action<bool, string> onBoostChanged;
+    public void changeBoost(bool toWhat, string whichRoom)
+    {
+        switch (whichRoom)
+        {
+            case "cockpit":
+                GameManager.Instance.cockpitBoostOn = toWhat;
+                break;
+            case "oxygengarden":
+                GameManager.Instance.gardenBoostOn = toWhat;
+                break;
+            case "turrets":
+                GameManager.Instance.turretsBoostOn = toWhat;
+                break;
+            case "foodgen":
+                GameManager.Instance.foodGenBoostOn = toWhat;
+                break;
+            default:
+                Debug.LogWarning("THIS SHOULDNT HAPPEN! BREAKS GAME");
+                break;
+        }
+    }
     private void Start()
     {
+        xpForLevels = new int[100];
         xpForLevels[0] = 0;
         int xpAverage = 0;
         for (int i = 1; i < xpForLevels.Length; i++)
         {
             xpAverage += (i * 100) * (int)BigInteger.Pow(2, i / 12) * 10; // times 10, because last digit is a decimal.
             xpForLevels[i] = xpAverage;
-            Debug.Log("xp needed for lvl " + i + " is " + xpForLevels[i]);
         }
         cockPitLvl = checkLvls(GameManager.Instance.cockPitXP);
         foodGenLvl = checkLvls(GameManager.Instance.foodGenXP);
@@ -56,6 +78,7 @@ public class xpManager : MonoBehaviour
         turretsLvl = checkLvls(GameManager.Instance.turretsXP);
         cockPitCoroutine = true;
         turretCoroutine = true;
+        calculateXP();
     }
 
     private void Update()
@@ -89,6 +112,7 @@ public class xpManager : MonoBehaviour
                 return i - 1;
             }
         }
+        Debug.Log("xp value is: " + currentXp);
         Debug.LogError("xp value is not valid!");
         return -1;
     }
@@ -194,7 +218,7 @@ public class xpManager : MonoBehaviour
         int xpToAdd;
         xpToAdd = _gameStats.getCockPitSpeedBoost();
         GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
-        if (_oxygengardenState.doPlantsAffectRoom("cockpit") && _oxygengardenState.arePlantsWatered())
+        if (_oxygengardenState.doPlantsAffectRoom("cockpit") && GameManager.Instance.gardenBoostOn)
         {
             gardenPassiveXP(xpToAdd);
         }
@@ -213,7 +237,7 @@ public class xpManager : MonoBehaviour
         int xpToAdd;
         xpToAdd = _gameStats.getTurretSpeedBoost();
         GameManager.Instance.turretsXP = addXp(GameManager.Instance.turretsXP, xpToAdd);
-        if (_oxygengardenState.doPlantsAffectRoom("turrets") && _oxygengardenState.arePlantsWatered())
+        if (_oxygengardenState.doPlantsAffectRoom("turrets") && GameManager.Instance.gardenBoostOn)
         {
             gardenPassiveXP(xpToAdd);
         }
@@ -279,7 +303,7 @@ public class xpManager : MonoBehaviour
         int xpToAdd = _gameStats.getTurretSpeedBoost();
         if (turretsLvl != 0)
         {
-            xpToAdd = xpToAdd * cockPitLvl * 10;
+            xpToAdd = xpToAdd * turretsLvl * 10;
         }
         else
         {
@@ -333,4 +357,98 @@ public class xpManager : MonoBehaviour
         Instantiate(xpPopUpPrefab, new UnityEngine.Vector3(-5, 5.75f, 10), transform.rotation);
         lastTimeCalled = Time.time;
     }
+    private int calcOfflineTime(string roomName)
+    {
+        roomName = roomName.ToLower();
+        DateTime startTime;
+        DateTime endTime = DateTime.Now;
+        int dropAmount = 0;
+        switch (roomName)
+        {
+            case "cockpit":
+                startTime = GameManager.Instance.timeSinceCockPitCDStarted;
+                if (GameManager.Instance.triggerCockPitMG < endTime)
+                {
+                    endTime = GameManager.Instance.triggerCockPitMG;
+                }
+                dropAmount = (int)(endTime - startTime).TotalSeconds;
+                break;
+
+            case "oxygengarden":
+                startTime = GameManager.Instance.timeSinceGardenCDStarted;
+                if (GameManager.Instance.triggerGardenWatering < endTime)
+                {
+                    endTime = GameManager.Instance.triggerGardenWatering;
+                }
+                dropAmount = (int)(endTime - startTime).TotalSeconds;
+                break;
+
+            case "turrets":
+                startTime = GameManager.Instance.timeSinceTurretsCDStarted;
+                if (GameManager.Instance.triggerTurretsMG < endTime)
+                {
+                    endTime = GameManager.Instance.triggerTurretsMG;
+                }
+                dropAmount = (int)(endTime - startTime).TotalSeconds;
+                break;
+        }
+        return dropAmount / 3;
+    }
+
+    private void calculateXP()
+    {
+        int xpToAdd;
+        int totalXpOffline1 = 0; //cockpit
+        int totalXpOffline2 = 0; //oxygengarden
+        int totalXpOffline3 = 0; //turrets
+        int howManyXpDrops;
+
+        if (calcOfflineTime("cockpit") > 0)
+        {
+            howManyXpDrops = calcOfflineTime("cockpit");
+            for (int i = 0; i < howManyXpDrops; i++)
+            {
+                xpToAdd = _gameStats.getCockPitSpeedBoost();
+                totalXpOffline1 += xpToAdd;
+                GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
+                if (_oxygengardenState.doPlantsAffectRoom("cockpit") && i < calcOfflineTime("oxygengarden"))
+                {
+                    totalXpOffline2 += xpToAdd / 3;
+                }
+                if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
+                {
+                    cockPitLvl++;
+                }
+            }
+            StartCoroutine(showXpInUI(0, totalXpOffline1));
+        }
+
+        howManyXpDrops = 0;
+
+        if (calcOfflineTime("turrets") > 0)
+        {
+            howManyXpDrops = calcOfflineTime("turrets");
+            for (int i = 0; i < howManyXpDrops; i++)
+            {
+                xpToAdd = _gameStats.getTurretSpeedBoost();
+                totalXpOffline3 += xpToAdd;
+                GameManager.Instance.turretsXP = addXp(GameManager.Instance.turretsXP, xpToAdd);
+                if (_oxygengardenState.doPlantsAffectRoom("turrets") && i < calcOfflineTime("oxygengarden"))
+                {
+                    totalXpOffline2 += xpToAdd / 3;
+                }
+                if (updateLevel(GameManager.Instance.turretsXP, turretsLvl))
+                {
+                    turretsLvl++;
+                }
+            }
+            StartCoroutine(showXpInUI(2, totalXpOffline3));
+        }
+        Debug.Log("cockpit gained :" + totalXpOffline1 + " xp while offline");
+        Debug.Log("oxygen garden gained :" + totalXpOffline2 + " xp while offline");
+        Debug.Log("turrets gained :" + totalXpOffline3 + " xp while offline");
+        StartCoroutine(showXpInUI(1, totalXpOffline2));
+        updateTotalXp(totalXpOffline1 + totalXpOffline2 + totalXpOffline3);
+    }
 }
+

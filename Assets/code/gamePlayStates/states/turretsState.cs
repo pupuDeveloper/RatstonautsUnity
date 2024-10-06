@@ -8,7 +8,6 @@ public class turretsState : State
 {
     [SerializeField] private GameStateManager gameStateManager;
     private bool stateIsReady;
-    public bool cooldownOn; //read from file
 
     [Header("UI stuff like backgrounds")]
     [SerializeField] private Button toMiniGameButton;
@@ -26,12 +25,7 @@ public class turretsState : State
             resetState();
             return gameStateManager.targetState;
         }
-        Debug.Log("in turrets");
         return this;
-    }
-    private void Start()
-    {
-        cooldownOn = false;
     }
 
     private void resetState()

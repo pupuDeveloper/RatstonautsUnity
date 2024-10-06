@@ -8,41 +8,85 @@ public class GameManager : MonoBehaviour
 {
 
     #region SavedData
-    [SerializeField] private float spaceShipSpeed; // km/sec
-    [SerializeField] private float totalDistanceTraveled;
+    [SerializeField] public int spaceShipSpeed { get; set; } // km/sec
+    [SerializeField] public int totalDistanceTraveled { get; set; }
     [SerializeField] public int totalXp;
+    public event Action roomBoostOn;
 
     // cockpit data
-    [SerializeField] public bool cockpitBoostOn { get; set; }
-    [SerializeField] public int cockPitXP {get; set;} // correlates boost amount
-    [SerializeField] public DateTime timeSinceCockPitCDStarted {get; set;} //since last minigame was played
-    [SerializeField] public DateTime triggerCockPitMG {get; set;} // when to trigger next minigame
+    private bool _cockpitBoostOn;
+    public bool cockpitBoostOn
+    {
+        get
+        {
+            return _cockpitBoostOn;
+        }
+        set
+        {
+            if (_cockpitBoostOn != value)
+            {
+                _cockpitBoostOn = value;
+                roomBoostOn?.Invoke();
+            }
+        }
+    }
+    [SerializeField] public int cockPitXP { get; set; } // correlates boost amount
+    [SerializeField] public DateTime timeSinceCockPitCDStarted { get; set; } //since last minigame was played
+    [SerializeField] public DateTime triggerCockPitMG { get; set; } // when to trigger next minigame
 
     // oxygen garden data
-
-    [SerializeField] public bool gardenBoostOn {get; set;}
-    [SerializeField] public int gardenXP {get; set;} //this correlates to unlocked plants
-    [SerializeField] private int[] plantsInSpots; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
-    [SerializeField] public DateTime timeSinceGardenCDStarted {get; set;}
-    [SerializeField] public DateTime triggerGardenWatering {get; set;}
+    private bool _gardenBoostOn;
+    public bool gardenBoostOn
+    {
+        get
+        {
+            return _gardenBoostOn;
+        }
+        set
+        {
+            if (_gardenBoostOn != value)
+            {
+                _gardenBoostOn = value;
+                roomBoostOn?.Invoke();
+            }
+        }
+    }
+    [SerializeField] public int gardenXP { get; set; } //this correlates to unlocked plants
+    [SerializeField] public int[] plantsInSpots = new int[3]; //plants that are in the spots, invidiual plant object has effect info etc, no need to save it.
+    [SerializeField] public DateTime timeSinceGardenCDStarted { get; set; }
+    [SerializeField] public DateTime triggerGardenWatering { get; set; }
 
     //turrets data
-
-    [SerializeField] public bool turretsBoostOn {get; set;}
-    [SerializeField] public int turretsXP {get; set;}
-    [SerializeField] public DateTime timeSinceTurretsCDStarted {get; set;}
-    [SerializeField] public DateTime triggerTurretsMG {get; set;}
+    private bool _turretsBoostOn;
+    public bool turretsBoostOn
+    {
+        get
+        {
+            return _turretsBoostOn;
+        }
+        set
+        {
+            if (_turretsBoostOn != value)
+            {
+                _turretsBoostOn = value;
+                roomBoostOn?.Invoke();
+            }
+        }
+    }
+    [SerializeField] public int turretsXP { get; set; }
+    [SerializeField] public DateTime timeSinceTurretsCDStarted { get; set; }
+    [SerializeField] public DateTime triggerTurretsMG { get; set; }
 
     // FoodGenerator Data
-    [SerializeField] public bool foodGenBoostOn {get; set;}
-    [SerializeField] public int foodGenXP {get; private set;} //unlocked foods
+    [SerializeField] public bool foodGenBoostOn { get; set; }
+    [SerializeField] public int foodGenXP { get; private set; } //unlocked foods
     [SerializeField] private int selectedFood; // food thats been COOKED
-    [SerializeField] private DateTime timeSinceFoodGenCDStarted;
-    [SerializeField] public DateTime triggerFoodGenMG;
+    [SerializeField] public DateTime timeSinceFoodGenCDStarted { get; set; }
+    [SerializeField] public DateTime triggerFoodGenMG { get; set; }
 
     //sleepingQuarters data
 
-    [SerializeField] public int quartersXP{get; private set;} //unlock cosmetics/customization for sleeping quarters
+    [SerializeField] public int quartersXP { get; private set; } //unlock cosmetics/customization for sleeping quarters
 
     #endregion
 
@@ -61,13 +105,14 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion statics
-    
+
 
     private List<GameStateBase> _states = new List<GameStateBase>();
-    public GameStateBase CurrentState { get; private set;}
-    private GameStateBase PreviousState {get; set;}
-    public SaveSystem saveSystem { get; private set;}
-    public bool unlockEverything { get; private set;} // for developing purposes, unlocks progression form start for testing/debugging etc.
+    public GameStateBase CurrentState { get; private set; }
+    private GameStateBase PreviousState { get; set; }
+    public SaveSystem saveSystem { get; private set; }
+    public bool unlockEverything { get; private set; } // for developing purposes, unlocks progression form start for testing/debugging etc.
+
 
 
     private void Awake()
@@ -85,14 +130,24 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         //
-
-        InitializeStates();
         InitializeSaveSystem();
+        string mainSaveSlot = saveSystem.MainSaveSlot;
+        saveSystem.Load(mainSaveSlot);
+        InitializeStates();
+        checkBoosts();
     }
 
     private void Start()
     {
-        //StartCoroutine("autosaveWithTimer"); commented out bcs testing in editor
+        StartCoroutine("autosaveWithTimer");
+        if (CurrentState.Type == StateType.Initialization && totalDistanceTraveled == 0)
+        {
+            Go(StateType.MainMenu);
+        }
+        else
+        {
+            Go(StateType.InGame);
+        }
     }
 
     private void InitializeSaveSystem()
@@ -102,9 +157,10 @@ public class GameManager : MonoBehaviour
 
     private void InitializeStates()
     {
-        GameStateBase initialState = new MainMenuState();
+        GameStateBase initialState = new InitState();
         //create all states
         _states.Add(initialState);
+        _states.Add(new MainMenuState());
         _states.Add(new InGameState());
         _states.Add(new OptionsState());
 
@@ -172,8 +228,8 @@ public class GameManager : MonoBehaviour
     public void Save(BinarySaver writer)
     {
         //ship data
-        writer.WriteFloat(spaceShipSpeed);
-        writer.WriteFloat(totalDistanceTraveled);
+        writer.WriteInt(spaceShipSpeed);
+        writer.WriteInt(totalDistanceTraveled);
         writer.WriteInt(totalXp);
         //cockpit data
         writer.WriteBool(cockpitBoostOn);
@@ -183,9 +239,16 @@ public class GameManager : MonoBehaviour
         //oxygen garden data
         writer.WriteBool(gardenBoostOn);
         writer.WriteInt(gardenXP);
-        foreach (int id in plantsInSpots)
+        if (plantsInSpots == null || plantsInSpots.Length == 0)
         {
-            writer.WriteInt(id);
+            plantsInSpots = new int[3];
+        }
+        else
+        {
+            foreach (int id in plantsInSpots)
+            {
+                writer.WriteInt(id);
+            }
         }
         writer.WriteTime(timeSinceGardenCDStarted);
         writer.WriteTime(triggerGardenWatering);
@@ -195,20 +258,20 @@ public class GameManager : MonoBehaviour
         writer.WriteTime(timeSinceTurretsCDStarted);
         writer.WriteTime(triggerTurretsMG);
         //foodGen Data
-        writer.WriteBool(foodGenBoostOn);
-        writer.WriteInt(foodGenXP);
-        writer.WriteInt(selectedFood);
-        writer.WriteTime(timeSinceFoodGenCDStarted);
-        writer.WriteTime(triggerFoodGenMG);
+        //writer.WriteBool(foodGenBoostOn);
+        //writer.WriteInt(foodGenXP);
+        //writer.WriteInt(selectedFood);
+        //writer.WriteTime(timeSinceFoodGenCDStarted);
+        //writer.WriteTime(triggerFoodGenMG);
         //sleepingquarters data
-        writer.WriteInt(quartersXP);
+        //writer.WriteInt(quartersXP);
     }
 
     public void Load(BinarySaver reader)
     {
         //ship data
-        spaceShipSpeed = reader.ReadFloat();
-        totalDistanceTraveled = reader.ReadFloat();
+        spaceShipSpeed = reader.ReadInt();
+        totalDistanceTraveled = reader.ReadInt();
         totalXp = reader.ReadInt();
         //cockpit data
         cockpitBoostOn = reader.ReadBool();
@@ -218,7 +281,8 @@ public class GameManager : MonoBehaviour
         //oxygen garden data
         gardenBoostOn = reader.ReadBool();
         gardenXP = reader.ReadInt();
-        for (int i = 0; i < plantsInSpots.Length; i++) 
+        plantsInSpots = new int[3];
+        for (int i = 0; i < 3; i++)
         {
             plantsInSpots[i] = reader.ReadInt();
         }
@@ -230,13 +294,13 @@ public class GameManager : MonoBehaviour
         timeSinceTurretsCDStarted = reader.ReadTime();
         triggerTurretsMG = reader.ReadTime();
         //foodGen Data
-        foodGenBoostOn = reader.ReadBool();
-        foodGenXP = reader.ReadInt();
-        selectedFood = reader.ReadInt();
-        timeSinceFoodGenCDStarted = reader.ReadTime();
-        triggerFoodGenMG = reader.ReadTime();
+        //foodGenBoostOn = reader.ReadBool();
+        //foodGenXP = reader.ReadInt();
+        //selectedFood = reader.ReadInt();
+        //timeSinceFoodGenCDStarted = reader.ReadTime();
+        //triggerFoodGenMG = reader.ReadTime();
         //sleepingquarters data
-        quartersXP = reader.ReadInt();
+        //quartersXP = reader.ReadInt();
     }
     private IEnumerator autosaveWithTimer()
     {
@@ -248,7 +312,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /*void OnApplicationFocus() //commented out bcs testing in editor
+    void OnApplicationFocus()
     {
         string mainSaveSlot = saveSystem.MainSaveSlot;
         saveSystem.Save(mainSaveSlot);
@@ -258,12 +322,40 @@ public class GameManager : MonoBehaviour
     {
         string mainSaveSlot = saveSystem.MainSaveSlot;
         saveSystem.Save(mainSaveSlot);
-    }*/
-
-    public int getTimeSinceLastSave(DateTime referencedTime) //get time between requested timedate and current timedate in seconds.
+    }
+    private void checkBoosts()
     {
-        var timeDif = DateTime.Now - referencedTime;
-        int differenceInSeconds = timeDif.Seconds;
-        return differenceInSeconds;
+        if (cockpitBoostOn)
+        {
+            if (triggerCockPitMG < DateTime.Now)
+            {
+                cockpitBoostOn = false;
+            }
+        }
+        if (gardenBoostOn)
+        {
+            if (triggerGardenWatering < DateTime.Now)
+            {
+                gardenBoostOn = false;
+            }
+        }
+        if (turretsBoostOn)
+        {
+            if (triggerTurretsMG < DateTime.Now)
+            {
+                turretsBoostOn =  false;
+            }
+        }
+    }
+    private void checkForNullTimes()
+    {
+        if (timeSinceCockPitCDStarted < new DateTime(2000, 01, 01)) timeSinceCockPitCDStarted = DateTime.Now;
+        if (timeSinceGardenCDStarted < new DateTime(2000, 01, 01)) timeSinceGardenCDStarted = DateTime.Now;
+        if (timeSinceTurretsCDStarted < new DateTime(2000, 01, 01)) timeSinceTurretsCDStarted = DateTime.Now;
+        if (triggerCockPitMG < new DateTime(2000, 01, 01)) triggerCockPitMG = DateTime.Now;
+        if (triggerGardenWatering < new DateTime(2000, 01, 01)) triggerGardenWatering = DateTime.Now;
+        if (triggerTurretsMG < new DateTime(2000, 01, 01)) triggerTurretsMG = DateTime.Now;
+        //timeSinceFoodGenCDStarted = (null) ? timeSinceFoodGenCDStarted = DateTime.Now:;
+        //triggerFoodGenMG = (null) ? triggerFoodGenMG = DateTime.Now:;
     }
 }

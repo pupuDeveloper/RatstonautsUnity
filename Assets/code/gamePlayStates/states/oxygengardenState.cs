@@ -59,13 +59,14 @@ public class oxygengardenState : State
 
     public void setupState()
     {
+        _gardenManager.instantiatePlants();
         gameStateManager.targetState = this;
         oxygenGardenBG1.SetActive(true);
         oxygenGardenBG2.SetActive(false);
         toGardenButton.gameObject.SetActive(true);
         stateIsReady = true;
     }
-    public List<Plant> getPlantsInSpots()
+    public Plant[] getPlantsInSpots()
     {
         return _gardenManager.plantsInSpots;
     }
@@ -75,22 +76,24 @@ public class oxygengardenState : State
         {
             return;
         }
+        int i = 0;
         foreach (Plant plant in getPlantsInSpots())
         {
-            if (plant != _gardenManager.blank)
+            if (plant.name == "Blank")
             {
-                _wateringEvent.gardenEvent();
+                i++;
+            }
+            else
+            {
+                _wateringEvent.gardenEvent(true);
             }
         }
-    }
-    public bool arePlantsWatered()
-    {
-        return _gardenManager.arePlantsWatered;
+        if (i == 3) _wateringEvent.gardenEvent(false);
     }
     public bool areAllPlantsBlank()
     {
-        List<Plant> plants = getPlantsInSpots();
-        for (int i = 0; i < plants.Count; i++)
+        Plant[] plants = getPlantsInSpots();
+        for (int i = 0; i < plants.Length; i++)
         {
             if (plants[i].plantId != 0)
             {
@@ -104,11 +107,11 @@ public class oxygengardenState : State
     //goes through each spot, then each relevant plant id
 
     {
-        List<Plant> plants = getPlantsInSpots();
+        Plant[] plants = getPlantsInSpots();
         switch (roomName)
         {
             case "cockpit":
-            for (int i = 0; i < plants.Count; i++)
+            for (int i = 0; i < plants.Length; i++)
             {
                 if (plants[i].plantId == 1 || plants[i].plantId == 5 || plants[i].plantId == 6 || plants[i].plantId == 11)
                 return true;
@@ -116,7 +119,7 @@ public class oxygengardenState : State
             return false;
             break;
             case "turrets":
-            for (int i = 0; i < plants.Count; i++)
+            for (int i = 0; i < plants.Length; i++)
             {
                 if (plants[i].plantId == 3 || plants[i].plantId == 5 || plants[i].plantId == 6 || plants[i].plantId == 11)
                 return true;

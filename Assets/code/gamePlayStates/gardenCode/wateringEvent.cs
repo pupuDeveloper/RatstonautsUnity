@@ -11,8 +11,8 @@ public class wateringEvent : MonoBehaviour
     [SerializeField] private xpManager _xpManager;
     private int level0boost;
     private int boostOnWatering;
-    public int minTimeSec {get; private set;}
-    public int maxTimeSec {get; private set;}
+    public int minTimeSec { get; private set; }
+    public int maxTimeSec { get; private set; }
 
 
     private void Start()
@@ -22,24 +22,30 @@ public class wateringEvent : MonoBehaviour
         maxTimeSec = 18000;
     }
 
-    public void gardenEvent()
+    public void gardenEvent(bool dryPlant)
     {
-        for (int i = 0; i < _oxygengardenState.getPlantsInSpots().Count; i++)
+        if (dryPlant)
         {
-            if (_oxygengardenState.getPlantsInSpots()[i] != _gardenManager.blank)
+            foreach (var p in popups)
             {
-                popups[i].SetActive(true);
+                p.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (var p in popups)
+            {
+                p.SetActive(false);
             }
         }
     }
+
     public void plantsWatered()
-    { 
-        //TODO: play animation when watering plants, XP reward too.
+    {
         calculateboost();
         _xpManager.wateringXPReward();
         GameManager.Instance.timeSinceGardenCDStarted = DateTime.Now;
-        GameManager.Instance.triggerFoodGenMG = DateTime.Now.AddSeconds(UnityEngine.Random.Range(minTimeSec, maxTimeSec));
-        _gardenManager.arePlantsWatered = true;
+        GameManager.Instance.triggerGardenWatering = DateTime.Now.AddSeconds(UnityEngine.Random.Range(minTimeSec, maxTimeSec));
         GameManager.Instance.gardenBoostOn = true;
     }
 

@@ -6,8 +6,8 @@ using System;
 
 public class gameStats : MonoBehaviour
 {
-    public int spaceShipSpeed { get; private set; } //spaceships speed km/per second
-    public int distanceTraveled { get; private set; } // total distance traveled
+    public int spaceShipSpeed; //spaceships speed km/per second
+    public int distanceTraveled; // total distance traveled
     [SerializeField] private shipManager _shipManager;
     [SerializeField] private cockpitMiniGame _cockpitMinigame;
     [SerializeField] private cockpitState _cockPitState;
@@ -29,8 +29,9 @@ public class gameStats : MonoBehaviour
     }
     private void Start()
     {
+        spaceShipSpeed = GameManager.Instance.spaceShipSpeed;
+        distanceTraveled = GameManager.Instance.totalDistanceTraveled;
         StartCoroutine("distanceCalculator");
-        spaceShipSpeed = 0;
     }
 
     private int getShipSpeed()
@@ -49,7 +50,7 @@ public class gameStats : MonoBehaviour
                 //TODO: after above todo, add all xp boosts, and with the outcoming number, do methods below.
                 spaceShipSpeed += getCockPitSpeedBoost();
             }
-            if (GameManager.Instance.gardenBoostOn && _oxygenGardenState.areAllPlantsBlank() == false && _oxygenGardenState.arePlantsWatered())
+            if (GameManager.Instance.gardenBoostOn && _oxygenGardenState.areAllPlantsBlank() == false)
             {
                 spaceShipSpeed += _wateringEvent.getBoostAmount();
             }
@@ -74,9 +75,9 @@ public class gameStats : MonoBehaviour
     {
         int addedSpeed = 0;
         addedSpeed += _cockpitMinigame.cockpitBoost();
-        if (_oxygenGardenState.arePlantsWatered())
+        if (GameManager.Instance.gardenBoostOn)
         {
-            for (int i = 0; i < _oxygenGardenState.getPlantsInSpots().Count; i++)
+            for (int i = 0; i < _oxygenGardenState.getPlantsInSpots().Length; i++)
             {
                 switch (_oxygenGardenState.getPlantsInSpots()[i].plantId)
                 {
@@ -118,9 +119,9 @@ public class gameStats : MonoBehaviour
     {
         int addedSpeed = 0;
         addedSpeed += _turretMiniGame.getBoost();
-        if (_oxygenGardenState.arePlantsWatered())
+        if (GameManager.Instance.gardenBoostOn)
         {
-            for (int i = 0; i < _oxygenGardenState.getPlantsInSpots().Count; i++)
+            for (int i = 0; i < _oxygenGardenState.getPlantsInSpots().Length; i++)
             {
                 switch (_oxygenGardenState.getPlantsInSpots()[i].plantId)
                 {
@@ -155,7 +156,6 @@ public class gameStats : MonoBehaviour
                 Debug.LogError("ERROR!!! DIDNT FIND ANY FOOD ID'S");
                 break;
         }
-        Debug.Log("added speed is: " + addedSpeed);
         return addedSpeed;
     }
     //TODO: make above-like functions for other rooms too
@@ -184,6 +184,7 @@ public class gameStats : MonoBehaviour
         while (true)
         {
             distanceTraveled += spaceShipSpeed;
+            GameManager.Instance.totalDistanceTraveled = distanceTraveled;
             yield return new WaitForSeconds(1f);
         }
     }

@@ -8,4 +8,5 @@ public enum StateType
     MainMenu,
     InGame,
     Options,
+    Initialization
 }

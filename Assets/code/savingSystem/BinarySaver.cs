@@ -71,19 +71,47 @@ public class BinarySaver
     #region Reading
     public int ReadInt()
     {
-        return _reader.ReadInt32();
+        try
+        {
+            return _reader.ReadInt32();
+        }
+        catch (Exception e)
+        {
+            return 0;
+        }
     }
     public float ReadFloat()
     {
-        return _reader.ReadSingle();
+        try
+        {
+            return _reader.ReadSingle();
+        }
+        catch (Exception e)
+        {
+            return 0.0f;
+        }
     }
     public bool ReadBool()
     {
-        return _reader.ReadBoolean();
+        try
+        {
+            return _reader.ReadBoolean();
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
     }
     public string ReadString()
     {
-        return _reader.ReadString();
+        try
+        {
+            return _reader.ReadString();
+        }
+        catch (Exception e)
+        {
+            return "";
+        }
     }
     public DateTime ReadTime()
     {
@@ -93,8 +121,16 @@ public class BinarySaver
         int hour = _reader.ReadInt32();
         int minute = _reader.ReadInt32();
         int second = _reader.ReadInt32();
-        DateTime time = new DateTime(year, month, day, hour, minute, second);
-        return time;
+        try
+        {
+            DateTime time = new DateTime(year, month, day, hour, minute, second);
+            return time;
+        }
+        catch (Exception e)
+        {
+            DateTime time = DateTime.Now;
+            return time;
+        }
     }
     #endregion
 

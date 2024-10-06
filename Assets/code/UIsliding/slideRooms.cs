@@ -52,9 +52,13 @@ public class slideRooms : MonoBehaviour
                     _gameStateManager.swiped("turrets");
                     break;
                 case var value when value == roomPositions[2]:
-                    roomInt = 3;
+                    //temporary limitation to 3 rooms only for first build
+                    roomInt = 2;
+                    targetPos = roomPositions[2];
+                    break;
+                    /*roomInt = 3;
                     targetPos = roomPositions[3];
-                    _gameStateManager.swiped("foodGenerator");
+                    _gameStateManager.swiped("foodGenerator");*/
                     break;
                 case var value when value == roomPositions[3]:
                     roomInt = 4;
@@ -119,8 +123,6 @@ public class slideRooms : MonoBehaviour
     {
         targetPos = endPoint;
         outLineTargetPos = buttonPositions[whichRoom];
-        Debug.Log("CurrentPos: " + outLineCurrentPos);
-        Debug.Log("TargetPos: "+ outLineTargetPos);
         overLapping = true;
         speed = 8f;
         TimeLerped = 0;
@@ -140,7 +142,6 @@ public class slideRooms : MonoBehaviour
                 }
                 TimeLerped += Time.deltaTime * speed;
             }
-            Debug.Log("lerping");
             yield return null;
         }
         overLapping = false;

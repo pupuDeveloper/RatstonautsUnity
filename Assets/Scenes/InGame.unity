@@ -1672,6 +1672,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13bdc86ecd4726e43922120d17a08215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spaceShipSpeed: 0
+  distanceTraveled: 0
   _shipManager: {fileID: 174217162}
   _cockpitMinigame: {fileID: 1191357283}
   _cockPitState: {fileID: 1191357282}
@@ -6062,7 +6064,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 14591f9ecb264f54f9803cab39ff6485, type: 3}
+  m_Sprite: {fileID: -1886296256, guid: eeb0bff3c0c6d7d4e8fefb72ca3ccd06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10196,6 +10198,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533674446}
   m_CullTransparentMesh: 1
+--- !u!1 &537514683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 537514685}
+  - component: {fileID: 537514684}
+  m_Layer: 0
+  m_Name: Game Event System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &537514684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537514683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07336096a4e751e45b34f26e106e4236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &537514685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537514683}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.9484277, y: -1.276169, z: -4.1294403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &547458341
 GameObject:
   m_ObjectHideFlags: 0
@@ -11343,7 +11389,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 606197162}
   m_OnClick:
     m_PersistentCalls:
@@ -11624,7 +11670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &611613815
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11890,13 +11936,13 @@ MonoBehaviour:
   - {fileID: 1062881902}
   - {fileID: 1513397518}
   - {fileID: 1388585761}
+  unlockedSlots: 0
   scrollableList: {fileID: 1481814156}
   closePlantListButton: {fileID: 1404955234}
   removeButtons:
   - {fileID: 978808527}
   - {fileID: 412555196}
   - {fileID: 1714003952}
-  arePlantsWatered: 0
 --- !u!114 &648701421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13349,7 +13395,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 800510574}
   m_OnClick:
     m_PersistentCalls:
@@ -16812,7 +16858,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 327a5428aebc3d343b6e0992a953100b, type: 3}
+  m_Sprite: {fileID: -779713163, guid: eeb0bff3c0c6d7d4e8fefb72ca3ccd06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18347,7 +18393,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 87f0ffd9a9938aa4c91316189e17eb50, type: 3}
+  m_Sprite: {fileID: -1854119975, guid: eeb0bff3c0c6d7d4e8fefb72ca3ccd06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18649,7 +18695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1086171475
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19132,7 +19178,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStateManager: {fileID: 109847829}
-  cooldownOn: 0
   toMiniGameButton: {fileID: 1986348657}
   turretBG: {fileID: 610954423}
   turretsMiniGameBG: {fileID: 2027953146}
@@ -19875,8 +19920,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e5431e3197f154f9f73f124ed9bf68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceShipSpeed: 0
-  totalDistanceTraveled: 0
   totalXp: 0
   plantsInSpots: 
   selectedFood: 0
@@ -20054,7 +20097,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c5156c3561709014d93446b98137ec7d, type: 3}
+  m_Sprite: {fileID: 292969840, guid: eeb0bff3c0c6d7d4e8fefb72ca3ccd06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20770,6 +20813,7 @@ GameObject:
   - component: {fileID: 1233639079}
   - component: {fileID: 1233639078}
   - component: {fileID: 1233639077}
+  - component: {fileID: 1233639080}
   m_Layer: 5
   m_Name: bottomBar
   m_TagString: Untagged
@@ -20865,6 +20909,21 @@ Canvas:
   m_SortingLayerID: 1698960007
   m_SortingOrder: 2
   m_TargetDisplay: 0
+--- !u!114 &1233639080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233639075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d37b8723c8e1553469a56cf4ffe9ad25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notif1: {fileID: 17531375}
+  notif2: {fileID: 1388297004}
+  notif3: {fileID: 1105299653}
 --- !u!1 &1240315000
 GameObject:
   m_ObjectHideFlags: 0
@@ -21324,7 +21383,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2e8f8230fadf4934394a0ea90efdeae0, type: 3}
+  m_Sprite: {fileID: 1560216659, guid: eeb0bff3c0c6d7d4e8fefb72ca3ccd06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -32938,7 +32997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2089677467
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33644,3 +33703,4 @@ SceneRoots:
   - {fileID: 854795566}
   - {fileID: 8620456832893669382}
   - {fileID: 1507500965}
+  - {fileID: 537514685}

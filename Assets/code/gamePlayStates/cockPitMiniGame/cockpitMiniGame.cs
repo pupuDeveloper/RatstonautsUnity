@@ -35,8 +35,8 @@ public class cockpitMiniGame : MonoBehaviour
     [SerializeField] private Button button5;
     [SerializeField] private Button button6;
     [SerializeField] private GameObject clickBlocker;
-    private int minSeconds = 7200;
-    private int maxSeconds = 28800;
+    private int minSeconds;
+    private int maxSeconds;
 
     //
     private string correctOrder;
@@ -52,6 +52,8 @@ public class cockpitMiniGame : MonoBehaviour
         coroutineOn = false;
         clickBlocker.SetActive(true);
         level0boost = 100; //xp is 10x in code
+        minSeconds = 7200;
+        maxSeconds = 28800;
         btn1sprite1 = Resources.Load<Sprite>("cockpitButtons/GameButton1");
         btn1sprite2 = Resources.Load<Sprite>("cockpitButtons/GameButton2");
         btn2sprite1 = Resources.Load<Sprite>("cockpitButtons/GameButton3");

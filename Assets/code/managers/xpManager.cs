@@ -30,7 +30,8 @@ public class xpManager : MonoBehaviour
     public int oxygenGardenLvl { get; private set; }
     public int sleepingQuartersLvl { get; private set; }
     public int turretsLvl { get; private set; }
-    private float lastTimeCalled = 0.0f;
+    private float waitTime = 0.5f;
+    private float previousPopup = 0.0f;
     /*xpNeededForResult += (L * 100f) * (float)Math.Pow(2, L/12); 
     int resultXp = (int)Math.Floor(xpNeededForResult);
     Debug.Log("xp needed for lvl " + L + " is " + resultXp);*/
@@ -40,6 +41,9 @@ public class xpManager : MonoBehaviour
     private bool cockPitCoroutine;
     private bool turretCoroutine;
     public Action<bool, string> onBoostChanged;
+    private Queue<Tuple<int,int>> popupArgs = new Queue<Tuple<int,int>>();
+    private bool popupOnCDOn;
+
     public void changeBoost(bool toWhat, string whichRoom)
     {
         switch (whichRoom)
@@ -101,6 +105,11 @@ public class xpManager : MonoBehaviour
         if (GameManager.Instance.turretsBoostOn == false)
         {
             StopCoroutine("trackTurretXP");
+        }
+
+        if (popupOnCDOn == false && popupArgs.Count != 0)
+        {
+            StartCoroutine(showXpInUI(popupArgs.Peek().Item1, popupArgs.Peek().Item2));
         }
     }
     public int checkLvls(int currentXp)
@@ -222,7 +231,7 @@ public class xpManager : MonoBehaviour
         {
             gardenPassiveXP(xpToAdd);
         }
-        StartCoroutine(showXpInUI(0, xpToAdd));
+        popupArgs.Enqueue(new Tuple<int,int>(0,xpToAdd));
         if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
         {
             cockPitLvl++;
@@ -241,7 +250,7 @@ public class xpManager : MonoBehaviour
         {
             gardenPassiveXP(xpToAdd);
         }
-        StartCoroutine(showXpInUI(2, xpToAdd));
+        popupArgs.Enqueue(new Tuple<int,int>(2, xpToAdd));
         if (updateLevel(GameManager.Instance.turretsXP, turretsLvl))
         {
             turretsLvl++;
@@ -253,7 +262,7 @@ public class xpManager : MonoBehaviour
     {
         xpToAdd = xpToAdd / 3;
         GameManager.Instance.gardenXP = addXp(GameManager.Instance.gardenXP, xpToAdd);
-        StartCoroutine(showXpInUI(1, xpToAdd));
+        popupArgs.Enqueue(new Tuple<int,int>(1, xpToAdd));
         if (updateLevel(GameManager.Instance.gardenXP, oxygenGardenLvl))
         {
             oxygenGardenLvl++;
@@ -272,7 +281,7 @@ public class xpManager : MonoBehaviour
             xpToAdd = xpToAdd * 10;
         }
         GameManager.Instance.gardenXP = addXp(GameManager.Instance.gardenXP, xpToAdd);
-        StartCoroutine(showXpInUI(1, xpToAdd));
+        popupArgs.Enqueue(new Tuple<int,int>(1, xpToAdd));
         if (updateLevel(GameManager.Instance.gardenXP, oxygenGardenLvl))
         {
             oxygenGardenLvl++;
@@ -291,7 +300,7 @@ public class xpManager : MonoBehaviour
             xpToAdd = xpToAdd * 10;
         }
         GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
-        StartCoroutine(showXpInUI(0, xpToAdd));
+        popupArgs.Enqueue(new Tuple<int,int>(0, xpToAdd));
         if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
         {
             cockPitLvl++;
@@ -310,7 +319,7 @@ public class xpManager : MonoBehaviour
             xpToAdd = xpToAdd * 10;
         }
         GameManager.Instance.turretsXP = addXp(GameManager.Instance.turretsXP, xpToAdd);
-        StartCoroutine(showXpInUI(2, xpToAdd));
+        popupArgs.Enqueue(new Tuple<int,int>(2, xpToAdd));
         if (updateLevel(GameManager.Instance.turretsXP, turretsLvl))
         {
             turretsLvl++;
@@ -320,29 +329,25 @@ public class xpManager : MonoBehaviour
 
     private IEnumerator showXpInUI(int roomId, int xpAmount)
     {
-        float timeDifference = Time.time - lastTimeCalled;
-        if (timeDifference < 0.50f)
-        {
-            float waitTime = 0.5f - timeDifference;
-            yield return new WaitForSeconds(waitTime);
-        }
+        popupOnCDOn = true;
+        yield return new WaitForSeconds(0.5f);
         Sprite displaySprite = null;
         switch (roomId)
         {
             case 0:
-                displaySprite = Resources.Load<Sprite>("roomButtonImages/Radar1");
+                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[0];
                 break;
             case 1:
-                displaySprite = Resources.Load<Sprite>("roomButtonImages/Branch1");
+                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[1];
                 break;
             case 2:
-                displaySprite = Resources.Load<Sprite>("roomButtonImages/Meteorite5");
+                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[2];
                 break;
             case 3:
-                displaySprite = Resources.Load<Sprite>("roomButtonImages/CockHat2");
+                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[3];
                 break;
             case 4:
-                displaySprite = Resources.Load<Sprite>("roomButtonImages/Sofa2");
+                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[4];
                 break;
         }
         xpPopUpPrefab.GetComponent<SpriteRenderer>().sprite = displaySprite;
@@ -355,7 +360,8 @@ public class xpManager : MonoBehaviour
             xpPopUpPrefab.GetComponentInChildren<TMP_Text>().SetText(convertToUIText(xpAmount, false, false));
         }
         Instantiate(xpPopUpPrefab, new UnityEngine.Vector3(-5, 5.75f, 10), transform.rotation);
-        lastTimeCalled = Time.time;
+        popupArgs.Dequeue();
+        popupOnCDOn = false;
     }
     private int calcOfflineTime(string roomName)
     {
@@ -420,7 +426,7 @@ public class xpManager : MonoBehaviour
                     cockPitLvl++;
                 }
             }
-            StartCoroutine(showXpInUI(0, totalXpOffline1));
+            popupArgs.Enqueue(new Tuple<int,int>(0, totalXpOffline1));
         }
 
         howManyXpDrops = 0;
@@ -442,12 +448,12 @@ public class xpManager : MonoBehaviour
                     turretsLvl++;
                 }
             }
-            StartCoroutine(showXpInUI(2, totalXpOffline3));
+            popupArgs.Enqueue(new Tuple<int,int>(2, totalXpOffline3));
         }
         Debug.Log("cockpit gained :" + totalXpOffline1 + " xp while offline");
         Debug.Log("oxygen garden gained :" + totalXpOffline2 + " xp while offline");
         Debug.Log("turrets gained :" + totalXpOffline3 + " xp while offline");
-        StartCoroutine(showXpInUI(1, totalXpOffline2));
+        popupArgs.Enqueue(new Tuple<int,int>(1, totalXpOffline2));
         updateTotalXp(totalXpOffline1 + totalXpOffline2 + totalXpOffline3);
     }
 }

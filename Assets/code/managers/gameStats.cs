@@ -156,7 +156,6 @@ public class gameStats : MonoBehaviour
                 Debug.LogError("ERROR!!! DIDNT FIND ANY FOOD ID'S");
                 break;
         }
-        Debug.Log("added speed is: " + addedSpeed);
         return addedSpeed;
     }
     //TODO: make above-like functions for other rooms too

@@ -11943,7 +11943,6 @@ MonoBehaviour:
   - {fileID: 978808527}
   - {fileID: 412555196}
   - {fileID: 1714003952}
-  arePlantsWatered: 0
 --- !u!114 &648701421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25204,7 +25203,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1507500965}
   - component: {fileID: 1507500964}
-  - component: {fileID: 1507500966}
   m_Layer: 0
   m_Name: xpmanager
   m_TagString: Untagged
@@ -25248,19 +25246,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1507500966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1507500963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f58ce2c8fbaae4408817f6dfb66bd39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _xpManager: {fileID: 1507500964}
 --- !u!1 &1510616513
 GameObject:
   m_ObjectHideFlags: 0

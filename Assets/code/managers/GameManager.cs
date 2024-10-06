@@ -81,8 +81,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool foodGenBoostOn { get; set; }
     [SerializeField] public int foodGenXP { get; private set; } //unlocked foods
     [SerializeField] private int selectedFood; // food thats been COOKED
-    [SerializeField] private DateTime timeSinceFoodGenCDStarted;
-    [SerializeField] public DateTime triggerFoodGenMG;
+    [SerializeField] public DateTime timeSinceFoodGenCDStarted { get; set; }
+    [SerializeField] public DateTime triggerFoodGenMG { get; set; }
 
     //sleepingQuarters data
 
@@ -134,6 +134,7 @@ public class GameManager : MonoBehaviour
         string mainSaveSlot = saveSystem.MainSaveSlot;
         saveSystem.Load(mainSaveSlot);
         InitializeStates();
+        checkBoosts();
     }
 
     private void Start()
@@ -254,7 +255,6 @@ public class GameManager : MonoBehaviour
         //turrets data
         writer.WriteBool(turretsBoostOn);
         writer.WriteInt(turretsXP);
-        Debug.Log("saved turret xp: " + turretsXP);
         writer.WriteTime(timeSinceTurretsCDStarted);
         writer.WriteTime(triggerTurretsMG);
         //foodGen Data
@@ -312,10 +312,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void OnApplicationFocus() //commented out bcs testing in editor
+    void OnApplicationFocus()
     {
-        //string mainSaveSlot = saveSystem.MainSaveSlot;
-        //saveSystem.Save(mainSaveSlot);
+        string mainSaveSlot = saveSystem.MainSaveSlot;
+        saveSystem.Save(mainSaveSlot);
     }
 
     void OnApplicationQuit()
@@ -323,12 +323,29 @@ public class GameManager : MonoBehaviour
         string mainSaveSlot = saveSystem.MainSaveSlot;
         saveSystem.Save(mainSaveSlot);
     }
-
-    public int getTimeSinceLastSave(DateTime referencedTime) //get time between requested timedate and current timedate in seconds.
+    private void checkBoosts()
     {
-        var timeDif = DateTime.Now - referencedTime;
-        int differenceInSeconds = timeDif.Seconds;
-        return differenceInSeconds;
+        if (cockpitBoostOn)
+        {
+            if (triggerCockPitMG < DateTime.Now)
+            {
+                cockpitBoostOn = false;
+            }
+        }
+        if (gardenBoostOn)
+        {
+            if (triggerGardenWatering < DateTime.Now)
+            {
+                gardenBoostOn = false;
+            }
+        }
+        if (turretsBoostOn)
+        {
+            if (triggerTurretsMG < DateTime.Now)
+            {
+                turretsBoostOn =  false;
+            }
+        }
     }
     private void checkForNullTimes()
     {

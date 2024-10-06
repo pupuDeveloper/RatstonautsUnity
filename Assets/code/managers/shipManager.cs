@@ -24,7 +24,7 @@ public class shipManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.cockpitBoostOn == false && _oxygenGardenState.arePlantsWatered() == false  && GameManager.Instance.turretsBoostOn == false) //this checks if spaceship is stopped, i.e none of the minigames are played and their cooldowns are ran out
+        if (GameManager.Instance.cockpitBoostOn == false &&  GameManager.Instance.gardenBoostOn == false && GameManager.Instance.turretsBoostOn == false) //this checks if spaceship is stopped, i.e none of the minigames are played and their cooldowns are ran out
         {
             isShipStopped = true;
         }

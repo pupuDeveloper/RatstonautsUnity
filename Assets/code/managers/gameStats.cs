@@ -50,7 +50,7 @@ public class gameStats : MonoBehaviour
                 //TODO: after above todo, add all xp boosts, and with the outcoming number, do methods below.
                 spaceShipSpeed += getCockPitSpeedBoost();
             }
-            if (GameManager.Instance.gardenBoostOn && _oxygenGardenState.areAllPlantsBlank() == false && _oxygenGardenState.arePlantsWatered())
+            if (GameManager.Instance.gardenBoostOn && _oxygenGardenState.areAllPlantsBlank() == false)
             {
                 spaceShipSpeed += _wateringEvent.getBoostAmount();
             }
@@ -75,7 +75,7 @@ public class gameStats : MonoBehaviour
     {
         int addedSpeed = 0;
         addedSpeed += _cockpitMinigame.cockpitBoost();
-        if (_oxygenGardenState.arePlantsWatered())
+        if (GameManager.Instance.gardenBoostOn)
         {
             for (int i = 0; i < _oxygenGardenState.getPlantsInSpots().Length; i++)
             {
@@ -119,7 +119,7 @@ public class gameStats : MonoBehaviour
     {
         int addedSpeed = 0;
         addedSpeed += _turretMiniGame.getBoost();
-        if (_oxygenGardenState.arePlantsWatered())
+        if (GameManager.Instance.gardenBoostOn)
         {
             for (int i = 0; i < _oxygenGardenState.getPlantsInSpots().Length; i++)
             {

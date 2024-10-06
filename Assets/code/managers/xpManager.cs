@@ -216,7 +216,7 @@ public class xpManager : MonoBehaviour
         int xpToAdd;
         xpToAdd = _gameStats.getCockPitSpeedBoost();
         GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
-        if (_oxygengardenState.doPlantsAffectRoom("cockpit") && _oxygengardenState.arePlantsWatered())
+        if (_oxygengardenState.doPlantsAffectRoom("cockpit") && GameManager.Instance.gardenBoostOn)
         {
             gardenPassiveXP(xpToAdd);
         }
@@ -235,7 +235,7 @@ public class xpManager : MonoBehaviour
         int xpToAdd;
         xpToAdd = _gameStats.getTurretSpeedBoost();
         GameManager.Instance.turretsXP = addXp(GameManager.Instance.turretsXP, xpToAdd);
-        if (_oxygengardenState.doPlantsAffectRoom("turrets") && _oxygengardenState.arePlantsWatered())
+        if (_oxygengardenState.doPlantsAffectRoom("turrets") && GameManager.Instance.gardenBoostOn)
         {
             gardenPassiveXP(xpToAdd);
         }

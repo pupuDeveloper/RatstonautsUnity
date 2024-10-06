@@ -18,7 +18,6 @@ public class gardenManager : MonoBehaviour
     public GameObject scrollableList;
     public GameObject closePlantListButton;
     [SerializeField] private GameObject[] removeButtons;
-    public bool arePlantsWatered;
     private xpManager _xpManager;
 
     private void Start()
@@ -110,8 +109,6 @@ public class gardenManager : MonoBehaviour
 
         _xpManager = GameObject.Find("xpmanager").GetComponent<xpManager>();
         whatPlantsAreUnlocked();
-
-        arePlantsWatered = GameManager.Instance.gardenBoostOn;
     }
     private void whatPlantsAreUnlocked()
     {

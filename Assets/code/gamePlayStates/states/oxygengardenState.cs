@@ -90,10 +90,6 @@ public class oxygengardenState : State
         }
         if (i == 3) _wateringEvent.gardenEvent(false);
     }
-    public bool arePlantsWatered()
-    {
-        return _gardenManager.arePlantsWatered;
-    }
     public bool areAllPlantsBlank()
     {
         Plant[] plants = getPlantsInSpots();

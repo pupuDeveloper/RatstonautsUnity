@@ -6064,7 +6064,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 14591f9ecb264f54f9803cab39ff6485, type: 3}
+  m_Sprite: {fileID: -1886296256, guid: eeb0bff3c0c6d7d4e8fefb72ca3ccd06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16859,7 +16859,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 327a5428aebc3d343b6e0992a953100b, type: 3}
+  m_Sprite: {fileID: -779713163, guid: eeb0bff3c0c6d7d4e8fefb72ca3ccd06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18394,7 +18394,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 87f0ffd9a9938aa4c91316189e17eb50, type: 3}
+  m_Sprite: {fileID: -1854119975, guid: eeb0bff3c0c6d7d4e8fefb72ca3ccd06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20098,7 +20098,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c5156c3561709014d93446b98137ec7d, type: 3}
+  m_Sprite: {fileID: 292969840, guid: eeb0bff3c0c6d7d4e8fefb72ca3ccd06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21384,7 +21384,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2e8f8230fadf4934394a0ea90efdeae0, type: 3}
+  m_Sprite: {fileID: 1560216659, guid: eeb0bff3c0c6d7d4e8fefb72ca3ccd06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -25204,6 +25204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1507500965}
   - component: {fileID: 1507500964}
+  - component: {fileID: 1507500966}
   m_Layer: 0
   m_Name: xpmanager
   m_TagString: Untagged
@@ -25247,6 +25248,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1507500966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507500963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f58ce2c8fbaae4408817f6dfb66bd39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _xpManager: {fileID: 1507500964}
 --- !u!1 &1510616513
 GameObject:
   m_ObjectHideFlags: 0

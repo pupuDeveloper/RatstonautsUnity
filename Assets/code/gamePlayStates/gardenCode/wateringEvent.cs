@@ -42,12 +42,10 @@ public class wateringEvent : MonoBehaviour
 
     public void plantsWatered()
     {
-        //TODO: play animation when watering plants, XP reward too.
         calculateboost();
         _xpManager.wateringXPReward();
         GameManager.Instance.timeSinceGardenCDStarted = DateTime.Now;
-        GameManager.Instance.triggerFoodGenMG = DateTime.Now.AddSeconds(UnityEngine.Random.Range(minTimeSec, maxTimeSec));
-        _gardenManager.arePlantsWatered = true;
+        GameManager.Instance.triggerGardenWatering = DateTime.Now.AddSeconds(UnityEngine.Random.Range(minTimeSec, maxTimeSec));
         GameManager.Instance.gardenBoostOn = true;
     }
 

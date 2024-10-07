@@ -368,38 +368,52 @@ public class xpManager : MonoBehaviour
     private int calcOfflineTime(string roomName)
     {
         roomName = roomName.ToLower();
-        DateTime startTime;
         DateTime endTime = DateTime.Now;
+        DateTime validTimeLimiter = new DateTime(2000,01,01);
+        DateTime startTime = GameManager.Instance.lastTimePlayed;
         int dropAmount = 0;
         switch (roomName)
         {
             case "cockpit":
-                startTime = GameManager.Instance.timeSinceCockPitCDStarted;
-                if (GameManager.Instance.triggerCockPitMG < endTime)
+                if (GameManager.Instance.triggerCockPitMG < endTime && GameManager.Instance.triggerCockPitMG > validTimeLimiter)
                 {
                     endTime = GameManager.Instance.triggerCockPitMG;
+                }
+                if (startTime > GameManager.Instance.timeSinceCockPitCDStarted)
+                {
+                    startTime = GameManager.Instance.timeSinceCockPitCDStarted;
+                    if (startTime < validTimeLimiter) startTime = DateTime.Now;
                 }
                 dropAmount = (int)(endTime - startTime).TotalSeconds;
                 break;
 
             case "oxygengarden":
-                startTime = GameManager.Instance.timeSinceGardenCDStarted;
-                if (GameManager.Instance.triggerGardenWatering < endTime)
+                if (GameManager.Instance.triggerGardenWatering < endTime && GameManager.Instance.triggerGardenWatering > validTimeLimiter)
                 {
                     endTime = GameManager.Instance.triggerGardenWatering;
+                }
+                if (startTime > GameManager.Instance.timeSinceGardenCDStarted)
+                {
+                    startTime = GameManager.Instance.timeSinceGardenCDStarted;
+                    if (startTime < validTimeLimiter) startTime = DateTime.Now;
                 }
                 dropAmount = (int)(endTime - startTime).TotalSeconds;
                 break;
 
             case "turrets":
-                startTime = GameManager.Instance.timeSinceTurretsCDStarted;
-                if (GameManager.Instance.triggerTurretsMG < endTime)
+                if (GameManager.Instance.triggerTurretsMG < endTime && GameManager.Instance.triggerTurretsMG > validTimeLimiter)
                 {
                     endTime = GameManager.Instance.triggerTurretsMG;
+                }
+                if (startTime > GameManager.Instance.timeSinceTurretsCDStarted)
+                {
+                    startTime = GameManager.Instance.timeSinceTurretsCDStarted;
+                    if (startTime < validTimeLimiter) startTime = DateTime.Now;
                 }
                 dropAmount = (int)(endTime - startTime).TotalSeconds;
                 break;
         }
+        Debug.Log("dropamount is: " + dropAmount/3);
         return dropAmount / 3;
     }
 

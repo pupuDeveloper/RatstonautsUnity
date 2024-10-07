@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int spaceShipSpeed { get; set; } // km/sec
     [SerializeField] public int totalDistanceTraveled { get; set; }
     [SerializeField] public int totalXp;
+    [SerializeField] public DateTime lastTimePlayed { get; private set;}
     public event Action roomBoostOn;
 
     // cockpit data
@@ -231,6 +232,7 @@ public class GameManager : MonoBehaviour
         writer.WriteInt(spaceShipSpeed);
         writer.WriteInt(totalDistanceTraveled);
         writer.WriteInt(totalXp);
+        writer.WriteTime(DateTime.Now);
         //cockpit data
         writer.WriteBool(cockpitBoostOn);
         writer.WriteInt(cockPitXP);
@@ -273,6 +275,7 @@ public class GameManager : MonoBehaviour
         spaceShipSpeed = reader.ReadInt();
         totalDistanceTraveled = reader.ReadInt();
         totalXp = reader.ReadInt();
+        lastTimePlayed = reader.ReadTime();
         //cockpit data
         cockpitBoostOn = reader.ReadBool();
         cockPitXP = reader.ReadInt();

@@ -128,7 +128,7 @@ public class slideRooms : MonoBehaviour
         TimeLerped = 0;
         while(TimeLerped < 1)
         {
-            outline.transform.localPosition = Vector3.Lerp(outLineCurrentPos, outLineTargetPos, TimeLerped);
+            outline.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(outLineCurrentPos, outLineTargetPos, TimeLerped);
             allRooms.localPosition = Vector3.Lerp(currentPos, endPoint, TimeLerped);
             if (TimeLerped < 0.6f)
             {

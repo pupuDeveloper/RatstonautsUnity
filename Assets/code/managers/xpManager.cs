@@ -31,8 +31,6 @@ public class xpManager : MonoBehaviour
     public int oxygenGardenLvl { get; private set; }
     public int sleepingQuartersLvl { get; private set; }
     public int turretsLvl { get; private set; }
-    private float waitTime = 0.5f;
-    private float previousPopup = 0.0f;
     /*xpNeededForResult += (L * 100f) * (float)Math.Pow(2, L/12); 
     int resultXp = (int)Math.Floor(xpNeededForResult);
     Debug.Log("xp needed for lvl " + L + " is " + resultXp);*/
@@ -42,7 +40,7 @@ public class xpManager : MonoBehaviour
     private bool cockPitCoroutine;
     private bool turretCoroutine;
     public Action<bool, string> onBoostChanged;
-    private Queue<Tuple<int,int>> popupArgs = new Queue<Tuple<int,int>>();
+    private Queue<Tuple<int, int>> popupArgs = new Queue<Tuple<int, int>>();
     private bool popupOnCDOn;
 
     public void changeBoost(bool toWhat, string whichRoom)
@@ -210,8 +208,6 @@ public class xpManager : MonoBehaviour
                 return stringToDisplay;
             }
         }
-        Debug.LogError("shouldnt return this ever its an error");
-        return null;
     }
     public void updateTotalXp(int addedXp)
     {
@@ -233,7 +229,7 @@ public class xpManager : MonoBehaviour
         {
             gardenPassiveXP(xpToAdd);
         }
-        popupArgs.Enqueue(new Tuple<int,int>(0,xpToAdd));
+        popupArgs.Enqueue(new Tuple<int, int>(0, xpToAdd));
         if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
         {
             cockPitLvl++;
@@ -252,7 +248,7 @@ public class xpManager : MonoBehaviour
         {
             gardenPassiveXP(xpToAdd);
         }
-        popupArgs.Enqueue(new Tuple<int,int>(2, xpToAdd));
+        popupArgs.Enqueue(new Tuple<int, int>(2, xpToAdd));
         if (updateLevel(GameManager.Instance.turretsXP, turretsLvl))
         {
             turretsLvl++;
@@ -264,7 +260,7 @@ public class xpManager : MonoBehaviour
     {
         xpToAdd = xpToAdd / 3;
         GameManager.Instance.gardenXP = addXp(GameManager.Instance.gardenXP, xpToAdd);
-        popupArgs.Enqueue(new Tuple<int,int>(1, xpToAdd));
+        popupArgs.Enqueue(new Tuple<int, int>(1, xpToAdd));
         if (updateLevel(GameManager.Instance.gardenXP, oxygenGardenLvl))
         {
             oxygenGardenLvl++;
@@ -283,7 +279,7 @@ public class xpManager : MonoBehaviour
             xpToAdd = xpToAdd * 10;
         }
         GameManager.Instance.gardenXP = addXp(GameManager.Instance.gardenXP, xpToAdd);
-        popupArgs.Enqueue(new Tuple<int,int>(1, xpToAdd));
+        popupArgs.Enqueue(new Tuple<int, int>(1, xpToAdd));
         if (updateLevel(GameManager.Instance.gardenXP, oxygenGardenLvl))
         {
             oxygenGardenLvl++;
@@ -302,7 +298,7 @@ public class xpManager : MonoBehaviour
             xpToAdd = xpToAdd * 10;
         }
         GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
-        popupArgs.Enqueue(new Tuple<int,int>(0, xpToAdd));
+        popupArgs.Enqueue(new Tuple<int, int>(0, xpToAdd));
         if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
         {
             cockPitLvl++;
@@ -321,7 +317,7 @@ public class xpManager : MonoBehaviour
             xpToAdd = xpToAdd * 10;
         }
         GameManager.Instance.turretsXP = addXp(GameManager.Instance.turretsXP, xpToAdd);
-        popupArgs.Enqueue(new Tuple<int,int>(2, xpToAdd));
+        popupArgs.Enqueue(new Tuple<int, int>(2, xpToAdd));
         if (updateLevel(GameManager.Instance.turretsXP, turretsLvl))
         {
             turretsLvl++;
@@ -361,7 +357,7 @@ public class xpManager : MonoBehaviour
         {
             xpPopUpPrefab.GetComponentInChildren<TMP_Text>().SetText(convertToUIText(xpAmount, false, false));
         }
-        Instantiate(xpPopUpPrefab,new UnityEngine.Vector3(-5, 5.75f, 10), transform.rotation,canvasForPopup);
+        Instantiate(xpPopUpPrefab, new UnityEngine.Vector3(-5, 5.75f, 10), transform.rotation, canvasForPopup);
         popupArgs.Dequeue();
         popupOnCDOn = false;
     }
@@ -369,51 +365,69 @@ public class xpManager : MonoBehaviour
     {
         roomName = roomName.ToLower();
         DateTime endTime = DateTime.Now;
-        DateTime validTimeLimiter = new DateTime(2000,01,01);
+        DateTime validTimeLimiter = new DateTime(2000, 01, 01);
         DateTime startTime = GameManager.Instance.lastTimePlayed;
         int dropAmount = 0;
         switch (roomName)
         {
             case "cockpit":
-                if (GameManager.Instance.triggerCockPitMG < endTime && GameManager.Instance.triggerCockPitMG > validTimeLimiter)
+                //check if times are valid
+                if (GameManager.Instance.triggerCockPitMG < validTimeLimiter)
+                {
+                    //invalid time, triggercockpit was never set, so minigame was never done.
+                    dropAmount = 0;
+                    break;
+                }
+                //if trigger cockpit was before starting the game, that is end endtime
+                if (GameManager.Instance.triggerCockPitMG < endTime)
                 {
                     endTime = GameManager.Instance.triggerCockPitMG;
                 }
-                if (startTime > GameManager.Instance.timeSinceCockPitCDStarted)
+                //check if starttime is valid
+                if (startTime < validTimeLimiter)
                 {
-                    startTime = GameManager.Instance.timeSinceCockPitCDStarted;
-                    if (startTime < validTimeLimiter) startTime = DateTime.Now;
+                    dropAmount = 0;
+                    break;
                 }
                 dropAmount = (int)(endTime - startTime).TotalSeconds;
                 break;
-
             case "oxygengarden":
-                if (GameManager.Instance.triggerGardenWatering < endTime && GameManager.Instance.triggerGardenWatering > validTimeLimiter)
+                if (GameManager.Instance.triggerGardenWatering < validTimeLimiter)
+                {
+                    dropAmount = 0;
+                    break;
+                }
+                if (GameManager.Instance.triggerGardenWatering < endTime)
                 {
                     endTime = GameManager.Instance.triggerGardenWatering;
                 }
-                if (startTime > GameManager.Instance.timeSinceGardenCDStarted)
+                if (startTime < validTimeLimiter)
                 {
-                    startTime = GameManager.Instance.timeSinceGardenCDStarted;
-                    if (startTime < validTimeLimiter) startTime = DateTime.Now;
+                    dropAmount = 0;
+                    break;
                 }
                 dropAmount = (int)(endTime - startTime).TotalSeconds;
                 break;
-
             case "turrets":
-                if (GameManager.Instance.triggerTurretsMG < endTime && GameManager.Instance.triggerTurretsMG > validTimeLimiter)
+                if (GameManager.Instance.triggerTurretsMG < validTimeLimiter)
+                {
+                    dropAmount = 0;
+                    break;
+                }
+                if (GameManager.Instance.triggerTurretsMG < endTime)
                 {
                     endTime = GameManager.Instance.triggerTurretsMG;
                 }
-                if (startTime > GameManager.Instance.timeSinceTurretsCDStarted)
+                if (startTime < validTimeLimiter)
                 {
-                    startTime = GameManager.Instance.timeSinceTurretsCDStarted;
-                    if (startTime < validTimeLimiter) startTime = DateTime.Now;
+                    dropAmount = 0;
+                    break;
                 }
                 dropAmount = (int)(endTime - startTime).TotalSeconds;
                 break;
         }
-        Debug.Log("dropamount is: " + dropAmount/3);
+        if (dropAmount < 0) dropAmount = 0;
+        Debug.Log("dropamount is: " + dropAmount / 3);
         return dropAmount / 3;
     }
 
@@ -442,7 +456,7 @@ public class xpManager : MonoBehaviour
                     cockPitLvl++;
                 }
             }
-            if (totalXpOffline1 != 0) popupArgs.Enqueue(new Tuple<int,int>(0, totalXpOffline1));
+            if (totalXpOffline1 != 0) popupArgs.Enqueue(new Tuple<int, int>(0, totalXpOffline1));
         }
 
         howManyXpDrops = 0;
@@ -464,12 +478,12 @@ public class xpManager : MonoBehaviour
                     turretsLvl++;
                 }
             }
-            if (totalXpOffline3 != 0) popupArgs.Enqueue(new Tuple<int,int>(2, totalXpOffline3));
+            if (totalXpOffline3 != 0) popupArgs.Enqueue(new Tuple<int, int>(2, totalXpOffline3));
         }
         Debug.Log("cockpit gained :" + totalXpOffline1 + " xp while offline");
         Debug.Log("oxygen garden gained :" + totalXpOffline2 + " xp while offline");
         Debug.Log("turrets gained :" + totalXpOffline3 + " xp while offline");
-        if (totalXpOffline2 != 0) popupArgs.Enqueue(new Tuple<int,int>(1, totalXpOffline2));
+        if (totalXpOffline2 != 0) popupArgs.Enqueue(new Tuple<int, int>(1, totalXpOffline2));
         updateTotalXp(totalXpOffline1 + totalXpOffline2 + totalXpOffline3);
     }
 }

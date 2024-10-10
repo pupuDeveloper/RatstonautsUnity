@@ -77,6 +77,7 @@ public class BinarySaver
         }
         catch (Exception e)
         {
+            Debug.LogWarning(e);
             return 0;
         }
     }
@@ -88,6 +89,7 @@ public class BinarySaver
         }
         catch (Exception e)
         {
+            Debug.LogWarning(e);
             return 0.0f;
         }
     }
@@ -99,6 +101,7 @@ public class BinarySaver
         }
         catch (Exception e)
         {
+            Debug.LogWarning(e);
             return false;
         }
     }
@@ -110,6 +113,7 @@ public class BinarySaver
         }
         catch (Exception e)
         {
+            Debug.LogWarning(e);
             return "";
         }
     }
@@ -129,6 +133,7 @@ public class BinarySaver
         catch (Exception e)
         {
             DateTime time = DateTime.Now;
+            Debug.LogWarning(e);
             return time;
         }
     }

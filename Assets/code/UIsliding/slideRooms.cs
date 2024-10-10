@@ -16,7 +16,6 @@ public class slideRooms : MonoBehaviour
     public Vector2 targetPos;
     public Vector2 outLineCurrentPos;
     public Vector2 outLineTargetPos;
-    private bool checkerOn = false;
     private bool transitionOn;
     private float TimeLerped;
     public float speed;
@@ -30,7 +29,6 @@ public class slideRooms : MonoBehaviour
         targetPos = roomPositions[roomInt];
         outLineCurrentPos = buttonPositions[roomInt];
         outLineTargetPos = buttonPositions[roomInt];
-        checkerOn = false;
         overLapping = false;
     }
     public void slide(dragDetection.DraggedDirection direction, float distance)
@@ -59,7 +57,7 @@ public class slideRooms : MonoBehaviour
                     /*roomInt = 3;
                     targetPos = roomPositions[3];
                     _gameStateManager.swiped("foodGenerator");*/
-                    break;
+                    //break;
                 case var value when value == roomPositions[3]:
                     roomInt = 4;
                     targetPos = roomPositions[4];

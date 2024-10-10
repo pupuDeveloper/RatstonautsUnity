@@ -116,7 +116,6 @@ public class oxygengardenState : State
                 if (plants[i].plantId == 1 || plants[i].plantId == 5 || plants[i].plantId == 6 || plants[i].plantId == 11)
                 return true;
             }
-            return false;
             break;
             case "turrets":
             for (int i = 0; i < plants.Length; i++)
@@ -124,11 +123,9 @@ public class oxygengardenState : State
                 if (plants[i].plantId == 3 || plants[i].plantId == 5 || plants[i].plantId == 6 || plants[i].plantId == 11)
                 return true;
             }
-            return false;
             break;
             //TODO: add rest of rooms
         }
-        Debug.LogError("ERROR!!! SHOULDNT GET HERE!");
         return false;
     }
 }

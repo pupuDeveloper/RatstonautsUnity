@@ -4189,81 +4189,6 @@ Canvas:
   m_SortingLayerID: 1698960007
   m_SortingOrder: 1
   m_TargetDisplay: 0
---- !u!1 &205968931
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 205968933}
-  - component: {fileID: 205968932}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &205968932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 205968931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6e38bfc68b638b418dd0a81c7713fc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: minigameB1
-    clip: {fileID: 8300000, guid: ca40dbf4ca11de0469c6ae3d89463039, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: minigameB2
-    clip: {fileID: 8300000, guid: 68623bdfb647efc4fb0a1154b2d0bd38, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: minigameB3
-    clip: {fileID: 8300000, guid: 842735a27f1a9a04fa407cf62ed6711c, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: minigameB4
-    clip: {fileID: 8300000, guid: bf9234742746c8a4d9b05f2e988115ac, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: minigameB5
-    clip: {fileID: 8300000, guid: 2a02a447aa6862542a7635e4c3a3993d, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: minigameB6
-    clip: {fileID: 8300000, guid: 089612931e113d64d8d191a4b18302c8, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
---- !u!4 &205968933
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 205968931}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &214479335
 GameObject:
   m_ObjectHideFlags: 0
@@ -4630,6 +4555,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2014436957}
+        m_TargetAssemblyTypeName: settingsB, Assembly-CSharp
+        m_MethodName: buttonSound1
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5169,6 +5106,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1191357282}
         m_TargetAssemblyTypeName: cockpitState, Assembly-CSharp
         m_MethodName: setupState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2014436957}
+        m_TargetAssemblyTypeName: settingsB, Assembly-CSharp
+        m_MethodName: buttonSound1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8412,6 +8361,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1105820789}
         m_TargetAssemblyTypeName: turretsState, Assembly-CSharp
         m_MethodName: SetupState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2014436957}
+        m_TargetAssemblyTypeName: settingsB, Assembly-CSharp
+        m_MethodName: buttonSound1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17354,6 +17315,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 2014436957}
+        m_TargetAssemblyTypeName: settingsB, Assembly-CSharp
+        m_MethodName: buttonSound1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1030712402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18732,6 +18705,18 @@ MonoBehaviour:
       - m_Target: {fileID: 648701419}
         m_TargetAssemblyTypeName: oxygengardenState, Assembly-CSharp
         m_MethodName: setupState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2014436957}
+        m_TargetAssemblyTypeName: settingsB, Assembly-CSharp
+        m_MethodName: buttonSound1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20302,6 +20287,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1479490846}
         m_TargetAssemblyTypeName: foodgeneratorState, Assembly-CSharp
         m_MethodName: setupState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2014436957}
+        m_TargetAssemblyTypeName: settingsB, Assembly-CSharp
+        m_MethodName: buttonSound1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22266,7 +22263,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1334343170}
+      - m_Target: {fileID: 2014436957}
+        m_TargetAssemblyTypeName: settingsB, Assembly-CSharp
+        m_MethodName: buttonSound1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1796495522}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -23815,6 +23824,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2014436957}
+        m_TargetAssemblyTypeName: settingsB, Assembly-CSharp
+        m_MethodName: buttonSound1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1414971739
 GameObject:
   m_ObjectHideFlags: 0
@@ -24979,6 +25000,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2014436957}
         m_TargetAssemblyTypeName: settingsB, Assembly-CSharp
         m_MethodName: openCloseButtons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2014436957}
+        m_TargetAssemblyTypeName: settingsB, Assembly-CSharp
+        m_MethodName: buttonSound1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29218,7 +29251,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1334343170}
+      - m_Target: {fileID: 2014436957}
+        m_TargetAssemblyTypeName: settingsB, Assembly-CSharp
+        m_MethodName: buttonSound1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1796495522}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -33731,6 +33776,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2147382882}
   m_CullTransparentMesh: 1
+--- !u!1001 &704335762831206961
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 801471799119297743, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984917477399985854, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984917477399985854, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984917477399985854, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984917477399985854, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984917477399985854, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984917477399985854, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984917477399985854, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984917477399985854, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984917477399985854, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984917477399985854, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
 --- !u!1001 &8620456832893669382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33793,7 +33895,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1164436877}
-  - {fileID: 205968933}
+  - {fileID: 704335762831206961}
   - {fileID: 1233628635}
   - {fileID: 174217163}
   - {fileID: 2084009410}

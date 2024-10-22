@@ -165,6 +165,7 @@ public class gardenManager : MonoBehaviour
     public void removeButton()
     {
         Plant plantToBeRemoved = blank;
+        AudioManager.instance.Play("UI1");
         switch (EventSystem.current.currentSelectedGameObject.transform.parent.name)
         {
             case "spot1":
@@ -186,7 +187,7 @@ public class gardenManager : MonoBehaviour
     public void addButton()
     {
         Plant plantToBeAdded = blank;
-
+        AudioManager.instance.Play("UI1");
         foreach (Plant p in allPlants)
         {
             string plantName = p.name.ToLower();

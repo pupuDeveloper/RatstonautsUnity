@@ -8,4 +8,8 @@ public class settingsUI : MonoBehaviour
     {
         GameManager.Instance.GoBack();
     }
+    public void buttonSound1()
+    {
+        AudioManager.instance.Play("UI1");
+    }
 }

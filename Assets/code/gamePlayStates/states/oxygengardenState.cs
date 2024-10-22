@@ -45,6 +45,7 @@ public class oxygengardenState : State
 
     public void toGarden()
     {
+        AudioManager.instance.Play("UI1");
         toGardenButton.gameObject.SetActive(false);
         oxygenGardenBG1.SetActive(false);
         oxygenGardenBG2.SetActive(true);

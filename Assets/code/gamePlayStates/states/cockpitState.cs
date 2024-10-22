@@ -50,6 +50,7 @@ public class cockpitState : State
     }
     public void toMiniGame()
     {
+        AudioManager.instance.Play("UI1");
         toMiniGameButton.gameObject.SetActive(false);
         cockPitBackground.SetActive(false);
         cockPitMiniGameBG.SetActive(true);

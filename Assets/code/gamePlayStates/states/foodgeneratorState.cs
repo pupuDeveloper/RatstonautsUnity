@@ -81,6 +81,7 @@ public class foodgeneratorState : State
     }
     public void toMiniGame()
     {
+        AudioManager.instance.Play("UI1");
         toMiniGameButton.gameObject.SetActive(false);
         BG1.SetActive(false);
         BG2.SetActive(true);

@@ -11,7 +11,6 @@ public class minigameNotifColor : MonoBehaviour
     private float targetPoint;
     public float time;
 
-
     private void Start()
     {
         spriteRend = gameObject.GetComponent<SpriteRenderer>();

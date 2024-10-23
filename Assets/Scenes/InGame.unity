@@ -400,6 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 17531376}
   - component: {fileID: 17531377}
+  - component: {fileID: 17531378}
   m_Layer: 5
   m_Name: miniGameNotif
   m_TagString: Untagged
@@ -415,7 +416,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 17531375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 100}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -464,11 +465,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1698960007
+  m_SortingLayer: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 5c7fe16b7f719e840926bb3921a43a8d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.83396226, g: 0.83396226, b: 0.83396226, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -478,6 +479,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &17531378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17531375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00c5b425a4ac05f42817c50d39643f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - {r: 0.9169811, g: 0.9169811, b: 0.9169811, a: 1}
+  - {r: 0.9169811, g: 0.125, b: 0.125, a: 1}
+  - {r: 0.91764706, g: 0.5, b: 0.5, a: 1}
+  - {r: 0.91764706, g: 0.1254902, b: 0.1254902, a: 1}
+  - {r: 0.91764706, g: 0.5019608, b: 0.5019608, a: 1}
+  - {r: 0.91764706, g: 0.1254902, b: 0.1254902, a: 1}
+  - {r: 0.91764706, g: 0.91764706, b: 0.91764706, a: 1}
+  time: 1
 --- !u!1 &31828469
 GameObject:
   m_ObjectHideFlags: 0
@@ -4095,7 +4117,6 @@ GameObject:
   m_Component:
   - component: {fileID: 196540746}
   - component: {fileID: 196540749}
-  - component: {fileID: 196540748}
   - component: {fileID: 196540747}
   m_Layer: 5
   m_Name: turrets
@@ -4143,29 +4164,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &196540748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 196540745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 64
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1080, y: 1920}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!223 &196540749
 Canvas:
   m_ObjectHideFlags: 0
@@ -4183,7 +4181,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1698960007
@@ -5176,7 +5174,6 @@ GameObject:
   - component: {fileID: 276468491}
   - component: {fileID: 276468495}
   - component: {fileID: 276468494}
-  - component: {fileID: 276468493}
   - component: {fileID: 276468492}
   m_Layer: 5
   m_Name: cockPit
@@ -5215,29 +5212,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276468490}
   m_CullTransparentMesh: 1
---- !u!114 &276468493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276468490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 64
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1080, y: 1920}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!114 &276468494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5267,12 +5241,12 @@ Canvas:
   m_RenderMode: 1
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
-  m_PixelPerfect: 1
+  m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1698960007
@@ -5655,7 +5629,6 @@ GameObject:
   m_Component:
   - component: {fileID: 341613426}
   - component: {fileID: 341613429}
-  - component: {fileID: 341613428}
   - component: {fileID: 341613427}
   m_Layer: 5
   m_Name: oxygenGarden
@@ -5703,29 +5676,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &341613428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341613425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 64
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1080, y: 1920}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!223 &341613429
 Canvas:
   m_ObjectHideFlags: 0
@@ -5743,7 +5693,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1698960007
@@ -8874,7 +8824,6 @@ GameObject:
   m_Component:
   - component: {fileID: 512716186}
   - component: {fileID: 512716189}
-  - component: {fileID: 512716188}
   - component: {fileID: 512716187}
   m_Layer: 5
   m_Name: foodGenerator
@@ -8922,29 +8871,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &512716188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512716185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 64
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1080, y: 1920}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!223 &512716189
 Canvas:
   m_ObjectHideFlags: 0
@@ -8962,7 +8888,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1698960007
@@ -15595,6 +15521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 958226260}
   - component: {fileID: 958226261}
+  - component: {fileID: 958226262}
   m_Layer: 5
   m_Name: miniGameNotif
   m_TagString: Untagged
@@ -15659,9 +15586,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1698960007
+  m_SortingLayer: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 5c7fe16b7f719e840926bb3921a43a8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -15673,6 +15600,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &958226262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958226259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00c5b425a4ac05f42817c50d39643f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors: []
+  time: 0
 --- !u!1 &962955225
 GameObject:
   m_ObjectHideFlags: 0
@@ -19139,6 +19080,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1105299654}
   - component: {fileID: 1105299655}
+  - component: {fileID: 1105299656}
   m_Layer: 5
   m_Name: miniGameNotif
   m_TagString: Untagged
@@ -19203,9 +19145,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1698960007
+  m_SortingLayer: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 5c7fe16b7f719e840926bb3921a43a8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -19217,6 +19159,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1105299656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105299653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00c5b425a4ac05f42817c50d39643f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - {r: 0.9169811, g: 0.9169811, b: 0.9169811, a: 1}
+  - {r: 0.9169811, g: 0.125, b: 0.125, a: 1}
+  - {r: 0.91764706, g: 0.5, b: 0.5, a: 1}
+  - {r: 0.91764706, g: 0.1254902, b: 0.1254902, a: 1}
+  - {r: 0.91764706, g: 0.5019608, b: 0.5019608, a: 1}
+  - {r: 0.91764706, g: 0.1254902, b: 0.1254902, a: 1}
+  - {r: 0.91764706, g: 0.91764706, b: 0.91764706, a: 1}
+  time: 1
 --- !u!1 &1105820787
 GameObject:
   m_ObjectHideFlags: 0
@@ -22983,6 +22946,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1388297005}
   - component: {fileID: 1388297006}
+  - component: {fileID: 1388297007}
   m_Layer: 5
   m_Name: miniGameNotif
   m_TagString: Untagged
@@ -23047,9 +23011,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1698960007
+  m_SortingLayer: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 5c7fe16b7f719e840926bb3921a43a8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -23061,6 +23025,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1388297007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388297004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00c5b425a4ac05f42817c50d39643f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - {r: 0.9169811, g: 0.9169811, b: 0.9169811, a: 1}
+  - {r: 0.9169811, g: 0.125, b: 0.125, a: 1}
+  - {r: 0.91764706, g: 0.5, b: 0.5, a: 1}
+  - {r: 0.91764706, g: 0.1254902, b: 0.1254902, a: 1}
+  - {r: 0.91764706, g: 0.5019608, b: 0.5019608, a: 1}
+  - {r: 0.91764706, g: 0.1254902, b: 0.1254902, a: 1}
+  - {r: 0.91764706, g: 0.91764706, b: 0.91764706, a: 1}
+  time: 1
 --- !u!1 &1388585761
 GameObject:
   m_ObjectHideFlags: 0
@@ -23220,7 +23205,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 64
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
-  m_ScreenMatchMode: 2
+  m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -28927,7 +28912,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1780203536}
   - component: {fileID: 1780203539}
-  - component: {fileID: 1780203538}
   - component: {fileID: 1780203537}
   m_Layer: 5
   m_Name: sleepingQ
@@ -28973,29 +28957,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &1780203538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780203535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 64
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1080, y: 1920}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!223 &1780203539
 Canvas:
   m_ObjectHideFlags: 0
@@ -29013,7 +28974,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1698960007
@@ -33201,9 +33162,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1698960007
+  m_SortingLayer: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 5c7fe16b7f719e840926bb3921a43a8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -33787,6 +33748,26 @@ PrefabInstance:
     - target: {fileID: 801471799119297743, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: sounds.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: sounds.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0bd05763df902854a80475577a26666a, type: 3}
+    - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: sounds.Array.data[7].name
+      value: turretShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: sounds.Array.data[7].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
+      propertyPath: sounds.Array.data[7].volume
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6984917477399985854, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
       propertyPath: m_LocalPosition.x

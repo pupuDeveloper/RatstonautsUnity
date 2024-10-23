@@ -18,8 +18,6 @@ public class ScaleToFitScreen : MonoBehaviour
         // to scale the game object we divide the world screen width with the
         // size x of the sprite, and we divide the world screen height with the
         // size y of the sprite
-        transform.localScale = new Vector3(
-            worldScreenWidth / sr.sprite.bounds.size.x,
-            worldScreenHeight / sr.sprite.bounds.size.y, 1);
+        transform.localScale = new Vector3((worldScreenWidth / sr.sprite.bounds.size.x) * 100, (worldScreenHeight / sr.sprite.bounds.size.y) * 100 , 1);
     }
 } // class

@@ -11,6 +11,7 @@ public class slideRooms : MonoBehaviour
     [SerializeField] private GameObject outline;
     [SerializeField] private dragDetection _dragDetection;
     [SerializeField] GameStateManager _gameStateManager;
+    [SerializeField] private ScaleToFitScreen _scaleToFitScreen;
     public Transform allRooms;
     public Vector2 currentPos;
     public Vector2 targetPos;
@@ -25,7 +26,16 @@ public class slideRooms : MonoBehaviour
     private void Start()
     {
         roomInt = 0;
+        float oneRoomWidth = 1080 * _scaleToFitScreen.getScaleMultiplierX();
+        roomPositions[0] = new Vector2 ((oneRoomWidth * 5 + oneRoomWidth / 2) * -1, 0);
+        for (int i = 1; i < roomPositions.Length; i++)
+        {
+            roomPositions[i] = new Vector2 ((roomPositions[i-1].x - oneRoomWidth), 0);
+            Debug.Log(roomPositions[i]);
+        }
+
         currentPos = roomPositions[roomInt];
+        allRooms.localPosition = currentPos;
         targetPos = roomPositions[roomInt];
         outLineCurrentPos = buttonPositions[roomInt];
         outLineTargetPos = buttonPositions[roomInt];

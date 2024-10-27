@@ -22,7 +22,7 @@ public class ScaleToFitScreen : MonoBehaviour
         // size x of the sprite, and we divide the world screen height with the
         // size y of the sprite
 
-        transform.localScale = new Vector3((worldScreenWidth / sr.sprite.bounds.size.x), (worldScreenHeight / sr.sprite.bounds.size.y), 1);
+        transform.localScale = new Vector3((Screen.width / sr.sprite.bounds.size.x), (Screen.height / sr.sprite.bounds.size.y), 1);
         Debug.Log("sprite size is: " + sr.sprite.bounds.size);
     }
 

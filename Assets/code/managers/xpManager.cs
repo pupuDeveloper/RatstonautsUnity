@@ -357,7 +357,7 @@ public class xpManager : MonoBehaviour
         {
             xpPopUpPrefab.GetComponentInChildren<TMP_Text>().SetText(convertToUIText(xpAmount, false, false));
         }
-        Instantiate(xpPopUpPrefab, new UnityEngine.Vector3(-5, 5.75f, 10), transform.rotation, canvasForPopup);
+        Instantiate(xpPopUpPrefab, new UnityEngine.Vector3(Camera.main.orthographicSize/-2 +1.5f, Camera.main.orthographicSize/2 + 2f, 10), transform.rotation, canvasForPopup);
         popupArgs.Dequeue();
         popupOnCDOn = false;
     }

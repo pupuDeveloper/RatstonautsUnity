@@ -8,7 +8,7 @@ public class xpPopUp : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.up * Time.deltaTime * speed);
-        if (transform.position.y > 8.15f)
+        if (transform.position.y > Camera.main.orthographicSize/2 + 4f)
         {
             Destroy(this.gameObject);
         }

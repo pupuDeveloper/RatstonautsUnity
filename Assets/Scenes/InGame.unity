@@ -8956,7 +8956,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22921,7 +22921,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1698960007
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &1233639080
 MonoBehaviour:
@@ -25117,7 +25117,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1698960007
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &1389163869
 MonoBehaviour:
@@ -37167,23 +37167,7 @@ PrefabInstance:
       value: AudioManager
       objectReference: {fileID: 0}
     - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
-      propertyPath: sounds.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
-      propertyPath: sounds.Array.data[7].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 0bd05763df902854a80475577a26666a, type: 3}
-    - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
-      propertyPath: sounds.Array.data[7].name
-      value: turretShot
-      objectReference: {fileID: 0}
-    - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
-      propertyPath: sounds.Array.data[7].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
-      propertyPath: sounds.Array.data[7].volume
+      propertyPath: sounds.Array.data[8].loop
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6984917477399985854, guid: b0c82f372292bac4598d9047503f05b9, type: 3}

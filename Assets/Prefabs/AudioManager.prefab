@@ -47,36 +47,64 @@ MonoBehaviour:
   sounds:
   - name: minigameB1
     clip: {fileID: 8300000, guid: ca40dbf4ca11de0469c6ae3d89463039, type: 3}
+    type: 1
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: minigameB2
     clip: {fileID: 8300000, guid: 68623bdfb647efc4fb0a1154b2d0bd38, type: 3}
+    type: 1
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: minigameB3
     clip: {fileID: 8300000, guid: 842735a27f1a9a04fa407cf62ed6711c, type: 3}
+    type: 1
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: minigameB4
     clip: {fileID: 8300000, guid: bf9234742746c8a4d9b05f2e988115ac, type: 3}
+    type: 1
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: minigameB5
     clip: {fileID: 8300000, guid: 2a02a447aa6862542a7635e4c3a3993d, type: 3}
+    type: 1
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: minigameB6
     clip: {fileID: 8300000, guid: 089612931e113d64d8d191a4b18302c8, type: 3}
+    type: 1
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: UI1
     clip: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+    type: 1
     volume: 1
     pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: turretShot
+    clip: {fileID: 8300000, guid: 0bd05763df902854a80475577a26666a, type: 3}
+    type: 1
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BGsong
+    clip: {fileID: 8300000, guid: a9941741ee1dcf54984279cbe3438ef8, type: 3}
+    type: 0
+    volume: 1
+    pitch: 1
+    loop: 1
     source: {fileID: 0}

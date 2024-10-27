@@ -22,21 +22,15 @@ public class wateringEvent : MonoBehaviour
         maxTimeSec = 18000;
     }
 
-    public void gardenEvent(bool dryPlant)
+    public void gardenEvent(bool dryPlant, int index)
     {
         if (dryPlant)
         {
-            foreach (var p in popups)
-            {
-                p.SetActive(true);
-            }
+            popups[index].SetActive(true);
         }
         else
         {
-            foreach (var p in popups)
-            {
-                p.SetActive(false);
-            }
+            popups[index].SetActive(false);
         }
     }
 

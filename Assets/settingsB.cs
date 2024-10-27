@@ -28,4 +28,8 @@ public class settingsB : MonoBehaviour
             roomBoard.SetActive(false);
         }
     }
+    public void buttonSound1()
+    {
+        AudioManager.instance.Play("UI1");
+    }
 }

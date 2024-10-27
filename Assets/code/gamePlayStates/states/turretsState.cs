@@ -46,6 +46,7 @@ public class turretsState : State
     
     public void toMiniGame()
     {
+        AudioManager.instance.Play("UI1");
         toMiniGameButton.gameObject.SetActive(false);
         turretBG.SetActive(false);
         turretsMiniGameBG.SetActive(true);

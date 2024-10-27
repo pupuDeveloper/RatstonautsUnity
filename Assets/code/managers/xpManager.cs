@@ -107,9 +107,13 @@ public class xpManager : MonoBehaviour
             StopCoroutine("trackTurretXP");
         }
 
-        if (popupOnCDOn == false && popupArgs.Count != 0)
+        if (popupOnCDOn == false && popupArgs.Count != 0 && GameManager.Instance.showPopups)
         {
             StartCoroutine(showXpInUI(popupArgs.Peek().Item1, popupArgs.Peek().Item2));
+        }
+        if (GameManager.Instance.showPopups == false && popupArgs.Count != 0)
+        {
+            popupArgs.Clear();
         }
     }
     public int checkLvls(int currentXp)
@@ -358,7 +362,7 @@ public class xpManager : MonoBehaviour
             xpPopUpPrefab.GetComponentInChildren<TMP_Text>().SetText(convertToUIText(xpAmount, false, false));
         }
         Instantiate(xpPopUpPrefab, new UnityEngine.Vector3(Camera.main.orthographicSize/-2 +1.5f, Camera.main.orthographicSize/2 + 2f, 10), transform.rotation, canvasForPopup);
-        popupArgs.Dequeue();
+        if (popupArgs.Count != 0) popupArgs.Dequeue();
         popupOnCDOn = false;
     }
     private int calcOfflineTime(string roomName)
@@ -427,7 +431,6 @@ public class xpManager : MonoBehaviour
                 break;
         }
         if (dropAmount < 0) dropAmount = 0;
-        Debug.Log("dropamount is: " + dropAmount / 3);
         return dropAmount / 3;
     }
 
@@ -480,9 +483,6 @@ public class xpManager : MonoBehaviour
             }
             if (totalXpOffline3 != 0) popupArgs.Enqueue(new Tuple<int, int>(2, totalXpOffline3));
         }
-        Debug.Log("cockpit gained :" + totalXpOffline1 + " xp while offline");
-        Debug.Log("oxygen garden gained :" + totalXpOffline2 + " xp while offline");
-        Debug.Log("turrets gained :" + totalXpOffline3 + " xp while offline");
         if (totalXpOffline2 != 0) popupArgs.Enqueue(new Tuple<int, int>(1, totalXpOffline2));
         updateTotalXp(totalXpOffline1 + totalXpOffline2 + totalXpOffline3);
     }

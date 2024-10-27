@@ -31,7 +31,6 @@ public class slideRooms : MonoBehaviour
         for (int i = 1; i < roomPositions.Length; i++)
         {
             roomPositions[i] = new Vector2 ((roomPositions[0].x - oneRoomWidth * i), 0);
-            Debug.Log(roomPositions[i]);
         }
 
         currentPos = roomPositions[roomInt];

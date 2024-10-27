@@ -12,6 +12,14 @@ public class settingsUI : MonoBehaviour
     {
         AudioManager.instance.Play("UI1");
     }
+    public void buttonSound2()
+    {
+        AudioManager.instance.Play("UI2");
+    }
+    public void showPopups()
+    {
+        GameManager.Instance.showPopups = !GameManager.Instance.showPopups;
+    }
     public void muteSFX()
     {
         foreach (Sound s in AudioManager.instance.sounds)

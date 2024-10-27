@@ -6,8 +6,8 @@ public class scaleLayoutItems : MonoBehaviour
 {
     [SerializeField] private ScaleToFitScreen scaleScript;
 
-    private void Start()
+    private void Awake()
     {
-        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(gameObject.GetComponent<RectTransform>().sizeDelta.x * scaleScript.getScaleMultiplierX(), gameObject.GetComponent<RectTransform>().sizeDelta.y * scaleScript.getScaleMultiplierY());
+        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
     }
 }

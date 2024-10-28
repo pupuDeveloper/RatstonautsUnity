@@ -66,7 +66,7 @@ public class xpManager : MonoBehaviour
     }
     private void Start()
     {
-        canvasForPopup = GameObject.Find("worldSpaceCanvas").transform;
+        canvasForPopup = GameObject.Find("worldSpaceCanvas").transform.GetChild(0).transform;
         xpForLevels = new int[100];
         xpForLevels[0] = 0;
         int xpAverage = 0;
@@ -361,7 +361,7 @@ public class xpManager : MonoBehaviour
         {
             xpPopUpPrefab.GetComponentInChildren<TMP_Text>().SetText(convertToUIText(xpAmount, false, false));
         }
-        Instantiate(xpPopUpPrefab, new UnityEngine.Vector3(Camera.main.orthographicSize/-2 +1.5f, Camera.main.orthographicSize/2 + 2f, 10), transform.rotation, canvasForPopup);
+        Instantiate(xpPopUpPrefab, new UnityEngine.Vector3(Camera.main.orthographicSize/ -2.5f, Camera.main.orthographicSize/2, 10), transform.rotation, canvasForPopup);
         if (popupArgs.Count != 0) popupArgs.Dequeue();
         popupOnCDOn = false;
     }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class xpPopUp : MonoBehaviour
 {
-    private float speed = 1.75f;
     void Update()
     {
+        float speed =  Camera.main.orthographicSize / 5f;
         transform.Translate(Vector3.up * Time.deltaTime * speed);
-        if (transform.position.y > Camera.main.orthographicSize/2 + 4f)
+        if (transform.position.y > Camera.main.orthographicSize * 0.75)
         {
             Destroy(this.gameObject);
         }

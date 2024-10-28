@@ -6,11 +6,7 @@ public class UIbuffer : MonoBehaviour
 {
 
     private Rect lastSafeArea;
-    private RectTransform rectTransform;
-
-    private void Start() {
-        rectTransform = GetComponent<RectTransform>();
-    }
+    [SerializeField] private RectTransform rectToFollow;
 
     private void Update()
     {
@@ -23,7 +19,7 @@ public class UIbuffer : MonoBehaviour
     private void ApplySafeArea() {
         Rect safeAreaRect = Screen.safeArea;
 
-        float scaleRatio = rectTransform.rect.width / Screen.width;
+        float scaleRatio = rectToFollow.rect.width / Screen.width;
 
         var left = safeAreaRect.xMin * scaleRatio;
         var right = -( Screen.width - safeAreaRect.xMax ) * scaleRatio;

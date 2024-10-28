@@ -39,8 +39,8 @@ public class turretsMiniGame : MonoBehaviour
     {
         float worldScreenHeight = Camera.main.orthographicSize * 2;
         float worldScreenWidth = worldScreenHeight / Screen.safeArea.height * Screen.safeArea.width;
-        maxY = worldScreenHeight / 2.5f;
-        minY = worldScreenHeight / -2.5f;
+        maxY = worldScreenHeight / 3f;
+        minY = worldScreenHeight / -3f;
         maxX = worldScreenWidth / 2.5f;
         minX = worldScreenWidth / -2.5f;
         asteroidAmount = UnityEngine.Random.Range(minAsteroidAmount, maxAsteroidAmount);

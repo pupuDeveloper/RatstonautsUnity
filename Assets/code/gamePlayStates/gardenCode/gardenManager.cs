@@ -9,6 +9,7 @@ using TMPro;
 public class gardenManager : MonoBehaviour
 {
     [SerializeField] private Transform[] plantSpots;
+    [SerializeField] private GameObject alluiCanvas;
     public Plant[] plantsInSpots = new Plant[3];
     public Plant blank;
     public List<Plant> allPlants = new List<Plant>();
@@ -77,6 +78,7 @@ public class gardenManager : MonoBehaviour
                 name = name.Trim();
                 string name2 = g.name.ToLower();
                 name2 = name2.Trim();
+                g.GetComponent<scaleLayoutItems>().Scale((alluiCanvas.GetComponent<RectTransform>().rect.width) * 0.66f, (alluiCanvas.GetComponent<RectTransform>().rect.height) * 0.29f);
                 if (name == name2)
                 {
                     if (p.isUnlocked == false)

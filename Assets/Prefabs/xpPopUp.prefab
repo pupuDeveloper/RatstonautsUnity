@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 1698960007
   m_SortingLayer: 1
   m_SortingOrder: 10
-  m_Sprite: {fileID: 1560216659, guid: eeb0bff3c0c6d7d4e8fefb72ca3ccd06, type: 3}
+  m_Sprite: {fileID: -1854119975, guid: eeb0bff3c0c6d7d4e8fefb72ca3ccd06, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -133,7 +133,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.708, y: 0.008}
+  m_AnchoredPosition: {x: 0.8171427, y: 0.008}
   m_SizeDelta: {x: 2, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1885450303641448331
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 162,,4,810
+  m_text: 262,.5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.0038942099, y: 0, z: -0.78042555, w: 0}
+  m_margin: {x: 0.9136317, y: 0, z: -0.78042555, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0

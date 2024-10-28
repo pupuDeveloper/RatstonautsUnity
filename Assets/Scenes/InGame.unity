@@ -2315,6 +2315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb8c025ebbc2d8f4ab38ad894c7775bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 1389163865}
 --- !u!212 &165708728
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2658,6 +2659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb8c025ebbc2d8f4ab38ad894c7775bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 1389163865}
 --- !u!1 &185611219
 GameObject:
   m_ObjectHideFlags: 0
@@ -2830,7 +2832,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 360, y: 800}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &196540750
 MonoBehaviour:
@@ -2839,7 +2841,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196540745}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
   m_Name: 
@@ -2847,8 +2849,8 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: 360
   m_MinHeight: 800
-  m_PreferredWidth: 1080
-  m_PreferredHeight: 1920
+  m_PreferredWidth: 360
+  m_PreferredHeight: 800
   m_FlexibleWidth: 1
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
@@ -3666,8 +3668,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 360, y: 800}
-  m_Pivot: {x: 1, y: 0.5}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &276468496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3675,7 +3677,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276468490}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
   m_Name: 
@@ -3683,8 +3685,8 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: 360
   m_MinHeight: 800
-  m_PreferredWidth: 1080
-  m_PreferredHeight: 1920
+  m_PreferredWidth: 360
+  m_PreferredHeight: 800
   m_FlexibleWidth: 1
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
@@ -4700,7 +4702,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 360, y: 800}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &341613430
 MonoBehaviour:
@@ -4709,7 +4711,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 341613425}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
   m_Name: 
@@ -4717,8 +4719,8 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: 360
   m_MinHeight: 800
-  m_PreferredWidth: 1080
-  m_PreferredHeight: 1920
+  m_PreferredWidth: 360
+  m_PreferredHeight: 800
   m_FlexibleWidth: 1
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
@@ -8688,7 +8690,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 360, y: 800}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &512716190
 MonoBehaviour:
@@ -8697,7 +8699,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512716185}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
   m_Name: 
@@ -8705,8 +8707,8 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: 360
   m_MinHeight: 800
-  m_PreferredWidth: 1080
-  m_PreferredHeight: 1920
+  m_PreferredWidth: 360
+  m_PreferredHeight: 800
   m_FlexibleWidth: 1
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
@@ -9190,6 +9192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exampleBGSprite: {fileID: 177366007}
+  canvas: {fileID: 674485780}
 --- !u!1 &523873339
 GameObject:
   m_ObjectHideFlags: 0
@@ -11668,7 +11671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &610954424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11708,6 +11711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb8c025ebbc2d8f4ab38ad894c7775bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 1389163865}
 --- !u!212 &610954428
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12634,6 +12638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb8c025ebbc2d8f4ab38ad894c7775bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 1389163865}
 --- !u!1 &652456963
 GameObject:
   m_ObjectHideFlags: 0
@@ -19370,7 +19375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -36, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1030712401
@@ -20484,6 +20489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb8c025ebbc2d8f4ab38ad894c7775bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 1389163865}
 --- !u!212 &1086171479
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23164,7 +23170,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 360, y: 800}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -25430,7 +25436,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 360, y: 800}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -25487,6 +25493,7 @@ MonoBehaviour:
   _dragDetection: {fileID: 1389163870}
   _gameStateManager: {fileID: 109847829}
   _scaleToFitScreen: {fileID: 650824818}
+  canvas: {fileID: 1389163865}
   allRooms: {fileID: 2142774350}
   currentPos: {x: 0, y: 0}
   targetPos: {x: 0, y: 0}
@@ -31652,7 +31659,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 360, y: 800}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1780203540
 MonoBehaviour:
@@ -31661,7 +31668,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780203535}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
   m_Name: 
@@ -31669,8 +31676,8 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: 360
   m_MinHeight: 800
-  m_PreferredWidth: 1080
-  m_PreferredHeight: 1920
+  m_PreferredWidth: 360
+  m_PreferredHeight: 800
   m_FlexibleWidth: 1
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
@@ -35586,7 +35593,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 360, y: 800}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -37551,7 +37558,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1800, y: 800}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: -1, y: 0.5}
 --- !u!114 &2142774351
 MonoBehaviour:
@@ -37572,12 +37579,12 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 3
   m_Spacing: 0
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
 --- !u!114 &2142774352
 MonoBehaviour:
@@ -37591,8 +37598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
-  m_VerticalFit: 0
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &2147382882
 GameObject:
   m_ObjectHideFlags: 0

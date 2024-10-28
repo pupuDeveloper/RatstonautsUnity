@@ -12,6 +12,7 @@ public class slideRooms : MonoBehaviour
     [SerializeField] private dragDetection _dragDetection;
     [SerializeField] GameStateManager _gameStateManager;
     [SerializeField] private ScaleToFitScreen _scaleToFitScreen;
+    [SerializeField] GameObject canvas;
     public Transform allRooms;
     public Vector2 currentPos;
     public Vector2 targetPos;
@@ -26,7 +27,7 @@ public class slideRooms : MonoBehaviour
     private void Start()
     {
         roomInt = 0;
-        float oneRoomWidth = Screen.width;
+        float oneRoomWidth = canvas.GetComponent<RectTransform>().rect.width;
         roomPositions[0] = new Vector2 (((oneRoomWidth * 5) + oneRoomWidth/2 )* -1, 0);
         for (int i = 1; i < roomPositions.Length; i++)
         {

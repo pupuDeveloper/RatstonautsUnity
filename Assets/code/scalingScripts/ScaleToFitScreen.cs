@@ -14,7 +14,7 @@ public class ScaleToFitScreen : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
 
         worldScreenHeight = Camera.main.orthographicSize * 2;
-        worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
+        worldScreenWidth = worldScreenHeight / Screen.safeArea.y * Screen.safeArea.x;
 
 
         //below 2 lines scale things differently, both half wrong and half right, trying to combine their effects
@@ -28,7 +28,6 @@ public class ScaleToFitScreen : MonoBehaviour
         transform.localScale = new Vector3(((canvas.GetComponent<RectTransform>().rect.width + xBuffer) / sr.sprite.bounds.size.x), (canvas.GetComponent<RectTransform>().rect.height) / sr.sprite.bounds.size.y, 1);
         //transform.localScale = new Vector3((worldScreenWidth / sr.sprite.bounds.size.x), (worldScreenHeight / sr.sprite.bounds.size.y), 1);
         this.gameObject.GetComponentInParent<scaleLayoutItems>().Scale(canvas.GetComponent<RectTransform>().rect.width + xBuffer, canvas.GetComponent<RectTransform>().rect.height);
-
     }
 
     public float getX()

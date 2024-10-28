@@ -39,7 +39,6 @@ public class turretsState : State
         _turretsMinigame.resetMiniGame();
         gameStateManager.targetState = this;
         turretBG.SetActive(true);
-        turretBG.GetComponent<SpriteRenderer>().sortingOrder = 5;
         turretsMiniGameBG.SetActive(false);
         toMiniGameButton.gameObject.SetActive(true);
         stateIsReady = true;
@@ -50,7 +49,6 @@ public class turretsState : State
         AudioManager.instance.Play("UI1");
         toMiniGameButton.gameObject.SetActive(false);
         turretBG.SetActive(false);
-        turretBG.GetComponent<SpriteRenderer>().sortingOrder = 1;
         turretsMiniGameBG.SetActive(true);
         _turretsMinigame.checkForAsteroids();
     }

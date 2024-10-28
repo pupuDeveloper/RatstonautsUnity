@@ -31,13 +31,11 @@ public class sleepingquartersState : State
     private void resetState()
     {
         stateIsReady = false;
-        background.GetComponent<SpriteRenderer>().sortingOrder = 1;
     }
     private void setupState()
     {
         gameStateManager.targetState = this;
         background.SetActive(true);
-        background.GetComponent<SpriteRenderer>().sortingOrder = 5;
         stateIsReady = true;
     }
 }

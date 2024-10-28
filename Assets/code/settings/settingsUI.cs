@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class settingsUI : MonoBehaviour
 {
+
+    void Start()
+    {
+        gameObject.transform.position = new Vector2(0, 0);
+    }
     public void goBack()
     {
         GameManager.Instance.GoBack();

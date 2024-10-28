@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraScale : MonoBehaviour
 {
-    public SpriteRenderer exampleBGSprite;
+    //public SpriteRenderer exampleBGSprite;
     [SerializeField] private GameObject canvas;
     void Awake()
     {

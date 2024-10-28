@@ -27,11 +27,12 @@ public class slideRooms : MonoBehaviour
     private void Start()
     {
         roomInt = 0;
-        float oneRoomWidth = canvas.GetComponent<RectTransform>().rect.width;
-        roomPositions[0] = new Vector2 (((oneRoomWidth * 5) + oneRoomWidth/2 )* -1, 0);
+        float oneRoomWidth = _scaleToFitScreen.getX() + _scaleToFitScreen.getXBuffer();
+        float halfBuffer = _scaleToFitScreen.getXBuffer()/2;
+        roomPositions[0] = new Vector2 (((oneRoomWidth * 5) + oneRoomWidth/2 + halfBuffer)* -1, 0);
         for (int i = 1; i < roomPositions.Length; i++)
         {
-            roomPositions[i] = new Vector2 ((roomPositions[0].x - oneRoomWidth * i), 0);
+            roomPositions[i] = new Vector2 ((roomPositions[0].x  - oneRoomWidth * i), 0);
         }
 
         currentPos = roomPositions[roomInt];

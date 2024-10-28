@@ -59,6 +59,7 @@ public class cockpitState : State
     {
         _cockpitMinigame.resetMinigamescript();
         cockPitMiniGameBG.SetActive(false);
+        cockPitBackground.GetComponent<SpriteRenderer>().sortingOrder = 1;
         stateIsReady = false;
     }
     public void setupState()
@@ -66,6 +67,7 @@ public class cockpitState : State
         _cockpitMinigame.resetMinigamescript();
         gameStateManager.targetState = this;
         cockPitBackground.SetActive(true);
+        cockPitBackground.GetComponent<SpriteRenderer>().sortingOrder = 5;
         cockPitMiniGameBG.SetActive(false);
         toMiniGameButton.gameObject.SetActive(true);
         stateIsReady = true;

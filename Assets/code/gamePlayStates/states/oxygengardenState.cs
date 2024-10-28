@@ -55,6 +55,7 @@ public class oxygengardenState : State
         //oxygenGardenBG2.SetActive(false);
         _gardenManager.scrollableList.SetActive(false);
         _gardenManager.closePlantListButton.SetActive(false);
+        oxygenGardenBG1.GetComponent<SpriteRenderer>().sortingOrder = 1;
         stateIsReady = false;
     }
 
@@ -63,6 +64,7 @@ public class oxygengardenState : State
         _gardenManager.instantiatePlants();
         gameStateManager.targetState = this;
         oxygenGardenBG1.SetActive(true);
+        oxygenGardenBG1.GetComponent<SpriteRenderer>().sortingOrder = 5;
         //oxygenGardenBG2.SetActive(false);
         //toGardenButton.gameObject.SetActive(true);
         stateIsReady = true;

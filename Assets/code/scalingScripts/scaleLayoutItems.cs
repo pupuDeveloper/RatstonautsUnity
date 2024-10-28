@@ -5,11 +5,9 @@ using UnityEngine.UI;
 
 public class scaleLayoutItems : MonoBehaviour
 {
-    [SerializeField] private ScaleToFitScreen scaleScript;
-
-    private void Start()
+    public void Scale(float preferredX, float preferredY)
     {
-        gameObject.GetComponent<LayoutElement>().preferredWidth = scaleScript.getX();
-        gameObject.GetComponent<LayoutElement>().preferredHeight = scaleScript.getY();
+        gameObject.GetComponent<LayoutElement>().preferredWidth = preferredX;
+        gameObject.GetComponent<LayoutElement>().preferredHeight = preferredY;
     }
 }

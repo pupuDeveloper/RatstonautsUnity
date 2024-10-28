@@ -92,14 +92,12 @@ public class foodgeneratorState : State
         BG2.SetActive(false);
         _foodGenScript.scrollableList.SetActive(false);
         stateIsReady = false;
-        BG1.GetComponent<SpriteRenderer>().sortingOrder = 1;
         inMinigame = false;
     }
     public void setupState()
     {
         gameStateManager.targetState = this;
         BG1.SetActive(true);
-        BG1.GetComponent<SpriteRenderer>().sortingOrder = 5;
         BG2.SetActive(false);
         toMiniGameButton.gameObject.SetActive(true);
         stateIsReady = true;

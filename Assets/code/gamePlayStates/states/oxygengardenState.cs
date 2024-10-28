@@ -10,7 +10,7 @@ public class oxygengardenState : State
 
     [Header("UI stuff like backgrounds")]
     [SerializeField] private Button toGardenButton;
-    [SerializeField] private GameObject oxygenGardenBG1;
+    [SerializeField] private GameObject uiItems;
     //[SerializeField] private GameObject oxygenGardenBG2;
     [SerializeField] private gardenManager _gardenManager;
     [SerializeField] private wateringEvent _wateringEvent;
@@ -47,7 +47,7 @@ public class oxygengardenState : State
     {
         AudioManager.instance.Play("UI1");
         toGardenButton.gameObject.SetActive(false);
-        oxygenGardenBG1.SetActive(false);
+        uiItems.SetActive(false);
         //oxygenGardenBG2.SetActive(true);
     }
     private void resetState()
@@ -62,7 +62,7 @@ public class oxygengardenState : State
     {
         _gardenManager.instantiatePlants();
         gameStateManager.targetState = this;
-        oxygenGardenBG1.SetActive(true);
+        uiItems.SetActive(true);
         //oxygenGardenBG2.SetActive(false);
         //toGardenButton.gameObject.SetActive(true);
         stateIsReady = true;

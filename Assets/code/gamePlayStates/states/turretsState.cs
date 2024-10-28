@@ -11,8 +11,8 @@ public class turretsState : State
 
     [Header("UI stuff like backgrounds")]
     [SerializeField] private Button toMiniGameButton;
-    [SerializeField] private GameObject turretBG;
-    [SerializeField] private GameObject turretsMiniGameBG;
+    [SerializeField] private GameObject mainUI;
+    [SerializeField] private GameObject minigameUI;
     [SerializeField] private turretsMiniGame _turretsMinigame;
     public override State RunCurrentState()
     {
@@ -31,15 +31,15 @@ public class turretsState : State
     private void resetState()
     {
         _turretsMinigame.resetMiniGame();
-        turretsMiniGameBG.SetActive(false);
+        minigameUI.SetActive(false);
         stateIsReady = false;
     }
     public void SetupState()
     {
         _turretsMinigame.resetMiniGame();
         gameStateManager.targetState = this;
-        turretBG.SetActive(true);
-        turretsMiniGameBG.SetActive(false);
+        mainUI.SetActive(true);
+        minigameUI.SetActive(false);
         toMiniGameButton.gameObject.SetActive(true);
         stateIsReady = true;
     }
@@ -48,8 +48,8 @@ public class turretsState : State
     {
         AudioManager.instance.Play("UI1");
         toMiniGameButton.gameObject.SetActive(false);
-        turretBG.SetActive(false);
-        turretsMiniGameBG.SetActive(true);
+        mainUI.SetActive(false);
+        minigameUI.SetActive(true);
         _turretsMinigame.checkForAsteroids();
     }
 }

@@ -13,8 +13,8 @@ public class cockpitState : State
 
     [Header("UI stuff like backgrounds")]
     [SerializeField] private Button toMiniGameButton;
-    [SerializeField] private GameObject cockPitBackground;
-    [SerializeField] private GameObject cockPitMiniGameBG;
+    [SerializeField] private GameObject mainUI;
+    [SerializeField] private GameObject minigameUI;
     [SerializeField] private cockpitMiniGame _cockpitMinigame;
 
     public override State RunCurrentState()
@@ -35,7 +35,7 @@ public class cockpitState : State
 
     private void CustomUpdate()
     {
-        if (!GameManager.Instance.cockpitBoostOn && cockPitMiniGameBG.gameObject.activeSelf)
+        if (!GameManager.Instance.cockpitBoostOn && minigameUI.gameObject.activeSelf)
         {
             _cockpitMinigame.runMiniGame();
         }
@@ -52,23 +52,21 @@ public class cockpitState : State
     {
         AudioManager.instance.Play("UI1");
         toMiniGameButton.gameObject.SetActive(false);
-        cockPitBackground.SetActive(false);
-        cockPitMiniGameBG.SetActive(true);
+        mainUI.SetActive(false);
+        minigameUI.SetActive(true);
     }
     private void resetState()
     {
         _cockpitMinigame.resetMinigamescript();
-        cockPitMiniGameBG.SetActive(false);
-        cockPitBackground.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        minigameUI.SetActive(false);
         stateIsReady = false;
     }
     public void setupState()
     {
         _cockpitMinigame.resetMinigamescript();
         gameStateManager.targetState = this;
-        cockPitBackground.SetActive(true);
-        cockPitBackground.GetComponent<SpriteRenderer>().sortingOrder = 5;
-        cockPitMiniGameBG.SetActive(false);
+        mainUI.SetActive(true);
+        minigameUI.SetActive(false);
         toMiniGameButton.gameObject.SetActive(true);
         stateIsReady = true;
     }

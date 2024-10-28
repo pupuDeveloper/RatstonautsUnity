@@ -37,14 +37,22 @@ public class turretsMiniGame : MonoBehaviour
     }
     public void minigame()
     {
+        float worldScreenHeight = Camera.main.orthographicSize * 2;
+        float worldScreenWidth = worldScreenHeight / Screen.safeArea.height * Screen.safeArea.width;
+        maxY = worldScreenHeight / 2.5f;
+        minY = worldScreenHeight / -2.5f;
+        maxX = worldScreenWidth / 2.5f;
+        minX = worldScreenWidth / -2.5f;
         asteroidAmount = UnityEngine.Random.Range(minAsteroidAmount, maxAsteroidAmount);
         for (int i = 0; i < asteroidAmount; i++)
         {
             GameEvents.current.onAsteroidDestroyed += CheckAsteroidAmount;
             int whichAsteroid = UnityEngine.Random.Range(0, asteroids.Length);
-            xPos = UnityEngine.Random.Range(minX + 0.5f, maxX - 0.5f);
-            yPos = UnityEngine.Random.Range(minY + 0.5f, maxY - 0.5f);
+            xPos = UnityEngine.Random.Range(minX, maxX);
+            yPos = UnityEngine.Random.Range(minY, maxY);
             asteroidPos = new Vector3(xPos, yPos, zPos);
+            Debug.Log("asteroid pos is: " + asteroidPos);
+            Debug.Log(worldScreenWidth);
             asteroidClones.Add(Instantiate(asteroids[whichAsteroid], asteroidPos, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360))));
         }
         asteroidsSpawned = true;

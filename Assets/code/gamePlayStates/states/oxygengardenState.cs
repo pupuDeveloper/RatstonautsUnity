@@ -14,6 +14,7 @@ public class oxygengardenState : State
     //[SerializeField] private GameObject oxygenGardenBG2;
     [SerializeField] private gardenManager _gardenManager;
     [SerializeField] private wateringEvent _wateringEvent;
+    [SerializeField] private GameObject allRoomUI;
 
 
     public override State RunCurrentState()
@@ -56,11 +57,13 @@ public class oxygengardenState : State
         _gardenManager.scrollableList.SetActive(false);
         _gardenManager.closePlantListButton.SetActive(false);
         stateIsReady = false;
+        allRoomUI.SetActive(false);
     }
 
     public void setupState()
     {
         _gardenManager.instantiatePlants();
+        allRoomUI.SetActive(true);
         gameStateManager.targetState = this;
         uiItems.SetActive(true);
         //oxygenGardenBG2.SetActive(false);

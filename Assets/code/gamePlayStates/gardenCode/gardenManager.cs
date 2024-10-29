@@ -78,7 +78,6 @@ public class gardenManager : MonoBehaviour
                 name = name.Trim();
                 string name2 = g.name.ToLower();
                 name2 = name2.Trim();
-                g.GetComponent<scaleLayoutItems>().Scale((alluiCanvas.GetComponent<RectTransform>().rect.width) * 0.66f, (alluiCanvas.GetComponent<RectTransform>().rect.height) * 0.29f);
                 if (name == name2)
                 {
                     if (p.isUnlocked == false)
@@ -111,6 +110,7 @@ public class gardenManager : MonoBehaviour
 
         _xpManager = GameObject.Find("xpmanager").GetComponent<xpManager>();
         whatPlantsAreUnlocked();
+        scrollableList.transform.GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2 ((alluiCanvas.GetComponent<RectTransform>().rect.width) * 0.66f, ((alluiCanvas.GetComponent<RectTransform>().rect.height) * 0.29f) * plantsUI.Length);
     }
     private void whatPlantsAreUnlocked()
     {

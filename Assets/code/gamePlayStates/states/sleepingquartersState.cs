@@ -7,6 +7,7 @@ public class sleepingquartersState : State
 {
     [SerializeField] private GameStateManager gameStateManager;
     [SerializeField] private GameObject background;
+    [SerializeField] private GameObject allRoomUI;
     private bool stateIsReady;
     public override State RunCurrentState()
     {
@@ -31,10 +32,12 @@ public class sleepingquartersState : State
     private void resetState()
     {
         stateIsReady = false;
+        allRoomUI.SetActive(false);
     }
     private void setupState()
     {
         gameStateManager.targetState = this;
+        allRoomUI.SetActive(true);
         background.SetActive(true);
         stateIsReady = true;
     }

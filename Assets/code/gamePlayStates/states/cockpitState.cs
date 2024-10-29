@@ -15,6 +15,7 @@ public class cockpitState : State
     [SerializeField] private Button toMiniGameButton;
     [SerializeField] private GameObject mainUI;
     [SerializeField] private GameObject minigameUI;
+    [SerializeField] private GameObject allRoomUI;
     [SerializeField] private cockpitMiniGame _cockpitMinigame;
 
     public override State RunCurrentState()
@@ -60,11 +61,13 @@ public class cockpitState : State
         _cockpitMinigame.resetMinigamescript();
         minigameUI.SetActive(false);
         stateIsReady = false;
+        allRoomUI.SetActive(false);
     }
     public void setupState()
     {
         _cockpitMinigame.resetMinigamescript();
         gameStateManager.targetState = this;
+        allRoomUI.SetActive(true);
         mainUI.SetActive(true);
         minigameUI.SetActive(false);
         toMiniGameButton.gameObject.SetActive(true);

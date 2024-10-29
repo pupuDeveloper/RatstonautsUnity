@@ -14,6 +14,7 @@ public class turretsState : State
     [SerializeField] private GameObject mainUI;
     [SerializeField] private GameObject minigameUI;
     [SerializeField] private turretsMiniGame _turretsMinigame;
+    [SerializeField] private GameObject allRoomUI;
     public override State RunCurrentState()
     {
         if (!stateIsReady)
@@ -33,10 +34,12 @@ public class turretsState : State
         _turretsMinigame.resetMiniGame();
         minigameUI.SetActive(false);
         stateIsReady = false;
+        allRoomUI.SetActive(false);
     }
     public void SetupState()
     {
         _turretsMinigame.resetMiniGame();
+        allRoomUI.SetActive(true);
         gameStateManager.targetState = this;
         mainUI.SetActive(true);
         minigameUI.SetActive(false);

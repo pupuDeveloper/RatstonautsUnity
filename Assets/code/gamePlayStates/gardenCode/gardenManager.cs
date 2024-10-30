@@ -74,6 +74,7 @@ public class gardenManager : MonoBehaviour
         {
             foreach (GameObject g in plantsUI)
             {
+                g.GetComponent<scaleLayoutItems>().Scale(scrollableList.GetComponent<RectTransform>().rect.width, alluiCanvas.GetComponent<RectTransform>().rect.height / 4);
                 string name = p.name.ToLower();
                 name = name.Trim();
                 string name2 = g.name.ToLower();
@@ -90,6 +91,8 @@ public class gardenManager : MonoBehaviour
                     Debug.LogWarning("Plant name did not match gameobject!");
                 }
             }
+            scrollableList.transform.GetChild(0).GetComponent<RectTransform>().sizeDelta 
+            = new Vector2(scrollableList.GetComponent<RectTransform>().rect.width, (alluiCanvas.GetComponent<RectTransform>().rect.height / 4) * plantsUI.Length);
         }
 
         switch (unlockedSlots)
@@ -110,7 +113,6 @@ public class gardenManager : MonoBehaviour
 
         _xpManager = GameObject.Find("xpmanager").GetComponent<xpManager>();
         whatPlantsAreUnlocked();
-        scrollableList.transform.GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2 ((alluiCanvas.GetComponent<RectTransform>().rect.width) * 0.66f, ((alluiCanvas.GetComponent<RectTransform>().rect.height) * 0.29f) * plantsUI.Length);
     }
     private void whatPlantsAreUnlocked()
     {

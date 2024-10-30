@@ -22,11 +22,7 @@ public class ScaleToFitScreen : MonoBehaviour
         //transform.localScale = new Vector3((canvas.GetComponent<RectTransform>().rect.width / sr.sprite.bounds.size.x), canvas.GetComponent<RectTransform>().rect.height / sr.sprite.bounds.size.y, 1);
         //transform.localScale = new Vector3((worldScreenWidth / sr.sprite.bounds.size.x), (worldScreenHeight / sr.sprite.bounds.size.y), 1);
 
-        xBuffer = canvas.GetComponent<RectTransform>().rect.width * 0.02f;
-        yBuffer = canvas.GetComponent<RectTransform>().rect.height * 0.02f;
-        Debug.Log(xBuffer +" " +yBuffer);
-
-        transform.localScale = new Vector3(((canvas.GetComponent<RectTransform>().rect.width) / sr.sprite.bounds.size.x), (canvas.GetComponent<RectTransform>().rect.height) / sr.sprite.bounds.size.y, 1);
+        transform.localScale = new Vector3(((canvas.GetComponent<RectTransform>().rect.width) / sr.sprite.bounds.size.x) * 1.1f, ((canvas.GetComponent<RectTransform>().rect.height) / sr.sprite.bounds.size.y) * 1.1f, 1);
         //transform.localScale = new Vector3((worldScreenWidth / sr.sprite.bounds.size.x), (worldScreenHeight / sr.sprite.bounds.size.y), 1);
         layoutScaleScript.Scale(canvas.GetComponent<RectTransform>().rect.width + xBuffer, canvas.GetComponent<RectTransform>().rect.height);
     }

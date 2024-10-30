@@ -16,6 +16,7 @@ public class cockpitState : State
     [SerializeField] private GameObject mainUI;
     [SerializeField] private GameObject minigameUI;
     [SerializeField] private GameObject allRoomUI;
+    [SerializeField] private SpriteRenderer roomBG;
     [SerializeField] private cockpitMiniGame _cockpitMinigame;
 
     public override State RunCurrentState()
@@ -59,6 +60,7 @@ public class cockpitState : State
     private void resetState()
     {
         _cockpitMinigame.resetMinigamescript();
+        roomBG.sortingOrder = 0;
         minigameUI.SetActive(false);
         stateIsReady = false;
         allRoomUI.SetActive(false);
@@ -66,6 +68,7 @@ public class cockpitState : State
     public void setupState()
     {
         _cockpitMinigame.resetMinigamescript();
+        roomBG.sortingOrder = 5;
         gameStateManager.targetState = this;
         allRoomUI.SetActive(true);
         mainUI.SetActive(true);

@@ -24,7 +24,7 @@ public class xpManager : MonoBehaviour
     [SerializeField] private wateringEvent _wateringEvent;
     [SerializeField] private TMP_Text totalXpText;
     [SerializeField] private GameObject xpPopUpPrefab;
-    private Transform canvasForPopup;
+    [SerializeField] private Transform canvasForPopup;
     public int[] xpForLevels { get; private set; }
     public int cockPitLvl { get; private set; }
     public int foodGenLvl { get; private set; }
@@ -66,7 +66,6 @@ public class xpManager : MonoBehaviour
     }
     private void Start()
     {
-        canvasForPopup = GameObject.Find("worldSpaceCanvas").transform.GetChild(0).transform;
         xpForLevels = new int[100];
         xpForLevels[0] = 0;
         int xpAverage = 0;

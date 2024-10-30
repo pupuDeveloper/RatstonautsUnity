@@ -4,6 +4,7 @@ public class ScaleToFitScreen : MonoBehaviour
 {
     private SpriteRenderer sr;
     [SerializeField] GameObject canvas;
+    [SerializeField] GameObject panel;
     [SerializeField] scaleLayoutItems layoutScaleScript;
     float worldScreenHeight;
     float worldScreenWidth;
@@ -24,7 +25,7 @@ public class ScaleToFitScreen : MonoBehaviour
 
         transform.localScale = new Vector3(((canvas.GetComponent<RectTransform>().rect.width) / sr.sprite.bounds.size.x) * 1.1f, ((canvas.GetComponent<RectTransform>().rect.height) / sr.sprite.bounds.size.y) * 1.1f, 1);
         //transform.localScale = new Vector3((worldScreenWidth / sr.sprite.bounds.size.x), (worldScreenHeight / sr.sprite.bounds.size.y), 1);
-        layoutScaleScript.Scale(canvas.GetComponent<RectTransform>().rect.width + xBuffer, canvas.GetComponent<RectTransform>().rect.height);
+        layoutScaleScript.Scale(panel.GetComponent<RectTransform>().rect.width + xBuffer, panel.GetComponent<RectTransform>().rect.height);
     }
 
     public float getX()

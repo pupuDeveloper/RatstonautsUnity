@@ -31,13 +31,20 @@ public class safeAreaScript : MonoBehaviour
         rectTransform.offsetMin = new Vector2(offsetLeft, offsetBottom);
         CanvasScaler canvasScaler = _CanvasRect.GetComponent<CanvasScaler>();
         canvasScaler.referenceResolution = new Vector2(canvasScaler.referenceResolution.x, canvasScaler.referenceResolution.y + Mathf.Abs(offsetTop) + Mathf.Abs(offsetBottom));
+        scalePanelRect();
     }
-    /*private void panelRect()
+    private void scalePanelRect()
     {
-        float widthRatio = rectTransform.rect.width / Screen.width;
-        float heightRatio = rectTransform.rect.height / Screen.height;
+        float widthRatio = panelRect.rect.width / Screen.safeArea.width;
+        float heightRatio = panelRect.rect.height / Screen.safeArea.height;
 
-        float offsetTop = (Screen.safeArea.yMax - topbarRect.height - Screen.height) * heightRatio;
-        float offsetBottom = (Screen.safeArea.yMin + bottombarRect.height + ) * heightRatio;
-    }*/
+        float offsetTop = (Screen.safeArea.yMax - bottombarRect.rect.yMax - Screen.height) * heightRatio; //bottomrect ymax is included, because its already offset by 72
+        float offsetBottom = (Screen.safeArea.yMin) * heightRatio;
+        float offsetLeft =Screen.safeArea.xMin - widthRatio;
+        float offsetRight = (Screen.safeArea.xMax - Screen.safeArea.width) * widthRatio;
+        Debug.Log(topbarRect.rect.yMax + " " + bottombarRect.rect.yMax);
+        panelRect.offsetMax = new Vector2(offsetRight, offsetTop);
+        panelRect.offsetMin = new Vector2(offsetLeft, offsetBottom);
+        panelRect.anchoredPosition = new Vector2(0, bottombarRect.rect.yMax/2);
+    }
 }

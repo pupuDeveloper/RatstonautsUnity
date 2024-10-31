@@ -12,7 +12,7 @@ public class turretsState : State
     [Header("UI stuff like backgrounds")]
     [SerializeField] private Button toMiniGameButton;
     [SerializeField] private GameObject mainUI;
-    [SerializeField] private GameObject minigameUI;
+    public GameObject minigameUI;
     [SerializeField] private turretsMiniGame _turretsMinigame;
     [SerializeField] private GameObject allRoomUI;
     [SerializeField] private SpriteRenderer roomBG;

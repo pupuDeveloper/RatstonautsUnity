@@ -53,7 +53,9 @@ public class turretsMiniGame : MonoBehaviour
             asteroidPos = new Vector3(xPos, yPos, zPos);
             Debug.Log("asteroid pos is: " + asteroidPos);
             Debug.Log(worldScreenWidth);
-            asteroidClones.Add(Instantiate(asteroids[whichAsteroid], asteroidPos, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360))));
+            Transform parent = _turretsState.minigameUI.transform;
+
+            asteroidClones.Add(Instantiate(asteroids[whichAsteroid], asteroidPos, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)), parent));
         }
         asteroidsSpawned = true;
     }

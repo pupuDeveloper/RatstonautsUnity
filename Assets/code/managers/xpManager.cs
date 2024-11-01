@@ -73,6 +73,7 @@ public class xpManager : MonoBehaviour
         {
             xpAverage += (i * 100) * (int)BigInteger.Pow(2, i / 12) * 10; // times 10, because last digit is a decimal.
             xpForLevels[i] = xpAverage;
+            Debug.Log("xp needed for lvl " + i + " is " + xpForLevels[i]);
         }
         cockPitLvl = checkLvls(GameManager.Instance.cockPitXP);
         foodGenLvl = checkLvls(GameManager.Instance.foodGenXP);
@@ -119,9 +120,9 @@ public class xpManager : MonoBehaviour
     {
         for (int i = 0; i < xpForLevels.Length; i++)
         {
-            if (currentXp < xpForLevels[i])
+            if (currentXp < xpForLevels[i + 1])
             {
-                return i - 1;
+                return i;
             }
         }
         Debug.Log("xp value is: " + currentXp);
@@ -130,7 +131,7 @@ public class xpManager : MonoBehaviour
     }
     public bool updateLevel(int currentXp, int roomLvl)
     {
-        if (currentXp > xpForLevels[roomLvl + 1])
+        if (currentXp >= xpForLevels[roomLvl + 1])
         {
             return true;
         }

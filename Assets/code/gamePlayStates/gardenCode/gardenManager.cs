@@ -82,9 +82,9 @@ public class gardenManager : MonoBehaviour
                 if (name == name2)
                 {
                     if (p.isUnlocked == false)
-                        g.transform.GetChild(3).gameObject.SetActive(true);
+                        g.transform.GetChild(4).gameObject.SetActive(true);
                     else
-                        g.transform.GetChild(3).gameObject.SetActive(false);
+                        g.transform.GetChild(4).gameObject.SetActive(false);
                 }
                 else
                 {

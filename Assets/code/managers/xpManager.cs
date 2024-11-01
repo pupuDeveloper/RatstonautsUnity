@@ -24,7 +24,7 @@ public class xpManager : MonoBehaviour
     [SerializeField] private wateringEvent _wateringEvent;
     [SerializeField] private TMP_Text totalXpText;
     [SerializeField] private GameObject xpPopUpPrefab;
-    private Transform canvasForPopup;
+    [SerializeField] private Transform canvasForPopup;
     public int[] xpForLevels { get; private set; }
     public int cockPitLvl { get; private set; }
     public int foodGenLvl { get; private set; }
@@ -66,7 +66,6 @@ public class xpManager : MonoBehaviour
     }
     private void Start()
     {
-        canvasForPopup = GameObject.Find("worldSpaceCanvas").transform;
         xpForLevels = new int[100];
         xpForLevels[0] = 0;
         int xpAverage = 0;
@@ -74,6 +73,7 @@ public class xpManager : MonoBehaviour
         {
             xpAverage += (i * 100) * (int)BigInteger.Pow(2, i / 12) * 10; // times 10, because last digit is a decimal.
             xpForLevels[i] = xpAverage;
+            Debug.Log("xp needed for lvl " + i + " is " + xpForLevels[i]);
         }
         cockPitLvl = checkLvls(GameManager.Instance.cockPitXP);
         foodGenLvl = checkLvls(GameManager.Instance.foodGenXP);
@@ -107,18 +107,22 @@ public class xpManager : MonoBehaviour
             StopCoroutine("trackTurretXP");
         }
 
-        if (popupOnCDOn == false && popupArgs.Count != 0)
+        if (popupOnCDOn == false && popupArgs.Count != 0 && GameManager.Instance.showPopups)
         {
             StartCoroutine(showXpInUI(popupArgs.Peek().Item1, popupArgs.Peek().Item2));
+        }
+        if (GameManager.Instance.showPopups == false && popupArgs.Count != 0)
+        {
+            popupArgs.Clear();
         }
     }
     public int checkLvls(int currentXp)
     {
         for (int i = 0; i < xpForLevels.Length; i++)
         {
-            if (currentXp < xpForLevels[i])
+            if (currentXp < xpForLevels[i + 1])
             {
-                return i - 1;
+                return i;
             }
         }
         Debug.Log("xp value is: " + currentXp);
@@ -127,7 +131,7 @@ public class xpManager : MonoBehaviour
     }
     public bool updateLevel(int currentXp, int roomLvl)
     {
-        if (currentXp > xpForLevels[roomLvl + 1])
+        if (currentXp >= xpForLevels[roomLvl + 1])
         {
             return true;
         }
@@ -357,8 +361,8 @@ public class xpManager : MonoBehaviour
         {
             xpPopUpPrefab.GetComponentInChildren<TMP_Text>().SetText(convertToUIText(xpAmount, false, false));
         }
-        Instantiate(xpPopUpPrefab, new UnityEngine.Vector3(-5, 5.75f, 10), transform.rotation, canvasForPopup);
-        popupArgs.Dequeue();
+        Instantiate(xpPopUpPrefab, new UnityEngine.Vector3(Camera.main.orthographicSize/ -2.5f, Camera.main.orthographicSize/2, 10), transform.rotation, canvasForPopup);
+        if (popupArgs.Count != 0) popupArgs.Dequeue();
         popupOnCDOn = false;
     }
     private int calcOfflineTime(string roomName)
@@ -427,7 +431,6 @@ public class xpManager : MonoBehaviour
                 break;
         }
         if (dropAmount < 0) dropAmount = 0;
-        Debug.Log("dropamount is: " + dropAmount / 3);
         return dropAmount / 3;
     }
 
@@ -480,9 +483,6 @@ public class xpManager : MonoBehaviour
             }
             if (totalXpOffline3 != 0) popupArgs.Enqueue(new Tuple<int, int>(2, totalXpOffline3));
         }
-        Debug.Log("cockpit gained :" + totalXpOffline1 + " xp while offline");
-        Debug.Log("oxygen garden gained :" + totalXpOffline2 + " xp while offline");
-        Debug.Log("turrets gained :" + totalXpOffline3 + " xp while offline");
         if (totalXpOffline2 != 0) popupArgs.Enqueue(new Tuple<int, int>(1, totalXpOffline2));
         updateTotalXp(totalXpOffline1 + totalXpOffline2 + totalXpOffline3);
     }

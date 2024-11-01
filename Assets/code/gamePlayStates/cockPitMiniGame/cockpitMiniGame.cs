@@ -102,6 +102,7 @@ public class cockpitMiniGame : MonoBehaviour
                 if (i == 6)
                 {
                     Debug.Log("minigame successfull!");
+                    AudioManager.instance.Play("cockPitWon");
                     setWinData();
                     isGameDone = true;
                 }

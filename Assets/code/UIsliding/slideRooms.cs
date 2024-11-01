@@ -12,6 +12,7 @@ public class slideRooms : MonoBehaviour
     [SerializeField] private dragDetection _dragDetection;
     [SerializeField] GameStateManager _gameStateManager;
     [SerializeField] private ScaleToFitScreen _scaleToFitScreen;
+    [SerializeField] GameObject canvas;
     public Transform allRooms;
     public Vector2 currentPos;
     public Vector2 targetPos;
@@ -25,21 +26,7 @@ public class slideRooms : MonoBehaviour
 
     private void Start()
     {
-        roomInt = 0;
-        float oneRoomWidth = 1080 * _scaleToFitScreen.getScaleMultiplierX();
-        roomPositions[0] = new Vector2 ((oneRoomWidth * 5 + oneRoomWidth / 2) * -1, 0);
-        for (int i = 1; i < roomPositions.Length; i++)
-        {
-            roomPositions[i] = new Vector2 ((roomPositions[i-1].x - oneRoomWidth), 0);
-            Debug.Log(roomPositions[i]);
-        }
-
-        currentPos = roomPositions[roomInt];
-        allRooms.localPosition = currentPos;
-        targetPos = roomPositions[roomInt];
-        outLineCurrentPos = buttonPositions[roomInt];
-        outLineTargetPos = buttonPositions[roomInt];
-        overLapping = false;
+        initialize();
     }
     public void slide(dragDetection.DraggedDirection direction, float distance)
     {
@@ -121,10 +108,7 @@ public class slideRooms : MonoBehaviour
             }
             StartCoroutine(smoothTransition(targetPos, roomInt));
         }
-    }
-    private void checker()
-    {
-        allRooms.localPosition = targetPos;
+        initialize();
     }
 
     public IEnumerator smoothTransition(Vector2 endPoint, int whichRoom)
@@ -137,7 +121,7 @@ public class slideRooms : MonoBehaviour
         while(TimeLerped < 1)
         {
             outline.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(outLineCurrentPos, outLineTargetPos, TimeLerped);
-            allRooms.localPosition = Vector3.Lerp(currentPos, endPoint, TimeLerped);
+            allRooms.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(currentPos, endPoint, TimeLerped);
             if (TimeLerped < 0.6f)
             {
                 TimeLerped += Time.deltaTime * speed;
@@ -153,9 +137,26 @@ public class slideRooms : MonoBehaviour
             yield return null;
         }
         overLapping = false;
-        allRooms.localPosition = endPoint;
+        allRooms.GetComponent<RectTransform>().anchoredPosition = endPoint;
         currentPos = targetPos;
         outLineCurrentPos = outLineTargetPos;
+    }
+    private void initialize()
+    {
+        roomInt = 0;
+        float yPos = -_scaleToFitScreen.getYBuffer();
+        float oneRoomWidth = _scaleToFitScreen.getX();
+        roomPositions[0] = new Vector2 (0,yPos);
+        for (int i = 1; i < roomPositions.Length; i++)
+        {
+            roomPositions[i] = new Vector2((roomPositions[0].x - oneRoomWidth * i),yPos);
+        }
+        currentPos = roomPositions[roomInt];
+        allRooms.GetComponent<RectTransform>().anchoredPosition = currentPos;
+        targetPos = roomPositions[roomInt];
+        outLineCurrentPos = buttonPositions[roomInt];
+        outLineTargetPos = buttonPositions[roomInt];
+        overLapping = false;
     }
 }
 

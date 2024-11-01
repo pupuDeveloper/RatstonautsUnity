@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class scaleLayoutItems : MonoBehaviour
 {
-    [SerializeField] private ScaleToFitScreen scaleScript;
-
-    private void Start()
+    public void Scale(float preferredX, float preferredY)
     {
-        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(gameObject.GetComponent<RectTransform>().sizeDelta.x * scaleScript.getScaleMultiplierX(), gameObject.GetComponent<RectTransform>().sizeDelta.y * scaleScript.getScaleMultiplierY());
+        gameObject.GetComponent<LayoutElement>().preferredWidth = preferredX;
+        gameObject.GetComponent<LayoutElement>().preferredHeight = preferredY;
     }
 }

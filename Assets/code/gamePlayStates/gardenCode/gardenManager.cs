@@ -9,6 +9,7 @@ using TMPro;
 public class gardenManager : MonoBehaviour
 {
     [SerializeField] private Transform[] plantSpots;
+    [SerializeField] private GameObject alluiCanvas;
     public Plant[] plantsInSpots = new Plant[3];
     public Plant blank;
     public List<Plant> allPlants = new List<Plant>();
@@ -73,6 +74,7 @@ public class gardenManager : MonoBehaviour
         {
             foreach (GameObject g in plantsUI)
             {
+                g.GetComponent<scaleLayoutItems>().Scale(scrollableList.GetComponent<RectTransform>().rect.width, alluiCanvas.GetComponent<RectTransform>().rect.height / 4);
                 string name = p.name.ToLower();
                 name = name.Trim();
                 string name2 = g.name.ToLower();
@@ -80,15 +82,17 @@ public class gardenManager : MonoBehaviour
                 if (name == name2)
                 {
                     if (p.isUnlocked == false)
-                        g.transform.GetChild(3).gameObject.SetActive(true);
+                        g.transform.GetChild(4).gameObject.SetActive(true);
                     else
-                        g.transform.GetChild(3).gameObject.SetActive(false);
+                        g.transform.GetChild(4).gameObject.SetActive(false);
                 }
                 else
                 {
                     Debug.LogWarning("Plant name did not match gameobject!");
                 }
             }
+            scrollableList.transform.GetChild(0).GetComponent<RectTransform>().sizeDelta 
+            = new Vector2(scrollableList.GetComponent<RectTransform>().rect.width, (alluiCanvas.GetComponent<RectTransform>().rect.height / 4) * plantsUI.Length);
         }
 
         switch (unlockedSlots)

@@ -836,6 +836,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c368fac1fb6adf49ac96f29717c33c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  min: 0
+  max: 0
+  current: 0
   mask: {fileID: 1516325437}
   _xpManager: {fileID: 1507500964}
 --- !u!1 &92037425
@@ -1329,6 +1332,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c368fac1fb6adf49ac96f29717c33c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  min: 0
+  max: 0
+  current: 0
   mask: {fileID: 1705300029}
   _xpManager: {fileID: 1507500964}
 --- !u!114 &115457058
@@ -9963,7 +9969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10178,7 +10184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -13228,6 +13234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c368fac1fb6adf49ac96f29717c33c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  min: 0
+  max: 0
+  current: 0
   mask: {fileID: 1154805322}
   _xpManager: {fileID: 1507500964}
 --- !u!114 &663773599
@@ -15410,7 +15419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -18691,7 +18700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -19148,6 +19157,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997466261}
   m_CullTransparentMesh: 1
+--- !u!1 &1011499669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1011499670}
+  - component: {fileID: 1011499671}
+  m_Layer: 5
+  m_Name: PanelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1011499670
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011499669}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1164290261}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1011499671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011499669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 586c73b9cdb254c96a691b63cb575569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Panels:
+  - panelID: example1
+    PanelPrefab: {fileID: 69934952095802229, guid: 907c8c702ae844cb09e08938990665e6, type: 3}
+  - panelID: example2
+    PanelPrefab: {fileID: 2390611678563461668, guid: 44926f5967da248d0a133b0d934b1ae8, type: 3}
 --- !u!1 &1013081217
 GameObject:
   m_ObjectHideFlags: 0
@@ -19583,7 +19645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -21731,6 +21793,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1857169898}
+  - {fileID: 1011499670}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -22876,7 +22939,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -23486,7 +23549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -24154,7 +24217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -25301,7 +25364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -26769,7 +26832,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -27122,7 +27185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -28530,6 +28593,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c368fac1fb6adf49ac96f29717c33c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  min: 0
+  max: 0
+  current: 0
   mask: {fileID: 405523751}
   _xpManager: {fileID: 1507500964}
 --- !u!114 &1540221726
@@ -29879,7 +29945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -31962,7 +32028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -32594,7 +32660,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12.65
+  m_fontSize: 16.15
   m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -34017,7 +34083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -35136,7 +35202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -36858,6 +36924,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c368fac1fb6adf49ac96f29717c33c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  min: 0
+  max: 0
+  current: 0
   mask: {fileID: 1065298353}
   _xpManager: {fileID: 1507500964}
 --- !u!114 &2038141323
@@ -38522,38 +38591,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
       propertyPath: sounds.Array.size
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
-      propertyPath: sounds.Array.data[9].clip
+      propertyPath: sounds.Array.data[11].clip
       value: 
-      objectReference: {fileID: 8300000, guid: d8d04c6f80a1140db85ede568dab1f51, type: 3}
+      objectReference: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
     - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
-      propertyPath: sounds.Array.data[9].name
-      value: UI2
+      propertyPath: sounds.Array.data[11].name
+      value: UI3
       objectReference: {fileID: 0}
     - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
-      propertyPath: sounds.Array.data[9].type
+      propertyPath: sounds.Array.data[11].type
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
-      propertyPath: sounds.Array.data[10].clip
+      propertyPath: sounds.Array.data[12].clip
       value: 
-      objectReference: {fileID: 8300000, guid: ff5f85da24bc943d1abdc5760a22bc81, type: 3}
+      objectReference: {fileID: 8300000, guid: b9eff218e132a4e76be78840eca96fb2, type: 3}
     - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
-      propertyPath: sounds.Array.data[10].name
-      value: cockPitWon
+      propertyPath: sounds.Array.data[12].name
+      value: minigamefail1
       objectReference: {fileID: 0}
     - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
-      propertyPath: sounds.Array.data[10].type
+      propertyPath: sounds.Array.data[12].type
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
-      propertyPath: sounds.Array.data[9].pitch
+      propertyPath: sounds.Array.data[11].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
-      propertyPath: sounds.Array.data[10].pitch
+      propertyPath: sounds.Array.data[12].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
@@ -38561,11 +38630,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
-      propertyPath: sounds.Array.data[9].volume
+      propertyPath: sounds.Array.data[11].volume
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5875615765171123794, guid: b0c82f372292bac4598d9047503f05b9, type: 3}
-      propertyPath: sounds.Array.data[10].volume
+      propertyPath: sounds.Array.data[12].volume
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6984917477399985854, guid: b0c82f372292bac4598d9047503f05b9, type: 3}

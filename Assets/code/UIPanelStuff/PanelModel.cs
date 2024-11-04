@@ -5,6 +5,6 @@ using UnityEngine;
 [Serializable]
 public class PanelModel
 {
-    public string panelID;
+    public string panelId;
     public GameObject PanelPrefab;
 }

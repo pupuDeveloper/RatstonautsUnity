@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ObjectPool : PanelSignleton<ObjectPool>
 {
@@ -22,7 +23,7 @@ public class ObjectPool : PanelSignleton<ObjectPool>
         if (prefab != null)
         {
             // create new instance
-            var newInstance = Instaniate(prefab, Vector3.zero, Quaternion.identity, transform);
+            var newInstance = Instantiate(prefab, Vector3.zero, Quaternion.identity, transform);
             newInstance.name = objectName;
             return newInstance;
         }

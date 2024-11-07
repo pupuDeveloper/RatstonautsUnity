@@ -8,7 +8,7 @@ public class ShowPanelButton : MonoBehaviour
 
     private void Start()
     {
-        _panelsManager = PanelsManager.Instance;
+        _panelsManager = PanelsManager.instance;
     }
 
     public void DoShowPanel()

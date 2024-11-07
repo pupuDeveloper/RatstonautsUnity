@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class NewBehaviourScript : PanelSignleton<PanelManager>
+public class PanelsManager : PanelSignleton<PanelsManager>
 {
     private List<PanelInstanceModel> _listInstances = new List<PanelInstanceModel>(); //holds all panel instances
     private ObjectPool _objectPool; //pool of panels
 
     private void Start()
     {
-        _objectPool = ObjectPool.Instance; //cache the pool
+        _objectPool = ObjectPool.instance; //cache the pool
     }
 
     public void ShowPanel(string panelId, PanelShowBehaviour behaviour = PanelShowBehaviour.KEEP_PREVIOUS)
@@ -30,7 +30,7 @@ public class NewBehaviourScript : PanelSignleton<PanelManager>
 
             _listInstances.Add(new PanelInstanceModel //add this panel to the queue
             {
-                Panelid = panelId,
+                PanelId = panelId,
                 PanelInstance = panelInstance
             });
         }
@@ -50,12 +50,12 @@ public class NewBehaviourScript : PanelSignleton<PanelManager>
             _listInstances.Remove(lastPanel);
             _objectPool.PoolObject(lastPanel.PanelInstance);
 
-            if (GetAmountPanelsInQueue > 0)
+            if (GetAmountPanelsInQueue() > 0)
             {
                 lastPanel = GetLastPanel();
                 if (lastPanel != null && !lastPanel.PanelInstance.activeInHierarchy)
                 {
-                    lastPanel.panelInstance.SetActive(true);
+                    lastPanel.PanelInstance.SetActive(true);
                 }
             }
         }

@@ -6,17 +6,37 @@ using TMPro;
 
 public class roomBoardUI : MonoBehaviour
 {
-    [SerializeField] private TMP_Text skillLvlText1;
-    [SerializeField] private TMP_Text skillLvlText2;
-    [SerializeField] private TMP_Text skillLvlText3;
-    [SerializeField] private TMP_Text skillLvlText4;
-    [SerializeField] private TMP_Text skillLvlText5;
-    [SerializeField] private TMP_Text skillXPText1;
-    [SerializeField] private TMP_Text skillXPText2;
-    [SerializeField] private TMP_Text skillXPText3;
-    [SerializeField] private TMP_Text skillXPText4;
-    [SerializeField] private TMP_Text skillXPText5;
-    [SerializeField] private xpManager _xpManager;
+    private TMP_Text skillLvlText1;
+    private TMP_Text skillLvlText2;
+    private TMP_Text skillLvlText3;
+    private TMP_Text skillLvlText4;
+    private TMP_Text skillLvlText5;
+    private TMP_Text skillXPText1;
+    private TMP_Text skillXPText2;
+    private TMP_Text skillXPText3;
+    private TMP_Text skillXPText4;
+    private TMP_Text skillXPText5;
+    private xpManager _xpManager;
+
+    private void Start()
+    {
+        skillLvlText1 = transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>();
+        skillXPText1 = transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>();
+
+        skillLvlText2 = transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>();
+        skillXPText2 = transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>();
+
+        skillLvlText3 = transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>();
+        skillXPText3 = transform.GetChild(2).GetChild(1).GetComponent<TMP_Text>();
+
+        skillLvlText4 = transform.GetChild(3).GetChild(0).GetComponent<TMP_Text>();
+        skillXPText4 = transform.GetChild(3).GetChild(1).GetComponent<TMP_Text>();
+
+        skillLvlText5 = transform.GetChild(4).GetChild(0).GetComponent<TMP_Text>();
+        skillXPText5 = transform.GetChild(4).GetChild(1).GetComponent<TMP_Text>();
+
+        _xpManager = GameObject.Find("xpmanager").GetComponent<xpManager>();
+    }
 
     void Update()
     {

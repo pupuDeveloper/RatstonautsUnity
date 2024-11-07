@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class PanelSignleton<T> : MonoBehaviour where T : using MonoBehaviour
+public class PanelSignleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T _instance;
     public static T instance

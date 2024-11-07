@@ -10,6 +10,5 @@ public class MainMenuState : GameStateBase
     public MainMenuState() : base()
     {
         AddTargetState(StateType.InGame);
-        AddTargetState(StateType.Options);
     }
 }

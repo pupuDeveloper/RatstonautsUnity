@@ -136,69 +136,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dandelion
-      rect:
-        serializedVersion: 2
-        x: 29
-        y: 704
-        width: 157
-        height: 138
-      alignment: 9
-      pivot: {x: 0.5, y: 0.1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 420661ec5f970dd44bee88e3171e14ef
-      internalID: -1906079436
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bonsai
-      rect:
-        serializedVersion: 2
-        x: 196
-        y: 704
-        width: 200
-        height: 155
-      alignment: 9
-      pivot: {x: 0.5, y: 0.1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f4e79bf770e428e4c8eb2adbf39b71c8
-      internalID: 360872935
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Violet
-      rect:
-        serializedVersion: 2
-        x: 662
-        y: 698
-        width: 143
-        height: 132
-      alignment: 9
-      pivot: {x: 0.5, y: 0.1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 861adfdc1a4e8704ab129972af1a5121
-      internalID: 125449561
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: PlantPot
       rect:
         serializedVersion: 2
@@ -236,27 +173,6 @@ TextureImporter:
       bones: []
       spriteID: be079bef0e2b0694dbcb7fb78576886c
       internalID: -858693314
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Harebell
-      rect:
-        serializedVersion: 2
-        x: 199
-        y: 67
-        width: 202
-        height: 180
-      alignment: 9
-      pivot: {x: 0.5, y: 0.1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 719112c9abbfbff42b0a62b5bfbfe92c
-      internalID: -1930783656
       vertices: []
       indices: 
       edges: []

@@ -836,6 +836,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c368fac1fb6adf49ac96f29717c33c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  min: 0
+  max: 0
+  current: 0
   mask: {fileID: 1516325437}
   _xpManager: {fileID: 1507500964}
 --- !u!1 &92037425
@@ -1329,6 +1332,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c368fac1fb6adf49ac96f29717c33c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  min: 0
+  max: 0
+  current: 0
   mask: {fileID: 1705300029}
   _xpManager: {fileID: 1507500964}
 --- !u!114 &115457058
@@ -1716,7 +1722,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -395280704, guid: cabf3451130b311459c88f75578f52fb, type: 3}
+  m_Sprite: {fileID: 1816025533, guid: cb214e0de0fa8ba4abfda3a5161c5840, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2332,7 +2338,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1480708240, guid: cabf3451130b311459c88f75578f52fb, type: 3}
+  m_Sprite: {fileID: -843418372, guid: cb214e0de0fa8ba4abfda3a5161c5840, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12296,7 +12302,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -782868015, guid: cabf3451130b311459c88f75578f52fb, type: 3}
+  m_Sprite: {fileID: 1681052776, guid: cb214e0de0fa8ba4abfda3a5161c5840, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -13228,6 +13234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c368fac1fb6adf49ac96f29717c33c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  min: 0
+  max: 0
+  current: 0
   mask: {fileID: 1154805322}
   _xpManager: {fileID: 1507500964}
 --- !u!114 &663773599
@@ -23620,7 +23629,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1586724451, guid: cabf3451130b311459c88f75578f52fb, type: 3}
+  m_Sprite: {fileID: -1314139381, guid: cb214e0de0fa8ba4abfda3a5161c5840, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -28530,6 +28539,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c368fac1fb6adf49ac96f29717c33c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  min: 0
+  max: 0
+  current: 0
   mask: {fileID: 405523751}
   _xpManager: {fileID: 1507500964}
 --- !u!114 &1540221726
@@ -32594,7 +32606,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12.65
+  m_fontSize: 17.5
   m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -34672,7 +34684,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 044a4e5b039904e419d7754ee10effb8, type: 3}
+  m_Sprite: {fileID: 946340191, guid: cb214e0de0fa8ba4abfda3a5161c5840, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -36858,6 +36870,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c368fac1fb6adf49ac96f29717c33c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  min: 0
+  max: 0
+  current: 0
   mask: {fileID: 1065298353}
   _xpManager: {fileID: 1507500964}
 --- !u!114 &2038141323

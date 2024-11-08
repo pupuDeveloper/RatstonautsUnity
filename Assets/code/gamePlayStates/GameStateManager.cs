@@ -38,6 +38,7 @@ public class GameStateManager : MonoBehaviour
     }
     public void roomButtonPressed(string stateName)
     {
+        AudioManager.instance.Play("UI1");
         switch (stateName)
         {
             case "cockPit":

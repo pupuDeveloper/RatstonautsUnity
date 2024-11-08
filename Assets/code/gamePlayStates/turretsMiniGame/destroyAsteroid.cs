@@ -58,7 +58,7 @@ public class destroyAsteroid : MonoBehaviour
     private void OnMouseDown()
     {
         _turretsMinigame.asteroidAmount--;
-        Debug.Log("here");
+        AudioManager.instance.Play("turretShot");
         GameEvents.current.OnAsteroidDestroyed();
         Destroy(gameObject);
     }

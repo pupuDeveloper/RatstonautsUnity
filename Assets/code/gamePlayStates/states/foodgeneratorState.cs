@@ -31,6 +31,7 @@ public class foodgeneratorState : State
     [SerializeField] private GameObject gear1;
     [SerializeField] private GameObject gear2;
     [SerializeField] private GameObject gear3;
+    [SerializeField] private GameObject allRoomUI;
     private gearTurning _gearTurning1;
     private gearTurning _gearTurning2;
     private gearTurning _gearTurning3;
@@ -81,6 +82,7 @@ public class foodgeneratorState : State
     }
     public void toMiniGame()
     {
+        AudioManager.instance.Play("UI1");
         toMiniGameButton.gameObject.SetActive(false);
         BG1.SetActive(false);
         BG2.SetActive(true);
@@ -92,10 +94,12 @@ public class foodgeneratorState : State
         _foodGenScript.scrollableList.SetActive(false);
         stateIsReady = false;
         inMinigame = false;
+        allRoomUI.SetActive(false);
     }
     public void setupState()
     {
         gameStateManager.targetState = this;
+        allRoomUI.SetActive(true);
         BG1.SetActive(true);
         BG2.SetActive(false);
         toMiniGameButton.gameObject.SetActive(true);

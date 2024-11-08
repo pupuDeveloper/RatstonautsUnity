@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public bool showPopups = true;
     [SerializeField] public int cockPitXP { get; set; } // correlates boost amount
     [SerializeField] public DateTime timeSinceCockPitCDStarted { get; set; } //since last minigame was played
     [SerializeField] public DateTime triggerCockPitMG { get; set; } // when to trigger next minigame

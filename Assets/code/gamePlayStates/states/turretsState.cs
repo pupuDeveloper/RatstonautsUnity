@@ -11,9 +11,11 @@ public class turretsState : State
 
     [Header("UI stuff like backgrounds")]
     [SerializeField] private Button toMiniGameButton;
-    [SerializeField] private GameObject turretBG;
-    [SerializeField] private GameObject turretsMiniGameBG;
+    [SerializeField] private GameObject mainUI;
+    public GameObject minigameUI;
     [SerializeField] private turretsMiniGame _turretsMinigame;
+    [SerializeField] private GameObject allRoomUI;
+    [SerializeField] private SpriteRenderer roomBG;
     public override State RunCurrentState()
     {
         if (!stateIsReady)
@@ -31,24 +33,29 @@ public class turretsState : State
     private void resetState()
     {
         _turretsMinigame.resetMiniGame();
-        turretsMiniGameBG.SetActive(false);
+        roomBG.sortingOrder = 0;
+        minigameUI.SetActive(false);
         stateIsReady = false;
+        allRoomUI.SetActive(false);
     }
     public void SetupState()
     {
         _turretsMinigame.resetMiniGame();
+        roomBG.sortingOrder = 5;
+        allRoomUI.SetActive(true);
         gameStateManager.targetState = this;
-        turretBG.SetActive(true);
-        turretsMiniGameBG.SetActive(false);
+        mainUI.SetActive(true);
+        minigameUI.SetActive(false);
         toMiniGameButton.gameObject.SetActive(true);
         stateIsReady = true;
     }
     
     public void toMiniGame()
     {
+        AudioManager.instance.Play("UI1");
         toMiniGameButton.gameObject.SetActive(false);
-        turretBG.SetActive(false);
-        turretsMiniGameBG.SetActive(true);
+        mainUI.SetActive(false);
+        minigameUI.SetActive(true);
         _turretsMinigame.checkForAsteroids();
     }
 }

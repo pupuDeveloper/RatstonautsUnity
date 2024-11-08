@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CameraScale : MonoBehaviour
 {
-    public SpriteRenderer edges;
-    void Start()
+    //public SpriteRenderer exampleBGSprite;
+    [SerializeField] private GameObject canvas;
+    void Awake()
     {
-        
+        float orthoSize = Screen.height / 2;
+        Camera.main.orthographicSize = orthoSize;
     }
 }

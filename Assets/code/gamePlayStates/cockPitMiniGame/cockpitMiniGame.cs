@@ -102,6 +102,7 @@ public class cockpitMiniGame : MonoBehaviour
                 if (i == 6)
                 {
                     Debug.Log("minigame successfull!");
+                    AudioManager.instance.Play("cockPitWon");
                     setWinData();
                     isGameDone = true;
                 }
@@ -151,13 +152,7 @@ public class cockpitMiniGame : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             int nextButton = UnityEngine.Random.Range(0, 6);
-            yield return new WaitForSeconds(1f);
-            button1.image.sprite = btn1sprite1;
-            button2.image.sprite = btn2sprite1;
-            button3.image.sprite = btn3sprite1;
-            button4.image.sprite = btn4sprite1;
-            button5.image.sprite = btn5sprite1;
-            button6.image.sprite = btn6sprite1;
+            yield return new WaitForSeconds(0.5f);
             switch (nextButton)
             {
                 case 0:
@@ -203,14 +198,15 @@ public class cockpitMiniGame : MonoBehaviour
                     Debug.Log("6 pressed");
                     break;
             }
+            yield return new WaitForSeconds(0.5f);
+            button1.image.sprite = btn1sprite1;
+            button2.image.sprite = btn2sprite1;
+            button3.image.sprite = btn3sprite1;
+            button4.image.sprite = btn4sprite1;
+            button5.image.sprite = btn5sprite1;
+            button6.image.sprite = btn6sprite1;
         }
         yield return new WaitForSeconds(1);
-        button1.image.sprite = btn1sprite1;
-        button2.image.sprite = btn2sprite1;
-        button3.image.sprite = btn3sprite1;
-        button4.image.sprite = btn4sprite1;
-        button5.image.sprite = btn5sprite1;
-        button6.image.sprite = btn6sprite1;
         Debug.Log(correctOrder);
         playerTurn = true;
         coroutineOn = false;

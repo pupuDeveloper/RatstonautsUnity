@@ -10,10 +10,12 @@ public class oxygengardenState : State
 
     [Header("UI stuff like backgrounds")]
     [SerializeField] private Button toGardenButton;
-    [SerializeField] private GameObject oxygenGardenBG1;
-    [SerializeField] private GameObject oxygenGardenBG2;
+    [SerializeField] private GameObject uiItems;
+    //[SerializeField] private GameObject oxygenGardenBG2;
     [SerializeField] private gardenManager _gardenManager;
     [SerializeField] private wateringEvent _wateringEvent;
+    [SerializeField] private GameObject allRoomUI;
+    [SerializeField] private SpriteRenderer roomBG;
 
 
     public override State RunCurrentState()
@@ -45,25 +47,30 @@ public class oxygengardenState : State
 
     public void toGarden()
     {
+        AudioManager.instance.Play("UI1");
         toGardenButton.gameObject.SetActive(false);
-        oxygenGardenBG1.SetActive(false);
-        oxygenGardenBG2.SetActive(true);
+        uiItems.SetActive(false);
+        //oxygenGardenBG2.SetActive(true);
     }
     private void resetState()
     {
-        oxygenGardenBG2.SetActive(false);
+        //oxygenGardenBG2.SetActive(false);
+        roomBG.sortingOrder = 0;
         _gardenManager.scrollableList.SetActive(false);
         _gardenManager.closePlantListButton.SetActive(false);
         stateIsReady = false;
+        allRoomUI.SetActive(false);
     }
 
     public void setupState()
     {
         _gardenManager.instantiatePlants();
+        roomBG.sortingOrder = 5;
+        allRoomUI.SetActive(true);
         gameStateManager.targetState = this;
-        oxygenGardenBG1.SetActive(true);
-        oxygenGardenBG2.SetActive(false);
-        toGardenButton.gameObject.SetActive(true);
+        uiItems.SetActive(true);
+        //oxygenGardenBG2.SetActive(false);
+        //toGardenButton.gameObject.SetActive(true);
         stateIsReady = true;
     }
     public Plant[] getPlantsInSpots()
@@ -81,14 +88,15 @@ public class oxygengardenState : State
         {
             if (plant.name == "Blank")
             {
+                _wateringEvent.gardenEvent(false, i);
                 i++;
             }
             else
             {
-                _wateringEvent.gardenEvent(true);
+                _wateringEvent.gardenEvent(true, i);
+                i++;
             }
         }
-        if (i == 3) _wateringEvent.gardenEvent(false);
     }
     public bool areAllPlantsBlank()
     {

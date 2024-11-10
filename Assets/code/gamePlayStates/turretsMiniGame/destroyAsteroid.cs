@@ -13,6 +13,8 @@ public class destroyAsteroid : MonoBehaviour
     private Vector3 direction;
     private bool SlowcoroutineRunning;
     private bool SpeedcoroutineRunning;
+    private Animator cannonAnimator;
+    private Animator asteroidAnimator;
 
 
     private void Start()
@@ -22,13 +24,15 @@ public class destroyAsteroid : MonoBehaviour
         speed = targetSpeed;
         SlowcoroutineRunning = false;
         SpeedcoroutineRunning = false;
+        cannonAnimator = transform.parent.GetChild(1).GetComponent<Animator>();
+        asteroidAnimator = GetComponent<Animator>();
 
         rotationSpeed = Random.Range(-20f, 20f);
     }
 
     private void Update()
     {
-        transform.Rotate(0, 0,rotationSpeed * Time.deltaTime);
+        transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
         if (isTooClose(1f))
         {
             if (SlowcoroutineRunning == false && speed > minSpeed)
@@ -58,8 +62,13 @@ public class destroyAsteroid : MonoBehaviour
     private void OnMouseDown()
     {
         _turretsMinigame.asteroidAmount--;
+        cannonAnimator.SetTrigger("TappedScreen");
         AudioManager.instance.Play("turretShot");
+        asteroidAnimator.SetTrigger("clickedOn");
         GameEvents.current.OnAsteroidDestroyed();
+    }
+    public void killObject()
+    {
         Destroy(gameObject);
     }
     private void move()

@@ -20,6 +20,7 @@ public class gardenManager : MonoBehaviour
     public GameObject closePlantListButton;
     [SerializeField] private GameObject[] removeButtons;
     private xpManager _xpManager;
+    public bool unlockAllPlants; //only for testing
 
     private void Start()
     {
@@ -81,7 +82,7 @@ public class gardenManager : MonoBehaviour
                 name2 = name2.Trim();
                 if (name == name2)
                 {
-                    if (p.isUnlocked == false)
+                    if (p.isUnlocked == false && unlockAllPlants == false)
                         g.transform.GetChild(4).gameObject.SetActive(true);
                     else
                         g.transform.GetChild(4).gameObject.SetActive(false);

@@ -13,7 +13,7 @@ public class turretsState : State
     [SerializeField] private Button toMiniGameButton;
     [SerializeField] private GameObject mainUI;
     public GameObject minigameUI;
-    public GameObject minigameBG, minigameFrame;
+    public GameObject minigameBG, minigameFrame, backButton;
     [SerializeField] private turretsMiniGame _turretsMinigame;
     [SerializeField] private GameObject allRoomUI;
     [SerializeField] private SpriteRenderer roomBG;
@@ -38,6 +38,7 @@ public class turretsState : State
         minigameUI.SetActive(false);
         minigameBG.SetActive(false);
         minigameFrame.SetActive(false);
+        backButton.SetActive(false);
         stateIsReady = false;
         allRoomUI.SetActive(false);
     }
@@ -51,6 +52,7 @@ public class turretsState : State
         minigameUI.SetActive(false);
         minigameBG.SetActive(false);
         minigameFrame.SetActive(false);
+        backButton.SetActive(false);
         toMiniGameButton.gameObject.SetActive(true);
         stateIsReady = true;
     }
@@ -62,6 +64,7 @@ public class turretsState : State
         mainUI.SetActive(false);
         minigameBG.SetActive(true);
         minigameUI.SetActive(true);
+        backButton.SetActive(true);
         minigameFrame.SetActive(true);
         _turretsMinigame.checkForAsteroids();
     }

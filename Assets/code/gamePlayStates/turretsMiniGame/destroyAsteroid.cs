@@ -15,7 +15,8 @@ public class destroyAsteroid : MonoBehaviour
     private bool SpeedcoroutineRunning;
     private Animator cannonAnimator;
     private Animator asteroidAnimator;
-
+    private BoxCollider2D boxCollider;
+    [SerializeField] GameObject destroyEffect;
 
     private void Start()
     {
@@ -24,8 +25,9 @@ public class destroyAsteroid : MonoBehaviour
         speed = targetSpeed;
         SlowcoroutineRunning = false;
         SpeedcoroutineRunning = false;
-        cannonAnimator = transform.parent.GetChild(1).GetComponent<Animator>();
+        cannonAnimator = transform.parent.GetChild(0).GetComponent<Animator>();
         asteroidAnimator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
 
         rotationSpeed = Random.Range(-20f, 20f);
     }
@@ -61,16 +63,14 @@ public class destroyAsteroid : MonoBehaviour
 
     private void OnMouseDown()
     {
+        boxCollider.enabled = false;
+        Instantiate(destroyEffect, transform.position, Quaternion.identity, GameObject.Find("TurretminigameItems").transform);
         _turretsMinigame.asteroidAmount--;
-        cannonAnimator.SetTrigger("TappedScreen");
         AudioManager.instance.Play("turretShot");
-        asteroidAnimator.SetTrigger("clickedOn");
         GameEvents.current.OnAsteroidDestroyed();
-    }
-    public void killObject()
-    {
         Destroy(gameObject);
     }
+
     private void move()
     {
         transform.position += direction * speed * Time.deltaTime;
@@ -108,14 +108,14 @@ public class destroyAsteroid : MonoBehaviour
     {
         SlowcoroutineRunning = true;
         yield return new WaitForSeconds(0.05f);
-        speed -= 0.01f;
+        speed -= 0.2f;
         SlowcoroutineRunning = false;
     }
     private IEnumerator speedUp()
     {
         SpeedcoroutineRunning = true;
         yield return new WaitForSeconds(0.05f);
-        speed += 0.01f;
+        speed += 0.2f;
         SpeedcoroutineRunning = false;
     }
     private void newDirectionAndSpeed()
@@ -123,6 +123,6 @@ public class destroyAsteroid : MonoBehaviour
         Debug.Log("direction changed");
         direction.x = Random.Range(-1f, 1f);
         direction.y = Random.Range(-1f, 1f);
-        targetSpeed = Random.Range(0.1f, 0.5f);
+        targetSpeed = Random.Range(5f, 20f);
     }
 }

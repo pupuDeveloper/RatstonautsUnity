@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 9167873344562848710}
   - component: {fileID: -1673576619696890117}
   - component: {fileID: 1568287717204933310}
-  - component: {fileID: 467758946593907153}
   m_Layer: 0
   m_Name: Meteorite 2
   m_TagString: Untagged
@@ -73,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 547533503
-  m_SortingLayer: 2
-  m_SortingOrder: 11
+  m_SortingLayerID: 1698960007
+  m_SortingLayer: 1
+  m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: 534ecdce5bd5de24f92d4ab01f4861fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,7 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  targetSpeed: 0
+  targetSpeed: 10
+  destroyEffect: {fileID: 2320484516938087185, guid: 65e4bd85bf07c7745905bda6ed7cc7f5, type: 3}
 --- !u!61 &1568287717204933310
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,24 +146,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 200, y: 190}
   m_EdgeRadius: 0
---- !u!95 &467758946593907153
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555567341725771079}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0ac2be9ab893188449828757953da80f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

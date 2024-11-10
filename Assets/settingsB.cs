@@ -6,14 +6,9 @@ public class settingsB : MonoBehaviour
 {
     [SerializeField] private GameObject menuButton;
     [SerializeField] private GameObject roomBoardButton;
-    [SerializeField] private GameObject roomBoard;
-    public void toMenu()
-    {
-        GameManager.Instance.Go(StateType.Options);
-    }
     public void openCloseButtons()
     {
-        if (!menuButton.activeSelf && !roomBoardButton.activeSelf && !roomBoard.activeSelf)
+        if (!menuButton.activeSelf && !roomBoardButton.activeSelf)
         {
             menuButton.SetActive(true);
             roomBoardButton.SetActive(true);
@@ -22,10 +17,6 @@ public class settingsB : MonoBehaviour
         {
             menuButton.SetActive(false);
             roomBoardButton.SetActive(false);
-        }
-        if (roomBoard.activeSelf)
-        {
-            roomBoard.SetActive(false);
         }
     }
     public void buttonSound1()

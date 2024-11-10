@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
@@ -27,8 +25,14 @@ public class SaveSystem
     {
         get
         {
+            #if UNITY_ANDROID && !UNITY_EDITOR
+            //android devices
+            return Path.Combine(Application.persistentDataPath, "Ratstonauts", "Save");
+            #else
+            //desktop
             string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             return Path.Combine(documents, "Ratstonauts", "Save");
+            #endif
         }
     }
 

@@ -164,7 +164,6 @@ public class GameManager : MonoBehaviour
         _states.Add(initialState);
         _states.Add(new MainMenuState());
         _states.Add(new InGameState());
-        _states.Add(new OptionsState());
 
 #if UNITY_EDITOR
     string activeSceneName = SceneManager.GetActiveScene().name.ToLower();

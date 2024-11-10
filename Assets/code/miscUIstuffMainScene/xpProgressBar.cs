@@ -10,10 +10,12 @@ public class xpProgressBar : MonoBehaviour
     [SerializeField] private int max;
     [SerializeField] private int current;
     [SerializeField] private Image mask;
-    [SerializeField] private xpManager _xpManager;
+    private xpManager _xpManager;
 
-    
-
+    void Start()
+    {
+        _xpManager = GameObject.Find("xpmanager").GetComponent<xpManager>();
+    }
     private void Update()
     {
         getValues();
@@ -63,5 +65,4 @@ public class xpProgressBar : MonoBehaviour
             break;
         }
     }
-
 }

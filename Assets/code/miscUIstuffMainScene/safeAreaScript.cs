@@ -7,9 +7,6 @@ public class safeAreaScript : MonoBehaviour
 {
 
     [SerializeField] RectTransform _CanvasRect;
-    [SerializeField] RectTransform SecondSafeArea;
-    [SerializeField] RectTransform topbarRect;
-    [SerializeField] RectTransform bottombarRect;
     RectTransform rectTransform;
     public float sim;
     Vector2 size;

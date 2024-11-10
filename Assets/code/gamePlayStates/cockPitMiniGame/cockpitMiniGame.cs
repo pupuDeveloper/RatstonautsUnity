@@ -89,8 +89,15 @@ public class cockpitMiniGame : MonoBehaviour
                 {
                     if (answer != correctOrder[i])
                     {
+                        AudioManager.instance.Stop("minigameB1");
+                        AudioManager.instance.Stop("minigameB2");
+                        AudioManager.instance.Stop("minigameB3");
+                        AudioManager.instance.Stop("minigameB4");
+                        AudioManager.instance.Stop("minigameB5");
+                        AudioManager.instance.Stop("minigameB6");
                         playerTurn = false;
                         clickBlocker.SetActive(true);
+                        AudioManager.instance.Play("minigamefail1");
                         Debug.Log("failed! Restarting");
                         break;
                     }
@@ -151,6 +158,7 @@ public class cockpitMiniGame : MonoBehaviour
         coroutineOn = true;
         for (int i = 0; i < 6; i++)
         {
+            if (i == 0) yield return new WaitForSeconds(1f);
             int nextButton = UnityEngine.Random.Range(0, 6);
             yield return new WaitForSeconds(0.5f);
             switch (nextButton)
@@ -158,6 +166,7 @@ public class cockpitMiniGame : MonoBehaviour
                 case 0:
                     button1.onClick.Invoke();
                     AudioManager.instance.Play("minigameB1");
+
                     button1.image.sprite = btn1sprite2;
                     correctOrder += "1";
                     Debug.Log("1 pressed");

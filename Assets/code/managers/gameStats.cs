@@ -140,7 +140,6 @@ public class gameStats : MonoBehaviour
                     case 0:
                         break;
                     default:
-                        Debug.Log("didnt find any plants helping this room");
                         break;
                 }
             }

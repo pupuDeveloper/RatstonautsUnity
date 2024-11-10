@@ -73,7 +73,6 @@ public class xpManager : MonoBehaviour
         {
             xpAverage += (i * 100) * (int)BigInteger.Pow(2, i / 12) * 10; // times 10, because last digit is a decimal.
             xpForLevels[i] = xpAverage;
-            Debug.Log("xp needed for lvl " + i + " is " + xpForLevels[i]);
         }
         cockPitLvl = checkLvls(GameManager.Instance.cockPitXP);
         foodGenLvl = checkLvls(GameManager.Instance.foodGenXP);

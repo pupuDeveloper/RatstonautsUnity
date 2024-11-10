@@ -64,6 +64,7 @@ public class destroyAsteroid : MonoBehaviour
     private void OnMouseDown()
     {
         boxCollider.enabled = false;
+        cannonAnimator.SetTrigger("TappedScreen");
         Instantiate(destroyEffect, transform.position, Quaternion.identity, GameObject.Find("TurretminigameItems").transform);
         _turretsMinigame.asteroidAmount--;
         AudioManager.instance.Play("turretShot");

@@ -141,6 +141,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
         StartCoroutine("autosaveWithTimer");
         if (CurrentState.Type == StateType.Initialization && totalDistanceTraveled == 0)
         {

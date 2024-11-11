@@ -180,6 +180,10 @@ PrefabInstance:
       propertyPath: scalingMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4438509848690552997, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
+      propertyPath: ShapeModule.randomDirectionAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6903600005983486239, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
       propertyPath: m_Name
       value: Particle System

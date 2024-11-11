@@ -109,14 +109,14 @@ public class destroyAsteroid : MonoBehaviour
     {
         SlowcoroutineRunning = true;
         yield return new WaitForSeconds(0.05f);
-        speed -= 0.2f;
+        speed -= 0.5f;
         SlowcoroutineRunning = false;
     }
     private IEnumerator speedUp()
     {
         SpeedcoroutineRunning = true;
         yield return new WaitForSeconds(0.05f);
-        speed += 0.2f;
+        speed += 0.5f;
         SpeedcoroutineRunning = false;
     }
     private void newDirectionAndSpeed()
@@ -124,6 +124,6 @@ public class destroyAsteroid : MonoBehaviour
         Debug.Log("direction changed");
         direction.x = Random.Range(-1f, 1f);
         direction.y = Random.Range(-1f, 1f);
-        targetSpeed = Random.Range(5f, 20f);
+        targetSpeed = Random.Range(5f, 30f);
     }
 }

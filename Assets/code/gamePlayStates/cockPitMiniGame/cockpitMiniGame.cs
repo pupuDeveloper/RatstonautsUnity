@@ -215,7 +215,7 @@ public class cockpitMiniGame : MonoBehaviour
             button5.image.sprite = btn5sprite1;
             button6.image.sprite = btn6sprite1;
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.25f);
         Debug.Log(correctOrder);
         playerTurn = true;
         coroutineOn = false;

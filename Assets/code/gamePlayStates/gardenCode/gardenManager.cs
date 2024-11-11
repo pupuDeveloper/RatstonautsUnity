@@ -47,7 +47,7 @@ public class gardenManager : MonoBehaviour
         Plant ArcticStarflower = new Plant("Arctic Starflower", 6, "increase all minigame cooldown by 50%, decrease effectiveness by 5%", false, false, 30);
         if (!allPlants.Contains(ArcticStarflower)) allPlants.Add(ArcticStarflower);
 
-        Plant SolomonsSeal = new Plant("Solomon's Seal", 7, "rats need 1-2 hours less sleep per night", false, false, 100);
+        Plant SolomonsSeal = new Plant("Solomons Seal", 7, "rats need 1-2 hours less sleep per night", false, false, 100);
         if (!allPlants.Contains(SolomonsSeal)) allPlants.Add(SolomonsSeal);
 
         Plant GoldenRod = new Plant("Goldenrod", 8, "Increase XP received after succesfull minigame by 10%", false, false, 60);
@@ -62,7 +62,14 @@ public class gardenManager : MonoBehaviour
 
         //lvl 1 unlocks
         if (!unlockedPlants.Contains(Dandelion)) unlockedPlants.Add(Dandelion);
-        unlockedSlots = 1;
+        if (unlockAllPlants)
+        {
+            unlockedSlots = 3;
+        }
+        else
+        {
+            unlockedSlots = 1;
+        }
         //
 
         //blank plant
@@ -139,7 +146,7 @@ public class gardenManager : MonoBehaviour
             {
                 plantsInSpots[i] = plant;
                 removeButtons[i].SetActive(true);
-                plantSpots[i].GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = plant.name;
+                plantSpots[i].GetChild(1).transform.GetComponent<SpriteRenderer>().sprite = scrollableList.transform.GetChild(0).Find(plant.name).GetChild(3).transform.GetComponent<Image>().sprite;
                 updateGameManagerList();
                 break;
             }
@@ -157,7 +164,7 @@ public class gardenManager : MonoBehaviour
             {
                 plantsInSpots[i] = blank;
                 removeButtons[i].SetActive(false);
-                plantSpots[i].GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = "";
+                plantSpots[i].GetChild(1).transform.GetComponent<SpriteRenderer>().sprite = null;
                 updateGameManagerList();
                 break;
             }
@@ -239,14 +246,12 @@ public class gardenManager : MonoBehaviour
                     {
                         plantsInSpots[i] = myplant;
                         removeButtons[i].SetActive(true);
-                        plantSpots[i].GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = myplant.name;
                     }
                 }
                 else
                 {
                     plantsInSpots[i] = blank;
                     removeButtons[i].SetActive(false);
-                    plantSpots[i].GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = "";
                 }
             }
         }

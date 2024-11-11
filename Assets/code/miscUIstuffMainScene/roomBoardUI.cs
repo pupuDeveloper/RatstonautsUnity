@@ -58,4 +58,31 @@ public class roomBoardUI : MonoBehaviour
         skillXPText4.SetText("XP: " + xp4.ToString());
         skillXPText5.SetText("XP: " + xp5.ToString());
     }
+    public void switchText()
+    {
+        switch(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.transform.parent.name)
+        {
+            case "skill1":
+                skillLvlText1.transform.gameObject.SetActive(!skillLvlText1.transform.gameObject.activeInHierarchy);
+                skillXPText1.transform.gameObject.SetActive(!skillXPText1.transform.gameObject.activeInHierarchy);
+            break;
+            case "skill2":
+                skillLvlText2.transform.gameObject.SetActive(!skillLvlText2.transform.gameObject.activeInHierarchy);
+                skillXPText2.transform.gameObject.SetActive(!skillXPText2.transform.gameObject.activeInHierarchy);
+            break;
+            case "skill3":
+                skillLvlText3.transform.gameObject.SetActive(!skillLvlText3.transform.gameObject.activeInHierarchy);
+                skillXPText3.transform.gameObject.SetActive(!skillXPText3.transform.gameObject.activeInHierarchy);
+            break;
+            case "skill4":
+                skillLvlText4.transform.gameObject.SetActive(!skillLvlText4.transform.gameObject.activeInHierarchy);
+                skillXPText4.transform.gameObject.SetActive(!skillXPText4.transform.gameObject.activeInHierarchy);
+            break;
+            case "skill5":
+                skillLvlText5.transform.gameObject.SetActive(!skillLvlText5.transform.gameObject.activeInHierarchy);
+                skillXPText5.transform.gameObject.SetActive(!skillXPText5.transform.gameObject.activeInHierarchy);
+            break;
+        }
+        AudioManager.instance.Play("UI2");
+    }
 }

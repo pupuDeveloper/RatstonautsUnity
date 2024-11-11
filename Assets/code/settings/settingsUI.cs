@@ -12,6 +12,10 @@ public class settingsUI : MonoBehaviour
     {
         AudioManager.instance.Play("UI2");
     }
+    public void resetGame()//only use while testing
+    {
+        GameManager.Instance.resetSaveData();
+    }
     public void showPopups()
     {
         GameManager.Instance.showPopups = !GameManager.Instance.showPopups;

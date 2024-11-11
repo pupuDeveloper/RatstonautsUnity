@@ -108,7 +108,6 @@ public class slideRooms : MonoBehaviour
             }
             StartCoroutine(smoothTransition(targetPos, roomInt));
         }
-        initialize();
     }
 
     public IEnumerator smoothTransition(Vector2 endPoint, int whichRoom)

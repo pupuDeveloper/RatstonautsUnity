@@ -117,9 +117,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 547533503
-  m_SortingLayer: 2
-  m_SortingOrder: 15
+  m_SortingLayerID: 1698960007
+  m_SortingLayer: 1
+  m_SortingOrder: 14
   m_Sprite: {fileID: -1589600914, guid: d48c4ef105357ef4da215de20b1f0e6e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -161,6 +161,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 2056945967609084989}
     m_Modifications:
     - target: {fileID: 2288576648207842970, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2288576648207842970, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2288576648207842970, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1698960007
+      objectReference: {fileID: 0}
+    - target: {fileID: 2288576648207842970, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
       propertyPath: m_RenderAlignment
       value: 0
       objectReference: {fileID: 0}
@@ -171,6 +183,10 @@ PrefabInstance:
     - target: {fileID: 6903600005983486239, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
       propertyPath: m_Name
       value: Particle System
+      objectReference: {fileID: 0}
+    - target: {fileID: 6903600005983486239, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7431777941402452943, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
       propertyPath: m_LocalScale.x

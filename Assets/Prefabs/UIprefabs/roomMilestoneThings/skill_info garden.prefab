@@ -132,8 +132,49 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4967312728040535812, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7549202747587020504}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6132767969875950930, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8461711581110644360}
   m_SourcePrefab: {fileID: 100100000, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
+--- !u!1 &5465431891422493712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6132767969875950930, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
+  m_PrefabInstance: {fileID: 2216591943529218370}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8461711581110644360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5465431891422493712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf7e33961203c6543866d42476e0f748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _milestoneArray:
+  - lvl: 0
+    description: Dandelion flower unlocked.
+  - lvl: 5
+    description: 
+  - lvl: 10
+    description: 
+  - lvl: 0
+    description: 
+  - lvl: 0
+    description: 
+  - lvl: 0
+    description: 
+  - lvl: 0
+    description: 
+  - lvl: 0
+    description: 
+  - lvl: 0
+    description: 
+  - lvl: 0
+    description: 
 --- !u!224 &6498019417122453062 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4967312728040535812, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}

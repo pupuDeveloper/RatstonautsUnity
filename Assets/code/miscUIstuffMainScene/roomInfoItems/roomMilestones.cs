@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class cockPitMilestones : MonoBehaviour
+public class roomMilestones : MonoBehaviour
 {
     private Transform[] gridItems;
 
@@ -24,7 +25,8 @@ public class cockPitMilestones : MonoBehaviour
     {
         for (int i = 0; i < _milestoneArray.Length; i++)
         {
-            gridItems[i].GetChild(0).GetComponent<TMP_Text>
+            gridItems[i].GetChild(0).GetComponent<TMP_Text>().text = _milestoneArray[i].lvl.ToString();
+            gridItems[i].GetChild(1).GetComponent<TMP_Text>().text = _milestoneArray[1].description;
         }
     }
 }

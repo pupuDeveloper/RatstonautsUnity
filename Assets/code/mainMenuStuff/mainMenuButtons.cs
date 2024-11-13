@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class mainMenuButtons : MonoBehaviour
 {
+    public void buttonSound1()
+    {
+        AudioManager.instance.Play("UI1");
+    }
+    public void buttonSound2()
+    {
+        AudioManager.instance.Play("UI2");
+    }
     public void toGame()
     {
         GameManager.Instance.Go(StateType.InGame);
-    }
-    public void toOptions()
-    {
-        GameManager.Instance.Go(StateType.Options);
     }
     public void onQuit()
     {

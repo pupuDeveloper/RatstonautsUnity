@@ -141,6 +141,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
         StartCoroutine("autosaveWithTimer");
         if (CurrentState.Type == StateType.Initialization && totalDistanceTraveled == 0)
         {
@@ -164,7 +166,6 @@ public class GameManager : MonoBehaviour
         _states.Add(initialState);
         _states.Add(new MainMenuState());
         _states.Add(new InGameState());
-        _states.Add(new OptionsState());
 
 #if UNITY_EDITOR
     string activeSceneName = SceneManager.GetActiveScene().name.ToLower();
@@ -361,5 +362,32 @@ public class GameManager : MonoBehaviour
         if (triggerTurretsMG < new DateTime(2000, 01, 01)) triggerTurretsMG = DateTime.Now;
         //timeSinceFoodGenCDStarted = (null) ? timeSinceFoodGenCDStarted = DateTime.Now:;
         //triggerFoodGenMG = (null) ? triggerFoodGenMG = DateTime.Now:;
+    }
+    public void resetSaveData()
+    {
+        spaceShipSpeed = 0;
+        totalDistanceTraveled = 0;
+        totalXp = 0;
+        lastTimePlayed = DateTime.Now;
+        cockpitBoostOn = false;
+        cockPitXP = 0;
+        timeSinceCockPitCDStarted = DateTime.Now;
+        triggerCockPitMG = DateTime.Now;
+        //oxygen garden data
+        gardenBoostOn = false;
+        gardenXP = 0;
+        plantsInSpots = new int[3];
+        for (int i = 0; i < 3; i++)
+        {
+            plantsInSpots[i] = 0;
+        }
+        timeSinceGardenCDStarted = DateTime.Now;
+        triggerGardenWatering = DateTime.Now;
+        //turrets data
+        turretsBoostOn = false;
+        turretsXP = 0;
+        timeSinceTurretsCDStarted = DateTime.Now;
+        triggerTurretsMG = DateTime.Now;
+        Application.Quit();
     }
 }

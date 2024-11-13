@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class settingsUI : MonoBehaviour
 {
-
-    void Start()
-    {
-        gameObject.transform.position = new Vector2(0, 0);
-    }
-    public void goBack()
-    {
-        GameManager.Instance.GoBack();
-    }
     public void buttonSound1()
     {
         AudioManager.instance.Play("UI1");
@@ -20,6 +11,10 @@ public class settingsUI : MonoBehaviour
     public void buttonSound2()
     {
         AudioManager.instance.Play("UI2");
+    }
+    public void resetGame()//only use while testing
+    {
+        GameManager.Instance.resetSaveData();
     }
     public void showPopups()
     {

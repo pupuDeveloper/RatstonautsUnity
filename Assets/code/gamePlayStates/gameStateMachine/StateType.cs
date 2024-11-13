@@ -7,6 +7,5 @@ public enum StateType
     None = 0,
     MainMenu,
     InGame,
-    Options,
     Initialization
 }

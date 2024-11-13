@@ -104,7 +104,7 @@ MonoBehaviour:
   - name: BGsong
     clip: {fileID: 8300000, guid: a9941741ee1dcf54984279cbe3438ef8, type: 3}
     type: 0
-    volume: 1
+    volume: 0
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -117,6 +117,20 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: cockPitWon
     clip: {fileID: 8300000, guid: ff5f85da24bc943d1abdc5760a22bc81, type: 3}
+    type: 1
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: UI3
+    clip: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
+    type: 1
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: minigamefail1
+    clip: {fileID: 8300000, guid: b9eff218e132a4e76be78840eca96fb2, type: 3}
     type: 1
     volume: 1
     pitch: 1

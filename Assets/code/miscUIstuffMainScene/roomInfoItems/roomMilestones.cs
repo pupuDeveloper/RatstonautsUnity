@@ -5,28 +5,44 @@ using TMPro;
 
 public class roomMilestones : MonoBehaviour
 {
-    private Transform[] gridItems;
+    private GameObject _gridcontent;
+    private GameObject[] _gridItems;
 
     [Tooltip("milestone array")]
     public milestoneInfo[] _milestoneArray;
+
     private void Start()
     {
-        gridItems = transform.GetChild(0).transform.GetChild(0).GetComponentsInChildren<Transform>();
-        _milestoneArray = transform.GetChild(0).transform.GetChild(0).GetComponentsInChildren<milestoneInfo>();
+        _gridcontent = transform.Find("scrollableList").transform.Find("GridContent").gameObject;
+        _gridItems = new GameObject[_gridcontent.GetComponentsInChildren<scaleLayoutItems>().Length];
+        int i = 0;
+        foreach (var item in _gridcontent.GetComponentsInChildren<scaleLayoutItems>())
+        {
+            if (item.transform == this.transform)
+            {
+                continue;
+            }
+            _gridItems[i] = item.transform.gameObject;
+            i++;
+        }
+        scaleItems();
+        setInfo();
     }
+
     private void scaleItems()
     {
-        foreach (Transform item in gridItems)
+        foreach (GameObject item in _gridItems)
         {
-            item.GetComponent<scaleLayoutItems>().Scale(item.transform.parent.GetComponent<RectTransform>().rect.width, item.parent.GetComponent<RectTransform>().rect.height/8);
+            scaleLayoutItems _scaleScript = item.transform.GetComponent<scaleLayoutItems>();
+            _scaleScript.Scale(GetComponent<RectTransform>().rect.width, GetComponent<RectTransform>().rect.height/8);
         }
     }
     private void setInfo()
     {
         for (int i = 0; i < _milestoneArray.Length; i++)
         {
-            gridItems[i].GetChild(0).GetComponent<TMP_Text>().text = _milestoneArray[i].lvl.ToString();
-            gridItems[i].GetChild(1).GetComponent<TMP_Text>().text = _milestoneArray[1].description;
+            _gridItems[i].transform.GetChild(0).GetComponent<TMP_Text>().text = _milestoneArray[i].lvl.ToString();
+            _gridItems[i].transform.GetChild(1).GetComponent<TMP_Text>().text = _milestoneArray[1].description;
         }
     }
 }

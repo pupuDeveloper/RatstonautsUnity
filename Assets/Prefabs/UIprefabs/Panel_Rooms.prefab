@@ -923,7 +923,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3244427458275667545}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7696340744871243104}
+        m_TargetAssemblyTypeName: ShowPanelButton, Assembly-CSharp
+        m_MethodName: DoShowPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7696340744871243104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,7 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210e20813270e7543a0b8c55da2daf83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panelid: 
+  Panelid: skill_info turrets
   Behaviour: 0
 --- !u!1 &1700592927747579285
 GameObject:
@@ -1634,7 +1646,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5402050218488901839}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7745980982947216187}
+        m_TargetAssemblyTypeName: ShowPanelButton, Assembly-CSharp
+        m_MethodName: DoShowPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7745980982947216187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1647,7 +1671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210e20813270e7543a0b8c55da2daf83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panelid: 
+  Panelid: skill_info cockpit
   Behaviour: 0
 --- !u!1 &3512462057392166995
 GameObject:
@@ -2241,7 +2265,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 95.9
+  m_fontSize: 62.2
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3293,7 +3317,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 95.9
+  m_fontSize: 62.2
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3427,7 +3451,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 95.9
+  m_fontSize: 62.2
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4948,7 +4972,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2390349309727790148}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3379170536291928292}
+        m_TargetAssemblyTypeName: ShowPanelButton, Assembly-CSharp
+        m_MethodName: DoShowPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3379170536291928292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4961,7 +4997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210e20813270e7543a0b8c55da2daf83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panelid: 
+  Panelid: skill_info garden
   Behaviour: 0
 --- !u!1 &9163756714359381717
 GameObject:

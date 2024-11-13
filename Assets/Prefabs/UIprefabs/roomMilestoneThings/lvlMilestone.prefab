@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 3549098556881308354}
   - component: {fileID: 3579417778281638480}
   - component: {fileID: 1131979544523900747}
+  - component: {fileID: 8916703428163461786}
   m_Layer: 5
   m_Name: lvlMilestone
   m_TagString: Untagged
@@ -366,3 +367,15 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &8916703428163461786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097208251098153756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad9de28879cc554ba40321ec94c8314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

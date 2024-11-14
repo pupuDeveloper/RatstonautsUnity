@@ -27,6 +27,7 @@ public class roomMilestones : MonoBehaviour
         }
         scaleItems();
         setInfo();
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
     }
 
     private void scaleItems()
@@ -34,7 +35,7 @@ public class roomMilestones : MonoBehaviour
         foreach (GameObject item in _gridItems)
         {
             scaleLayoutItems _scaleScript = item.transform.GetComponent<scaleLayoutItems>();
-            _scaleScript.Scale(GetComponent<RectTransform>().rect.width, GetComponent<RectTransform>().rect.height/8);
+            _scaleScript.Scale(GetComponent<RectTransform>().rect.width, GetComponent<RectTransform>().rect.height/5);
         }
     }
     private void setInfo()
@@ -42,7 +43,7 @@ public class roomMilestones : MonoBehaviour
         for (int i = 0; i < _milestoneArray.Length; i++)
         {
             _gridItems[i].transform.GetChild(0).GetComponent<TMP_Text>().text = _milestoneArray[i].lvl.ToString();
-            _gridItems[i].transform.GetChild(1).GetComponent<TMP_Text>().text = _milestoneArray[1].description;
+            _gridItems[i].transform.GetChild(1).GetComponent<TMP_Text>().text = _milestoneArray[i].description;
         }
     }
 }

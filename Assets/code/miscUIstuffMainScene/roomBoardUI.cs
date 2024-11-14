@@ -36,9 +36,10 @@ public class roomBoardUI : MonoBehaviour
         skillXPText5 = transform.GetChild(4).GetChild(1).GetComponent<TMP_Text>();
 
         _xpManager = GameObject.Find("xpmanager").GetComponent<xpManager>();
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         skillLvlText1.SetText("Level: " + _xpManager.cockPitLvl.ToString());
         skillLvlText2.SetText("Level: " + _xpManager.oxygenGardenLvl.ToString());

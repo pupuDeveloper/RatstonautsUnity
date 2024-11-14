@@ -10,13 +10,16 @@ public class xpProgressBar : MonoBehaviour
     [SerializeField] private int max;
     [SerializeField] private int current;
     [SerializeField] private Image mask;
+    private RectTransform maskRect;
+    [SerializeField] private RectTransform tracker;
     private xpManager _xpManager;
 
     void Start()
     {
         _xpManager = GameObject.Find("xpmanager").GetComponent<xpManager>();
+        maskRect = mask.GetComponent<RectTransform>();
     }
-    private void Update()
+    private void FixedUpdate()
     {
         getValues();
         getCurrentFill();
@@ -29,6 +32,8 @@ public class xpProgressBar : MonoBehaviour
         float maxOffset = max - min;
         float fillAmount = Mathf.Abs(currentOffset / maxOffset);
         mask.fillAmount = fillAmount;
+        tracker.anchorMin = new Vector2(maskRect.anchorMin.x, fillAmount);
+        tracker.anchorMax = new Vector2(maskRect.anchorMax.x, fillAmount);
     }
     private void getValues()
     {

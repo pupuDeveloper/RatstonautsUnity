@@ -3835,7 +3835,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1187290127, guid: 002b2efbeaa2d32439f8bf4774858c23, type: 3}
+  m_Sprite: {fileID: 1989608130, guid: 7966bdba544f11648a54d1c7979d86e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -6314,7 +6314,7 @@ SpriteRenderer:
   m_SortingLayerID: 1698960007
   m_SortingLayer: 1
   m_SortingOrder: 5
-  m_Sprite: {fileID: -858693314, guid: 58e5c92f4f2fa334496c4e131839b082, type: 3}
+  m_Sprite: {fileID: -178765584, guid: 35426e191f440744caeb32e23e461cb1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8047,7 +8047,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 615292939, guid: 002b2efbeaa2d32439f8bf4774858c23, type: 3}
+  m_Sprite: {fileID: -1767985899, guid: 7966bdba544f11648a54d1c7979d86e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -10363,7 +10363,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1077153170, guid: 002b2efbeaa2d32439f8bf4774858c23, type: 3}
+  m_Sprite: {fileID: 1057051256, guid: 7966bdba544f11648a54d1c7979d86e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -12968,7 +12968,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 497999522, guid: 002b2efbeaa2d32439f8bf4774858c23, type: 3}
+  m_Sprite: {fileID: -583505555, guid: 7966bdba544f11648a54d1c7979d86e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -16488,7 +16488,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1739368895, guid: 002b2efbeaa2d32439f8bf4774858c23, type: 3}
+  m_Sprite: {fileID: 1583094862, guid: 7966bdba544f11648a54d1c7979d86e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -19141,7 +19141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1793527085, guid: 002b2efbeaa2d32439f8bf4774858c23, type: 3}
+  m_Sprite: {fileID: -683166423, guid: 7966bdba544f11648a54d1c7979d86e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -19216,7 +19216,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 570046186, guid: 002b2efbeaa2d32439f8bf4774858c23, type: 3}
+  m_Sprite: {fileID: -143876497, guid: 7966bdba544f11648a54d1c7979d86e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -23347,7 +23347,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2130074165, guid: 002b2efbeaa2d32439f8bf4774858c23, type: 3}
+  m_Sprite: {fileID: -1472982565, guid: 7966bdba544f11648a54d1c7979d86e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -27150,7 +27150,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -627305475, guid: 002b2efbeaa2d32439f8bf4774858c23, type: 3}
+  m_Sprite: {fileID: 1285569652, guid: 7966bdba544f11648a54d1c7979d86e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -28381,7 +28381,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 157149770, guid: 002b2efbeaa2d32439f8bf4774858c23, type: 3}
+  m_Sprite: {fileID: 641706403, guid: 7966bdba544f11648a54d1c7979d86e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -29893,7 +29893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1979640468, guid: 002b2efbeaa2d32439f8bf4774858c23, type: 3}
+  m_Sprite: {fileID: -603698702, guid: 7966bdba544f11648a54d1c7979d86e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -30412,7 +30412,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16.9
+  m_fontSize: 15.65
   m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 1

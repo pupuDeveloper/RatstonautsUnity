@@ -14,8 +14,7 @@ public class scaleTurretFrame : MonoBehaviour
 
         worldScreenHeight = Camera.main.orthographicSize * 2;
         worldScreenWidth = worldScreenHeight / Screen.safeArea.y * Screen.safeArea.x;
-
-        transform.localScale = new Vector3(((canvas.GetComponent<RectTransform>().rect.width) / sr.sprite.bounds.size.x), ((canvas.GetComponent<RectTransform>().rect.height) / sr.sprite.bounds.size.y), 1);
-        float height = canvas.GetComponent<RectTransform>().rect.height;
+        transform.localScale = new Vector3(((canvas.GetComponent<RectTransform>().rect.width) / sr.sprite.bounds.size.x) * 1.05f, ((canvas.GetComponent<RectTransform>().rect.height) / sr.sprite.bounds.size.y) * 1.05f, 1);
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(0, (canvas.GetComponent<RectTransform>().rect.height) * 0.045f);
     }
 }

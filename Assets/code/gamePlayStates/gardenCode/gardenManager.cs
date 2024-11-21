@@ -10,6 +10,7 @@ public class gardenManager : MonoBehaviour
 {
     [SerializeField] private Transform[] plantSpots;
     [SerializeField] private GameObject alluiCanvas;
+    [SerializeField] private Sprite[] plantSprites;
     public Plant[] plantsInSpots = new Plant[3];
     public Plant blank;
     public List<Plant> allPlants = new List<Plant>();
@@ -146,7 +147,7 @@ public class gardenManager : MonoBehaviour
             {
                 plantsInSpots[i] = plant;
                 removeButtons[i].SetActive(true);
-                plantSpots[i].GetChild(1).transform.GetComponent<SpriteRenderer>().sprite = scrollableList.transform.GetChild(0).Find(plant.name).GetChild(3).transform.GetComponent<Image>().sprite;
+                plantSpots[i].GetChild(1).transform.GetComponent<SpriteRenderer>().sprite = plantSprites[plant.plantId - 1];
                 updateGameManagerList();
                 break;
             }
@@ -245,6 +246,7 @@ public class gardenManager : MonoBehaviour
                     if (allPlants.Contains(myplant))
                     {
                         plantsInSpots[i] = myplant;
+                        plantSpots[i].GetChild(1).transform.GetComponent<SpriteRenderer>().sprite = plantSprites[myplant.plantId - 1];
                         removeButtons[i].SetActive(true);
                     }
                 }

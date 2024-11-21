@@ -137,13 +137,15 @@ public class slideRooms : MonoBehaviour
         }
         overLapping = false;
         allRooms.GetComponent<RectTransform>().anchoredPosition = endPoint;
+        outline.GetComponent<RectTransform>().anchoredPosition = outLineTargetPos;
         currentPos = targetPos;
         outLineCurrentPos = outLineTargetPos;
     }
     private void initialize()
     {
         roomInt = 0;
-        float yPos = -_scaleToFitScreen.getYBuffer();
+        //float yPos = -_scaleToFitScreen.getYBuffer();
+        float yPos = 0f;
         float oneRoomWidth = _scaleToFitScreen.getX();
         roomPositions[0] = new Vector2 (0,yPos);
         for (int i = 1; i < roomPositions.Length; i++)

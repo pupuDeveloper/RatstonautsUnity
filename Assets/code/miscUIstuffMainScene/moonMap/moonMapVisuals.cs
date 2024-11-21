@@ -6,19 +6,19 @@ public class moonMapVisuals : MonoBehaviour
 {
     [SerializeField] private GameObject rocket;
     [SerializeField] private Transform[] moons;
+    [SerializeField] private GameObject moonMapBG;
+    private GameObject canvas;
     private int nextMoon = 0; //TODO: read from file
-
-    Vector3 startPosition;
-
-    GameObject currentLineObject;
-
-    LineRenderer currentLineRenderer;
-
+    private Vector3 startPosition;
+    private GameObject currentLineObject;
+    private LineRenderer currentLineRenderer;
     public float lineThickness;
-
     private void Start()
     {
         //rocket.transform.LookAt(moons[nextMoon], Vector3.forward);
+        canvas = GameObject.Find("UI");
+        moonMapBG.GetComponent<RectTransform>().sizeDelta = new Vector2 (canvas.GetComponent<RectTransform>().rect.width * 3, canvas.GetComponent<RectTransform>().rect.height);
+        GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
     }
 
     public void StartDrawingLine(Vector3 moonPos)

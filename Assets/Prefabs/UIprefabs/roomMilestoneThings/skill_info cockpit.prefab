@@ -556,19 +556,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1407995065660861895, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 1407995065660861895, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.93
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 1407995065660861895, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1407995065660861895, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.12
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1407995065660861895, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
       propertyPath: m_SizeDelta.x
@@ -699,9 +699,13 @@ PrefabInstance:
       value: skill_info cockpit
       objectReference: {fileID: 0}
     - target: {fileID: 7513180910714116294, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513180910714116294, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 833f72b1aeb159b458b62f66791c6de1, type: 3}
+      objectReference: {fileID: -1814882085, guid: be38e43e95aa3cd4d9cb08797f836a4d, type: 3}
     - target: {fileID: 7513180910714116294, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -719,8 +723,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7513180910714116294, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513180910714116294, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
       propertyPath: m_RaycastTarget
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513180910714116294, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8858219790773548441, guid: eb0c445db2921f54ea9d4b6a39b316a4, type: 3}
       propertyPath: m_Spacing
@@ -1584,7 +1596,7 @@ PrefabInstance:
     - target: {fileID: 3579417778281638480, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: -1814882085, guid: be38e43e95aa3cd4d9cb08797f836a4d, type: 3}
     - target: {fileID: 3579417778281638480, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
       propertyPath: m_FillAmount
       value: 1

@@ -35,7 +35,7 @@ public class roomMilestones : MonoBehaviour
         foreach (GameObject item in _gridItems)
         {
             scaleLayoutItems _scaleScript = item.transform.GetComponent<scaleLayoutItems>();
-            _scaleScript.Scale(GetComponent<RectTransform>().rect.width, GetComponent<RectTransform>().rect.height/5);
+            _scaleScript.Scale(GetComponent<RectTransform>().rect.width * 0.85f, GetComponent<RectTransform>().rect.height/5);
         }
     }
     private void setInfo()

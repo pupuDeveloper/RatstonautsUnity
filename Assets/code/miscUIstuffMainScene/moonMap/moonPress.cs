@@ -8,6 +8,6 @@ public class moonPress : MonoBehaviour
 
     public void viewLine()
     {
-        moonMap.StartDrawingLine(transform.position);
+        moonMap.StartDrawingLine(transform.localPosition);
     }
 }

@@ -18,14 +18,14 @@ public class moonMapVisuals : MonoBehaviour
         //rocket.transform.LookAt(moons[nextMoon], Vector3.forward);
         canvas = GameObject.Find("UI");
         moonMapBG.GetComponent<RectTransform>().sizeDelta = new Vector2 (canvas.GetComponent<RectTransform>().rect.width * 3, canvas.GetComponent<RectTransform>().rect.height);
-        GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
     }
 
     public void StartDrawingLine(Vector3 moonPos)
     {
         currentLineObject = GameObject.Find("ObjectPool/line");
         startPosition = moonPos;
-        currentLineObject.transform.position = startPosition;
+        //currentLineObject.transform.localPosition = startPosition;
         currentLineRenderer = currentLineObject.GetComponent<LineRenderer>();
         currentLineRenderer.startWidth = lineThickness;
         currentLineRenderer.endWidth = lineThickness;
@@ -34,6 +34,6 @@ public class moonMapVisuals : MonoBehaviour
 
     private void PreviewLine() 
     {
-        currentLineRenderer.SetPositions(new Vector3[]{ startPosition, rocket.transform.position});
+        currentLineRenderer.SetPositions(new Vector3[]{ startPosition, rocket.transform.localPosition});
     }
 }

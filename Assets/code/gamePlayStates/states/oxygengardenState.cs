@@ -75,6 +75,10 @@ public class oxygengardenState : State
     }
     public Plant[] getPlantsInSpots()
     {
+        if (_gardenManager.plantsInSpots == null || _gardenManager.plantsInSpots.Length == 0)
+        {
+            _gardenManager.initialize();
+        }
         return _gardenManager.plantsInSpots;
     }
     public void checkSpotsForDryPlants()
@@ -132,7 +136,6 @@ public class oxygengardenState : State
                 return true;
             }
             break;
-            //TODO: add rest of rooms
         }
         return false;
     }

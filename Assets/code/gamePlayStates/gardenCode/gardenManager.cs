@@ -11,7 +11,7 @@ public class gardenManager : MonoBehaviour
     [SerializeField] private Transform[] plantSpots;
     [SerializeField] private GameObject alluiCanvas;
     [SerializeField] private Sprite[] plantSprites;
-    public Plant[] plantsInSpots = new Plant[3];
+    public Plant[] plantsInSpots;
     public Plant blank;
     public List<Plant> allPlants = new List<Plant>();
     public List<Plant> unlockedPlants { get; private set; }
@@ -25,7 +25,6 @@ public class gardenManager : MonoBehaviour
 
     private void Start()
     {
-        _xpManager = GameObject.Find("xpmanager").GetComponent<xpManager>();
         initialize();
     }
     public void addPlant(Plant plant)
@@ -127,11 +126,15 @@ public class gardenManager : MonoBehaviour
             plantsInSpots = new Plant[3];
             for (int i = 0; i < plantsInSpots.Length; i++)
             {
-                plantsInSpots[i] = blank;
+                plantsInSpots[i] = allPlants.Find(x => x.plantId == 0);
             }
         }
         else
         {
+            if (plantsInSpots == null || plantsInSpots.Length == 0)
+            {
+                plantsInSpots = new Plant[3];
+            }
             for (int i = 0; i < GameManager.Instance.plantsInSpots.Length; i++)
             {
                 if (GameManager.Instance.plantsInSpots[i] != 0)
@@ -152,8 +155,13 @@ public class gardenManager : MonoBehaviour
             }
         }
     }
-    private void initialize()
+    public void initialize()
     {
+        _xpManager = GameObject.Find("xpmanager").GetComponent<xpManager>();
+        if (unlockedPlants == null || unlockedPlants.Count == 0)
+        {
+            unlockedPlants = new List<Plant>();
+        }
         if (allPlants.Count == 0)
         {
             allPlants = new List<Plant>();

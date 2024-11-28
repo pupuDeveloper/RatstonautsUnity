@@ -20,8 +20,6 @@ public class gameStats : MonoBehaviour
     private int boostMultiplier;
     public TMP_Text shipSpeedText;
     public TMP_Text traveledText;
-    public plantBoostSingleton plantEffects;
-
 
     private void Update()
     {

@@ -1205,7 +1205,6 @@ MonoBehaviour:
   _wateringEvent: {fileID: 648701421}
   shipSpeedText: {fileID: 894777843}
   traveledText: {fileID: 1606191988}
-  plantEffects: {fileID: 0}
 --- !u!114 &109847829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13059,7 +13058,7 @@ MonoBehaviour:
   - {fileID: 978808527}
   - {fileID: 1554310080}
   - {fileID: 1375161186}
-  unlockAllPlants: 1
+  unlockAllPlants: 0
 --- !u!114 &648701421
 MonoBehaviour:
   m_ObjectHideFlags: 0

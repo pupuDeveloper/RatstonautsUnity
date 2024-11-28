@@ -12,6 +12,7 @@ public class CameraViewportHandler : MonoBehaviour
     public Constraint constraint = Constraint.Portrait;
     public static CameraViewportHandler Instance;
     public new Camera camera;
+    public int amountOfBackGrounds;
 
     public bool executeInUpdate;
 
@@ -135,7 +136,8 @@ public class CameraViewportHandler : MonoBehaviour
         }
 
         _height = 2f * camera.orthographicSize;
-        _width = _height * camera.aspect;
+        _width = _height * camera.aspect * amountOfBackGrounds;
+        
 
         float cameraX, cameraY;
         cameraX = camera.transform.position.x;

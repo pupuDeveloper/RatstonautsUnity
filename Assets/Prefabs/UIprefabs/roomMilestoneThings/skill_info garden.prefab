@@ -1025,7 +1025,7 @@ MonoBehaviour:
   - lvl: 20
     description: Sea Mayweed unlocked
   - lvl: 30
-    description: Nettle unlocked
+    description: Nettle unlocked Second Plant Pot Unlocked
   - lvl: 40
     description: Arctic Sunflower unlocked
   - lvl: 50
@@ -1033,7 +1033,7 @@ MonoBehaviour:
   - lvl: 60
     description: Goldenrod unlocked
   - lvl: 70
-    description: Harebell unlocked
+    description: Harebell unlocked Third Plant Pot Unlocked
   - lvl: 80
     description: Daffodil unlocked
   - lvl: 90

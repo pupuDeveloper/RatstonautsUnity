@@ -1205,7 +1205,7 @@ MonoBehaviour:
   _wateringEvent: {fileID: 648701421}
   shipSpeedText: {fileID: 894777843}
   traveledText: {fileID: 1606191988}
-  plantEffects: {fileID: 2084009409}
+  plantEffects: {fileID: 0}
 --- !u!114 &109847829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39434,52 +39434,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083079651}
   m_CullTransparentMesh: 1
---- !u!1 &2084009408
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2084009410}
-  - component: {fileID: 2084009409}
-  m_Layer: 0
-  m_Name: plantBoosts
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2084009409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084009408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b0f8c00cedd228479ba5ec6fda84580, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gardenManager: {fileID: 648701420}
-  boostShipSpeed: 0
---- !u!4 &2084009410
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084009408}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 257.60678, y: 440.85605, z: -35.098755}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2089308921
 GameObject:
   m_ObjectHideFlags: 0
@@ -40123,7 +40077,6 @@ SceneRoots:
   - {fileID: 704335762831206961}
   - {fileID: 1233628635}
   - {fileID: 174217163}
-  - {fileID: 2084009410}
   - {fileID: 519420032}
   - {fileID: 1164290261}
   - {fileID: 109847827}

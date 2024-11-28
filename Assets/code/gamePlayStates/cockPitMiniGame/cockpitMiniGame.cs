@@ -244,14 +244,41 @@ public class cockpitMiniGame : MonoBehaviour
     }
     private void calculateBoost()
     {
-        if (_xpManager.cockPitLvl <= 1)
+        switch (_xpManager.cockPitLvl)
         {
-            boostAmount = level0boost;
-        }
-        else
-        {
-            boostMultiplier = _xpManager.cockPitLvl / 2; //REMEMBER!! XP STUFF IS 10X IN CODE
-            boostAmount = level0boost * boostMultiplier;
+            case var value when (value < 4):
+                boostAmount = level0boost;
+            break;
+            case var value when (value > 5 && value <= 10):
+                boostAmount = level0boost * 5;
+            break;
+            case var value when (value > 10 && value <= 19):
+                boostAmount = level0boost * 10;
+            break;
+            case var value when (value > 20 && value <= 29):
+                boostAmount = level0boost * 20;
+            break;
+            case var value when (value > 30 && value <= 39):
+                boostAmount = level0boost * 30;
+            break;
+            case var value when (value > 40 && value <= 49):
+                boostAmount = level0boost * 40;
+            break;
+            case var value when (value > 50 && value <= 59):
+                boostAmount = level0boost * 50;
+            break;
+            case var value when (value > 60 && value <= 69):
+                boostAmount = level0boost * 60;
+            break;
+            case var value when (value > 70 && value <= 79):
+                boostAmount = level0boost * 70;
+            break;
+            case var value when (value > 80 && value <= 89):
+                boostAmount = level0boost * 80;
+            break;
+            case var value when (value > 90):
+                boostAmount = level0boost * 90;
+            break;
         }
     }
 }

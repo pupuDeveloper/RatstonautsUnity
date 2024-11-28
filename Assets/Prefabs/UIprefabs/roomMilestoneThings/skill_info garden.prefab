@@ -32,11 +32,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7237452648427600873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 60}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 1, y: 0}
 --- !u!222 &8588311254093177392
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -114,7 +114,7 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 60}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 1, y: 0}
 --- !u!222 &7211054965352328940
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -313,6 +313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lvlMilestone (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6564075858385403958, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
+      propertyPath: m_fontSize
+      value: 39.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -414,6 +418,10 @@ PrefabInstance:
     - target: {fileID: 6097208251098153756, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
       propertyPath: m_Name
       value: lvlMilestone (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6564075858385403958, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
+      propertyPath: m_fontSize
+      value: 39.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -517,6 +525,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lvlMilestone (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 6564075858385403958, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
+      propertyPath: m_fontSize
+      value: 39.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -619,6 +631,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lvlMilestone (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6564075858385403958, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
+      propertyPath: m_fontSize
+      value: 39.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -720,6 +736,10 @@ PrefabInstance:
     - target: {fileID: 6097208251098153756, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
       propertyPath: m_Name
       value: lvlMilestone (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6564075858385403958, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
+      propertyPath: m_fontSize
+      value: 39.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1115,6 +1135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lvlMilestone (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6564075858385403958, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
+      propertyPath: m_fontSize
+      value: 39.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1216,6 +1240,10 @@ PrefabInstance:
     - target: {fileID: 6097208251098153756, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
       propertyPath: m_Name
       value: lvlMilestone (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6564075858385403958, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
+      propertyPath: m_fontSize
+      value: 39.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1319,6 +1347,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lvlMilestone (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6564075858385403958, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
+      propertyPath: m_fontSize
+      value: 39.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1420,6 +1452,10 @@ PrefabInstance:
     - target: {fileID: 6097208251098153756, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
       propertyPath: m_Name
       value: lvlMilestone
+      objectReference: {fileID: 0}
+    - target: {fileID: 6564075858385403958, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
+      propertyPath: m_fontSize
+      value: 39.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1523,6 +1559,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lvlMilestone (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 6564075858385403958, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
+      propertyPath: m_fontSize
+      value: 39.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1624,6 +1664,10 @@ PrefabInstance:
     - target: {fileID: 6097208251098153756, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
       propertyPath: m_Name
       value: lvlMilestone (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6564075858385403958, guid: 85d1c914245f20e49b864da2e00f0802, type: 3}
+      propertyPath: m_fontSize
+      value: 39.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

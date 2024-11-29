@@ -23,10 +23,11 @@ public class turretsMiniGame : MonoBehaviour
     public turretsState _turretsState;
     private bool asteroidsSpawned;
     [SerializeField] private xpManager _xpManager;
+    [SerializeField] private oxygengardenState _oxygenGardenState;
     private int level0boost;
     private int boostAmount;
-    private int minSeconds;
-    private int maxSeconds;
+    public int minSeconds;
+    public int maxSeconds;
 
     private void Start()
     {
@@ -93,6 +94,19 @@ public class turretsMiniGame : MonoBehaviour
         calculateBoost();
         _xpManager.turretMGReward();
         GameManager.Instance.timeSinceTurretsCDStarted = DateTime.Now;
+        foreach (Plant p in _oxygenGardenState.getPlantsInSpots())
+        {
+            if (p.plantId == 5)
+            {
+                minSeconds = minSeconds/2;
+                maxSeconds = maxSeconds/2;
+            }
+            if (p.plantId == 6)
+            {
+                minSeconds = (int)Mathf.Floor(minSeconds * 1.5f);
+                maxSeconds = (int)Mathf.Floor(maxSeconds * 1.5f);
+            }
+        }
         GameManager.Instance.triggerTurretsMG = DateTime.Now.AddSeconds(UnityEngine.Random.Range(minSeconds, maxSeconds));
         GameManager.Instance.turretsBoostOn = true;
         _turretsState.checkBGanimation();

@@ -169,13 +169,13 @@ public class gardenManager : MonoBehaviour
             Plant Dandelion = new Plant("Dandelion", 1, "Boost autopilot effectiveness by 5%", true, false, 0);
             if (!allPlants.Contains(Dandelion)) allPlants.Add(Dandelion);
 
-            Plant Clover = new Plant("Clover", 2, "Boost food generator by 5%", false, false, 5);
+            Plant Clover = new Plant("Clover", 2, "Boost turrets by 5%", false, false, 5);
             if (!allPlants.Contains(Clover)) allPlants.Add(Clover);
 
-            Plant Violet = new Plant("Violet", 3, "Boost turrets by 5%", false, false, 10);
+            Plant Violet = new Plant("Violet", 3, "think of a new effect", false, false, 10);
             if (!allPlants.Contains(Violet)) allPlants.Add(Violet);
 
-            Plant SeaMayweed = new Plant("Sea Mayweed", 4, "Boost well slept buff by 5%", false, false, 20);
+            Plant SeaMayweed = new Plant("Sea Mayweed", 4, "think of a new effect", false, false, 20);
             if (!allPlants.Contains(SeaMayweed)) allPlants.Add(SeaMayweed);
 
             Plant Nettle = new Plant("Nettle", 5, "decrease minigame cooldown by 50%, increase all minigame effectiveness by 10%", false, false, 30);
@@ -184,7 +184,7 @@ public class gardenManager : MonoBehaviour
             Plant ArcticStarflower = new Plant("Arctic Starflower", 6, "increase all minigame cooldown by 50%, decrease effectiveness by 5%", false, false, 40);
             if (!allPlants.Contains(ArcticStarflower)) allPlants.Add(ArcticStarflower);
 
-            Plant SolomonsSeal = new Plant("Solomons Seal", 7, "rats need 1-2 hours less sleep per night", false, false, 50);
+            Plant SolomonsSeal = new Plant("Solomons Seal", 7, "think of a new effect", false, false, 50);
             if (!allPlants.Contains(SolomonsSeal)) allPlants.Add(SolomonsSeal);
 
             Plant GoldenRod = new Plant("Goldenrod", 8, "Increase XP received after succesfull minigame by 10%", false, false, 60);

@@ -95,6 +95,7 @@ public class turretsMiniGame : MonoBehaviour
         GameManager.Instance.timeSinceTurretsCDStarted = DateTime.Now;
         GameManager.Instance.triggerTurretsMG = DateTime.Now.AddSeconds(UnityEngine.Random.Range(minSeconds, maxSeconds));
         GameManager.Instance.turretsBoostOn = true;
+        _turretsState.checkBGanimation();
         Debug.Log("All asteroids destroyed!");
     }
 

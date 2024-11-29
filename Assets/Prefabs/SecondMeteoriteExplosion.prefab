@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7839531694353663244}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SecondMeteoriteExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,6 +47,26 @@ PrefabInstance:
     - target: {fileID: 927560990835907130, guid: 9efadcf80fdeb544c8df0d5d0950fc67, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701057521193212351, guid: 9efadcf80fdeb544c8df0d5d0950fc67, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6025825081165299298, guid: 9efadcf80fdeb544c8df0d5d0950fc67, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6025825081165299298, guid: 9efadcf80fdeb544c8df0d5d0950fc67, type: 3}
+      propertyPath: m_SortingOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6025825081165299298, guid: 9efadcf80fdeb544c8df0d5d0950fc67, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1698960007
+      objectReference: {fileID: 0}
+    - target: {fileID: 6025825081165299298, guid: 9efadcf80fdeb544c8df0d5d0950fc67, type: 3}
+      propertyPath: m_RenderAlignment
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6598161546131193588, guid: 9efadcf80fdeb544c8df0d5d0950fc67, type: 3}
       propertyPath: m_LocalPosition.x
@@ -109,9 +129,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7455664412121289665}
     m_Modifications:
+    - target: {fileID: 2288576648207842970, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2288576648207842970, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2288576648207842970, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2288576648207842970, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1698960007
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438509848690552997, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6903600005983486239, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
       propertyPath: m_Name
       value: Particle System
+      objectReference: {fileID: 0}
+    - target: {fileID: 6903600005983486239, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7431777941402452943, guid: 0883c56493a778f43870bb27dca953d0, type: 3}
       propertyPath: m_LocalPosition.x

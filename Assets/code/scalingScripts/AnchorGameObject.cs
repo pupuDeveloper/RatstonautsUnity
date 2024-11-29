@@ -28,6 +28,7 @@ public class AnchorGameObject : MonoBehaviour
     void Start()
     {
         updateAnchorRoutine = UpdateAnchorAsync();
+        UpdateAnchor();
         StartCoroutine(updateAnchorRoutine);
     }
 

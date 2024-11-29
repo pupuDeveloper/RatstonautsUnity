@@ -243,7 +243,7 @@ public class GameManager : MonoBehaviour
         //oxygen garden data
         writer.WriteBool(gardenBoostOn);
         writer.WriteInt(gardenXP);
-        if (plantsInSpots == null || plantsInSpots.Length == 0)
+        if (plantsInSpots == null || plantsInSpots.Length == 0 || plantsInSpots[0] == null)
         {
             plantsInSpots = new int[3];
         }

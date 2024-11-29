@@ -23,10 +23,11 @@ public class turretsMiniGame : MonoBehaviour
     public turretsState _turretsState;
     private bool asteroidsSpawned;
     [SerializeField] private xpManager _xpManager;
+    [SerializeField] private oxygengardenState _oxygenGardenState;
     private int level0boost;
     private int boostAmount;
-    private int minSeconds;
-    private int maxSeconds;
+    public int minSeconds;
+    public int maxSeconds;
 
     private void Start()
     {
@@ -39,10 +40,10 @@ public class turretsMiniGame : MonoBehaviour
     {
         float worldScreenHeight = Camera.main.orthographicSize * 2;
         float worldScreenWidth = worldScreenHeight / Screen.safeArea.height * Screen.safeArea.width;
-        maxY = worldScreenHeight / 3f;
-        minY = worldScreenHeight / -3f;
-        maxX = worldScreenWidth / 2.5f;
-        minX = worldScreenWidth / -2.5f;
+        maxY = (worldScreenHeight / 2f) - worldScreenHeight * 0.1f;
+        minY = (worldScreenHeight / -2f) + worldScreenHeight * 0.1f;
+        maxX = worldScreenWidth / 2f;
+        minX = worldScreenWidth / -2f;
         asteroidAmount = UnityEngine.Random.Range(minAsteroidAmount, maxAsteroidAmount);
         for (int i = 0; i < asteroidAmount; i++)
         {
@@ -93,21 +94,62 @@ public class turretsMiniGame : MonoBehaviour
         calculateBoost();
         _xpManager.turretMGReward();
         GameManager.Instance.timeSinceTurretsCDStarted = DateTime.Now;
+        foreach (Plant p in _oxygenGardenState.getPlantsInSpots())
+        {
+            if (p.plantId == 5)
+            {
+                minSeconds = minSeconds/2;
+                maxSeconds = maxSeconds/2;
+            }
+            if (p.plantId == 6)
+            {
+                minSeconds = (int)Mathf.Floor(minSeconds * 1.5f);
+                maxSeconds = (int)Mathf.Floor(maxSeconds * 1.5f);
+            }
+        }
         GameManager.Instance.triggerTurretsMG = DateTime.Now.AddSeconds(UnityEngine.Random.Range(minSeconds, maxSeconds));
         GameManager.Instance.turretsBoostOn = true;
+        _turretsState.checkBGanimation();
         Debug.Log("All asteroids destroyed!");
     }
 
     private void calculateBoost()
     {
-        if (_xpManager.turretsLvl <= 1)
+        switch (_xpManager.turretsLvl)
         {
-            boostAmount = level0boost;
-        }
-        else
-        {
-            int boostMultiplier = _xpManager.turretsLvl / 2;
-            boostAmount = boostMultiplier * level0boost;
+            case var value when (value <= 4):
+                boostAmount = level0boost;
+            break;
+            case var value when (value > 4 && value <= 10):
+                boostAmount = level0boost * 5;
+            break;
+            case var value when (value > 10 && value <= 19):
+                boostAmount = level0boost * 10;
+            break;
+            case var value when (value > 20 && value <= 29):
+                boostAmount = level0boost * 20;
+            break;
+            case var value when (value > 30 && value <= 39):
+                boostAmount = level0boost * 30;
+            break;
+            case var value when (value > 40 && value <= 49):
+                boostAmount = level0boost * 40;
+            break;
+            case var value when (value > 50 && value <= 59):
+                boostAmount = level0boost * 50;
+            break;
+            case var value when (value > 60 && value <= 69):
+                boostAmount = level0boost * 60;
+            break;
+            case var value when (value > 70 && value <= 79):
+                boostAmount = level0boost * 70;
+            break;
+            case var value when (value > 80 && value <= 89):
+                boostAmount = level0boost * 80;
+            break;
+            case var value when (value > 90):
+                boostAmount = level0boost * 90;
+            break;
         }
     }
     public int getBoost()

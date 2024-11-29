@@ -300,6 +300,13 @@ public class xpManager : MonoBehaviour
         {
             xpToAdd = xpToAdd * 10;
         }
+        foreach (Plant p in _oxygengardenState.getPlantsInSpots())
+        {
+            if (p.plantId == 8)
+            {
+                xpToAdd = (int)Mathf.Floor(xpToAdd * 1.1f);
+            }
+        }
         GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
         popupArgs.Enqueue(new Tuple<int, int>(0, xpToAdd));
         if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
@@ -319,6 +326,13 @@ public class xpManager : MonoBehaviour
         {
             xpToAdd = xpToAdd * 10;
         }
+        foreach (Plant p in _oxygengardenState.getPlantsInSpots())
+        {
+            if (p.plantId == 8)
+            {
+                xpToAdd = (int)Mathf.Floor(xpToAdd * 1.1f);
+            }
+        }
         GameManager.Instance.turretsXP = addXp(GameManager.Instance.turretsXP, xpToAdd);
         popupArgs.Enqueue(new Tuple<int, int>(2, xpToAdd));
         if (updateLevel(GameManager.Instance.turretsXP, turretsLvl))
@@ -336,13 +350,13 @@ public class xpManager : MonoBehaviour
         switch (roomId)
         {
             case 0:
-                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[4];
+                displaySprite = Resources.Load<Sprite>("roomButtonImages/Cockpit");
                 break;
             case 1:
-                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[3];
+                displaySprite = Resources.Load<Sprite>("roomButtonImages/Garden");
                 break;
             case 2:
-                displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[1];
+                displaySprite = Resources.Load<Sprite>("roomButtonImages/Turrets2");
                 break;
             case 3:
                 displaySprite = Resources.LoadAll<Sprite>("roomButtonImages/icons1")[2];

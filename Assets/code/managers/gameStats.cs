@@ -20,8 +20,6 @@ public class gameStats : MonoBehaviour
     private int boostMultiplier;
     public TMP_Text shipSpeedText;
     public TMP_Text traveledText;
-    public plantBoostSingleton plantEffects;
-
 
     private void Update()
     {
@@ -101,7 +99,7 @@ public class gameStats : MonoBehaviour
                 }
             }
         }
-        switch (_foodgeneratorState.getFoodInSpot().foodId)
+        /*switch (_foodgeneratorState.getFoodInSpot().foodId)
         {
             case 1:
                 addedSpeed = (int)(addedSpeed * 1.01);
@@ -111,7 +109,7 @@ public class gameStats : MonoBehaviour
             default:
                 Debug.LogError("ERROR!!! DIDNT FIND ANY FOOD ID'S");
                 break;
-        }
+        }*/
         return addedSpeed;
     }
 

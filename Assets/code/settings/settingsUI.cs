@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class settingsUI : MonoBehaviour
 {
+
+    void Start()
+    {
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
+    }
     public void buttonSound1()
     {
         AudioManager.instance.Play("UI1");

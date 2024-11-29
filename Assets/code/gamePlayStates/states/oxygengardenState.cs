@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 using UnityEngine.UI;
-using System.Collections.Generic;
+using System.Collections;
 
 public class oxygengardenState : State
 {
@@ -11,12 +11,12 @@ public class oxygengardenState : State
     [Header("UI stuff like backgrounds")]
     [SerializeField] private Button toGardenButton;
     [SerializeField] private GameObject uiItems;
-    //[SerializeField] private GameObject oxygenGardenBG2;
     [SerializeField] private gardenManager _gardenManager;
     [SerializeField] private wateringEvent _wateringEvent;
     [SerializeField] private GameObject allRoomUI;
     [SerializeField] private SpriteRenderer roomBG;
-
+    [SerializeField] private GameObject anchoredProps;
+    private IEnumerator showAnchoredProps;
 
     public override State RunCurrentState()
     {
@@ -45,20 +45,13 @@ public class oxygengardenState : State
         checkSpotsForDryPlants();
     }
 
-    public void toGarden()
-    {
-        AudioManager.instance.Play("UI1");
-        toGardenButton.gameObject.SetActive(false);
-        uiItems.SetActive(false);
-        //oxygenGardenBG2.SetActive(true);
-    }
     private void resetState()
     {
-        //oxygenGardenBG2.SetActive(false);
         roomBG.sortingOrder = 0;
         _gardenManager.scrollableList.SetActive(false);
         _gardenManager.closePlantListButton.SetActive(false);
         stateIsReady = false;
+        anchoredProps.SetActive(false);
         allRoomUI.SetActive(false);
     }
 
@@ -69,12 +62,16 @@ public class oxygengardenState : State
         allRoomUI.SetActive(true);
         gameStateManager.targetState = this;
         uiItems.SetActive(true);
-        //oxygenGardenBG2.SetActive(false);
-        //toGardenButton.gameObject.SetActive(true);
+        showAnchoredProps = enablePropsLate(0.1f);
+        StartCoroutine(showAnchoredProps);
         stateIsReady = true;
     }
     public Plant[] getPlantsInSpots()
     {
+        if (_gardenManager.plantsInSpots == null || _gardenManager.plantsInSpots.Length == 0 || _gardenManager.plantsInSpots[0] == null)
+        {
+            _gardenManager.initialize();
+        }
         return _gardenManager.plantsInSpots;
     }
     public void checkSpotsForDryPlants()
@@ -121,19 +118,25 @@ public class oxygengardenState : State
             case "cockpit":
             for (int i = 0; i < plants.Length; i++)
             {
-                if (plants[i].plantId == 1 || plants[i].plantId == 5 || plants[i].plantId == 6 || plants[i].plantId == 11)
+                if (plants[i].plantId == 1 || plants[i].plantId == 5 || plants[i].plantId == 6 || plants[i].plantId == 11
+                || plants[i].plantId == 8)
                 return true;
             }
             break;
             case "turrets":
             for (int i = 0; i < plants.Length; i++)
             {
-                if (plants[i].plantId == 3 || plants[i].plantId == 5 || plants[i].plantId == 6 || plants[i].plantId == 11)
+                if (plants[i].plantId == 2 || plants[i].plantId == 5 || plants[i].plantId == 6 || plants[i].plantId == 11
+                || plants[i].plantId == 8)
                 return true;
             }
             break;
-            //TODO: add rest of rooms
         }
         return false;
+    }
+    private IEnumerator enablePropsLate(float time)
+    {
+        yield return new WaitForSeconds(time);
+        anchoredProps.SetActive(true);
     }
 }

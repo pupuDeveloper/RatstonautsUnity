@@ -8,7 +8,9 @@ public class destroyAsteroid : MonoBehaviour
     private turretsMiniGame _turretsMinigame;
     private float rotationSpeed;
     public float speed;
-    private float minSpeed = 0.01f;
+    public float accelRate;
+    public float decelRate;
+    private float minSpeed = 0.1f;
     public float targetSpeed;
     private Vector3 direction;
     private bool SlowcoroutineRunning;
@@ -16,6 +18,7 @@ public class destroyAsteroid : MonoBehaviour
     private Animator cannonAnimator;
     private Animator asteroidAnimator;
     private BoxCollider2D boxCollider;
+    private Rect bounds;
     [SerializeField] GameObject destroyEffect;
 
     private void Start()
@@ -30,12 +33,13 @@ public class destroyAsteroid : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
 
         rotationSpeed = Random.Range(-20f, 20f);
+        bounds = new Rect(0, 0, _turretsMinigame.maxX, _turretsMinigame.minY);
     }
 
     private void Update()
     {
         transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
-        if (isTooClose(1f))
+        if (isTooClose(1.75f))
         {
             if (SlowcoroutineRunning == false && speed > minSpeed)
             {
@@ -48,6 +52,10 @@ public class destroyAsteroid : MonoBehaviour
             {
                 StartCoroutine("speedUp");
             }
+            else
+            {
+                speed = targetSpeed;
+            }
         }
 
         if (isTooClose(0.1f) == false)
@@ -58,6 +66,12 @@ public class destroyAsteroid : MonoBehaviour
         {
             Debug.Log("Called");
             newDirectionAndSpeed();
+        }
+        if (isOutOfBounds())
+        {
+            direction.x = bounds.center.x - transform.position.x;
+            direction.y = bounds.center.y - transform.position.y;
+            targetSpeed = Random.Range(0.25f, 1f);
         }
     }
 
@@ -105,18 +119,22 @@ public class destroyAsteroid : MonoBehaviour
         }
         return false; // Under Limit
     }
+    private bool isOutOfBounds()
+    {
+        return bounds.Contains(transform.position);
+    }
     private IEnumerator slowDown()
     {
         SlowcoroutineRunning = true;
-        yield return new WaitForSeconds(0.05f);
-        speed -= 0.5f;
+        yield return new WaitForSeconds(0.025f);
+        speed -= targetSpeed * decelRate;
         SlowcoroutineRunning = false;
     }
     private IEnumerator speedUp()
     {
         SpeedcoroutineRunning = true;
-        yield return new WaitForSeconds(0.05f);
-        speed += 0.5f;
+        yield return new WaitForSeconds(0.025f);
+        speed += targetSpeed * accelRate;
         SpeedcoroutineRunning = false;
     }
     private void newDirectionAndSpeed()
@@ -124,6 +142,6 @@ public class destroyAsteroid : MonoBehaviour
         Debug.Log("direction changed");
         direction.x = Random.Range(-1f, 1f);
         direction.y = Random.Range(-1f, 1f);
-        targetSpeed = Random.Range(5f, 30f);
+        targetSpeed = Random.Range(0.25f, 1f);
     }
 }

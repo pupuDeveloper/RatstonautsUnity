@@ -99,8 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  targetSpeed: 10
-  destroyEffect: {fileID: 2320484516938087185, guid: 65e4bd85bf07c7745905bda6ed7cc7f5, type: 3}
+  accelRate: 0.01
+  decelRate: 0.01
+  targetSpeed: 3
+  destroyEffect: {fileID: 9128431686913755608, guid: 5fbf2bc70261e5d47afc26dbbc8484df, type: 3}
 --- !u!61 &4874690638410252504
 BoxCollider2D:
   m_ObjectHideFlags: 0

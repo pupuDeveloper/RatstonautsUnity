@@ -117,10 +117,10 @@ public class turretsMiniGame : MonoBehaviour
     {
         switch (_xpManager.turretsLvl)
         {
-            case var value when (value < 4):
+            case var value when (value <= 4):
                 boostAmount = level0boost;
             break;
-            case var value when (value > 5 && value <= 10):
+            case var value when (value > 4 && value <= 10):
                 boostAmount = level0boost * 5;
             break;
             case var value when (value > 10 && value <= 19):

@@ -235,7 +235,7 @@ public class gardenManager : MonoBehaviour
                 string name2 = g.name.ToLower();
                 name2 = name2.Trim();
 
-                if (p.unlockedAtThisLevel <= _xpManager.oxygenGardenLvl)
+                if (p.unlockedAtThisLevel <= _xpManager.oxygenGardenLvl || unlockAllPlants)
                 {
                     p.isUnlocked = true;
                     if (!unlockedPlants.Contains(p)) unlockedPlants.Add(p);

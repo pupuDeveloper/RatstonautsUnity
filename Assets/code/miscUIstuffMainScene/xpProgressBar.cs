@@ -32,8 +32,8 @@ public class xpProgressBar : MonoBehaviour
         float maxOffset = max - min;
         float fillAmount = Mathf.Abs(currentOffset / maxOffset);
         mask.fillAmount = fillAmount;
-        tracker.anchorMin = new Vector2(maskRect.anchorMin.x, fillAmount);
-        tracker.anchorMax = new Vector2(maskRect.anchorMax.x, fillAmount);
+        
+        tracker.anchoredPosition = new Vector2(tracker.rect.width * fillAmount,0);
     }
     private void getValues()
     {

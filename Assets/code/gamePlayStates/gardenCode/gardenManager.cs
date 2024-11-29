@@ -169,7 +169,7 @@ public class gardenManager : MonoBehaviour
             Plant Dandelion = new Plant("Dandelion", 1, "Boost autopilot effectiveness by 5%", true, false, 0);
             if (!allPlants.Contains(Dandelion)) allPlants.Add(Dandelion);
 
-            Plant Clover = new Plant("Clover", 2, "Boost turrets by 5%", false, false, 5);
+            Plant Clover = new Plant("Clover", 2, "Boost turrets effectiveness by 5%", false, false, 5);
             if (!allPlants.Contains(Clover)) allPlants.Add(Clover);
 
             Plant Violet = new Plant("Violet", 3, "think of a new effect", false, false, 10);

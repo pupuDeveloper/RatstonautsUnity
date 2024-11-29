@@ -300,6 +300,13 @@ public class xpManager : MonoBehaviour
         {
             xpToAdd = xpToAdd * 10;
         }
+        foreach (Plant p in _oxygengardenState.getPlantsInSpots())
+        {
+            if (p.plantId == 8)
+            {
+                xpToAdd = (int)Mathf.Floor(xpToAdd * 1.1f);
+            }
+        }
         GameManager.Instance.cockPitXP = addXp(GameManager.Instance.cockPitXP, xpToAdd);
         popupArgs.Enqueue(new Tuple<int, int>(0, xpToAdd));
         if (updateLevel(GameManager.Instance.cockPitXP, cockPitLvl))
@@ -318,6 +325,13 @@ public class xpManager : MonoBehaviour
         else
         {
             xpToAdd = xpToAdd * 10;
+        }
+        foreach (Plant p in _oxygengardenState.getPlantsInSpots())
+        {
+            if (p.plantId == 8)
+            {
+                xpToAdd = (int)Mathf.Floor(xpToAdd * 1.1f);
+            }
         }
         GameManager.Instance.turretsXP = addXp(GameManager.Instance.turretsXP, xpToAdd);
         popupArgs.Enqueue(new Tuple<int, int>(2, xpToAdd));

@@ -639,6 +639,195 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: UI-Assets_24
+      rect:
+        serializedVersion: 2
+        x: 1846
+        y: 2802
+        width: 685
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ec47a615dff5fa4fadade9af888655e
+      internalID: 376589407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Assets_25
+      rect:
+        serializedVersion: 2
+        x: 1846
+        y: 2387
+        width: 685
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7accf9b30285ea04386f3fb9aebe290d
+      internalID: -851640954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Assets_26
+      rect:
+        serializedVersion: 2
+        x: 2531
+        y: 2436
+        width: 55
+        height: 366
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcab11ac40acd8d4f97cd6d87b9580d6
+      internalID: 1944487591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Assets_27
+      rect:
+        serializedVersion: 2
+        x: 2531
+        y: 2802
+        width: 55
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b6d57954a3c90943a8bbddfe8451c3a
+      internalID: 1467476991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Assets_28
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 2436
+        width: 54
+        height: 366
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f639916ad33bae44b931e9004f6d3444
+      internalID: 262103821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Assets_29
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 2802
+        width: 54
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02f735167df645b42adcdb76431d7add
+      internalID: -1621208927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Assets_30
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 2387
+        width: 54
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 550204a0d2f288643a704d73d156524b
+      internalID: 1090611262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Assets_31
+      rect:
+        serializedVersion: 2
+        x: 1846
+        y: 2436
+        width: 685
+        height: 366
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aefcf9bd6dfbe94890656b2c87bf65b
+      internalID: 1187986558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Assets_32
+      rect:
+        serializedVersion: 2
+        x: 2531
+        y: 2387
+        width: 55
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d91c4e1cb38aba94caebc0a34bbc6a9f
+      internalID: 1230571210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -667,7 +856,16 @@ TextureImporter:
       UI-Assets_21: 992933656
       UI-Assets_22: -2049218378
       UI-Assets_23: -1814882085
+      UI-Assets_24: 376589407
+      UI-Assets_25: -851640954
+      UI-Assets_26: 1944487591
+      UI-Assets_27: 1467476991
+      UI-Assets_28: 262103821
+      UI-Assets_29: -1621208927
       UI-Assets_3: 2063851472
+      UI-Assets_30: 1090611262
+      UI-Assets_31: 1187986558
+      UI-Assets_32: 1230571210
       UI-Assets_4: 1712166062
       UI-Assets_5: 338997862
       UI-Assets_6: -1893736028

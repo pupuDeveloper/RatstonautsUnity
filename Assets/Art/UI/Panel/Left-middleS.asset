@@ -6,23 +6,23 @@ Sprite:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bot_right_corner
+  m_Name: Left-middleS
   m_Rect:
     serializedVersion: 2
-    x: 1133.2267
-    y: 890.1973
-    width: 56.66133
-    height: 56.66133
+    x: 1223.3386
+    y: 1662.976
+    width: 36.864
+    height: 249.856
   m_Offset: {x: 0, y: 0}
   m_Border: {x: 0, y: 0, z: 0, w: 0}
-  m_PixelsToUnits: 68.26666
+  m_PixelsToUnits: 0.68266666
   m_Pivot: {x: 0.5, y: 0.5}
   m_Extrude: 1
   m_IsPolygon: 0
   m_AtlasName: 
   m_PackingTag: 
   m_RenderDataKey:
-    be38e43e95aa3cd4d9cb08797f836a4d: 1338744289
+    be38e43e95aa3cd4d9cb08797f836a4d: 262103821
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -33,18 +33,18 @@ Sprite:
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
-      indexCount: 9
+      indexCount: 6
       topology: 0
       baseVertex: 0
       firstVertex: 0
-      vertexCount: 5
+      vertexCount: 4
       localAABB:
         m_Center: {x: 0, y: 0, z: 0}
         m_Extent: {x: 0, y: 0, z: 0}
-    m_IndexBuffer: 040003000100000001000300020001000000
+    m_IndexBuffer: 000001000200020001000300
     m_VertexData:
       serializedVersion: 3
-      m_VertexCount: 5
+      m_VertexCount: 4
       m_Channels:
       - stream: 0
         offset: 0
@@ -102,19 +102,19 @@ Sprite:
         offset: 0
         format: 0
         dimension: 0
-      m_DataSize: 104
-      _typelessdata: 3d73d73edf3ad73e0000000079e6113e2345d4be000000003d73d73e8914bdbd00000000c50cd4bedf3ad73e00000000c50cd4be2345d4be000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+      m_DataSize: 80
+      _typelessdata: 0000d8c100003743000000000000d84100003743000000000000d8c1000037c3000000000000d841000037c3000000000000000000000000000000000000000000000000000000000000000000000000
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
-      x: 1133.2267
-      y: 890.1973
-      width: 57
-      height: 57
+      x: 1223.3386
+      y: 1662.976
+      width: 36.864
+      height: 249.856
     textureRectOffset: {x: 0, y: 0}
     atlasRectOffset: {x: -1, y: -1}
-    settingsRaw: 64
-    uvTransform: {x: 68.26666, y: 1161.5, z: 68.26666, w: 918.5}
+    settingsRaw: 0
+    uvTransform: {x: 0.68266666, y: 1241.7706, z: 0.68266666, w: 1787.9039}
     downscaleMultiplier: 1
   m_AtlasRD:
     serializedVersion: 3
@@ -124,18 +124,18 @@ Sprite:
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
-      indexCount: 9
+      indexCount: 6
       topology: 0
       baseVertex: 0
       firstVertex: 0
-      vertexCount: 5
+      vertexCount: 4
       localAABB:
         m_Center: {x: 0, y: 0, z: 0}
         m_Extent: {x: 0, y: 0, z: 0}
-    m_IndexBuffer: 040003000100000001000300020001000000
+    m_IndexBuffer: 000001000200020001000300
     m_VertexData:
       serializedVersion: 3
-      m_VertexCount: 5
+      m_VertexCount: 4
       m_Channels:
       - stream: 0
         offset: 0
@@ -193,27 +193,20 @@ Sprite:
         offset: 0
         format: 0
         dimension: 0
-      m_DataSize: 104
-      _typelessdata: 3d73d73edf3ad73e0000000079e6113e2345d4be000000003d73d73e8914bdbd00000000c50cd4bedf3ad73e00000000c50cd4be2345d4be000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+      m_DataSize: 80
+      _typelessdata: 0000d8c100003743000000000000d84100003743000000000000d8c1000037c3000000000000d841000037c3000000000000000000000000000000000000000000000000000000000000000000000000
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
-      x: 1133.2267
-      y: 890.1973
-      width: 57
-      height: 57
+      x: 1223.3386
+      y: 1662.976
+      width: 36.864
+      height: 249.856
     textureRectOffset: {x: 0, y: 0}
     atlasRectOffset: {x: -1, y: -1}
-    settingsRaw: 64
-    uvTransform: {x: 68.26666, y: 1161.5, z: 68.26666, w: 918.5}
+    settingsRaw: 0
+    uvTransform: {x: 0.68266666, y: 1241.7706, z: 0.68266666, w: 1787.9039}
     downscaleMultiplier: 1
-  m_PhysicsShape:
-  - - {x: -0.41415992, y: 0.42037103}
-    - {x: -0.41415992, y: -0.41458997}
-    - {x: -0.018652083, y: -0.41458997}
-    - {x: 0.2010745, y: -0.3852931}
-    - {x: 0.40615264, y: -0.16556652}
-    - {x: 0.42080107, y: -0.06302745}
-    - {x: 0.42080107, y: 0.42037103}
+  m_PhysicsShape: []
   m_Bones: []
-  m_SpriteID: a25a02f0878ad414da3926f225a7c029
+  m_SpriteID: f639916ad33bae44b931e9004f6d3444

@@ -18,6 +18,8 @@ public class CameraViewportHandler : MonoBehaviour
 
     private float _width;
     private float _height;
+    private float leftX, rightX, topY, bottomY;
+    float cameraX, cameraY;
     //*** bottom screen
     private Vector3 _bl;
     private Vector3 _bc;
@@ -49,67 +51,167 @@ public class CameraViewportHandler : MonoBehaviour
     }
 
     // helper points:
-    public Vector3 BottomLeft
+    public Vector3 BottomLeft(int whichRoom)
     {
-        get
+        switch (whichRoom)
         {
-            return _bl;
+            case 0:
+                return _bl;
+                break;
+            case 1:
+                return new Vector3(_bl.x + Mathf.Abs(_bl.x) * whichRoom, _bl.y, _bl.z);
+                break;
+            case 2:
+                return new Vector3(_bl.x + Mathf.Abs(_bl.x) * whichRoom, _bl.y, _bl.z);
+                break;
+            default:
+                return _bl;
+                break;
         }
     }
-    public Vector3 BottomCenter
+    public Vector3 BottomCenter(int whichRoom)
     {
-        get
+        switch (whichRoom)
         {
-            return _bc;
+            case 0:
+                return _bc;
+                break;
+            case 1:
+                return new Vector3(_bc.x - ((_bc.x / amountOfBackGrounds) * whichRoom), _bc.y, _bc.z);
+                break;
+            case 2:
+                return new Vector3(_bc.x - ((_bc.x / amountOfBackGrounds) * whichRoom), _bc.y, _bc.z);
+                break;
+            default:
+                return _bc;
+                break;
         }
     }
-    public Vector3 BottomRight
+    public Vector3 BottomRight(int whichRoom)
     {
-        get
+        switch (whichRoom)
         {
-            return _br;
+            case 0:
+                return _br;
+                break;
+            case 1:
+                return new Vector3(_br.x - ((_br.x / amountOfBackGrounds) * whichRoom), _br.y, _br.z);
+                break;
+            case 2:
+                return new Vector3(_br.x - ((_br.x / amountOfBackGrounds) * whichRoom), _br.y, _br.z);
+                break;
+            default:
+                return _br;
+                break;
         }
     }
-    public Vector3 MiddleLeft
+    public Vector3 MiddleLeft(int whichRoom)
     {
-        get
+        switch (whichRoom)
         {
-            return _ml;
+            case 0:
+                return _ml;
+                break;
+            case 1:
+                return new Vector3(_ml.x - ((_ml.x / amountOfBackGrounds) * whichRoom), _ml.y, _ml.z);
+                break;
+            case 2:
+                return new Vector3(_ml.x - ((_ml.x / amountOfBackGrounds) * whichRoom), _ml.y, _ml.z);
+                break;
+            default:
+                return _ml;
+                break;
         }
     }
-    public Vector3 MiddleCenter
+    public Vector3 MiddleCenter(int whichRoom)
     {
-        get
+        switch (whichRoom)
         {
-            return _mc;
+            case 0:
+                return _mc;
+                break;
+            case 1:
+            Debug.Log("here");
+                return new Vector3(_mc.x + Mathf.Abs(_mc.x) * whichRoom, _mc.y, _mc.z);
+                break;
+            case 2:
+                return new Vector3(_mc.x - ((_mc.x / amountOfBackGrounds) * whichRoom), _mc.y, _mc.z);
+                break;
+            default:
+                return _mc;
+                break;
         }
     }
-    public Vector3 MiddleRight
+    public Vector3 MiddleRight(int whichRoom)
     {
-        get
+        switch (whichRoom)
         {
-            return _mr;
+            case 0:
+                return _mr;
+                break;
+            case 1:
+                return new Vector3(_mr.x - ((_mr.x / amountOfBackGrounds) * whichRoom), _mr.y, _mr.z);
+                break;
+            case 2:
+                return new Vector3(_mr.x - ((_mr.x / amountOfBackGrounds) * whichRoom), _mr.y, _mr.z);
+                break;
+            default:
+                return _mr;
+                break;
         }
     }
-    public Vector3 TopLeft
+    public Vector3 TopLeft(int whichRoom)
     {
-        get
+        switch (whichRoom)
         {
-            return _tl;
+            case 0:
+                return _tl;
+                break;
+            case 1:
+                return new Vector3(_tl.x - ((_tl.x / amountOfBackGrounds) * whichRoom), _tl.y, _tl.z);
+                break;
+            case 2:
+                return new Vector3(_tl.x - ((_tl.x / amountOfBackGrounds) * whichRoom), _tl.y, _tl.z);
+                break;
+            default:
+                return _tl;
+                break;
         }
     }
-    public Vector3 TopCenter
+    public Vector3 TopCenter(int whichRoom)
     {
-        get
+        switch (whichRoom)
         {
-            return _tc;
+            case 0:
+                return _tc;
+                break;
+            case 1:
+                return new Vector3(_tc.x - ((_tc.x / amountOfBackGrounds) * whichRoom), _tc.y, _tc.z);
+                break;
+            case 2:
+                return new Vector3(_tc.x - ((_tc.x / amountOfBackGrounds) * whichRoom), _tc.y, _tc.z);
+                break;
+            default:
+                return _tc;
+                break;
         }
     }
-    public Vector3 TopRight
+    public Vector3 TopRight(int whichRoom)
     {
-        get
+        switch (whichRoom)
         {
-            return _tr;
+            case 0:
+                return _tr;
+                break;
+            case 1:
+                return new Vector3(_tr.x - ((_tr.x / amountOfBackGrounds) * whichRoom), _tr.y, _tr.z);
+                break;
+            case 2:
+                return new Vector3(_tr.x - ((_tr.x / amountOfBackGrounds) * whichRoom), _tr.y, _tr.z);
+                break;
+            default:
+                return _tr;
+                break;
         }
     }
     #endregion
@@ -124,8 +226,6 @@ public class CameraViewportHandler : MonoBehaviour
 
     private void ComputeResolution()
     {
-        float leftX, rightX, topY, bottomY;
-
         if (constraint == Constraint.Landscape)
         {
             camera.orthographicSize = 1f / camera.aspect * UnitsSize / 2f;
@@ -137,11 +237,12 @@ public class CameraViewportHandler : MonoBehaviour
 
         _height = 2f * camera.orthographicSize;
         _width = _height * camera.aspect * amountOfBackGrounds;
-        
 
-        float cameraX, cameraY;
         cameraX = camera.transform.position.x;
         cameraY = camera.transform.position.y;
+
+        Debug.Log("cameraX is: " + cameraX);
+        Debug.Log("cameraY is: " + cameraY);
 
         leftX = cameraX - _width / 2;
         rightX = cameraX + _width / 2;

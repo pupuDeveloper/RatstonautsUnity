@@ -21,15 +21,14 @@ public class AnchorGameObject : MonoBehaviour
 
     public AnchorType anchorType;
     public Vector3 anchorOffset;
+    public int inWhichRoom;
 
     IEnumerator updateAnchorRoutine; //Coroutine handle so we don't start it if it's already running
 
     // Use this for initialization
-    void Start()
+    /*void Start()
     {
         updateAnchorRoutine = UpdateAnchorAsync();
-        UpdateAnchor();
-        StartCoroutine(updateAnchorRoutine);
     }
 
     /// <summary>
@@ -55,38 +54,38 @@ public class AnchorGameObject : MonoBehaviour
         UpdateAnchor();
         updateAnchorRoutine = null;
 
-    }
+    }*/
 
-    void UpdateAnchor()
+    public void UpdateAnchor()
     {
         switch (anchorType)
         {
             case AnchorType.BottomLeft:
-                SetAnchor(CameraViewportHandler.Instance.BottomLeft);
+                SetAnchor(CameraViewportHandler.Instance.BottomLeft(inWhichRoom));
                 break;
             case AnchorType.BottomCenter:
-                SetAnchor(CameraViewportHandler.Instance.BottomCenter);
+                SetAnchor(CameraViewportHandler.Instance.BottomCenter(inWhichRoom));
                 break;
             case AnchorType.BottomRight:
-                SetAnchor(CameraViewportHandler.Instance.BottomRight);
+                SetAnchor(CameraViewportHandler.Instance.BottomRight(inWhichRoom));
                 break;
             case AnchorType.MiddleLeft:
-                SetAnchor(CameraViewportHandler.Instance.MiddleLeft);
+                SetAnchor(CameraViewportHandler.Instance.MiddleLeft(inWhichRoom));
                 break;
             case AnchorType.MiddleCenter:
-                SetAnchor(CameraViewportHandler.Instance.MiddleCenter);
+                SetAnchor(CameraViewportHandler.Instance.MiddleCenter(inWhichRoom));
                 break;
             case AnchorType.MiddleRight:
-                SetAnchor(CameraViewportHandler.Instance.MiddleRight);
+                SetAnchor(CameraViewportHandler.Instance.MiddleRight(inWhichRoom));
                 break;
             case AnchorType.TopLeft:
-                SetAnchor(CameraViewportHandler.Instance.TopLeft);
+                SetAnchor(CameraViewportHandler.Instance.TopLeft(inWhichRoom));
                 break;
             case AnchorType.TopCenter:
-                SetAnchor(CameraViewportHandler.Instance.TopCenter);
+                SetAnchor(CameraViewportHandler.Instance.TopCenter(inWhichRoom));
                 break;
             case AnchorType.TopRight:
-                SetAnchor(CameraViewportHandler.Instance.TopRight);
+                SetAnchor(CameraViewportHandler.Instance.TopRight(inWhichRoom));
                 break;
         }
     }
@@ -94,21 +93,22 @@ public class AnchorGameObject : MonoBehaviour
     void SetAnchor(Vector3 anchor)
     {
         Vector3 newPos = anchor + anchorOffset;
-        if (!transform.position.Equals(newPos))
+        transform.position = newPos;
+        /*if (!transform.position.Equals(newPos))
         {
             transform.position = newPos;
-        }
+        }*/
     }
 
 #if UNITY_EDITOR
     // Update is called once per frame
     void Update()
     {
-        if (updateAnchorRoutine == null && executeInUpdate)
+        /*if (updateAnchorRoutine == null && executeInUpdate)
         {
             updateAnchorRoutine = UpdateAnchorAsync();
             StartCoroutine(updateAnchorRoutine);
-        }
+        }*/
     }
 #endif
 }

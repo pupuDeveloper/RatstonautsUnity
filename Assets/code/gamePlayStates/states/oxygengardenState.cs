@@ -10,12 +10,13 @@ public class oxygengardenState : State
 
     [Header("UI stuff like backgrounds")]
     [SerializeField] private Button toGardenButton;
-    [SerializeField] private GameObject uiItems;
     [SerializeField] private gardenManager _gardenManager;
     [SerializeField] private wateringEvent _wateringEvent;
     [SerializeField] private GameObject allRoomUI;
+    [SerializeField] private GameObject SpotItems;
+    [SerializeField] private GameObject PlantListItems;
+    [SerializeField] private GameObject StaticProps;
     [SerializeField] private SpriteRenderer roomBG;
-    [SerializeField] private GameObject anchoredProps;
     private IEnumerator showAnchoredProps;
 
     public override State RunCurrentState()
@@ -51,19 +52,19 @@ public class oxygengardenState : State
         _gardenManager.scrollableList.SetActive(false);
         _gardenManager.closePlantListButton.SetActive(false);
         stateIsReady = false;
-        anchoredProps.SetActive(false);
-        allRoomUI.SetActive(false);
+        SpotItems.SetActive(false);
+        PlantListItems.SetActive(false);
+        StaticProps.GetComponent<anchorChildObjects>().anchorObjects(false);
     }
 
     public void setupState()
     {
         _gardenManager.instantiatePlants();
         roomBG.sortingOrder = 5;
-        allRoomUI.SetActive(true);
+        SpotItems.SetActive(true);
+        PlantListItems.SetActive(true);
+        StaticProps.GetComponent<anchorChildObjects>().anchorObjects(true);
         gameStateManager.targetState = this;
-        uiItems.SetActive(true);
-        showAnchoredProps = enablePropsLate(0.1f);
-        StartCoroutine(showAnchoredProps);
         stateIsReady = true;
     }
     public Plant[] getPlantsInSpots()
@@ -133,10 +134,5 @@ public class oxygengardenState : State
             break;
         }
         return false;
-    }
-    private IEnumerator enablePropsLate(float time)
-    {
-        yield return new WaitForSeconds(time);
-        anchoredProps.SetActive(true);
     }
 }

@@ -238,7 +238,7 @@ public class cockpitMiniGame : MonoBehaviour
         calculateBoost();
         _xpManager.cockpitMGXPReward();
         GameManager.Instance.timeSinceCockPitCDStarted = DateTime.Now;
-        foreach (Plant p in _oxygenGardenState.getPlantsInSpots())
+        foreach (Plant p in _oxygenGardenState.getPlantsInSpots())  
         {
             if (p.plantId == 5)
             {

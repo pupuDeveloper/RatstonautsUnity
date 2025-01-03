@@ -151,9 +151,9 @@ public class slideRooms : MonoBehaviour
         {
             roomPositions[i] = new Vector2((roomPositions[0].x - oneRoomWidth * i),yPos);
         }
-        buttonPositions[0] = new Vector2(oneRoomWidth/-2f + (outline.GetComponent<RectTransform>().rect.width / 2f) ,yPos);
+        buttonPositions[0] = new Vector2(oneRoomWidth/-2f + (outline.GetComponent<RectTransform>().rect.width / 2f) / outline.transform.localScale.x ,yPos);
         buttonPositions[1] = new Vector2(0,0);
-        buttonPositions[2] = new Vector2(oneRoomWidth/2f - (outline.GetComponent<RectTransform>().rect.width / 2f) ,yPos);
+        buttonPositions[2] = new Vector2(oneRoomWidth/2f - (outline.GetComponent<RectTransform>().rect.width / 2f) / outline.transform.localScale.x ,yPos);
         currentPos = roomPositions[roomInt];
         allRooms.GetComponent<RectTransform>().anchoredPosition = currentPos;
         targetPos = roomPositions[roomInt];
